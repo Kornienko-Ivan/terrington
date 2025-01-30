@@ -1,5 +1,6 @@
 <?php 
 $logo = get_field('footer_logo', 'options');
+$form = get_field('footer_form_shortcode', 'options');
 $form_title = get_field('newsletter_form_title', 'options');
 $form_text = get_field('newsletter_form_text', 'options');
 $menu_title = get_field('footer_menu_title', 'options');
@@ -21,7 +22,11 @@ $bottom_text = get_field('footer_bottom_text', 'options');
         <?php echo $form_title; ?>
     </div>
 <?php endif; ?>
-<?php echo do_shortcode('[mc4wp_form id=39]'); ?>
+<?php if($form): ?>
+    <div class="footer__form">
+        <?php echo do_shortcode($form); ?>
+    </div>
+<?php endif; ?>
 <?php if($form_text): ?>
     <div class="footer__formText">
         <?php echo $form_text; ?>
