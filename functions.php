@@ -14,8 +14,7 @@ function starter_setup(){
 	register_nav_menus(
 		array( 
 			'main-menu' => __( 'Main Menu', 'starter' ),
-      'footer-menu-1' => __( 'Footer Menu 1', 'starter'),
-      'footer-menu-2' => __( 'Footer Menu 2', 'starter'),
+      'footer-menu' => __( 'Footer Menu', 'starter'),
       'footer-bottom-menu' => __( 'Footer Bottom Menu', 'starter')
 		)
 	);
