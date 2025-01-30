@@ -1,0 +1,27 @@
+#app
+	min-height: calc(100vh - 460px)
+	box-sizing: border-box
+	+max-screen(769px)
+		min-height: 0
+#main
+	width: 100%
+	overflow: hidden
+	padding-top: rem(80px)
+	.header__white &
+		padding-top: 0
+	+max-screen($breakpoint-xl)
+	+max-screen($breakpoint-lg)
+		padding-top: rem(80px)
+	+max-screen($breakpoint-sm)
+		padding-top: rem(80px)
+
+
+.divider
+	display: block
+	height: 1px
+	background: cfd0d2
+
+.app-container--y--middle
+	display: flex
+	flex-direction: column
+	justify-content: center

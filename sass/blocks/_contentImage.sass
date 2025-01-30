@@ -1,0 +1,36 @@
+.contentImageBlock
+    &__content
+        +max-screen($breakpoint-md)
+            padding-top: rem(15px)
+            padding-bottom: rem(15px)
+        &__inner
+            max-width: rem(450px)
+            margin-left: auto
+            padding: rem(0 40px)
+            +max-screen($breakpoint-md)
+                max-width: 100%
+                padding: 0
+        &__subheading
+            padding-bottom: rem(15px)
+        &__text
+    
+        &__button
+            margin-top: rem(15px)
+        .contentImageBlock__imageLeft &
+            order: 2
+    &__image
+        +max-screen($breakpoint-md)
+            padding-top: rem(15px)
+            padding-bottom: rem(15px)
+        &__inner
+            .contentImageBlock__imageLeft &
+                padding-right: 30px
+                +max-screen($breakpoint-md)
+                    padding-right: 0
+            .contentImageBlock__imageRight &
+                padding-left: 30px
+                +max-screen($breakpoint-md)
+                    padding-left: 0
+        img
+            width: 100%
+            height: auto

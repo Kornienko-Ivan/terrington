@@ -1,0 +1,101 @@
+.container
+    padding-left: 30px
+    padding-right: 30px
+.row 
+	&--x
+		&--center
+			justify-content: center
+	&--y
+		&--middle
+			align-items: center
+		&--top
+			align-items: flex-start
+		&--bottom
+			align-items: flex-end
+
+.section
+	padding-top: rem(45px)
+	padding-bottom: rem(45px)
+	+max-screen($breakpoint-md)
+		padding-top: rem(30px)
+		padding-bottom: rem(30px)
+	&--spacing
+		&--lg
+			padding-top: rem(80px)
+			padding-bottom: rem(80px)
+			+max-screen($breakpoint-md)
+				padding-top: rem(30px)
+				padding-bottom: rem(30px)
+
+.hidden
+	&--lg
+		+min-screen($breakpoint-lg)
+			display: none !important
+
+.visible
+	&--lg
+		+max-screen($breakpoint-lg)
+			display: none !important
+
+.p
+	&b
+		&-10
+			padding-bottom: rem(10px)
+		&-20
+			padding-bottom: rem(20px)
+		&-30
+			padding-bottom: rem(30px)
+		&-40
+			padding-bottom: rem(40px)
+		&-50
+			padding-bottom: rem(50px)
+			+max-screen($breakpoint-md)
+				padding-bottom: rem(30px)
+	&t
+		&-10
+			padding-top: rem(10px)
+		&-20
+			padding-top: rem(20px)
+		&-30
+			padding-top: rem(30px)
+		&-35
+			padding-top: rem(35px)
+		&-40
+			padding-top: rem(40px)
+		&-50
+			padding-top: rem(50px)
+			+max-screen($breakpoint-md)
+				padding-top: rem(30px)
+
+.m
+	&b
+		&-10
+			margin-bottom: rem(10px)
+		&-20
+			margin-bottom: rem(20px)
+		&-30
+			margin-bottom: rem(30px)
+		&-40
+			margin-bottom: rem(40px)
+		&-50
+			margin-bottom: rem(50px)
+			+max-screen($breakpoint-md)
+				margin-bottom: rem(30px)
+	&t
+		&-10
+			margin-top: rem(10px)
+		&-20
+			margin-top: rem(20px)
+		&-30
+			margin-top: rem(30px)
+		&-40
+			margin-top: rem(40px)
+		&-50
+			margin-top: rem(50px)
+		&-60
+			margin-top: rem(60px)
+			+max-screen($breakpoint-md)
+				margin-top: rem(30px)
+.page-template-default
+	.page
+		margin: 50px 0

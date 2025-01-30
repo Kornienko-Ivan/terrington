@@ -1,0 +1,51 @@
+.button, input[type="submit"]
+    display: inline-block
+    padding: rem(20px)
+    box-sizing: border-box
+    min-width: rem(160px)
+
+    font-size: rem(14px)
+    font-weight: 800
+    text-align: center
+    line-height: 1em
+
+    background-color: $color-primary
+    color: #fff
+
+    border: 0
+    border-radius: $radius-lg
+    outline: none
+    cursor: pointer
+    transition: 0.3s
+    &--lg
+        padding: rem(20px 35px)
+    &:hover
+        filter: drop-shadow(0px 6px 20px rgba(75, 190, 221, 0.38))
+    
+    
+    
+.button
+    &--sm
+        padding: rem(20px 30px)
+    &--outline
+        background-color: transparent
+        border: 2px solid $color-primary
+        color: $color-primary !important
+        &:hover
+            background-color: $color-primary
+            color: #fff !important
+
+.buttonsBlock
+    &__inner
+        margin-left: -5px
+        margin-right: -5px
+        display: flex
+        flex-wrap: wrap
+        .buttonsBlock--center &
+            justify-content: center
+        .buttonsBlock--right &
+            justify-content: flex-end
+    .button
+        margin: 5px
+
+        

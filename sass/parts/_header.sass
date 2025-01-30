@@ -1,0 +1,419 @@
+#header
+	position: fixed
+	top: 0
+	left: 0
+	z-index: 100
+	width: 100%
+	background-color: #ffffff
+	.header__white &
+		background-color: transparent
+	&.scrolled
+		.header__white &
+			background-color: #ffffff
+	.admin-bar &
+		top: 32px
+.header
+	position: relative
+	display: flex
+	justify-content: space-between
+	align-items: center
+	z-index: 100
+	background: #FFFFFF
+	padding-top: rem(15px)
+	padding-bottom: rem(15px)
+	.header__white
+		background: transparent
+	+max-screen($breakpoint-lg)
+		padding-top: rem(15px)
+		padding-bottom: rem(15px)
+		justify-content: flex-start
+	.topBannerEnabled &
+		padding-top: rem(40px)
+		+max-screen($breakpoint-lg)
+			padding-top: rem(30px)
+	.scrolled &
+		padding-top: rem(15px)
+		+max-screen($breakpoint-lg)
+			padding-top: rem(15px)
+	&__white
+		background: transparent
+	&__button
+		+max-screen($breakpoint-lg)
+			display: none
+		.header &:hover
+
+		.header &
+			font-weight: 800
+			font-size: rem(12px)
+		+max-screen($breakpoint-xl)
+			
+
+	&__search
+		&__toggle
+			width: 25px
+			margin-left: rem(60px)
+			z-index: 5
+			position: relative
+			+max-screen($breakpoint-lg)
+				margin-left: 0
+				margin-right: rem(30px)
+			a
+				width: 100%
+			img
+				width: 100%
+				height: auto
+		&__form
+			padding: rem(15px 30px)
+			width: 100%
+			background: #ffffff
+			transition: 0.3s
+			position: fixed
+			top: 0
+			z-index: 1
+			box-sizing: border-box
+			&.active
+				top: 104px
+				+max-screen($breakpoint-xl)
+					top: 74px
+				+max-screen($breakpoint-lg)
+					top: 87px
+				+max-screen($breakpoint-sm)
+					top: 67px
+
+			.searchForm
+				width: 100%
+				max-width: 570px
+				margin: auto
+	&__banner
+		display: flex
+		align-items: center
+		justify-content: center
+		padding: rem(10px 30px)
+		background: #000
+		+max-screen($breakpoint-sm)
+			align-items: flex-start
+		&__icon
+			width: rem(25px)
+			height: auto
+		&__link
+		&__text
+			padding: rem(0 10px)
+			color: #FFF
+			+max-screen($breakpoint-sm)
+				text-align: left
+		a
+			min-width: rem(70px)
+
+
+
+.logo
+	width: rem(145px)
+	max-width: 30%
+	display: block
+	z-index: 5
+	+max-screen($breakpoint-lg)
+		margin-left: 0
+	+max-screen($breakpoint-sm)
+		width: rem(145px)
+		max-width: 40%
+	img
+		width: 100%
+		height: auto
+		&.header__logo__white
+
+		.header__white &
+			display: none
+			.scrolled &
+				display: block
+			&.header__logo__white
+				display: block
+				.scrolled &
+					display: none
+				
+
+.header__nav
+	z-index: 4
+	display: flex
+	align-items: center
+	+max-screen($breakpoint-lg)
+		position: fixed
+		width: 100%
+		max-width: rem(400px)
+		height: 100%
+		top: 0
+		right: -100%
+		overflow: auto
+		background-color: #ffffff
+		transition: 0.6s
+		.header-active &
+			right: 0
+	.main-nav
+		
+		+max-screen($breakpoint-lg)
+			width: 100%
+			height: 100%
+			padding: 75px 0
+			box-sizing: border-box
+			overflow: hidden
+			overflow-y: auto
+	&__wrapper
+		display: flex
+		align-items: center
+		justify-self: flex-end
+		margin-left: auto
+		+max-screen($breakpoint-lg)
+			margin-right: 0
+			margin-left: auto
+			justify-self: flex-end
+			z-index: 9999999
+		&:before
+			content: ''
+			position: fixed
+			top: 0
+			left: -100%
+			width: 100%
+			height: 100%
+			background: $color-secondary
+			opacity: 0
+			transition: opacity 0.3s ease-out 0s, left 0s linear 0.5s
+			.header-active &
+				left: 0
+				opacity: 0.5
+				transition: opacity 0.3s ease-out 0s, left 0s linear 0s
+	.header__button
+		position: absolute
+		bottom: 0
+		left: 0
+		width: 100%
+		text-align: center
+	.menu
+		display: flex
+		box-sizing: border-box
+		+max-screen($breakpoint-lg)
+			display: block
+			position: relative
+			padding: 0 30px
+			padding-top: 0
+			height: 100%
+		+max-screen($breakpoint-md)
+			padding: 70px 30px
+			padding-top: 0
+		&-item
+			position: relative
+			margin-right: rem(45px)
+			+max-screen($breakpoint-xl)
+				margin-right: rem(20px)
+			+max-screen($breakpoint-lg)
+				margin-right: 0
+				padding: rem(15px 0)
+				//border-bottom: 1px solid $color-secondary
+				&:nth-last-child()
+					margin-bottom: 0
+			a
+				transition: 0.3s
+				font-size: rem(14px)
+				color: $color-secondary
+				+min-screen($breakpoint-lg)
+					.header__white &
+						color: #fff
+						.scrolled &
+							color: $color-secondary
+							&:hover
+								color: $color-primary
+				&:hover
+					color: $color-primary
+					//font-weight: 800
+					//opacity: 0.8
+			&.current-menu-item
+				a
+					+min-screen($breakpoint-lg)
+						.header__white &
+							color: #fff
+					.scrolled &
+						color: $color-primary
+				&>div>a, &>a
+					font-weight: 800
+
+			&:hover .sub-menu
+				+min-screen($breakpoint-lg)
+					display: block
+			&.menu-item-has-children
+				&>a
+					color: $color-primary
+			&__parent
+				display: flex
+				align-items: center
+				+max-screen($breakpoint-lg)
+					justify-content: space-between
+					flex-wrap: wrap
+					&>a
+						width: 100%
+			&__icon
+				margin-left: 10px
+				width: 10px
+				height: auto
+				cursor: pointer
+				
+				+max-screen($breakpoint-lg)
+					width: 15px
+					height: 15px
+					position: absolute
+					top: 20px
+					right: 0
+				svg
+					display: block
+					width: 100%
+					height: 100%
+					object-fit: contain
+					path
+						fill: $color-primary
+						+min-screen($breakpoint-lg)
+							.header__white &
+								fill: #fff
+							.scrolled &
+								fill: $color-primary
+		.current_page_item
+			&>a
+				color: $color-primary
+	.sub-menu
+		position: absolute
+		background: #ffffff
+		display: none
+		min-width: 180px
+		padding: 8px
+		left: -8px
+		border-radius: 3px
+		z-index: 1
+		top: 100%
+		+max-screen($breakpoint-lg)
+			display: none
+			position: relative
+			left: 0
+			border-radius: 0
+			padding-bottom: 0
+			width: 100%
+			&--active
+				display: block
+		.menu-item
+			margin-left: 0px
+			margin-top: 15px
+			margin-right: 0
+			&:nth-child(1)
+				margin-top: 0
+			+max-screen($breakpoint-lg)
+				margin-top: 0
+				border-bottom: 0
+			a
+				color: $color-primary !important
+
+
+.nav-toggle
+	width: 25px
+	height: 15px
+	position: relative
+	display: none
+	float: right
+	z-index: 5
+	margin-right: 0
+	justify-self: flex-end
+	+max-screen($breakpoint-lg)
+		display: block
+	&__inner
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 2px
+		background-color: $color-primary
+		transition: opacity 0.25s linear 0s , top 0.25s linear 0.25s
+		.header__white &
+			background-color: #fff
+			.scrolled &,.header-active &
+				background-color: $color-primary
+	&:before
+		content: ''
+		position: absolute
+		top: 50%
+		left: 0
+		width: 100%
+		height: 2px
+		background-color: $color-primary
+		
+		transition: opacity 0.25s linear 0s , top 0.25s linear 0.25s , transform 0.25s linear 0s
+		.header__white &
+			background-color: #fff
+			.scrolled &,.header-active &
+				background-color: $color-primary
+	&:after
+		content: ''
+		position: absolute
+		top: 100%
+		left: 0
+		width: 100%
+		height: 2px
+		background-color: $color-primary
+
+		transition: opacity 0.25s linear 0s , top 0.25s linear 0.25s , transform 0.25s linear 0s
+		.header__white &
+			background-color: #fff
+			.scrolled &,.header-active &
+				background-color: $color-primary
+	.header-active &,&.nav-close
+		&__inner
+			opacity: 0
+			top: 50%
+
+			transition: opacity 0.25s linear 0.25s , top 0.25s linear 0s
+		&:before
+			transform: rotate(45deg)
+			top: 50%
+
+			transition: opacity 0.25s linear 0.25s , top 0.25s linear 0s , transform 0.25s linear 0.25s
+		&:after
+			transform: rotate(-45deg)
+			top: 50%
+
+			transition: opacity 0.25s linear 0.25s , top 0.25s linear 0s , transform 0.25s linear 0.25s
+
+
+.nav-close
+	display: none
+	+max-screen($breakpoint-lg)
+		display: flex
+		position: absolute
+		top: 30px
+		right: 30px
+	.nav-toggle__inner
+		display: none !important
+
+.topBanner
+	background-color: $color-primary
+	
+	.container
+		display: flex
+		align-items: center
+		justify-content: center
+		padding-top: 10px
+		padding-bottom: 10px
+		+max-screen($breakpoint-md)
+			//flex-wrap: wrap
+			//padding-top: 0
+		p
+			padding-top: 10px
+			padding-bottom: 10px
+			text-align: left
+			+max-screen($breakpoint-md)
+				//width: 100%
+				padding-top: 0
+				padding-bottom: 0
+			+max-screen($breakpoint-md)
+				font-size: 14px
+			+max-screen($breakpoint-sm)
+				font-size: 12px
+		.button
+			margin-left: 30px
+			padding: rem(5px 10px)
+			font-size: 14px
+			+max-screen($breakpoint-md)
+				margin-left: 10px
+				font-size: 12px

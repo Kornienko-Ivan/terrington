@@ -1,0 +1,81 @@
+.banner
+    position: relative
+    width: 100%
+    overflow: hidden
+    margin-bottom: 50px
+    +max-screen($breakpoint-md)
+        margin-bottom: 0
+    &__container
+        padding-top: rem(160px)
+        padding-bottom: rem(30px)
+        z-index: 1
+        //.topBannerEnabled &
+        //    padding-top: rem(200px)
+        +max-screen($breakpoint-lg)
+            padding-top: 110px
+        +max-screen($breakpoint-md)
+            padding-top: rem(100px)
+            padding-bottom: rem(30px)
+            //.topBannerEnabled &
+            //    padding-top: rem(180px)
+    &__col
+        &--content
+            z-index: 5
+            position: relative
+            padding-bottom: rem(30px)
+        &--image
+            position: relative
+          
+    &__heading
+        max-width: rem(415px)
+        +max-screen($breakpoint-lg)
+            min-width: 0
+    &__text
+        padding-top: rem(30px)
+        max-width: rem(415px)
+    &__button
+        margin-top: rem(30px)
+    &__form
+        padding-top: rem(35px)
+        margin-top: 0
+    &__image
+        z-index: 2
+        position: relative
+        img
+            width: 130%
+            height: auto
+            +max-screen($breakpoint-xl)
+                width: 100%
+            +max-screen($breakpoint-md)
+                width: 100%
+    &__inner
+        position: relative
+        z-index: 1
+    &__bottomImage
+        img
+            width: 100%
+            height: auto
+            position: absolute
+            bottom: -1px
+            left: 0
+            z-index: 5
+    &__backgroundImage
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        img
+            width: 100%
+            height: 100%
+            object-fit: cover
+            object-position: bottom center
+    &__nav
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+        padding-top: rem(30px)
+        &__item
+            padding: rem(15px 50px)
+    .nf-error .nf-error-msg,.nf-error-msg, .ninja-forms-req-symbol
+        color: #fff

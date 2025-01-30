@@ -1,0 +1,120 @@
+.footer
+	padding: rem(90px 0)
+	+max-screen($breakpoint-lg)
+		padding: rem(50px 0)
+	&__main
+		position: relative
+		overflow: hidden
+		+max-screen($breakpoint-lg)
+	
+		&__nav
+			padding-bottom: rem(30px)
+			+max-screen($breakpoint-lg)
+
+			+max-screen($breakpoint-md)
+				padding-bottom: 0
+				padding-top: rem(30px)
+			+max-screen($breakpoint-sm)
+				&--2
+					padding-top: rem(15px)
+			ul
+				
+			li
+				padding-bottom: rem(30px)
+				vertical-align: middle
+				&:nth-last-child(1)
+					padding-bottom: 0
+			a
+				transition: 0.2s ease-out
+				&:hover
+					color: $color-primary
+	&__signup
+		+max-screen($breakpoint-md)
+			padding-top: rem(50px)
+		&__heading
+			color: #272252
+	&__bottom
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-between
+		padding-top: rem(75px)
+		+max-screen($breakpoint-lg)
+			padding-top: rem(25px)
+		+max-screen($breakpoint-md)
+			justify-content: center
+		&__wrapper
+			display: flex
+			flex-wrap: wrap
+			padding-top: rem(20px)
+			+max-screen($breakpoint-md)
+				justify-content: center
+			a
+				text-decoration: underline
+				transition: 0.3s
+				&:hover
+					color: $color-primary
+		&__nav
+			margin-left: rem(30px)
+			+max-screen($breakpoint-md)
+				margin-left: 0
+				
+	&__social
+		+max-screen($breakpoint-md)
+			width: 100%
+			text-align: center
+	&__copyright
+		
+		+max-screen($breakpoint-md)
+			padding-top: rem(15px)
+			order: 2
+			width: 100%
+			text-align: center
+		span
+			color: $color-primary
+		
+	&__logo
+		max-width: rem(130px)
+		display: block
+		+max-screen($breakpoint-lg)
+			//max-width: rem(180px)
+			padding-bottom: rem(25px)
+		+max-screen($breakpoint-md)
+			//max-width: rem(130px)
+			//display: none
+		img
+			width: 100%
+			height: auto
+	&__form
+		margin-top: rem(35px)
+
+.social-bar
+	display: flex
+	padding-top: rem(20px)
+	+max-screen($breakpoint-md)
+		justify-content: center
+	li
+		margin-right: rem(5px)
+		&:nth-last-child(1)
+			margin-right: 0
+	a
+		position: relative
+		display: block
+		width: rem(18px)
+		height: rem(18px)
+		border-radius: rem(3px)
+		background-color: $color-primary
+		line-height: 1em
+		transition: 0.3s ease-out
+		&:hover
+			background-color: $color-secondary
+	i 
+		position: absolute
+		font-size: rem(12px)
+		top: 50%
+		left: 50%
+		transform: translateX(-50%) translateY(-50%)
+		color: #fff
+		transition: 0.3s
+
+						
+						

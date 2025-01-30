@@ -1,0 +1,198 @@
+.form
+	*
+		font-family: $font-family-base
+	.nf-form-content
+		padding: 0
+		.nf-field
+			line-height: 0
+		.label-above .nf-field-label
+			margin-bottom: rem(10px)
+			label
+				font-weight: 800
+				font-size: rem(14px)
+				line-height: 1.3em
+				color: #161615
+				text-transform: uppercase
+		
+		.nf-field-element
+			input[type="text"],input[type="email"]
+				--webkit-appearence: none
+				padding: rem(15px 0)
+				border-radius: 0
+				border: 0
+				border-bottom: 1px solid $color-primary
+				outline: none
+				font-weight: 600
+				color: $color-purple
+				font-family: $font-family-base
+				font-size: rem(13px)
+				background: transparent
+				&:placeholder
+					color: $color-primary
+				&:focus
+					color: #9FA0A3
+			textarea
+				--webkit-appearence: none
+				padding: rem(15px 20px)
+				border-radius: rem(7px)
+				border: 1px solid $color-primary
+				outline: none
+				font-weight: 600
+				color: $color-purple
+				font-family: $font-family-base
+				font-size: rem(13px)
+				background: transparent
+				&:placeholder
+					color: $color-primary
+				&:focus
+					color: #9FA0A3
+			input[type="submit"],input[type="button"]
+				background-color: $color-primary
+				border-bottom: 0
+			textarea
+				height: rem(150px)
+		.nf-field-container
+			margin-bottom: 30px
+			+max-screen($breakpoint-md)
+				margin-bottom: 20px
+		.submit-wrap
+			margin-top: -10px
+			input
+				--webkit-appearence: none
+				display: inline-block
+				padding: rem(20px)
+				box-sizing: border-box
+				min-width: rem(160px)
+				height: auto 
+				font-size: rem(14px)
+				font-weight: 800
+				text-align: center
+				line-height: 1em
+
+				background-color: $color-primary
+				color: #fff
+
+				border: 0
+				border-radius: rem(45px)
+				outline: none
+				cursor: pointer
+				transition: 0.3s
+				&:hover
+					filter: drop-shadow(0px 6px 20px rgba(75, 190, 221, 0.38))
+					color: #fff
+				&:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active
+					-webkit-box-shadow: 0 0 0 30px white inset !important
+					background: transparent
+		.checkbox-wrap
+			label
+				font-weight: 300
+				font-size: rem(14px)
+				color: $color-primary
+		select,.listselect-wrap .nf-field-element>div
+			border: 0
+			border-radius: 0
+			background-color: transparent
+		.nf-error.field-wrap .nf-field-element:after
+			bottom: 0
+			top: 0
+			right: 0
+			height: 100%
+			border-radius: 3px
+			line-height: 44px
+		.nf-error.textarea-wrap
+			.nf-field-element
+				&:after
+					display: none
+					line-height: 50px
+		.html-wrap
+			margin-top: -10px
+			p
+				font-size: 11px
+				line-height: 18px
+				color: #546577
+
+
+	&--big
+		.nf-form-content
+			.nf-field-element
+				input
+					height: 60px
+			.submit-wrap
+				input
+					border: 0px solid transparent
+					width: 285px
+			.nf-error.field-wrap .nf-field-element:after
+				line-height: 60px
+	&__policy
+		font-size: 12px
+		margin-top: 0
+		margin-left: 5px
+		color: $color-primary
+		font-weight: 300
+	.nf-error-msg,.nf-form-fields-required
+		font-size: rem(12px)
+		margin-top: 0
+		margin-left: 0
+		color: $color-primary
+		font-weight: 300
+	nf-field .nf-error-msg
+		margin-left: 0
+
+.form--contact
+	.nf-field-label
+		display: none
+	.nf-field-element
+		&:after
+			display: none
+
+.form--footerSignup
+	.nf-form-content
+		padding: 0
+	.nf-before-form-content
+		display: none
+	nf-fields-wrap
+		display: flex
+		align-items: center
+		+max-screen($breakpoint-sm)
+			flex-wrap: wrap
+		nf-field
+			&:nth-child(1)
+				width: 100%
+			&:nth-child(2)
+				width: auto
+				+max-screen($breakpoint-sm)
+					width: 100%
+				.nf-field-element
+					+max-screen($breakpoint-sm)
+						text-align: left
+						.banner &
+							text-align: left
+		.nf-field-container
+			margin-bottom: 0
+		.nf-field-element
+			input[type="email"]
+				color: $color-primary
+				+max-screen($breakpoint-sm)
+				&::placeholder
+					color: $color-primary
+			input[type="button"]
+				
+
+		.nf-error.field-wrap .nf-field-element:after
+			top: 0
+			right: 0
+			bottom: 0
+			height: 100%
+		nf-field
+			+max-screen($breakpoint-sm)
+				display: block
+	.nf-form-content .submit-wrap
+		margin-top: 0px
+		margin-left: rem(45px)
+		+max-screen($breakpoint-md)
+			margin-left: 0
+		+max-screen($breakpoint-sm)
+			display: block
+			text-align: center
+		input
+			min-width: rem(100px)

@@ -1,0 +1,32 @@
+body.archive
+    padding-top: 0px !important
+    padding-bottom: 0px !important
+
+.archive
+    padding-top: rem(50px)
+    padding-bottom: rem(170px)
+    position: relative
+    z-index: 20
+    +max-screen($breakpoint-md)
+        padding-top: rem(50px)
+        padding-bottom: rem(50px)
+    &__heading
+        padding-top: rem(100px)
+        +max-screen($breakpoint-md)
+            padding-top: rem(50px)
+    &__wrapper
+        padding-top: rem(55px)
+
+    &__pagination
+        .screen-reader-text
+            display: none
+        .nav-links
+            display: flex
+            flex-wrap: wrap
+            justify-content: center
+            a,span
+                margin: 5px
+            span
+                color: $color-primary
+    &__loadMore
+        padding-top: rem(50px)

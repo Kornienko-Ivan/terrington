@@ -1,0 +1,318 @@
+html, body
+  -webkit-overflow-scrolling: touch
+
+body
+	font-family: $font-family-base
+	font-size: $default-font-size
+	font-weight: 400
+	font-style: normal
+	line-height: $default-line-height
+	color: $default-text-color
+	-webkit-font-smoothing: antialiased
+  	-moz-osx-font-smoothing: grayscale
+  	-webkit-backface-visibility: hidden
+  	-webkit-tap-highlight-color: transparent
+
+h1,h2,h3,h4,h5
+	font-weight: 800
+	line-height: 1.1em
+
+h1
+	margin-bottom: 20px
+
+p,.p
+	font-size: $default-font-size
+	line-height: rem(28px)
+	+max-screen($breakpoint-lg)
+		
+	+max-screen($breakpoint-md)
+		
+
+.text
+	&--style
+	&--size--10,&--size--10 *
+		font-size: rem(10px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+		+max-screen($breakpoint-md)
+			font-size: rem(10px)
+	&--size--12,&--size--12 *
+		font-size: rem(12px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+		+max-screen($breakpoint-md)
+			font-size: rem(12px)
+	&--size--13,&--size--13 *
+		font-size: rem(13px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+		+max-screen($breakpoint-md)
+			font-size: rem(13px)
+	&--size--14,&--size--14 *
+		font-size: rem(14px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+		+max-screen($breakpoint-md)
+			font-size: rem(14px)
+	&--size--16,&--size--16 *
+		font-size: rem(16px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+		+max-screen($breakpoint-md)
+			font-size: rem(14px)
+	&--size--17,&--size--17 *
+		font-size: rem(17px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+		+max-screen($breakpoint-md)
+			font-size: rem(14px)
+	&--size--20,&--size--20 *
+		font-size: rem(20px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+		+max-screen($breakpoint-md)
+			font-size: rem(20px)
+	&--size--28,&--size--28 *
+		font-size: rem(28px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+		font-size: 26px
+		+max-screen($breakpoint-md)
+			font-size: rem(24px)
+	&--size--40,&--size--40 *
+		font-size: rem(40px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+			font-size: 32px
+		+max-screen($breakpoint-md)
+			font-size: rem(30px)
+	&--size--44,&--size--44 *
+		font-size: rem(44px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+			fond-size: 32px
+		+max-screen($breakpoint-md)
+			font-size: rem(32px)
+	&--size--52,&--size--52 *
+		font-size: rem(52px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+			font-size: 38px
+		+max-screen($breakpoint-md)
+			font-size: rem(36px)
+	&--size--78,&--size--78 *
+		font-size: rem(78px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+			font-size: rem(44px)
+		+max-screen($breakpoint-md)
+			font-size: rem(36px)
+			
+	
+	&--default,&--default *
+		font-size: rem(16px)
+		line-height: 1.2em
+	&--uppercase
+		text-transform: uppercase
+	&--left
+		text-align: left
+	&--right
+		text-align: right
+	&--center
+		text-align: center
+	&--color
+		&--white
+			&,& *
+				color: #ffffff
+		&--primary
+			&,& *
+				color: $color-primary
+		&--secondary
+			&,& *
+				color: $color-secondary
+		&--secondary--txt
+			&,& *
+				color: $color-txt-secondary
+		&--purple
+			&,& *
+				color: $color-purple
+		&--black
+			&,& *
+				color: #000
+		&--grey
+			&,& *
+				color: $color-secondary
+	&--underline
+		text-decoration: underline
+	
+.font
+	&--italic
+		font-style: italic
+	&--weight
+		&--thin
+			font-weight: 100
+		&--light
+			font-weight: 300
+		&--regular
+			font-weight: 400
+		&--medium
+			font-weight: 600
+		&--bold
+			font-weight: 800
+		&--black
+			font-weight: 900
+
+.title
+
+
+
+.link--underline
+	position: relative
+	&:before
+		content: ''
+		position: absolute
+		bottom: 0
+		right: 0
+		width: 100%
+		height: 1px
+		background-color: $color-primary
+		transition: 0.2s ease-out
+	&:hover:before
+		width: 0
+
+.link--underline--2
+	position: relative
+	&:before
+		content: ''
+		position: absolute
+		bottom: 0
+		left: 0
+		width: 0
+		height: 1px
+		background-color: $color-primary
+		transition: 0.2s ease-out
+	&:hover:before
+		width: 100%
+
+
+
+.content-block
+	font-size: rem(16px)
+	line-height: rem(28px)
+	p
+		margin-bottom: 20px
+		&:nth-child(1)
+			padding-top: 0
+		&:nth-last-child(1)
+			padding-bottom: 0
+	h1,h2,h3,h4,h5,h6
+		margin-bottom: 15px
+		line-height: 1.2em
+	h1
+		font-size: 32px
+		margin-bottom: 20px
+	h2
+		font-size: 28px
+	h3
+		font-size: 24px
+	h4
+		font-size: 22px
+	h5
+		font-size: 20px
+	h6
+		font-size: 18px
+	p,ul,ol
+		font-size: rem(16px)
+		line-height: rem(28px)
+	a
+		overflow-wrap: break-word
+		word-wrap: break-word
+		transition: 0.3s
+		color: $color-primary
+		&:hover
+			opacity: 0.8
+			text-decoration: underline
+	ul
+		margin: rem(15px 0)
+		margin-left: rem(30px)
+		li
+			display: block
+			//padding-left: 25px
+			margin-bottom: 10px
+			line-height: rem(34px)
+			&:nth-last-child(1)
+				margin-bottom: 0
+			&:before
+				content: ''
+				background-color: $color-primary
+				width: 5px 
+				height: 5px
+				min-width: 5px
+				border-radius: 50%
+				margin-right: 10px
+				margin-bottom: 0.12em
+				display: inline-block
+			ol
+				margin: rem(10px 0)
+			ul
+				margin: rem(10px 0)
+				margin-left: rem(30px)
+	ol
+		list-style: none
+		counter-reset: my-counter
+		margin: rem(15px 0)
+		li
+			counter-increment: my-counter
+			padding-left: 25px
+			margin-bottom: 10px
+			&:nth-last-child(1)
+				margin-bottom: 0
+			&:before
+				content: counter(my-counter) "."
+				color: $color-primary
+				margin-right: 10px
+				margin-top: 8px
+			ol
+				margin: rem(10px 0)
+			ul
+				margin: rem(10px 0)
+				margin-left: rem(30px)
+	img
+		width: auto
+		height: auto
+	code
+		margin: 11px 0
+		line-height: $default-line-height
+		padding: 2px 4px
+		border: 1px solid #dde4e9
+		background-color: #F6F6F6
+		color: #232527
+		display: inline-block
+	pre
+		white-space: pre-wrap
+	blockquote
+		margin: rem(25px 0)
+		position: relative
+		border-left: 2px solid $color-primary
+		padding-left: 30px
+		p
+			font-size: rem(20px)
+			line-height: rem(31px)
+			font-weight: 400
+			&:nth-last-child(1)
+				font-size: rem(16px)
+				font-weight: 300
+		+max-screen($breakpoint-md)
+
+		&:before
+			content: ''
+			position: absolute
+			top: 0
+			left: -20px
+			width: 60px
+			height: 51px
+			//background-image: url(../assets/images/quote.svg)
+			background-repeat: no-repeat
+			background-size: contain
+			background-position: center
+			z-index: -1
