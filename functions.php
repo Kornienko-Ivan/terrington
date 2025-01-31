@@ -14,7 +14,8 @@ function starter_setup(){
 	register_nav_menus(
 		array( 
 			'main-menu' => __( 'Main Menu', 'starter' ),
-      'footer-menu' => __( 'Footer Menu', 'starter'),
+      'footer-menu-1' => __( 'Footer Menu 1', 'starter'),
+      'footer-menu-2' => __( 'Footer Menu 2', 'starter'),
       'footer-bottom-menu' => __( 'Footer Bottom Menu', 'starter')
 		)
 	);
@@ -101,3 +102,18 @@ function my_acf_op_init() {
 function the_acf_loop(){
   get_template_part('template-parts/loop/acf-blocks','loop');
 }
+
+function get_inline_svg($name)
+{
+    if ($name) :
+        $file_path = get_template_directory() . '/assets/icons/' . $name . '.svg';
+
+        if (file_exists($file_path)) :
+            return file_get_contents($file_path);
+        else :
+            return '';
+        endif;
+    endif;
+    return '';
+}
+

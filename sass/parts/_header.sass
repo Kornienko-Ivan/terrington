@@ -43,8 +43,8 @@
 		.header &:hover
 
 		.header &
-			font-weight: 800
-			font-size: rem(12px)
+			//font-weight: 800
+			//font-size: rem(12px)
 		+max-screen($breakpoint-xl)
 			
 
@@ -173,7 +173,7 @@
 			left: -100%
 			width: 100%
 			height: 100%
-			background: $color-secondary
+			background: $color-black
 			opacity: 0
 			transition: opacity 0.3s ease-out 0s, left 0s linear 0.5s
 			.header-active &
@@ -181,11 +181,11 @@
 				opacity: 0.5
 				transition: opacity 0.3s ease-out 0s, left 0s linear 0s
 	.header__button
-		position: absolute
-		bottom: 0
-		left: 0
-		width: 100%
-		text-align: center
+		//position: absolute
+		//bottom: 0
+		//left: 0
+		//width: 100%
+		//text-align: center
 	.menu
 		display: flex
 		box-sizing: border-box
@@ -212,16 +212,16 @@
 			a
 				transition: 0.3s
 				font-size: rem(14px)
-				color: $color-secondary
+				color: $color-black
 				+min-screen($breakpoint-lg)
 					.header__white &
 						color: #fff
 						.scrolled &
-							color: $color-secondary
+							color: $color-black
 							&:hover
-								color: $color-primary
+								color: $color-black
 				&:hover
-					color: $color-primary
+					color: $color-black
 					//font-weight: 800
 					//opacity: 0.8
 			&.current-menu-item
@@ -230,7 +230,7 @@
 						.header__white &
 							color: #fff
 					.scrolled &
-						color: $color-primary
+						color: $color-black
 				&>div>a, &>a
 					font-weight: 800
 
@@ -239,7 +239,7 @@
 					display: block
 			&.menu-item-has-children
 				&>a
-					color: $color-primary
+					color: $color-black
 			&__parent
 				display: flex
 				align-items: center
@@ -266,15 +266,15 @@
 					height: 100%
 					object-fit: contain
 					path
-						fill: $color-primary
+						fill: $color-black
 						+min-screen($breakpoint-lg)
 							.header__white &
 								fill: #fff
 							.scrolled &
-								fill: $color-primary
+								fill: $color-black
 		.current_page_item
 			&>a
-				color: $color-primary
+				color: $color-black
 	.sub-menu
 		position: absolute
 		background: #ffffff
@@ -304,7 +304,7 @@
 				margin-top: 0
 				border-bottom: 0
 			a
-				color: $color-primary !important
+				color: $color-black !important
 
 
 .nav-toggle
@@ -324,12 +324,12 @@
 		left: 0
 		width: 100%
 		height: 2px
-		background-color: $color-primary
+		background-color: $color-black
 		transition: opacity 0.25s linear 0s , top 0.25s linear 0.25s
 		.header__white &
 			background-color: #fff
 			.scrolled &,.header-active &
-				background-color: $color-primary
+				background-color: $color-black
 	&:before
 		content: ''
 		position: absolute
@@ -337,13 +337,13 @@
 		left: 0
 		width: 100%
 		height: 2px
-		background-color: $color-primary
+		background-color: $color-black
 		
 		transition: opacity 0.25s linear 0s , top 0.25s linear 0.25s , transform 0.25s linear 0s
 		.header__white &
 			background-color: #fff
 			.scrolled &,.header-active &
-				background-color: $color-primary
+				background-color: $color-black
 	&:after
 		content: ''
 		position: absolute
@@ -351,13 +351,13 @@
 		left: 0
 		width: 100%
 		height: 2px
-		background-color: $color-primary
+		background-color: $color-black
 
 		transition: opacity 0.25s linear 0s , top 0.25s linear 0.25s , transform 0.25s linear 0s
 		.header__white &
 			background-color: #fff
 			.scrolled &,.header-active &
-				background-color: $color-primary
+				background-color: $color-black
 	.header-active &,&.nav-close
 		&__inner
 			opacity: 0
@@ -387,7 +387,7 @@
 		display: none !important
 
 .topBanner
-	background-color: $color-primary
+	background-color: $color-black
 	
 	.container
 		display: flex
@@ -411,9 +411,9 @@
 			+max-screen($breakpoint-sm)
 				font-size: 12px
 		.button
-			margin-left: 30px
-			padding: rem(5px 10px)
-			font-size: 14px
-			+max-screen($breakpoint-md)
-				margin-left: 10px
-				font-size: 12px
+			//margin-left: 30px
+			//padding: rem(5px 10px)
+			//font-size: 14px
+			//+max-screen($breakpoint-md)
+			//	margin-left: 10px
+			//	font-size: 12px
