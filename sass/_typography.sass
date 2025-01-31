@@ -3,7 +3,7 @@ html, body
 
 body
 	font-family: $font-family-base
-	font-size: $default-font-size
+	font-size: 16px
 	font-weight: 400
 	font-style: normal
 	line-height: $default-line-height
@@ -14,19 +14,33 @@ body
   	-webkit-tap-highlight-color: transparent
 
 h1,h2,h3,h4,h5
-	font-weight: 800
+	font-weight: 600
 	line-height: 1.1em
+	font-family: $font-family-title
 
-h1
-	margin-bottom: 20px
+h1, .h1
+	font-size: rem(60px)
+
+h2, .h2
+	font-size: rem(50px)
+
+h3, .h3
+	font-size: rem(35px)
+
+h4, .h4
+	font-size: rem(30px)
+
+h5, .h5
+	font-size: rem(25px)
+
+h6, .h6
+	font-size: rem(20px)
 
 p,.p
-	font-size: $default-font-size
-	line-height: rem(28px)
+	font-size: $text-font-size
 	+max-screen($breakpoint-lg)
 		
 	+max-screen($breakpoint-md)
-		
 
 .text
 	&--style
@@ -54,6 +68,12 @@ p,.p
 		+max-screen($breakpoint-lg)
 		+max-screen($breakpoint-md)
 			font-size: rem(14px)
+	&--size--15,&--size--15 *
+		font-size: rem(15px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+		+max-screen($breakpoint-md)
+			font-size: rem(15px)
 	&--size--16,&--size--16 *
 		font-size: rem(16px)
 		line-height: 1.2em
@@ -66,48 +86,18 @@ p,.p
 		+max-screen($breakpoint-lg)
 		+max-screen($breakpoint-md)
 			font-size: rem(14px)
+	&--size--18,&--size--18 *
+		font-size: rem(18px)
+		line-height: 1.2em
+		+max-screen($breakpoint-lg)
+		+max-screen($breakpoint-md)
+			font-size: rem(18px)
 	&--size--20,&--size--20 *
 		font-size: rem(20px)
 		line-height: 1.2em
 		+max-screen($breakpoint-lg)
 		+max-screen($breakpoint-md)
 			font-size: rem(20px)
-	&--size--28,&--size--28 *
-		font-size: rem(28px)
-		line-height: 1.2em
-		+max-screen($breakpoint-lg)
-		font-size: 26px
-		+max-screen($breakpoint-md)
-			font-size: rem(24px)
-	&--size--40,&--size--40 *
-		font-size: rem(40px)
-		line-height: 1.2em
-		+max-screen($breakpoint-lg)
-			font-size: 32px
-		+max-screen($breakpoint-md)
-			font-size: rem(30px)
-	&--size--44,&--size--44 *
-		font-size: rem(44px)
-		line-height: 1.2em
-		+max-screen($breakpoint-lg)
-			fond-size: 32px
-		+max-screen($breakpoint-md)
-			font-size: rem(32px)
-	&--size--52,&--size--52 *
-		font-size: rem(52px)
-		line-height: 1.2em
-		+max-screen($breakpoint-lg)
-			font-size: 38px
-		+max-screen($breakpoint-md)
-			font-size: rem(36px)
-	&--size--78,&--size--78 *
-		font-size: rem(78px)
-		line-height: 1.2em
-		+max-screen($breakpoint-lg)
-			font-size: rem(44px)
-		+max-screen($breakpoint-md)
-			font-size: rem(36px)
-			
 	
 	&--default,&--default *
 		font-size: rem(16px)
@@ -122,28 +112,63 @@ p,.p
 		text-align: center
 	&--color
 		&--white
-			&,& *
-				color: #ffffff
-		&--primary
-			&,& *
-				color: $color-primary
-		&--secondary
-			&,& *
-				color: $color-secondary
-		&--secondary--txt
-			&,& *
-				color: $color-txt-secondary
-		&--purple
-			&,& *
-				color: $color-purple
+			&, & *
+				color: $color-white
+
+		&--light-gray
+			&, & *
+				color: $color-light-gray
+
+		&--gray
+			&, & *
+				color: $color-gray
+
+		&--dark-gray
+			&, & *
+				color: $color-dark-gray
+
 		&--black
-			&,& *
-				color: #000
-		&--grey
-			&,& *
-				color: $color-secondary
+			&, & *
+				color: $color-black
+
+		&--red
+			&, & *
+				color: $color-red
+
+		&--dark-red
+			&, & *
+				color: $color-dark-red
+
+		&--bright-red
+			&, & *
+				color: $color-bright-red
+
+		&--green
+			&, & *
+				color: $color-green
+
+		&--light-mint
+			&, & *
+				color: $color-light-mint
+
+		&--neutral-gray
+			&, & *
+				color: $color-neutral-gray
+
+		&--border-gray
+			&, & *
+				color: $color-border-gray
+
+		&--secondary-gray
+			&, & *
+				color: $color-secondary-gray
+
+		&--dark-black
+			&, & *
+				color: $color-dark-black
+
 	&--underline
-		text-decoration: underline
+			text-decoration: underline
 	
 .font
 	&--italic
@@ -164,40 +189,8 @@ p,.p
 
 .title
 
-
-
-.link--underline
-	position: relative
-	&:before
-		content: ''
-		position: absolute
-		bottom: 0
-		right: 0
-		width: 100%
-		height: 1px
-		background-color: $color-primary
-		transition: 0.2s ease-out
-	&:hover:before
-		width: 0
-
-.link--underline--2
-	position: relative
-	&:before
-		content: ''
-		position: absolute
-		bottom: 0
-		left: 0
-		width: 0
-		height: 1px
-		background-color: $color-primary
-		transition: 0.2s ease-out
-	&:hover:before
-		width: 100%
-
-
-
 .content-block
-	font-size: rem(16px)
+	font-size: $text-font-size
 	line-height: rem(28px)
 	p
 		margin-bottom: 20px
@@ -228,7 +221,7 @@ p,.p
 		overflow-wrap: break-word
 		word-wrap: break-word
 		transition: 0.3s
-		color: $color-primary
+		color: $color-black
 		&:hover
 			opacity: 0.8
 			text-decoration: underline
@@ -244,7 +237,7 @@ p,.p
 				margin-bottom: 0
 			&:before
 				content: ''
-				background-color: $color-primary
+				background-color: $color-black
 				width: 5px 
 				height: 5px
 				min-width: 5px
@@ -269,7 +262,7 @@ p,.p
 				margin-bottom: 0
 			&:before
 				content: counter(my-counter) "."
-				color: $color-primary
+				color: $color-black
 				margin-right: 10px
 				margin-top: 8px
 			ol
@@ -293,7 +286,7 @@ p,.p
 	blockquote
 		margin: rem(25px 0)
 		position: relative
-		border-left: 2px solid $color-primary
+		border-left: 2px solid $color-black
 		padding-left: 30px
 		p
 			font-size: rem(20px)
@@ -316,3 +309,46 @@ p,.p
 			background-size: contain
 			background-position: center
 			z-index: -1
+
+.bg--color
+	&--white
+		background-color: $color-white
+
+	&--light-gray
+		background-color: $color-light-gray
+
+	&--gray
+		background-color: $color-gray
+
+	&--dark-gray
+		background-color: $color-dark-gray
+
+	&--black
+		background-color: $color-black
+
+	&--red
+		background-color: $color-red
+
+	&--dark-red
+		background-color: $color-dark-red
+
+	&--bright-red
+		background-color: $color-bright-red
+
+	&--green
+		background-color: $color-green
+
+	&--light-mint
+		background-color: $color-light-mint
+
+	&--neutral-gray
+		background-color: $color-neutral-gray
+
+	&--border-gray
+		background-color: $color-border-gray
+
+	&--secondary-gray
+		background-color: $color-secondary-gray
+
+	&--dark-black
+		background-color: $color-dark-black
