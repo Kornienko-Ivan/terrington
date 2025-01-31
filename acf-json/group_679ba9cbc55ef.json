@@ -1,0 +1,185 @@
+{
+    "key": "group_679ba9cbc55ef",
+    "title": "Content Blocks",
+    "fields": [
+        {
+            "key": "field_679ba9d9cac51",
+            "label": "Content Blocks",
+            "name": "content_blocks",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_679ba9e9b6359": {
+                    "key": "layout_679ba9e9b6359",
+                    "name": "hero-main-block",
+                    "label": "Hero Main Block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_679bacb341cf2",
+                            "label": "",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_679ba9ee6acc6"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_679bb624e693b": {
+                    "key": "layout_679bb624e693b",
+                    "name": "hero-advertising",
+                    "label": "Hero Advertising",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_679bb632e693c",
+                            "label": "",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_679bb5bf02e45"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_679c088411f3c": {
+                    "key": "layout_679c088411f3c",
+                    "name": "hero-brands-slider",
+                    "label": "Hero Brands Slider",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_679c088b11f3d",
+                            "label": "",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_679c08065692e"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_679c0c17a394e": {
+                    "key": "layout_679c0c17a394e",
+                    "name": "info-section",
+                    "label": "Info Section",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_679c0c20a394f",
+                            "label": "",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_679c0b3329d15"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_679c0f311ade5": {
+                    "key": "layout_679c0f311ade5",
+                    "name": "get-in-touch-banner",
+                    "label": "Get In Touch Banner",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_679c13b2b6ca4": {
+                    "key": "layout_679c13b2b6ca4",
+                    "name": "latest-news",
+                    "label": "Latest News",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "Add Row",
+            "min": "",
+            "max": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1738281920
+}

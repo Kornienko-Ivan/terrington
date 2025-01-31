@@ -80,6 +80,11 @@ function my_acf_op_init() {
         ));
 
         // Add sub page.
+        $globalBlocksOptions = acf_add_options_page(array(
+          'page_title'  => __('Global Blocks'),
+          'menu_title'  => __('Blocks'),
+          'parent_slug' => $parent['menu_slug'],
+      ));
         $headerOptions = acf_add_options_page(array(
             'page_title'  => __('Header Options'),
             'menu_title'  => __('Header'),
