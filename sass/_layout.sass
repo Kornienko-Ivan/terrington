@@ -1,18 +1,18 @@
 .container
 	--padding: #{rem(15px)} * 2
 	--max-width: #{rem(1605px)}
-	padding-left: unset
-	padding-right: unset
+	padding-left: unset !important
+	padding-right: unset !important
 
-	width: calc(min(100% - var(--padding), var(--max-width)))
-	max-width: var(--max-width)
+	width: calc(min(100% - var(--padding), var(--max-width))) !important
+	max-width: var(--max-width) !important
 	margin-inline: auto
 
 	&--narrow
 		--max-width: #{rem(1120px)}
 		max-width: var(--max-width)
 	&--wide
-		--max-width: #{rem(1685px)}
+		--max-width: #{rem(1669px)}
 		max-width: var(--max-width)
 
 
