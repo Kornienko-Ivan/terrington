@@ -41,8 +41,6 @@
       backface-visibility: hidden
       border-radius: $radius-md
 
-
-
     &__front
       display: flex
       mask: url('../assets/icons/Union.svg') no-repeat top / contain
@@ -50,7 +48,7 @@
       aspect-ratio: 825 / 747
       width: 100%
       position: relative
-      background-color: #fff
+      background-color: $color-white
 
       .heroMain__leftPart__bg
         width: 100%
@@ -62,7 +60,8 @@
 
     &__backend
       transform: rotateY(180deg)
-      background-color: #f4f4f4
+      background-color: $color-red
+      color: $color-white
       display: flex
       align-items: center
       justify-content: center
@@ -73,6 +72,37 @@
       -webkit-mask: url('../assets/icons/Union.svg') no-repeat top / cover
       aspect-ratio: 825 / 747
       width: 100%
+      .heroMain__leftPart__col:nth-child(1)
+        width: 69%
+        height: 100%
+
+      .heroMain__leftPart__col:nth-child(2)
+        width: 31%
+
+      .heroMain__logo
+        display: flex
+        align-items: center
+        justify-content: center
+        background-color: $color-white
+        border-radius: $radius-md
+        aspect-ratio: 310/107
+        width: 54%
+        min-height: rem(50px)
+
+      .heroMain__leftPart__description
+        padding: 0
+        margin-top: rem(30px)
+        font-size: rem(20px)
+        text-align: left
+      img
+        max-width: 55%
+      .heroMain__leftPart__btn
+          position: absolute
+          right: rem(20px)
+          bottom: 0
+          font-size: rem(17px)
+          svg
+            margin-left: rem(16px)
 
     &__col:nth-child(1)
       width: 69%
@@ -106,42 +136,14 @@
     &__wrapper
       grid-column: span 3
 
-    &__link
-
-    &__front
-
-    &__backend
-      display: none
-
-    &__bg
-
-    &__description
-
-    &__link
-
   &__rightPart
     &__wrapper
       grid-column: span 3
-
-
-    &__link
-
     &__front
       position: relative
-    &__backend
-      display: none
-
-    &__bg
-
-    &__logo
-
-    &__description
-
 
   .card
-    //border-radius: $radius-md
     aspect-ratio: 400/374
-    //overflow: hidden
     perspective: 1000px
 
     &:hover .card__inner
@@ -162,8 +164,6 @@
       transform-style: preserve-3d
       position: relative
       border-radius: $radius-md
-      //overflow: hidden
-      //will-change: transform
 
     &__front, &__backend
       width: 100%
@@ -179,7 +179,31 @@
 
     &__backend
       transform: rotateY(180deg)
-      background-color: #f4f4f4
+      background-color: $color-red
+      color: $color-white
+      .card__logo
+        position: relative
+        bottom: unset
+        right: unset
+        //margin-top: rem(37px)
+        //margin-left: rem(37px)
+        +adaptive-value("margin-top", 37, 1, 1)
+        +adaptive-value("margin-left", 37, 1, 1)
+
+      .card__description
+        margin-top: rem(23.63px)
+        padding-inline: rem(33px)
+        padding-block: 0
+        text-align: left
+        font-size: rem(17px)
+      .card__btn
+        position: absolute
+        bottom: rem(21px)
+        right: rem(26.25px)
+        font-size: rem(15px)
+        font-weight: 500
+        svg
+          margin-left: rem(16px)
 
     &__bg
       width: 100%
@@ -217,6 +241,8 @@
       position: relative
       border-radius: $radius-md
       overflow: hidden
+      &--mobile
+        display: none
     &__bg
       height: 100%
       img
@@ -248,6 +274,175 @@
       top: rem(27px)
       right: rem(34px)
       max-width: 20%
+  &__slider
+    display: none
+
++max-screen($breakpoint-xxl)
+  .heroMain
+    .card
+      &__backend
+        .card__logo
+
+        .card__description
+          margin-top: rem(16.63px)
+          //padding-inline: rem(33px)
+          +adaptive-value("padding-inline", 33, 1, 1)
+          padding-block: 0
+          text-align: left
+          font-size: rem(15px)
+
+
+
++max-screen($breakpoint-xl)
+  .heroMain
+    .card
+      &__backend
+        .card__logo
+            margin-left: rem(10px)
+            margin-top: rem(10px)
+            width: 35%
+            min-height: rem(30px)
+        .card__description
+          margin-top: rem(10px)
+          font-size: rem(14px)
+          padding-inline: rem(10px)
+        .card__btn
+          font-size: rem(14px)
+          right: rem(10px)
+          bottom: rem(10px)
+          svg
+            margin-left: rem(8px)
+
++max-screen($breakpoint-lg)
+  .heroMain
+    margin-top: rem(-50px)
+    .heroMain__wrapper
+      display: none
+    &--mobile
+
+      .heroAdvertising
+        &__wrapper
+          margin-left: 0
+          margin-top: rem(17px)
+          aspect-ratio: 372/138
+          min-height: rem(138px)
+          width: 100%
+          border-radius: $radius-0
+          &--mobile
+            display: block
+        &__card
+          padding: rem(15px) rem(18px)
+          top: rem(21px)
+          left: rem(21px)
+          max-width: 43%
+          border-radius: $radius-0
+          h3
+            font-size: rem(14px)
+        &__logo
+          max-width: 22%
+          top: rem(11px)
+          right: rem(21px)
+    &__slider
+      display: block
+      position: relative
+      .slick-track
+        display: flex !important
+      &__wrapper
+        margin: 0 rem(-10px)
+        .brand
+          position: relative
+          border-radius: $radius-md
+          overflow: hidden
+          margin: 0 rem(10px)
+          height: inherit !important
+          &__logo
+            position: absolute
+            right: rem(25px)
+            bottom: rem(47px)
+            border-radius: $radius-1
+            background-color: $color-white
+            aspect-ratio: 310 / 107
+            width: 40%
+            display: flex
+            justify-content: center
+            align-items: center
+            img
+              width: 70%
+              object-fit: contain
+          &__bg
+            height: 100%
+            width: 100%
+            img
+              height: 100%
+              width: 100%
+              object-fit: cover
+      &__prev,
+      &__next
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        background: $color-red
+        color: $color-white
+        width: rem(35px)
+        height: rem(35px)
+        display: flex
+        align-items: center
+        justify-content: center
+        cursor: pointer
+        border-radius: 50%
+        z-index: 1
+        transition: background-color 0.3s ease
+        svg
+          height: rem(8.75px)
+          width: rem(8.75px)
+
+      &__prev
+        left: rem(12px)
+      &__next
+        right: rem(12px)
+        svg
+          transform: rotate(180deg)
+
++max-screen($breakpoint-md)
+  .heroMain
+    .heroMain__wrapper
+    &--mobile
+      .heroAdvertising__wrapper
+    &__slider
+
+      &__wrapper
+        .brand
+          aspect-ratio: 374 / 731
+          &__logo
+            aspect-ratio: 160 / 116
+            width: 42.7%
+            display: flex
+            justify-content: center
+            align-items: center
+            img
+              width: 76.25%
+              object-fit: contain
+
+
++max-screen($breakpoint-xs)
+  .heroMain
+    .heroMain__wrapper
+    &--mobile
+      .heroAdvertising
+        &__wrapper
+          min-height: rem(148px)
+        &__card
+          padding: rem(10px) rem(13px)
+          top: rem(16px)
+          left: rem(16px)
+          max-width: 47%
+
+
+
+
+
+
+
 
 
 

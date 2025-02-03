@@ -15,6 +15,12 @@ $right_link = get_sub_field('right_part_link');
 $title = get_sub_field('title');
 $background_image = get_sub_field('background_image');
 $logo = get_sub_field('logo');
+$advertising_link = get_sub_field('link');
+
+$brands = new WP_Query([
+    'post_type'      => 'brand',
+    'posts_per_page' => -1,
+]);
 ?>
 <div class="heroMain">
     <div class="container container--wide">
@@ -37,13 +43,23 @@ $logo = get_sub_field('logo');
                                     <?php endif; ?>
                                 </div>
                                 <div class="heroMain__leftPart__backend">
-                                    <?php if($left_logo): ?>
-                                        <div class="heroMain__logo"><img src="<?php echo $left_logo['url']; ?>" alt="<?php echo $left_logo['title']; ?>"></div>
-                                    <?php endif; ?>
-                                    <?php if($left_description): ?>
-                                        <div class="heroMain__leftPart__description"><?php echo $left_description; ?></div>
-                                    <?php endif; ?>
-                                    <?php echo $left_link['title']; ?>
+
+                                    <div class="heroMain__leftPart__col">
+                                        <?php if($left_logo): ?>
+                                            <div class="heroMain__logo"><img src="<?php echo $left_logo['url']; ?>" alt="<?php echo $left_logo['title']; ?>"></div>
+                                        <?php endif; ?>
+                                        <?php if($left_description): ?>
+                                            <div class="heroMain__leftPart__description"><?php echo $left_description; ?></div>
+                                        <?php endif; ?>
+
+                                        <div class="heroMain__leftPart__btn h6">
+                                            <?php echo $left_link['title']; ?>
+                                            <?php echo get_inline_svg('white-arrow') ?>
+                                        </div>
+                                    </div>
+                                    <div class="heroMain__leftPart__col">
+
+                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -71,7 +87,10 @@ $logo = get_sub_field('logo');
                                     <?php if($middle_description): ?>
                                         <div class="card__description"><?php echo $middle_description; ?></div>
                                     <?php endif; ?>
-                                    <?php echo $middle_link['title']; ?>
+                                    <div class="card__btn h6">
+                                        <?php echo $middle_link['title']; ?>
+                                        <?php echo get_inline_svg('white-arrow') ?>
+                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -99,7 +118,10 @@ $logo = get_sub_field('logo');
                                     <?php if($right_description): ?>
                                         <div class="card__description"><?php echo $right_description; ?></div>
                                     <?php endif; ?>
-                                    <?php echo $right_link['title']; ?>
+                                    <div class="card__btn h6">
+                                        <?php echo $right_link['title']; ?>
+                                        <?php echo get_inline_svg('white-arrow') ?>
+                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -108,22 +130,101 @@ $logo = get_sub_field('logo');
             <?php endif; ?>
 
             <?php if($title || $logo || $background_image): ?>
+            <?php if ($advertising_link): ?>
+            <a href="<?php echo esc_url($advertising_link); ?>" class="heroAdvertising__wrapper">
+                <?php else: ?>
                 <div class="heroAdvertising__wrapper">
-                    <?php if($background_image): ?>
-                        <div class="heroAdvertising__bg"><img src="<?php echo $background_image['url']; ?>" alt="<?php echo $background_image['title']; ?>"></div>
                     <?php endif; ?>
+
+                    <?php if ($background_image): ?>
+                        <div class="heroAdvertising__bg">
+                            <img src="<?php echo esc_url($background_image['url']); ?>" alt="<?php echo esc_attr($background_image['title']); ?>">
+                        </div>
+                    <?php endif; ?>
+
                     <div class="heroAdvertising__card">
-                        <?php if($title): ?>
-                            <h3><?php echo $title; ?></h3>
+                        <?php if ($title): ?>
+                            <h3><?php echo esc_html($title); ?></h3>
                         <?php endif; ?>
                     </div>
 
-                    <?php if($logo): ?>
-                        <div class="heroAdvertising__logo"><img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['title']; ?>"></div>
+                    <?php if ($logo): ?>
+                        <div class="heroAdvertising__logo">
+                            <img src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($logo['title']); ?>">
+                        </div>
                     <?php endif; ?>
 
-                </div>
+                    <?php if ($advertising_link): ?>
+            </a>
+            <?php else: ?>
+        </div>
+        <?php endif; ?>
             <?php endif; ?>
         </div>
-    </div>
+        <div class="heroMain--mobile">
+            <?php
+            if ($brands->have_posts()) : ?>
+                <div class="heroMain__slider">
+                    <div class="heroMain__slider__wrapper heroMain__slider--js">
+                        <?php while ($brands->have_posts()) : $brands->the_post(); ?>
+                            <?php
+                            $brand_image = get_field('brand__image');
+                            if ($brand_image) :
+                                ?>
+                                <div class="heroMain__slider__slide brand">
+                                    <div class="brand__bg">
+                                        <img src="<?php echo esc_url($brand_image['url']); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                    </div>
+                                    <div class="brand__logo">
+                                        <?php the_post_thumbnail('medium'); ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endwhile; ?>
+
+                    </div>
+                    <div class="heroMain__slider__prev">
+                        <?php echo get_inline_svg('slider-arrow') ?>
+                    </div>
+                    <div class="heroMain__slider__next">
+                        <?php echo get_inline_svg('slider-arrow') ?>
+                    </div>
+                    <?php wp_reset_postdata(); ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if($title || $logo || $background_image): ?>
+
+            <?php if ($advertising_link): ?>
+            <a href="<?php echo esc_url($advertising_link); ?>" class="heroAdvertising__wrapper heroAdvertising__wrapper--mobile">
+                <?php else: ?>
+                <div class="heroAdvertising__wrapper heroAdvertising__wrapper--mobile">
+                    <?php endif; ?>
+
+                    <?php if ($background_image): ?>
+                        <div class="heroAdvertising__bg">
+                            <img src="<?php echo esc_url($background_image['url']); ?>" alt="<?php echo esc_attr($background_image['title']); ?>">
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="heroAdvertising__card">
+                        <?php if ($title): ?>
+                            <h3><?php echo esc_html($title); ?></h3>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php if ($logo): ?>
+                        <div class="heroAdvertising__logo">
+                            <img src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($logo['title']); ?>">
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($advertising_link): ?>
+                            </a>
+                            <?php else: ?>
+                        </div>
+                    <?php endif; ?>
+            <?php endif; ?>
+
 </div>
+
