@@ -18,6 +18,8 @@ $button = get_field('header_button', 'options');
             </ul>
         </div>
     <?php endif; ?>
+    <div class="header_offset">
+    </div>
     <div class="header__wrapper container container--wide">
         <div class="header__menu">
             <div class="header__left">

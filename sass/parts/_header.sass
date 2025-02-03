@@ -29,14 +29,16 @@
 			&.fixed
 				position: fixed
 				top: 0
-				background-color: rgba(#ffffff, 0.5)
 				left: 50%
 				transform: translateX(-50%)
+				z-index: 10
+				background-color: rgba(#ffffff, 0.5)
 				width: 100% !important
 				max-width: 100% !important
 				.header__menu
 					margin-inline: auto
-					width: calc(min(100% - 30px, 1685px)) !important
+					width: calc(min(100% - 30px, 1669px)) !important
+					//padding-inline: rem(8px)
 
 	&__menu
 		display: flex
@@ -94,6 +96,7 @@
 					position: absolute
 					top: 100%
 					left: 0
+					z-index: 2
 					background: $color-white
 					border: 1px solid #dfe0e2
 					border-radius: $radius-md
@@ -132,6 +135,7 @@
 
 					.current-menu-item a
 						font-weight: 700
+
 
 +max-screen($breakpoint-lg)
 	.header

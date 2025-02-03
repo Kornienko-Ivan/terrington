@@ -5,6 +5,20 @@
         let isDesktop = window.innerWidth > breakpoint;
         let isMobile = !isDesktop;
 
+        // Function to adjust the height of the header offset
+        const adjustHeaderOffset = () => {
+            let headerMenu = $('.header__wrapper');
+            let headerOffset = $('.header_offset');
+
+            if (headerMenu.length && headerOffset.length) {
+                if (headerMenu.hasClass('fixed')) {
+                    headerOffset.css('height', headerMenu.outerHeight());
+                } else {
+                    headerOffset.css('height', '0');
+                }
+            }
+        };
+
         // Desktop menu logic
         const initDesktopMenu = () => {
             let header = $('#header');
@@ -81,21 +95,26 @@
             let headerMenu = $('.header__wrapper');
             if (!headerMenu.length) return;
 
-            let initialOffset = headerMenu.offset().top;
+            let adminBarHeight = $('.admin-bar').length ? 32 : 0;
+            let initialOffset = headerMenu.offset().top - adminBarHeight;
             let isFixed = false;
 
             $(window).on('scroll', function () {
                 let scrollPosition = $(window).scrollTop();
 
                 if (scrollPosition >= initialOffset && !isFixed) {
-                    headerMenu.addClass('fixed');
+                    headerMenu.addClass('fixed').css('top', adminBarHeight + 'px');
                     isFixed = true;
                 } else if (scrollPosition < initialOffset && isFixed) {
-                    headerMenu.removeClass('fixed');
+                    headerMenu.removeClass('fixed').css('top', '0px');
                     isFixed = false;
                 }
+
+                // Adjust header offset height when fixed
+                adjustHeaderOffset();
             });
         };
+
 
         if (isDesktop) {
             initDesktopMenu();
@@ -119,5 +138,8 @@
                 initMobileMenu();
             }
         });
+
+        // Adjust header offset on page load
+        adjustHeaderOffset();
     });
 })(jQuery);
