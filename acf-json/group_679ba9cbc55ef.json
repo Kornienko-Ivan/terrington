@@ -157,6 +157,37 @@
                     "sub_fields": [],
                     "min": "",
                     "max": ""
+                },
+                "layout_679cd86737935": {
+                    "key": "layout_679cd86737935",
+                    "name": "follow-us",
+                    "label": "Follow Us",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_679cd87437936",
+                            "label": "",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_679cd7df211a9"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Row",
@@ -181,5 +212,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1738281920
+    "modified": 1738332294
 }
