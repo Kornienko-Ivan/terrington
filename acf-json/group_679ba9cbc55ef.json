@@ -188,6 +188,37 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_67a08c07f7689": {
+                    "key": "layout_67a08c07f7689",
+                    "name": "hero",
+                    "label": "Hero",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_67a08c0ef768a",
+                            "label": "",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_67a08b83c2a5f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Row",
@@ -212,5 +243,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1738332294
+    "modified": 1738574879
 }
