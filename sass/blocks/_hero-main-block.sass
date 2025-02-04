@@ -1,5 +1,6 @@
 .heroMain
   margin-bottom: rem(42px)
+  margin-top: rem(9px)
   &__wrapper
     display: grid
     grid-template-columns: repeat(12, 1fr)
@@ -315,7 +316,7 @@
 
 +max-screen($breakpoint-lg)
   .heroMain
-    margin-top: rem(-50px)
+    margin-top: 0
     .heroMain__wrapper
       display: none
     &--mobile
@@ -332,12 +333,14 @@
             display: block
         &__card
           padding: rem(15px) rem(18px)
-          top: rem(21px)
+          //top: rem(21px)
           left: rem(21px)
+          top: 50%
+          transform: translateY(-50%)
           max-width: 43%
           border-radius: $radius-0
           h3
-            font-size: rem(14px)
+            font-size: rem(30px)
         &__logo
           max-width: 22%
           top: rem(11px)
@@ -407,7 +410,12 @@
   .heroMain
     .heroMain__wrapper
     &--mobile
-      .heroAdvertising__wrapper
+      .heroAdvertising
+        &__wrapper
+        &__card
+          h3
+            font-size: rem(22px)
+
     &__slider
 
       &__wrapper
@@ -423,6 +431,15 @@
               width: 76.25%
               object-fit: contain
 
++max-screen($breakpoint-sm)
+  .heroMain
+    .heroMain__wrapper
+    &--mobile
+      .heroAdvertising
+        &__wrapper
+        &__card
+          h3
+            font-size: rem(14px)
 
 +max-screen($breakpoint-xs)
   .heroMain
@@ -433,7 +450,6 @@
           min-height: rem(148px)
         &__card
           padding: rem(10px) rem(13px)
-          top: rem(16px)
           left: rem(16px)
           max-width: 47%
 
