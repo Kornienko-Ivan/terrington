@@ -1,0 +1,131 @@
+.infoSection
+  padding: rem(152px) 0 rem(187px)
+  position: relative
+
+  &:before
+    content: ''
+    position: absolute
+    top: rem(35px)
+    left: rem(-146px)
+    width: 22%
+    height: 84%
+    z-index: -1
+    background: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-126 0 376.37 647"><g clip-path="url(%23clip0_1_66)"><path d="M-126 88.6997V159.035C-126 170.903 -119.668 181.871 -109.389 187.805L62.1223 286.827V197.312L-126 88.6997Z" fill="%23F5F6F7"></path><path d="M-0.339111 447.761L-0.585175 447.679V610.796L62.1222 647V375.316L-120.3 269.995V338.107C-120.3 349.795 -114.025 360.583 -103.867 366.363L-0.930046 424.93" fill="%23F5F6F7"></path><path d="M250.367 178.264V248.599C250.367 260.468 244.035 271.435 233.756 277.37L62.2445 376.392V286.877L250.367 178.264Z" fill="%23F5F6F7"></path><path d="M250.367 334.123V404.458C250.367 416.326 244.035 427.294 233.756 433.228L62.2445 532.25V442.735L250.367 334.123Z" fill="%23F5F6F7"></path><path d="M74.8938 146.632C115.385 146.632 148.21 113.807 148.21 73.316C148.21 32.8246 115.385 -6.10352e-05 74.8938 -6.10352e-05C34.4025 -6.10352e-05 1.57776 32.8246 1.57776 73.316C1.57776 113.807 34.4025 146.632 74.8938 146.632Z" fill="%23F5F6F7"></path></g><defs><clipPath id="clip0_1_66"><rect width="376.367" height="647" fill="white" transform="translate(-126)"></rect></clipPath></defs></svg>') center / contain no-repeat
+
+  &__row
+    display: flex
+    justify-content: space-between
+  &__col
+    &--content
+      display: flex
+      flex-direction: column
+      max-width: rem(418px)
+
+    &--img
+      width: 41%
+      position: relative
+      aspect-ratio: 459/428
+  &__text
+    margin-top: rem(44px)
+  &__button
+    margin-top: rem(42px)
+    .button
+      width: fit-content
+    &--arrow
+
+  &__imageWrapper
+    aspect-ratio: 459/428
+    mask: url('../assets/icons/info-mask-1.svg') no-repeat top / contain
+    -webkit-mask: url('../assets/icons/info-mask-1.svg') no-repeat top / contain
+    object-position: -44px
+    img
+      height: 100%
+      width: 100%
+      object-fit: cover
+    &--small
+      aspect-ratio: 459/428
+      mask: url('../assets/icons/info-mask-2.svg') no-repeat bottom left / contain
+      -webkit-mask: url('../assets/icons/info-mask-2.svg') no-repeat bottom left / contain
+      mask-size: 24.4%, auto, contain
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      img
+        height: 100%
+        width: 100%
+        object-fit: cover
+
+  &__icon
+      width: rem(61px)
+      height: rem(61px)
+      border-radius: 50%
+      background-color: $color-red
+      display: flex
+      justify-content: center
+      align-items: center
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      right: rem(-30.5px)
+
+      svg
+        height: 60%
+        width: 100%
+
++max-screen($breakpoint-lg)
+  .infoSection
+    padding: rem(42px) 0 rem(38px)
+
+    &:before
+      top: rem(29px)
+      left: unset
+      right: rem(-15px)
+      width: 32%
+      height: 84%
+      background: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-126 0 376.37 647"><g clip-path="url(%23clip0_1_66)"><path d="M-126 88.6997V159.035C-126 170.903 -119.668 181.871 -109.389 187.805L62.1223 286.827V197.312L-126 88.6997Z" fill="%23F5F6F7"></path><path d="M-0.339111 447.761L-0.585175 447.679V610.796L62.1222 647V375.316L-120.3 269.995V338.107C-120.3 349.795 -114.025 360.583 -103.867 366.363L-0.930046 424.93" fill="%23F5F6F7"></path><path d="M250.367 178.264V248.599C250.367 260.468 244.035 271.435 233.756 277.37L62.2445 376.392V286.877L250.367 178.264Z" fill="%23F5F6F7"></path><path d="M250.367 334.123V404.458C250.367 416.326 244.035 427.294 233.756 433.228L62.2445 532.25V442.735L250.367 334.123Z" fill="%23F5F6F7"></path><path d="M74.8938 146.632C115.385 146.632 148.21 113.807 148.21 73.316C148.21 32.8246 115.385 -6.10352e-05 74.8938 -6.10352e-05C34.4025 -6.10352e-05 1.57776 32.8246 1.57776 73.316C1.57776 113.807 34.4025 146.632 74.8938 146.632Z" fill="%23F5F6F7"></path></g><defs><clipPath id="clip0_1_66"><rect width="376.367" height="647" fill="white" transform="translate(-126)"></rect></clipPath></defs></svg>') top / contain no-repeat
+
+    &__row
+      flex-direction: column
+    &__col
+      &--content
+        max-width: 81%
+
+      &--img
+        margin-left: auto
+        margin-top: rem(-45px)
+        width: 62%
+
+    &__text
+      margin-top: rem(22px)
+    &__button
+      margin-top: rem(39px)
+
+    &__imageWrapper
+      aspect-ratio: 192/179
+      img
+        height: 100%
+        width: 100%
+        object-fit: cover
+      &--small
+        aspect-ratio: 192/179
+
++max-screen($breakpoint-sm)
+  .infoSection
+    &:before
+      right: rem(-35px)
+
+    &__row
+      flex-direction: column
+    &__col
+      &--img
+        margin-top: rem(-28px)
+    &__text
+      font-size: rem(11px)
+      p
+        font-size: inherit
+
+    &__icon
+      width: rem(25px)
+      height: rem(25px)
+      right: rem(-12.5px)
