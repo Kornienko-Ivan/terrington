@@ -1,0 +1,68 @@
+.latestNews
+  &__wrapper
+    background-color: $color-secondary-gray
+    border-radius: $radius-md
+    padding: rem(94px) 0 rem(138px)
+  &__row
+  &__head
+    display: flex
+    justify-content: space-between
+    align-items: center
+    h2
+
+    button
+
+  &__list
+    display: flex
+    column-gap: rem(27px)
+    margin-top: rem(47px)
+
+
+  .button
+    &--mobile
+      display: none
+
++max-screen($breakpoint-xxl)
+  .latestNews
+    &__wrapper
+      padding: rem(64px) 0 rem(64px)
+    &__row
+      padding-left: rem(50px)
+      padding-right: rem(50px)
+
+      .post-card
+
++max-screen($breakpoint-lg)
+  .latestNews
+    &__wrapper
+      padding: rem(64px) 0 rem(64px)
+    &__row
+    &__list
+      flex-direction: column
+      row-gap: rem(29px)
+      .post-card
+
++max-screen($breakpoint-sm)
+  .latestNews
+    &__wrapper
+      padding: rem(37px) 0 rem(29px)
+    &__head
+      h2
+        margin-bottom: rem(42px)
+        text-align: center
+        margin-inline: auto
+
+    &__row
+      padding-left: rem(17px)
+      padding-right: rem(17px)
+    &__list
+      flex-direction: column
+      row-gap: rem(29px)
+      margin-top: 0
+
+    .button
+      display: none
+      &--mobile
+        display: block
+        margin: rem(29px) auto 0
+        width: fit-content
