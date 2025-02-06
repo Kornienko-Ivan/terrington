@@ -6,16 +6,16 @@
 */
 function cptui_register_my_cpts() {
 	/**
-	 * Post Type: Resources.
+	 * Post Type: Services.
 	 */
 
 	$labels = [
-		"name" => __( "Resources" ),
-		"singular_name" => __( "Resource" ),
+		"name" => __( "Services" ),
+		"singular_name" => __( "Service" ),
 	];
 
 	$args = [
-		"label" => __( "Resources" ),
+		"label" => __( "Services" ),
 		'labels' => $labels,
 		'description' => '',
 		'public' => true,
@@ -31,16 +31,16 @@ function cptui_register_my_cpts() {
 		'map_meta_cap' => true,
 		'hierarchical' => true,
 		'rewrite' => array(
-            'slug' => 'resources',
+            'slug' => 'services',
             'with_front' => false,
         ),
 		'query_var' => true,
 		"menu_icon" => "dashicons-format-aside",
-		'supports' => array('title', 'editor', 'excerpt', 'custom-fields', 'thumbnail'),
+		'supports' => array('title', 'editor', 'custom-fields', 'thumbnail'),
 		'show_in_graphql' => false,
 	];
 
-	register_post_type( "resources", $args );
+	register_post_type( "services", $args );
 
 }
 

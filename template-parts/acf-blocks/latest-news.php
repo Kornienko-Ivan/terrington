@@ -21,7 +21,7 @@ $the_query = new WP_Query($args);
 <?php if($the_query->have_posts()): ?>
     <div class="latestNews__list">
         <?php while($the_query->have_posts()): $the_query->the_post(); 
-            $image = get_the_post_thumbnail_url(  ) ? get_the_post_thumbnail_url(  ) : get_template_directory_uri(  ) . '/assets/images/elementor-placeholder-image.webp';
+            $image = get_the_post_thumbnail_url(  ) ? get_the_post_thumbnail_url(  ) : get_template_directory_uri(  ) . '/assets/images/placeholder-image.webp';
             ?>
             <div class="latestNews__listItem">
                 <div class="latestNews__listItem__image"><img src="<?php echo $image; ?>" alt=""></div>
