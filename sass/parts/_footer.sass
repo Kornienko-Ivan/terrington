@@ -1,120 +1,195 @@
 .footer
-	padding: rem(90px 0)
-	+max-screen($breakpoint-lg)
-		padding: rem(50px 0)
-	&__main
-		position: relative
-		overflow: hidden
-		+max-screen($breakpoint-lg)
-	
-		&__nav
-			padding-bottom: rem(30px)
-			+max-screen($breakpoint-lg)
+  background-color: $color-dark-gray-2
+  border-top-left-radius: $radius-md
+  border-top-right-radius: $radius-md
+  color: $color-white
+  a
+    color: inherit
+    +can-hover
+      &:hover
+        color: $color-red
 
-			+max-screen($breakpoint-md)
-				padding-bottom: 0
-				padding-top: rem(30px)
-			+max-screen($breakpoint-sm)
-				&--2
-					padding-top: rem(15px)
-			ul
-				
-			li
-				padding-bottom: rem(30px)
-				vertical-align: middle
-				&:nth-last-child(1)
-					padding-bottom: 0
-			a
-				transition: 0.2s ease-out
-				&:hover
-					color: $color-black
-	&__signup
-		+max-screen($breakpoint-md)
-			padding-top: rem(50px)
-		&__heading
-			color: #272252
-	&__bottom
-		display: flex
-		flex-wrap: wrap
-		justify-content: space-between
-		padding-top: rem(75px)
-		+max-screen($breakpoint-lg)
-			padding-top: rem(25px)
-		+max-screen($breakpoint-md)
-			justify-content: center
-		&__wrapper
-			display: flex
-			flex-wrap: wrap
-			padding-top: rem(20px)
-			+max-screen($breakpoint-md)
-				justify-content: center
-			a
-				text-decoration: underline
-				transition: 0.3s
-				&:hover
-					color: $color-black
-		&__nav
-			margin-left: rem(30px)
-			+max-screen($breakpoint-md)
-				margin-left: 0
-				
-	&__social
-		+max-screen($breakpoint-md)
-			width: 100%
-			text-align: center
-	&__copyright
-		
-		+max-screen($breakpoint-md)
-			padding-top: rem(15px)
-			order: 2
-			width: 100%
-			text-align: center
-		span
-			color: $color-black
-		
-	&__logo
-		max-width: rem(130px)
-		display: block
-		+max-screen($breakpoint-lg)
-			//max-width: rem(180px)
-			padding-bottom: rem(25px)
-		+max-screen($breakpoint-md)
-			//max-width: rem(130px)
-			//display: none
-		img
-			width: 100%
-			height: auto
-	&__form
-		margin-top: rem(35px)
+  &__wrapper
 
-.social-bar
-	display: flex
-	padding-top: rem(20px)
-	+max-screen($breakpoint-md)
-		justify-content: center
-	li
-		margin-right: rem(5px)
-		&:nth-last-child(1)
-			margin-right: 0
-	a
-		position: relative
-		display: block
-		width: rem(18px)
-		height: rem(18px)
-		border-radius: rem(3px)
-		background-color: $color-black
-		line-height: 1em
-		transition: 0.3s ease-out
-		&:hover
-			background-color: $color-black
-	i 
-		position: absolute
-		font-size: rem(12px)
-		top: 50%
-		left: 50%
-		transform: translateX(-50%) translateY(-50%)
-		color: #fff
-		transition: 0.3s
+  &__top
+    display: flex
+    justify-content: space-between
+    padding: rem(84px) 0 rem(61px)
 
-						
-						
+  &__left
+
+  &__right
+    display: flex
+  &__col
+    &--logo
+      max-width: rem(198px)
+    &--form
+      max-width: rem(243px)
+      margin-right: rem(68px)
+      display: flex
+      flex-direction: column
+      row-gap: rem(19px)
+
+    &--menu
+      margin-right: rem(87px)
+
+    &--right-content
+
+  &__logo
+
+  &__form
+    input
+      max-width: 100%
+      background: transparent
+      border: 1px solid white
+      font-size: rem(12px)
+      padding: rem(12px) 0 rem(11px) rem(15px)
+      border-radius: $radius-md
+      color: $color-white
+      &:focus
+        border: 1px solid $color-red
+
+      &::placeholder
+        color: $color-white
+        font-size: rem(12px)
+        opacity: 1 /* Firefox */
+
+      &::-ms-input-placeholder /* Edge 12 -18 */
+        color: $color-white
+
+    &-title
+    &-text
+      font-size: rem(12px)
+
+
+  &__menu
+    &-title
+  .menu-footer-menu-container
+    margin-top: rem(21px)
+    .menu
+      display: flex
+      flex-direction: column
+      row-gap: rem(9px)
+    .menu-item
+      font-size: rem(12px)
+      a
+        font-size: inherit
+  &__socials
+    display: flex
+    column-gap: rem(8px)
+    margin-top: rem(18px)
+    svg
+      height: rem(18px)
+      width: rem(18px)
+      +can-hover
+        &:hover
+          path
+            fill: $color-red
+
+    &-item
+    &-link
+  &__right-content
+    margin-top: rem(17px)
+    font-size: rem(12px)
+    display: flex
+    flex-direction: column
+    row-gap: rem(18px)
+    .fax, .tel
+      display: flex
+      justify-content: space-between
+      align-items: center
+    p
+      font-size: inherit
+      &:last-child
+        a
+          color: $color-red
+
+    &-wrapper
+    &-title
+  &__bottom
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: rem(25px) 0 rem(31px)
+    border-top: 1px solid $color-white
+    &-links
+      display: flex
+      column-gap: rem(10px)
+    &-link
+      font-size: rem(12px)
+      &:nth-child(1)
+        position: relative
+        &:after
+          content: ''
+          height: rem(10px)
+          width: rem(1px)
+          background-color: $color-white
+          position: absolute
+          right: rem(-5.5px)
+          top: 50%
+          transform: translateY(-50%)
+
+
+
+    &-text p
+      font-size: rem(12px)
+
+
++max-screen($breakpoint-lg)
+  .footer
+    .container
+      padding-inline: rem(20px)
+    &__top
+      flex-direction: column
+      padding: rem(32px) 0 rem(46px)
+      row-gap: rem(40px)
+
+    &__left
+      display: flex
+      justify-content: center
+    &__right
+      justify-content: space-between
+    &__col
+      &--form
+        margin-right: 0
+      &--menu
+        margin-right: 0
+
++max-screen($breakpoint-md)
+  .footer
+    .container
+      padding-inline: rem(22px)
+
+    &__top
+      flex-direction: column
+      padding: rem(32px) 0 rem(46px)
+      row-gap: rem(32px)
+
+    &__left
+      display: flex
+      justify-content: center
+    &__right
+      flex-wrap: wrap
+      row-gap: rem(46px)
+    &__col
+      &--logo
+        max-width: rem(105px)
+      &--form
+        width: 100%
+        max-width: 100%
+        align-items: center
+
+      &--menu
+        margin-right: 0
+    &__form
+      input
+        padding: rem(12px) 0 rem(11px) rem(23px)
+
+    &__bottom
+      flex-direction: column
+      align-items: flex-start
+      row-gap: rem(17px)
+      padding: rem(17px) 0 rem(23px)
+      &-links
+        display: flex
+        column-gap: rem(10px)

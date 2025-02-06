@@ -13,7 +13,8 @@ body
   	-webkit-backface-visibility: hidden
   	-webkit-tap-highlight-color: transparent
 
-h1,h2,h3,h4,h5
+h1,h2,h3,h4,h5,h6,
+.h1,.h2,.h3,.h4,.h5,.h6
 	font-weight: 600
 	line-height: 1.1em
 	font-family: $font-family-title
@@ -23,6 +24,12 @@ h1, .h1
 
 h2, .h2
 	font-size: rem(50px)
+
+	+max-screen($breakpoint-lg)
+		font-size: rem(35px)
+
+	+max-screen($breakpoint-sm)
+		font-size: rem(22px)
 
 h3, .h3
 	font-size: rem(35px)

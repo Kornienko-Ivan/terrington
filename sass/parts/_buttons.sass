@@ -57,4 +57,21 @@
     .button
         margin: 5px
 
-        
+
++max-screen($breakpoint-sm)
+    .button
+        &--arrow
+            padding: rem(3px) rem(4px) rem(3px) rem(12px)
+            font-size: rem(9px)
+            min-width: fit-content
+            span
+                margin-right: rem(9px)
+
+            .icon
+                height: rem(22px)
+                width: rem(22px)
+                svg
+                    width: rem(5px)
+                    height: rem(5px)
+
+
