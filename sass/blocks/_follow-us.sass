@@ -1,0 +1,41 @@
+.followUs
+  padding: rem(93px) 0 rem(95px)
+  &__titleWrapper
+    display: flex
+    align-items: center
+    justify-content: center
+    column-gap: rem(27px)
+    img
+      height: rem(34px)
+      width: rem(34px)
+
+  &__feed
+    margin-top: rem(68px)
+    #sbi_images
+      padding: 0 !important
+    .sbi_item
+      aspect-ratio: 1/1
+      border-radius: 20px
+      overflow: hidden
+
++max-screen($breakpoint-md)
+  .followUs
+    padding: rem(39px) 0 rem(47px)
+    &__titleWrapper
+      display: flex
+      flex-direction: column-reverse
+      align-items: center
+      justify-content: center
+      row-gap: rem(10px)
+      img
+        height: rem(18px)
+        width: rem(18px)
+
+    &__feed
+      margin-top: rem(29px)
+      #sbi_images
+        grid-template-columns: repeat(3, 1fr) !important
+      .sbi_item
+        aspect-ratio: 1/1
+        border-radius: 20px
+        overflow: hidden
