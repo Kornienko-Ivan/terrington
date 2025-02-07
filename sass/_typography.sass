@@ -21,7 +21,11 @@ h1,h2,h3,h4,h5,h6,
 
 h1, .h1
 	font-size: rem(60px)
+	+max-screen($breakpoint-lg)
+		font-size: rem(40px)
 
+	+max-screen($breakpoint-sm)
+		font-size: rem(24px)
 h2, .h2
 	font-size: rem(50px)
 
