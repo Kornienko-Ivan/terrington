@@ -29,6 +29,9 @@ require get_template_directory() . '/inc/theme-acf.php';
 // Include Custom Post Types.
 require get_template_directory() . '/inc/custom-post-types.php';
 
+// Include Custom Post Taxonomies.
+require get_template_directory() . '/inc/custom-post-taxonomy.php';
+
 // Include theme-specific functions.
 require get_template_directory() . '/inc/theme-functions.php';
 

@@ -259,6 +259,66 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_67a5ba4bee59f": {
+                    "key": "layout_67a5ba4bee59f",
+                    "name": "view-by-manfacturer",
+                    "label": "View by Manfacturer",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_67a5ba56ee5a0",
+                            "label": "",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_67a5ba1876a8b"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_67a5f73ac7966": {
+                    "key": "layout_67a5f73ac7966",
+                    "name": "view-by-category",
+                    "label": "View by Category",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_67a5f73fc7967",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Row",
@@ -283,5 +343,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1738842590
+    "modified": 1738929988
 }
