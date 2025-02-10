@@ -164,67 +164,69 @@ $brands = new WP_Query([
 </div>
 
 <div class="heroMain--mobile">
-    <?php
-    if ($brands->have_posts()) : ?>
-        <div class="heroMain__slider">
-            <div class="heroMain__slider__wrapper heroMain__slider--js">
-                <?php while ($brands->have_posts()) : $brands->the_post(); ?>
-                    <?php
-                    $brand_image = get_field('brand__image');
-                    if ($brand_image) :
-                        ?>
-                        <div class="heroMain__slider__slide brand">
-                            <div class="brand__bg">
-                                <img src="<?php echo esc_url($brand_image['url']); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+    <div class="container">
+        <?php
+        if ($brands->have_posts()) : ?>
+            <div class="heroMain__slider">
+                <div class="heroMain__slider__wrapper heroMain__slider--js">
+                    <?php while ($brands->have_posts()) : $brands->the_post(); ?>
+                        <?php
+                        $brand_image = get_field('brand__image');
+                        if ($brand_image) :
+                            ?>
+                            <div class="heroMain__slider__slide brand">
+                                <div class="brand__bg">
+                                    <img src="<?php echo esc_url($brand_image['url']); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                </div>
+                                <div class="brand__logo">
+                                    <?php the_post_thumbnail('medium'); ?>
+                                </div>
                             </div>
-                            <div class="brand__logo">
-                                <?php the_post_thumbnail('medium'); ?>
-                            </div>
-                        </div>
-                    <?php endif; ?>
-                <?php endwhile; ?>
+                        <?php endif; ?>
+                    <?php endwhile; ?>
 
+                </div>
+                <div class="heroMain__slider__prev">
+                    <?php echo get_inline_svg('slider-arrow') ?>
+                </div>
+                <div class="heroMain__slider__next">
+                    <?php echo get_inline_svg('slider-arrow') ?>
+                </div>
+                <?php wp_reset_postdata(); ?>
             </div>
-            <div class="heroMain__slider__prev">
-                <?php echo get_inline_svg('slider-arrow') ?>
-            </div>
-            <div class="heroMain__slider__next">
-                <?php echo get_inline_svg('slider-arrow') ?>
-            </div>
-            <?php wp_reset_postdata(); ?>
-        </div>
-    <?php endif; ?>
+        <?php endif; ?>
 
-    <?php if($title || $logo || $background_image): ?>
+        <?php if($title || $logo || $background_image): ?>
 
-<!--        --><?php //if ($advertising_link): ?>
+            <!--        --><?php //if ($advertising_link): ?>
             <a href="<?php echo esc_url($advertising_link); ?>" class="heroAdvertising__wrapper heroAdvertising__wrapper--mobile">
-<!--        --><?php //else: ?>
-<!--            <div class="heroAdvertising__wrapper heroAdvertising__wrapper--mobile">-->
-<!--        --><?php //endif; ?>
+                <!--        --><?php //else: ?>
+                <!--            <div class="heroAdvertising__wrapper heroAdvertising__wrapper--mobile">-->
+                <!--        --><?php //endif; ?>
 
-        <?php if ($background_image): ?>
-            <div class="heroAdvertising__bg">
-                <img src="<?php echo esc_url($background_image['url']); ?>" alt="<?php echo esc_attr($background_image['title']); ?>">
-            </div>
-        <?php endif; ?>
+                <?php if ($background_image): ?>
+                    <div class="heroAdvertising__bg">
+                        <img src="<?php echo esc_url($background_image['url']); ?>" alt="<?php echo esc_attr($background_image['title']); ?>">
+                    </div>
+                <?php endif; ?>
 
-        <div class="heroAdvertising__card">
-            <?php if ($title): ?>
-                <h3><?php echo esc_html($title); ?></h3>
-            <?php endif; ?>
-        </div>
+                <div class="heroAdvertising__card">
+                    <?php if ($title): ?>
+                        <h3><?php echo esc_html($title); ?></h3>
+                    <?php endif; ?>
+                </div>
 
-        <?php if ($logo): ?>
-            <div class="heroAdvertising__logo">
-                <img src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($logo['title']); ?>">
-            </div>
-        <?php endif; ?>
+                <?php if ($logo): ?>
+                    <div class="heroAdvertising__logo">
+                        <img src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($logo['title']); ?>">
+                    </div>
+                <?php endif; ?>
 
-<!--        --><?php //if ($advertising_link): ?>
+                <!--        --><?php //if ($advertising_link): ?>
             </a>
-<!--        --><?php //else: ?>
-<!--            </div>-->
-<!--        --><?php //endif; ?>
-    <?php endif; ?>
+            <!--        --><?php //else: ?>
+            <!--            </div>-->
+            <!--        --><?php //endif; ?>
+        <?php endif; ?>
+    </div>
 </div>
