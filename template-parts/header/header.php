@@ -22,11 +22,15 @@ $button = get_field('header_button', 'options');
     </div>
     <div class="header__wrapper container container--wide">
         <div class="header__menu">
+
             <div class="header__left">
                 <?php if($logo): ?>
-                    <img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['title']; ?>">
+                    <a href="<?php echo home_url(); ?>" class="header__logo">
+                        <img src="<?php echo $logo['url']; ?>" alt="<?php echo esc_attr($logo['title']); ?>">
+                    </a>
                 <?php endif; ?>
             </div>
+
             <div class="header__right header__right--desktop">
                 <?php
                 $args = array(
@@ -41,7 +45,9 @@ $button = get_field('header_button', 'options');
             <div class="header__right header__right--mobile text--size--22">
                 <div class="header_top">
                     <?php if($logo): ?>
-                        <img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['title']; ?>">
+                        <a href="<?php echo home_url(); ?>" class="header__logo">
+                            <img src="<?php echo $logo['url']; ?>" alt="<?php echo esc_attr($logo['title']); ?>">
+                        </a>
                     <?php endif; ?>
                     <div class="header_close">
                         <?php echo get_inline_svg('close'); ?>
