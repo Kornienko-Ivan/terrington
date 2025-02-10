@@ -1,15 +1,24 @@
+<?php get_header();
 
-<?php get_header(); ?>
-<div id="app-wrapper" role="main">
-    <div id="app" class="app-container app-container--y--middle" data-namespace="not-found">
+$error_text = get_field('error__text', 'option');
+$error_image = get_field('error__image', 'option');
+?>
 
-            <div class="container txt--center">
-                    <section class="text--center section">
-                            <h1 class="text--color--secondary font--weight--medium text--size--44  appear fade-up"><?php _e('Page not found.','humanzy'); ?></h1>
-                            <a href="<?php echo get_home_url(); ?>" class="button button--lg mt-30 appear fade-up"><?php _e('Back to home','starter') ?></a>
-                    </section>
+    <div id="app-wrapper" role="main">
+        <div id="app" class="app-container app-container--y--middle" data-namespace="not-found">
+            <div class="container container--wide">
+                <section class="section-404">
+                    <?php if ($error_image): ?>
+                        <img src="<?php echo esc_url($error_image['url']); ?>" alt="Error Image">
+                    <?php endif; ?>
+                    <div class="section-404__content">
+                        <h3><?php _e('ERROR 404.','terrington'); ?></h3>
+                        <h1><?php echo esc_html($error_text); ?></h1>
+                        <a href="<?php echo esc_url(home_url('/')); ?>" class="button"><?php _e('Back to homepage','terrington'); ?></a>
+                    </div>
+                </section>
             </div>
-
+        </div>
     </div>
-</div>
+
 <?php get_footer(); ?>

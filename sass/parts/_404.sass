@@ -1,0 +1,65 @@
+.section-404
+  position: relative
+  border-radius: $radius-md
+  overflow: hidden
+  margin: rem(21px) 0 rem(24px)
+  height: calc(100vh - 150px)
+  min-height: rem(400px)
+  max-height: rem(700px)
+  display: flex
+  flex-direction: column
+  justify-content: center
+  &__content
+    width: 77.7%
+    position: relative
+    z-index: 1
+    margin: 0 auto
+    color: $color-white
+    text-align: center
+    h1
+      font-size: rem(70px)
+      margin-top: rem(34px)
+    .button
+      margin-top: rem(34px)
+      padding: rem(16.5px) rem(19px)
+      font-size: rem(17.6px)
+
+  img
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    object-fit: cover
+
++max-screen($breakpoint-xxl)
+  .section-404
+    &__content
+      h1
+        font-size: rem(50px)
+
+
++max-screen($breakpoint-lg)
+  .section-404
+    &__content
+      h1
+        font-size: rem(40px)
+
+
++max-screen($breakpoint-sm)
+  .section-404
+    height: 70vh
+
+    &__content
+      width: 100%
+      padding-inline: rem(20px)
+      h3
+        font-size: rem(20px)
+
+      h1
+        font-size: rem(24px)
+
+      .button
+        font-size: rem(15px)
+        padding-block: rem(14px)
+

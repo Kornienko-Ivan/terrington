@@ -34,6 +34,12 @@ function my_acf_op_init() {
             'menu_title'  => __('Scripts'),
             'parent_slug' => $parent['menu_slug'],
         ));
+
+        $scripts = acf_add_options_page(array(
+            'page_title'  => __('404'),
+            'menu_title'  => __('404'),
+            'parent_slug' => $parent['menu_slug'],
+        ));
     }
 }
 
