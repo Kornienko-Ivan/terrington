@@ -1,0 +1,68 @@
+.review
+  padding: rem(208px) 0 rem(197px)
+  &__row
+    display: flex
+    justify-content: space-between
+  &__col
+    &--image
+      width: 41%
+    &--content
+      display: flex
+      align-items: center
+      max-width: rem(455px)
+
+  &__image
+    aspect-ratio: 461/428
+    border-radius: $radius-md
+    overflow: hidden
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+  &__text
+    margin-top: rem(25px)
+
+  .button
+    margin-top: rem(41px)
+    padding: rem(13px) rem(29px)
+
++max-screen($breakpoint-lg)
+  .review
+    padding: rem(42px) 0 rem(38px)
+    &__row
+      flex-direction: column-reverse
+    &__col
+      &--image
+        width: 100%
+
+      &--content
+        max-width: 90%
+
+    &__image
+      margin-left: auto
+      width: 41%
+      margin-top: rem(-44px)
+    &__text
+      margin-top: rem(25px)
+
+    .button
+      margin-top: rem(41px)
+      padding: rem(13px) rem(29px)
+
++max-screen($breakpoint-sm)
+  .review
+    &__image
+      width: 51%
+      margin-top: rem(-30.8px)
+
+    &__text
+      margin-top: rem(22px)
+      p
+        font-size: rem(11px)
+
+    .button
+      margin-top: rem(39px)
+      padding: rem(10px) rem(22px)
+      font-size: rem(9px)
+      min-width: max-content
