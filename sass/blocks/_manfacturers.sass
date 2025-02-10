@@ -1,0 +1,54 @@
+.manfacturers
+  padding: rem(108px) 0 rem(29px)
+  h5
+    padding: rem(11px) 0 rem(10px)
+    text-align: center
+    line-height: 1.2
+    border-radius: $radius-md
+    background-color: $color-secondary-gray
+
+  &__list
+    display: grid
+    grid-template-columns: repeat(4, minmax(rem(100px), rem(272px)))
+    gap: rem(13px) rem(10px)
+    margin-top: rem(27px)
+  &__listItem
+    aspect-ratio: 272/182
+    width: 100%
+    position: relative
+    border-radius: $radius-md
+    overflow: hidden
+  &__listItem__bg
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+  &__listItem__logo
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 60%
+    aspect-ratio: 163/41
+
+  &__listItem__name
+
++max-screen($breakpoint-lg)
+  .manfacturers
+    padding: rem(42px) 0 rem(29px)
+
+    &__list
+      grid-template-columns: repeat(3, minmax(rem(100px), rem(372px)))
+
++max-screen($breakpoint-md)
+  .manfacturers
+    &__list
+      grid-template-columns: repeat(2, minmax(rem(100px), rem(372px)))
+
++max-screen($breakpoint-sm)
+  .manfacturers
+    &__list
+      grid-template-columns: repeat(1, minmax(rem(100px), rem(650px)))
+    &__listItem
+      aspect-ratio: 3/2
+
