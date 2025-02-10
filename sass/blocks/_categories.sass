@@ -1,0 +1,49 @@
+.categories
+  padding: rem(29px) 0 rem(109px)
+  h5
+    padding: rem(11px) 0 rem(10px)
+    text-align: center
+    line-height: 1.2
+    border-radius: $radius-md
+    background-color: $color-secondary-gray
+
+  &__list
+    display: grid
+    grid-template-columns: repeat(5, minmax(rem(100px), rem(213px)))
+    gap: rem(13px)
+    margin-top: rem(27px)
+
+  &__listItem
+    aspect-ratio: 213/83
+    width: 100%
+    background-color: $color-gray
+    color: white
+    border-radius: $radius-md
+    display: flex
+    align-items: center
+    justify-content: center
+    transition: background-color 0.3s ease
+    +can-hover
+      &:hover
+        background-color: $color-red
+    &__name
+      font-family: $font-family-title
+      font-size: rem(15px)
+      font-weight: 500
+
++max-screen($breakpoint-lg)
+  .categories
+    padding: rem(29px) 0 rem(42px)
+
+    &__list
+      grid-template-columns: repeat(4, minmax(rem(100px), rem(213px)))
+
++max-screen($breakpoint-md)
+  .categories
+    &__list
+      grid-template-columns: repeat(3, minmax(rem(100px), rem(313px)))
+
++max-screen($breakpoint-sm)
+  .categories
+    &__list
+      grid-template-columns: repeat(2, minmax(rem(100px), rem(313px)))
