@@ -359,6 +359,15 @@
                     "sub_fields": [],
                     "min": "",
                     "max": ""
+                },
+                "layout_67ab58aebe1d8": {
+                    "key": "layout_67ab58aebe1d8",
+                    "name": "news-list",
+                    "label": "News List",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Row",
@@ -383,5 +392,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1739278684
+    "modified": 1739282614
 }
