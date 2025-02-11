@@ -350,6 +350,15 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_67ab495119e93": {
+                    "key": "layout_67ab495119e93",
+                    "name": "brands-panel",
+                    "label": "Brands Panel",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Row",
@@ -374,5 +383,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1739276432
+    "modified": 1739278684
 }
