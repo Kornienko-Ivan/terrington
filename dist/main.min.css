@@ -684,12 +684,17 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .serviceOfferings .slick-dots li{display:inline-block}
 .serviceOfferings .slick-dots li button{width:.625rem;height:.625rem;border-radius:50%;background-color:#d9d9d9;border:0;outline:0;cursor:pointer;-webkit-transition:background-color .3s ease;transition:background-color .3s ease;text-indent:-9999px}
 .serviceOfferings .slick-dots .slick-active button{background-color:#e61f26}
+.brands{padding:7.5rem 0 9.625rem}
+.brands .manfacturers__listItem{position:relative;-webkit-transition:background-color .3s ease;transition:background-color .3s ease}
+.brands .manfacturers__listItem:after{position:absolute;content:'';left:0;top:0;width:100%;height:100%;background-color:#e61f26;z-index:2;opacity:0;-webkit-transform:scale(0.9);transform:scale(0.9);-webkit-transition:opacity .3s ease,-webkit-transform .3s ease;transition:opacity .3s ease,-webkit-transform .3s ease;transition:opacity .3s ease,transform .3s ease;transition:opacity .3s ease,transform .3s ease,-webkit-transform .3s ease}
+.brands .manfacturers__listItem__logo{z-index:3}
 @media(hover:hover){.header__right.header__right--desktop .menu .menu-item a:hover{color:#e61f26}
 .header__right.header__right--desktop .menu .menu-item-has-children .sub-menu a:hover{font-weight:700;padding-left:.875rem;color:#000}
 .header__right.header__right--desktop .menu .menu-item-has-children .sub-menu a:hover:before{opacity:1}
 .footer a:hover{color:#e61f26}
 .footer__socials svg:hover path{fill:#e61f26}
 .categories__listItem:hover{background-color:#e61f26}
+.brands .manfacturers__listItem:hover:after{opacity:1;-webkit-transform:scale(1);transform:scale(1)}
 }@media(min-width:576px){.container{max-width:540px}
 .container,.container-sm{max-width:540px}
 .col-sm{-ms-flex-preferred-size:0;flex-basis:0;-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;max-width:100%}
@@ -1541,6 +1546,7 @@ h4,.h4{font-size:1.5625rem}
 .manfacturers__list{grid-template-columns:repeat(3,minmax(6.25rem,23.25rem))}
 .categories{padding:1.8125rem 0 2.625rem}
 .categories__list{grid-template-columns:repeat(4,minmax(6.25rem,13.3125rem))}
+.brands{padding:2.625rem 0 1.8125rem}
 }@media only screen and (max-width:769px){#app{min-height:0}
 .text--size--10,.text--size--10 *{font-size:.625rem}
 .text--size--12,.text--size--12 *{font-size:.75rem}
