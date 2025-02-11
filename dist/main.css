@@ -3039,6 +3039,56 @@ body.archive {
 	fill: #ffffff;
 }
 
+.section-404 {
+	position: relative;
+	border-radius: 20px;
+	overflow: hidden;
+	margin: 1.3125rem 0 1.5rem;
+	height: calc(100vh - 150px);
+	min-height: 25rem;
+	max-height: 43.75rem;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}
+
+.section-404__content {
+	width: 77.7%;
+	position: relative;
+	z-index: 1;
+	margin: 0 auto;
+	color: #ffffff;
+	text-align: center;
+}
+
+.section-404__content h1 {
+	font-size: 4.375rem;
+	margin-top: 2.125rem;
+}
+
+.section-404__content .button {
+	margin-top: 2.125rem;
+	padding: 1.03125rem 1.1875rem;
+	font-size: 1.1rem;
+}
+
+.section-404 img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+
 body.loading #app-wrapper {
 	opacity: 0;
 }
@@ -4125,6 +4175,80 @@ body #app-wrapper {
 	font-family: "Bricolage Grotesque", sans-serif;
 	font-size: 0.9375rem;
 	font-weight: 500;
+}
+
+.serviceOfferings {
+	padding: 0 0 4.5rem;
+}
+
+.serviceOfferings__wrapper {
+	background-color: #f5f6f7;
+	border-radius: 20px;
+	padding: 4.75rem 0 2.875rem;
+}
+
+.serviceOfferings__wrapper .container {
+	max-width: 88.125rem !important;
+}
+
+.serviceOfferings h2 {
+	text-align: center;
+}
+
+.serviceOfferings__list {
+	margin: 4.5rem -0.71875rem 0;
+}
+
+.serviceOfferings__list .slick-slide {
+	margin: 0 0.71875rem;
+}
+
+.serviceOfferings__listItem {
+	padding: 2.625rem 3.25rem 3.0625rem;
+	background-color: #ffffff;
+	border-radius: 20px;
+}
+
+.serviceOfferings__listItem p {
+	margin-top: 0.625rem;
+	line-height: 1.25;
+}
+
+.serviceOfferings .slick-dots {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-column-gap: 0.5625rem;
+	-moz-column-gap: 0.5625rem;
+	column-gap: 0.5625rem;
+	padding: 0;
+	list-style: none;
+	position: relative;
+	margin-top: 2.5625rem;
+}
+
+.serviceOfferings .slick-dots li {
+	display: inline-block;
+}
+
+.serviceOfferings .slick-dots li button {
+	width: 0.625rem;
+	height: 0.625rem;
+	border-radius: 50%;
+	background-color: #d9d9d9;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	-webkit-transition: background-color 0.3s ease;
+	transition: background-color 0.3s ease;
+	text-indent: -9999px;
+}
+
+.serviceOfferings .slick-dots .slick-active button {
+	background-color: #e61f26;
 }
 
 @media (hover: hover) {
@@ -8126,6 +8250,10 @@ body #app-wrapper {
 	padding: 1.25rem 1.5625rem 2.5rem 1.25rem;
 }
 
+.section-404__content h1 {
+	font-size: 3.125rem;
+}
+
 .heroMain .card__backend .card__description {
 	margin-top: 1.039375rem;
 	padding-inline: 33px;
@@ -8445,6 +8573,10 @@ h4,
 
 .post-card__image {
 	max-height: 20rem;
+}
+
+.section-404__content h1 {
+	font-size: 2.5rem;
 }
 
 .heroMain {
@@ -9065,6 +9197,28 @@ h5,
 	width: 0.40625rem;
 }
 
+.section-404 {
+	height: 70vh;
+}
+
+.section-404__content {
+	width: 100%;
+	padding-inline: 1.25rem;
+}
+
+.section-404__content h3 {
+	font-size: 1.25rem;
+}
+
+.section-404__content h1 {
+	font-size: 1.5rem;
+}
+
+.section-404__content .button {
+	font-size: 0.9375rem;
+	padding-block: 0.875rem;
+}
+
 .heroMain--mobile .heroAdvertising__card h3 {
 	font-size: 0.875rem;
 }
@@ -9218,6 +9372,26 @@ h5,
 
 .categories__list {
 	grid-template-columns: repeat(2, minmax(6.25rem, 19.5625rem));
+}
+
+.serviceOfferings {
+	padding: 0 0 2.375rem;
+}
+
+.serviceOfferings__wrapper {
+	padding: 2.625rem 0 2.375rem;
+}
+
+.serviceOfferings__list {
+	margin: 2rem -0.71875rem 0;
+}
+
+.serviceOfferings__listItem {
+	padding: 2.625rem 1.375rem 3.0625rem;
+}
+
+.serviceOfferings__listItem p {
+	font-size: 0.6875rem;
 }
 
 }

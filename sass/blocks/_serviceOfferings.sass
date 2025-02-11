@@ -1,0 +1,69 @@
+.serviceOfferings
+  padding: 0 0 rem(72px)
+  &__wrapper
+    background-color: $color-secondary-gray
+    border-radius: $radius-md
+    padding: rem(76px) 0 rem(46px)
+    .container
+      max-width: rem(1410px) !important
+
+  h2
+    text-align: center
+
+  &__list
+    margin: rem(72px) rem(-11.5px) 0
+
+    .slick-slide
+      margin: 0 rem(11.5px)
+
+  &__listItem
+    padding: rem(42px) rem(52px) rem(49px)
+    background-color: $color-white
+    border-radius: $radius-md
+
+    h5
+
+    p
+      margin-top: rem(10px)
+      line-height: 1.25
+  .slick-dots
+    display: flex
+    justify-content: center
+    column-gap: rem(9px)
+    padding: 0
+    list-style: none
+    position: relative
+    margin-top: rem(41px)
+
+    li
+      display: inline-block
+
+      button
+        width: rem(10px)
+        height: rem(10px)
+        border-radius: 50%
+        background-color: $color-neutral-gray
+        border: none
+        outline: none
+        cursor: pointer
+        transition: background-color 0.3s ease
+        text-indent: -9999px
+
+    .slick-active
+      button
+        background-color: $color-red
+
++max-screen($breakpoint-sm)
+  .serviceOfferings
+    padding: 0 0 rem(38px)
+    &__wrapper
+      padding: rem(42px) 0 rem(38px)
+
+    &__list
+      margin: rem(32px) rem(-11.5px) 0
+    &__listItem
+      padding: rem(42px) rem(22px) rem(49px)
+      h5
+
+      p
+        font-size: rem(11px)
