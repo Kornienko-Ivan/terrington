@@ -688,6 +688,11 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .brands .manfacturers__listItem{position:relative;-webkit-transition:background-color .3s ease;transition:background-color .3s ease}
 .brands .manfacturers__listItem:after{position:absolute;content:'';left:0;top:0;width:100%;height:100%;background-color:#e61f26;z-index:2;opacity:0;-webkit-transform:scale(0.9);transform:scale(0.9);-webkit-transition:opacity .3s ease,-webkit-transform .3s ease;transition:opacity .3s ease,-webkit-transform .3s ease;transition:opacity .3s ease,transform .3s ease;transition:opacity .3s ease,transform .3s ease,-webkit-transform .3s ease}
 .brands .manfacturers__listItem__logo{z-index:3}
+.news{padding:7.5rem 0 4.25rem}
+.news__list{display:grid;grid-template-columns:repeat(3,minmax(6.25rem,23.25rem));-webkit-column-gap:1.6875rem;-moz-column-gap:1.6875rem;column-gap:1.6875rem;row-gap:1.75rem}
+.news .post-card__body{background-color:#f5f6f7}
+.news__loadMore{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
+.news__loadMore .button{margin-top:2.875rem}
 @media(hover:hover){.header__right.header__right--desktop .menu .menu-item a:hover{color:#e61f26}
 .header__right.header__right--desktop .menu .menu-item-has-children .sub-menu a:hover{font-weight:700;padding-left:.875rem;color:#000}
 .header__right.header__right--desktop .menu .menu-item-has-children .sub-menu a:hover:before{opacity:1}
@@ -1547,6 +1552,8 @@ h4,.h4{font-size:1.5625rem}
 .categories{padding:1.8125rem 0 2.625rem}
 .categories__list{grid-template-columns:repeat(4,minmax(6.25rem,13.3125rem))}
 .brands{padding:2.625rem 0 1.8125rem}
+.news{padding:3.75rem 0 3rem}
+.news__list{grid-template-columns:repeat(2,minmax(6.25rem,31.25rem))}
 }@media only screen and (max-width:769px){#app{min-height:0}
 .text--size--10,.text--size--10 *{font-size:.625rem}
 .text--size--12,.text--size--12 *{font-size:.75rem}
@@ -1649,6 +1656,8 @@ h5,.h5{font-size:1.0625rem}
 .serviceOfferings__list{margin:2rem -0.71875rem 0}
 .serviceOfferings__listItem{padding:2.625rem 1.375rem 3.0625rem}
 .serviceOfferings__listItem p{font-size:.6875rem}
+.news{padding:2.625rem 0 2.375rem}
+.news__list{grid-template-columns:repeat(1,minmax(6.25rem,31.25rem))}
 }@media only screen and (max-width:396px){.heroMain--mobile .heroAdvertising__wrapper{min-height:9.25rem}
 .heroMain--mobile .heroAdvertising__card{padding:.625rem .8125rem;left:1rem;max-width:47%}
 }@media print{.d-print-none{display:none !important}

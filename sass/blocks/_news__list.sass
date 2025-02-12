@@ -1,0 +1,28 @@
+.news
+  padding: rem(120px) 0 rem(68px)
+  &__list
+    display: grid
+    grid-template-columns: repeat(3, minmax(rem(100px), rem(372px)))
+    column-gap: rem(27px)
+    row-gap: rem(28px)
+  .post-card__body
+    background-color: $color-secondary-gray
+  &__loadMore
+    display: flex
+    justify-content: center
+    .button
+      margin-top: rem(46px)
+
++max-screen($breakpoint-lg)
+  .news
+    padding: rem(60px) 0 rem(48px)
+    &__list
+      grid-template-columns: repeat(2, minmax(rem(100px), rem(500px)))
+
+
++max-screen($breakpoint-sm)
+  .news
+    padding: rem(42px) 0 rem(38px)
+
+    &__list
+      grid-template-columns: repeat(1, minmax(rem(100px), rem(500px)))
