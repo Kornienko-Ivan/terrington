@@ -1,6 +1,6 @@
 {
     "key": "group_67acb9748d0cb",
-    "title": "Single News",
+    "title": "CPT: Posts",
     "fields": [
         {
             "key": "field_67acb97cab8b5",
@@ -301,5 +301,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1739378675
+    "modified": 1739536703
 }
