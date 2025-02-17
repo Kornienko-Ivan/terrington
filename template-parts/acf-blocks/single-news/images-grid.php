@@ -1,6 +1,6 @@
 <?php if(have_rows('images_grid')): ?>
     <section class="singleImagesGrid">
-        <div class="container">
+        <div class="container container--narrow">
             <div class="singleImagesGrid__list">
                 <?php while(have_rows('images_grid')): the_row(); 
                     $image = get_sub_field('image');
