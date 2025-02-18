@@ -368,6 +368,68 @@
                     "sub_fields": [],
                     "min": "",
                     "max": ""
+                },
+                "layout_67b1dc60ee0fa": {
+                    "key": "layout_67b1dc60ee0fa",
+                    "name": "servicing-offerings",
+                    "label": "Servicing Offerings",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_67b1dc67ee0fb",
+                            "label": "",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_67b1dc2e2eb29"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_67b3d3f7a1c05": {
+                    "key": "layout_67b3d3f7a1c05",
+                    "name": "text-block",
+                    "label": "Text Block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_67b3d400a1c06",
+                            "label": "",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_67b3d3c11005e"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Row",
@@ -392,5 +454,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1739282614
+    "modified": 1739838477
 }
