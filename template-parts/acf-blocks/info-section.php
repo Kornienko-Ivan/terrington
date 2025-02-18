@@ -32,12 +32,11 @@ $icon = get_sub_field('show_spikelet_icon');
             <div class="infoSection__col infoSection__col--img">
                 <?php if($image): ?>
                     <div class="infoSection__imageWrapper">
-                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['title']; ?>" class="infoSection__image">
+                        <img src="<?php echo get_custom_image($image, 'custom_500x500'); ?>" alt="<?php echo esc_attr($image['title']); ?>" class="infoSection__image">
                     </div>
                     <div class="infoSection__imageWrapper--small">
-                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['title']; ?>" class="infoSection__image">
+                        <img src="<?php echo get_custom_image($image, 'custom_500x500'); ?>" alt="<?php echo esc_attr($image['title']); ?>" class="infoSection__image">
                     </div>
-
                 <?php endif; ?>
                 <?php if($icon): ?>
                     <div class="infoSection__icon">
