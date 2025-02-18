@@ -30,6 +30,16 @@ function get_inline_svg($name)
     return '';
 }
 
+function get_custom_image($image, $size = 'full') {
+    if (!$image || !isset($image['ID'])) {
+        return '';
+    }
+
+    $image_src = wp_get_attachment_image_src($image['ID'], $size);
+
+    return $image_src ? esc_url($image_src[0]) : '';
+}
+
 
 class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
     public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {

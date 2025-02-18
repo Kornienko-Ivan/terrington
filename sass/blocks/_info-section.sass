@@ -72,6 +72,10 @@
       svg
         height: 60%
         width: 100%
+  &--no-button
+    .infoSection__col
+      &--content
+        justify-content: center
 
 +max-screen($breakpoint-lg)
   .infoSection
@@ -109,6 +113,10 @@
         object-fit: cover
       &--small
         aspect-ratio: 192/179
+    &--no-button
+      .infoSection__col
+        &--img
+          margin-top: rem(40px)
 
 +max-screen($breakpoint-sm)
   .infoSection
@@ -129,3 +137,7 @@
       width: rem(25px)
       height: rem(25px)
       right: rem(-12.5px)
+    &--no-button
+      .infoSection__col
+        &--img
+          margin-top: rem(40px)

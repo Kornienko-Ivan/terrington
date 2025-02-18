@@ -1,0 +1,126 @@
+.single
+  .singleText
+    margin: 0 0 rem(54px)
+    h2
+      margin: rem(107px) 0 0
+
+    p
+      line-height: 1.3
+      &:first-of-type
+        margin-top: rem(45px)
+
+      &:not(:last-child)
+        margin-bottom: rem(30px)
+  .singleImagesGrid
+    margin: rem(54px) 0 rem(70px)
+    &__list
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+      row-gap: rem(45px)
+      column-gap: rem(51px)
+    &__listItem
+      border-radius: $radius-md
+      overflow: hidden
+      &.width-half
+        grid-column: span 1
+        aspect-ratio: 533/452
+        width: 100%
+      &.width-full
+        grid-column: span 2
+        aspect-ratio: 1117/452
+        width: 100%
+
+      img
+        object-fit: cover
+        width: 100%
+        height: 100%
+
+  .singleVideo
+    margin: rem(113px) 0
+    .container
+      border-radius: $radius-md
+      overflow: hidden
+      aspect-ratio: 1117 / 452
+      .plyr__poster
+        background-size: cover
+        z-index: 4
+    &__content
+      height: 100%
+      width: 100%
+      .plyr--video
+        height: 100%
+      .plyr--full-ui.plyr--video
+        .plyr__control--overlaid
+          z-index: 5
+          height: rem(79px)
+          width: rem(79px)
+          background-color: $color-red
+          opacity: 1
+          display: flex
+          align-items: center
+          justify-content: center
+          +can-hover
+            &:hover
+              background-color: $color-dark-black
+  .latestNews
+    margin: rem(112px) 0 rem(53px)
+    &__head
+      justify-content: center
+    &__wrapper
+      padding: rem(93px) 0 rem(61px)
+
++max-screen($breakpoint-sm)
+  .single
+    .singleText
+      margin: 0 0 rem(38px)
+      h2
+        margin: rem(42px) 0 0
+      p
+        line-height: 1.3
+        &:first-of-type
+          margin-top: rem(12px)
+
+        &:not(:last-child)
+          margin-bottom: rem(12px)
+
+    .singleImagesGrid
+      margin: rem(42px) 0 rem(38px)
+      &__list
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        row-gap: rem(20px)
+        column-gap: rem(20px)
+      &__listItem
+        border-radius: $radius-md
+        overflow: hidden
+        &.width-half
+          grid-column: span 1
+          aspect-ratio: 533/452
+          width: 100%
+        &.width-full
+          grid-column: span 2
+          aspect-ratio: 1117/452
+          width: 100%
+
+        img
+          object-fit: cover
+          width: 100%
+          height: 100%
+
+    .singleVideo
+      margin: rem(42px) 0
+      .container
+        aspect-ratio: 3 / 2
+      &__content
+        .plyr--full-ui.plyr--video
+          .plyr__control--overlaid
+            height: rem(39px)
+            width: rem(39px)
+    .latestNews
+      margin: rem(42px) 0 rem(38px)
+      &__list
+        row-gap: 0
+      .news-slider--js .slick-dots
+        margin-top: rem(42px)
+      &__wrapper
+        padding: rem(37px) 0 rem(29px)

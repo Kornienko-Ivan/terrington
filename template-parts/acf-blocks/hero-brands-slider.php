@@ -14,17 +14,15 @@
                                 <div class="heroBrands__sliderItem">
                                     <div class="heroBrands__inner">
                                         <div class="heroBrands__front">
-                                            <?php if($bg): ?>
-                                                <img class="heroBrands__bg" src="<?php echo $bg['url']; ?>" alt="<?php echo $bg['title']; ?>">
+                                            <?php if ($bg): ?>
+                                                <img class="heroBrands__bg" src="<?php echo get_custom_image($bg, 'custom_450x250'); ?>" alt="<?php echo esc_attr($bg['title']); ?>">
                                             <?php endif; ?>
+
                                             <?php if($logo): ?>
                                                 <div class="heroBrands__logo"><img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['title']; ?>"></div>
                                             <?php endif; ?>
                                         </div>
                                         <div class="heroBrands__backend">
-                                            <!--                                        --><?php //if($logo): ?>
-                                            <!--                                            <div class="heroBrands__logo"><img src="--><?php //echo $logo['url']; ?><!--" alt="--><?php //echo $logo['title']; ?><!--"></div>-->
-                                            <!--                                        --><?php //endif; ?>
                                             <?php if($description): ?>
                                                 <div class="heroBrands__description"> <?php echo $description; ?> </div>
                                             <?php endif; ?>

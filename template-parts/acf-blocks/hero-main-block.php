@@ -38,9 +38,18 @@ $brands = new WP_Query([
                                         <?php endif; ?>
                                     </div>
                                     <div class="heroMain__leftPart__col"></div>
-                                    <?php if($left_bg): ?>
-                                        <img class="heroMain__leftPart__bg" src="<?php echo $left_bg['url']; ?>" alt="<?php echo $left_bg['title']; ?>">
+<!--                                    --><?php //if($left_bg): ?>
+<!--                                        <img class="heroMain__leftPart__bg" src="--><?php //echo $left_bg['url']; ?><!--" alt="--><?php //echo $left_bg['title']; ?><!--">-->
+<!--                                    --><?php //endif; ?>
+                                    <?php if ($left_bg): ?>
+                                        <?php
+                                        $image_medium = wp_get_attachment_image_src($left_bg['ID'], 'large');
+                                        if ($image_medium):
+                                            ?>
+                                            <img class="heroMain__leftPart__bg" src="<?php echo esc_url($image_medium[0]); ?>" alt="<?php echo esc_attr($left_bg['title']); ?>">
+                                        <?php endif; ?>
                                     <?php endif; ?>
+
                                 </div>
                                 <div class="heroMain__leftPart__backend">
 
@@ -73,8 +82,8 @@ $brands = new WP_Query([
                         <a href="<?php echo $middle_link['url']; ?>" class="card__link">
                             <div class="card__inner">
                                 <div class="card__front">
-                                    <?php if($middle_bg): ?>
-                                        <img class="card__bg" src="<?php echo $middle_bg['url']; ?>" alt="<?php echo $middle_bg['title']; ?>">
+                                    <?php if ($middle_bg): ?>
+                                        <img class="card__bg" src="<?php echo get_custom_image($middle_bg, 'custom_500x500'); ?>" alt="<?php echo esc_attr($middle_bg['title']); ?>">
                                     <?php endif; ?>
                                     <?php if($middle_logo): ?>
                                         <div class="card__logo"><img src="<?php echo $middle_logo['url']; ?>" alt="<?php echo $middle_logo['title']; ?>"></div>
@@ -104,8 +113,8 @@ $brands = new WP_Query([
                         <a href="<?php echo $right_link['url']; ?>" class="card__link">
                             <div class="card__inner">
                                 <div class="card__front">
-                                    <?php if($right_bg): ?>
-                                        <img class="card__bg" src="<?php echo $right_bg['url']; ?>" alt="<?php echo $right_bg['title']; ?>">
+                                    <?php if ($right_bg): ?>
+                                        <img class="card__bg" src="<?php echo get_custom_image($right_bg, 'custom_500x500'); ?>" alt="<?php echo esc_attr($right_bg['title']); ?>">
                                     <?php endif; ?>
                                     <?php if($right_logo): ?>
                                         <div class="card__logo"><img src="<?php echo $right_logo['url']; ?>" alt="<?php echo $right_logo['title']; ?>"></div>
@@ -138,9 +147,10 @@ $brands = new WP_Query([
 
                     <?php if ($background_image): ?>
                         <div class="heroAdvertising__bg">
-                            <img src="<?php echo esc_url($background_image['url']); ?>" alt="<?php echo esc_attr($background_image['title']); ?>">
+                            <img src="<?php echo get_custom_image($background_image, 'large'); ?>" alt="<?php echo esc_attr($background_image['title']); ?>">
                         </div>
                     <?php endif; ?>
+
 
                     <div class="heroAdvertising__card">
                         <?php if ($title): ?>
@@ -176,7 +186,7 @@ $brands = new WP_Query([
                             ?>
                             <div class="heroMain__slider__slide brand">
                                 <div class="brand__bg">
-                                    <img src="<?php echo esc_url($brand_image['url']); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                    <img src="<?php echo get_custom_image($brand_image, 'large'); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
                                 </div>
                                 <div class="brand__logo">
                                     <?php the_post_thumbnail('medium'); ?>
@@ -198,15 +208,11 @@ $brands = new WP_Query([
 
         <?php if($title || $logo || $background_image): ?>
 
-            <!--        --><?php //if ($advertising_link): ?>
             <a href="<?php echo esc_url($advertising_link); ?>" class="heroAdvertising__wrapper heroAdvertising__wrapper--mobile">
-                <!--        --><?php //else: ?>
-                <!--            <div class="heroAdvertising__wrapper heroAdvertising__wrapper--mobile">-->
-                <!--        --><?php //endif; ?>
 
                 <?php if ($background_image): ?>
                     <div class="heroAdvertising__bg">
-                        <img src="<?php echo esc_url($background_image['url']); ?>" alt="<?php echo esc_attr($background_image['title']); ?>">
+                        <img src="<?php echo get_custom_image($background_image, 'large'); ?>" alt="<?php echo esc_attr($background_image['title']); ?>">
                     </div>
                 <?php endif; ?>
 

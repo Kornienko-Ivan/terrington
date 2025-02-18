@@ -207,10 +207,9 @@
   $(document).ready(function () {
     $('.news__loadMore .button').click(function (e) {
       e.preventDefault();
-      var $button = $(this); // Сохраняем кнопку
-      var originalText = $button.text(); // Запоминаем оригинальный текст
-      $button.text('Loading...').prop('disabled', true); // Меняем текст и блокируем кнопку
-
+      var $button = $(this);
+      var originalText = $button.text();
+      $button.text('Loading...').prop('disabled', true);
       var postsCount = $('.news__list .post-card').length,
         maxPosts = $('.news__list').attr('data-posts-count');
       $.ajax({
@@ -234,6 +233,33 @@
         }
       });
     });
+  });
+  function initSlider() {
+    if (!$('.news-slider--js').hasClass('slick-initialized')) {
+      $('.news-slider--js').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: false,
+        autoplaySpeed: 3000,
+        dots: true,
+        arrows: false,
+        responsive: [{
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 2
+          }
+        }, {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1
+          }
+        }]
+      });
+    }
+  }
+  initSlider();
+  $(window).on('resize', function () {
+    initSlider();
   });
 })(jQuery);
 "use strict";

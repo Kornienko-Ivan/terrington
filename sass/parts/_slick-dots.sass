@@ -1,0 +1,26 @@
+.slick-dots
+  display: flex
+  justify-content: center
+  column-gap: rem(9px)
+  padding: 0
+  list-style: none
+  position: relative
+  margin-top: rem(41px)
+
+  li
+    display: inline-block
+
+    button
+      width: rem(10px)
+      height: rem(10px)
+      border-radius: 50%
+      background-color: $color-neutral-gray
+      border: none
+      outline: none
+      cursor: pointer
+      transition: background-color 0.3s ease
+      text-indent: -9999px
+
+  .slick-active
+    button
+      background-color: $color-red

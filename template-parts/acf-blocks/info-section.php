@@ -4,9 +4,10 @@ $text = get_sub_field('text');
 $button = get_sub_field('button');
 $image = get_sub_field('image');
 $icon = get_sub_field('show_spikelet_icon');
+$section_diff = $button ? 'infoSection--button' : 'infoSection--no-button';
 ?>
 <?php if($title || $text || $image || $button): ?>
-<div class="infoSection">
+<div class="infoSection <?php echo $section_diff ?>">
     <div class="container container--narrow">
         <div class="infoSection__row">
             <div class="infoSection__col infoSection__col--content">
@@ -32,12 +33,11 @@ $icon = get_sub_field('show_spikelet_icon');
             <div class="infoSection__col infoSection__col--img">
                 <?php if($image): ?>
                     <div class="infoSection__imageWrapper">
-                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['title']; ?>" class="infoSection__image">
+                        <img src="<?php echo get_custom_image($image, 'custom_500x500'); ?>" alt="<?php echo esc_attr($image['title']); ?>" class="infoSection__image">
                     </div>
                     <div class="infoSection__imageWrapper--small">
-                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['title']; ?>" class="infoSection__image">
+                        <img src="<?php echo get_custom_image($image, 'custom_500x500'); ?>" alt="<?php echo esc_attr($image['title']); ?>" class="infoSection__image">
                     </div>
-
                 <?php endif; ?>
                 <?php if($icon): ?>
                     <div class="infoSection__icon">

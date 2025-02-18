@@ -13,7 +13,7 @@ $the_query = new WP_Query($args);
                     <h2><?php echo _e('Latest News'); ?></h2>
                 </div>
                 <?php if ($the_query->have_posts()): ?>
-                    <div class="latestNews__list">
+                    <div class="latestNews__list news-slider--js">
                         <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
                             <?php get_template_part('template-parts/post/post-card'); ?>
                         <?php endwhile; wp_reset_postdata(); ?>
