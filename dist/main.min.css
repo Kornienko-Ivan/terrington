@@ -629,6 +629,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .infoSection__imageWrapper--small img{height:100%;width:100%;-o-object-fit:cover;object-fit:cover}
 .infoSection__icon{width:3.8125rem;height:3.8125rem;border-radius:50%;background-color:#e61f26;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:absolute;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);right:-1.90625rem}
 .infoSection__icon svg{height:60%;width:100%}
+.infoSection--no-button .infoSection__col--content{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .gitBanner{padding:0 0 2.3125rem 0}
 .gitBanner__wrapper{background-image:var(--git-bg);background-size:cover;background-position:center;border-radius:20px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .gitBanner__row{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:6.125rem 0;max-width:44.9375rem}
@@ -1560,6 +1561,7 @@ h4,.h4{font-size:1.5625rem}
 .infoSection__imageWrapper{aspect-ratio:192/179}
 .infoSection__imageWrapper img{height:100%;width:100%;-o-object-fit:cover;object-fit:cover}
 .infoSection__imageWrapper--small{aspect-ratio:192/179}
+.infoSection--no-button .infoSection__col--img{margin-top:2.5rem}
 .latestNews__wrapper{padding:4rem 0 4rem}
 .latestNews__list{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;row-gap:1.8125rem}
 .services__wrapper{padding-block:6.125rem;padding-inline:1.875rem}
@@ -1652,6 +1654,7 @@ h5,.h5{font-size:1.0625rem}
 .infoSection__text{font-size:.6875rem}
 .infoSection__text p{font-size:inherit}
 .infoSection__icon{width:1.5625rem;height:1.5625rem;right:-0.78125rem}
+.infoSection--no-button .infoSection__col--img{margin-top:2.5rem}
 .gitBanner__row{padding:3.125rem 2rem;max-width:100%}
 .gitBanner__logo{max-width:5.4375rem}
 .gitBanner__title{margin-top:1.6875rem}
