@@ -40,7 +40,7 @@ body{font-family:"DM Sans",sans-serif;font-size:16px;font-weight:400;font-style:
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-weight:600;line-height:1.1em;font-family:"Bricolage Grotesque",sans-serif}
 h1,.h1{font-size:3.75rem}
 h2,.h2{font-size:3.125rem}
-h3,.h3{font-size:2.1875rem}
+h3,.h3{font-size:2.1875rem;line-height:1.2}
 h4,.h4{font-size:1.875rem}
 h5,.h5{font-size:1.5625rem}
 h6,.h6{font-size:1.25rem}
@@ -721,6 +721,9 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .single .latestNews{margin:7rem 0 3.3125rem}
 .single .latestNews__head{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .single .latestNews__wrapper{padding:5.8125rem 0 3.8125rem}
+.productBlockHeading{margin:1.25rem 0}
+.productBlockHeading__wrapper{background-color:#e61f26;border-radius:20px;padding:1.0625rem 0}
+.productBlockHeading h3{color:#fff;text-align:center}
 @media(hover:hover){.header__right.header__right--desktop .menu .menu-item a:hover{color:#e61f26}
 .header__right.header__right--desktop .menu .menu-item-has-children .sub-menu a:hover{font-weight:700;padding-left:.875rem;color:#000}
 .header__right.header__right--desktop .menu .menu-item-has-children .sub-menu a:hover:before{opacity:1}
@@ -1500,6 +1503,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 }@media only screen and (max-width:992px){#main{padding-top:5rem}
 h1,.h1{font-size:2.5rem}
 h2,.h2{font-size:2.1875rem}
+h3,.h3{font-size:1.875rem}
 h4,.h4{font-size:1.5625rem}
 .visible--lg{display:none !important}
 .header__menu{padding:2.1875rem 0;margin-right:2.1875rem;margin-left:2.1875rem;width:calc(100% - 70px) !important}
@@ -1636,6 +1640,7 @@ h4,.h4{font-size:1.5625rem}
 }@media only screen and (max-width:576px){#main{padding-top:5rem}
 h1,.h1{font-size:1.5rem}
 h2,.h2{font-size:1.375rem}
+h3,.h3{font-size:1.3125rem}
 h5,.h5{font-size:1.0625rem}
 .button--arrow{padding:.1875rem .25rem .1875rem .75rem;font-size:.5625rem;min-width:-webkit-fit-content;min-width:-moz-fit-content;min-width:fit-content}
 .button--arrow span{margin-right:.5625rem}

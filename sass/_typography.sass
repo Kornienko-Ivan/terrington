@@ -37,6 +37,12 @@ h2, .h2
 
 h3, .h3
 	font-size: rem(35px)
+	line-height: 1.2
+	+max-screen($breakpoint-lg)
+		font-size: rem(30px)
+
+	+max-screen($breakpoint-sm)
+		font-size: rem(21px)
 
 h4, .h4
 	font-size: rem(30px)
