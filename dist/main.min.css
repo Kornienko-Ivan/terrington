@@ -677,6 +677,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .manfacturers h5{padding:.6875rem 0 .625rem;text-align:center;line-height:1.2;border-radius:20px;background-color:#f5f6f7}
 .manfacturers__list{display:grid;grid-template-columns:repeat(4,minmax(6.25rem,17rem));gap:.8125rem .625rem;margin-top:1.6875rem}
 .manfacturers__listItem{aspect-ratio:272/182;width:100%;position:relative;border-radius:20px;overflow:hidden}
+.manfacturers__listItem:before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);pointer-events:none}
 .manfacturers__listItem__bg{width:100%;height:100%;-o-object-fit:cover;object-fit:cover}
 .manfacturers__listItem__logo{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);width:60%;aspect-ratio:163/41}
 .categories{padding:1.8125rem 0 6.8125rem}
