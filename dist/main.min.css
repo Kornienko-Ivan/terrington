@@ -733,6 +733,11 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .productHero__list{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:1.0625rem 0}
 .productHero__list a{font-family:"Bricolage Grotesque",sans-serif;font-size:1.0625rem}
 .productHero__list .separator{margin-inline:.3125rem}
+.bulletPointsList{margin:3.75rem 0}
+.bulletPointsList__content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-column-gap:1.25rem;-moz-column-gap:1.25rem;column-gap:1.25rem}
+.bulletPointsList__column ul{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;row-gap:1.875rem}
+.bulletPointsList__column ul li{font-size:1.0625rem;position:relative;padding-left:1.5625rem}
+.bulletPointsList__column ul li:before{content:'';position:absolute;left:0;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);width:.4375rem;height:.4375rem;background-color:#e61f26}
 @media(hover:hover){.header__right.header__right--desktop .menu .menu-item a:hover{color:#e61f26}
 .header__right.header__right--desktop .menu .menu-item-has-children .sub-menu a:hover{font-weight:700;padding-left:.875rem;color:#000}
 .header__right.header__right--desktop .menu .menu-item-has-children .sub-menu a:hover:before{opacity:1}
@@ -1733,6 +1738,10 @@ h5,.h5{font-size:1.0625rem}
 .single .latestNews__list{row-gap:0}
 .single .latestNews .news-slider--js .slick-dots{margin-top:2.625rem}
 .single .latestNews__wrapper{padding:2.3125rem 0 1.8125rem}
+.bulletPointsList{margin:2.5rem 0}
+.bulletPointsList__content{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;row-gap:1.25rem}
+.bulletPointsList__column ul{row-gap:1.25rem}
+.bulletPointsList__column ul li{font-size:.875rem}
 }@media only screen and (max-width:396px){.heroMain--mobile .heroAdvertising__wrapper{min-height:9.25rem}
 .heroMain--mobile .heroAdvertising__card{padding:.625rem .8125rem;left:1rem;max-width:47%}
 }@media print{.d-print-none{display:none !important}
