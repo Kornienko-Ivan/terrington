@@ -4490,6 +4490,64 @@ body #app-wrapper {
 	text-align: center;
 }
 
+.productHero {
+	margin-top: 1rem;
+}
+
+.productHero__wrapper {
+	border-radius: 20px;
+	overflow: hidden;
+	position: relative;
+}
+
+.productHero__wrapper img {
+	aspect-ratio: 1689/589;
+	width: 100%;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+
+.productHero__title {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: #e61f26;
+	padding: 1.0625rem 0;
+	width: 100%;
+	border-radius: 20px;
+}
+
+.productHero__title h3 {
+	text-align: center;
+	color: #ffffff;
+}
+
+.productHero__breadcrumbs {
+	background-color: #f5f6f7;
+}
+
+.productHero__list {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 1.0625rem 0;
+}
+
+.productHero__list a {
+	font-family: "Bricolage Grotesque", sans-serif;
+	font-size: 1.0625rem;
+}
+
+.productHero__list .separator {
+	margin-inline: 0.3125rem;
+}
+
 @media (hover: hover) {
 
 .header__right.header__right--desktop .menu .menu-item a:hover {
@@ -9412,6 +9470,58 @@ h4,
 	grid-template-columns: repeat(3, minmax(6.25rem, 19.5625rem));
 }
 
+.productHero__wrapper img {
+	aspect-ratio: 3/2;
+}
+
+.productHero__title {
+	padding: 0.875rem 0;
+}
+
+.productHero__title h3 {
+	font-size: 1rem;
+}
+
+.productHero__breadcrumbs {
+	background-color: #f5f6f7;
+}
+
+.productHero__list {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 1.0625rem 0;
+	overflow-y: scroll;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.productHero__list::-webkit-scrollbar {
+	display: none;
+}
+
+.productHero__list a {
+	font-family: "Bricolage Grotesque", sans-serif;
+	font-size: 0.875rem;
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+}
+
+.productHero__list span {
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+}
+
+.productHero__list .separator {
+	margin-inline: 0.25rem;
+}
+
 }
 
 @media only screen and (max-width: 576px) {
@@ -9432,7 +9542,7 @@ h2,
 
 h3,
 .h3 {
-	font-size: 1.3125rem;
+	font-size: 1.125rem;
 }
 
 h5,

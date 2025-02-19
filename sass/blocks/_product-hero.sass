@@ -1,0 +1,66 @@
+.productHero
+  margin-top: rem(16px)
+  &__wrapper
+    border-radius: $radius-md
+    overflow: hidden
+    position: relative
+    img
+      aspect-ratio: 1689/589
+      width: 100%
+      object-fit: cover
+  &__title
+    position: absolute
+    bottom: 0
+    left: 0
+    background-color: $color-red
+    padding: rem(17px) 0
+    width: 100%
+    border-radius: $radius-md
+
+    h3
+      text-align: center
+      color: $color-white
+
+  &__breadcrumbs
+    background-color: $color-secondary-gray
+
+  &__list
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: rem(17px) 0
+    a
+      font-family: $font-family-title
+      font-size: rem(17px)
+    .separator
+      margin-inline: rem(5px)
+
+
++max-screen($breakpoint-md)
+  .productHero
+    &__wrapper
+      img
+        aspect-ratio: 3/2
+    &__title
+      padding: rem(14px) 0
+      h3
+        font-size: rem(16px)
+    &__breadcrumbs
+      background-color: $color-secondary-gray
+
+    &__list
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: rem(17px) 0
+      overflow-y: scroll
+      +hide-scrollbar
+      a
+        font-family: $font-family-title
+        font-size: rem(14px)
+        flex-shrink: 0
+      span
+        flex-shrink: 0
+
+      .separator
+        margin-inline: rem(4px)
