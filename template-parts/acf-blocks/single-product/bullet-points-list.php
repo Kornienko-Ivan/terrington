@@ -2,7 +2,7 @@
 if(have_rows('bullet_points_columns')):
 ?>
 <section class="bulletPointsList">
-    <div class="container">
+    <div class="container container--narrow">
         <div class="bulletPointsList__content">
             <?php while(have_rows('bullet_points_columns')): the_row(); 
                 $text = get_sub_field('bullet_points');

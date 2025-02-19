@@ -1,0 +1,40 @@
+.bulletPointsList
+  margin: rem(60px) 0
+  &__content
+    display: flex
+    justify-content: space-between
+    column-gap: rem(20px)
+  &__column
+    ul
+      display: flex
+      flex-direction: column
+      row-gap: rem(30px)
+      li
+        font-size: rem(17px)
+        position: relative
+        padding-left: rem(25px)
+        &:before
+          content: ''
+          position: absolute
+          left: 0
+          top: 50%
+          transform: translateY(-50%)
+          width: rem(7px)
+          height: rem(7px)
+          background-color: $color-red
+
+
++max-screen($breakpoint-sm)
+  .bulletPointsList
+    margin: rem(40px) 0
+    &__content
+      flex-direction: column
+      row-gap: rem(20px)
+
+    &__column
+      ul
+        row-gap: rem(20px)
+        li
+          font-size: rem(14px)
+
+

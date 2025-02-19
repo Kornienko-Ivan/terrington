@@ -1,0 +1,79 @@
+.productImageSlider
+  margin: rem(60px) 0 rem(72px)
+  overflow: hidden
+  &__list
+  .slick-slide
+    position: relative
+    transition: opacity 0.3s ease-in-out
+    margin: 0 12px
+    opacity: 0.2
+
+    img
+      aspect-ratio: 1117/528
+      width: 100%
+      transition: transform 0.5s ease-in-out
+      transform: scale(0.68)
+      border-radius: $radius-md
+      overflow: hidden
+      transform-origin: right center
+
+  .slick-list
+    margin: 0 -12px
+    position: relative
+
+  .slick-center + .slick-slide img
+    transform-origin: left center
+
+  .slick-center
+    opacity: 1
+
+    img
+      transform: scale(1)
+      transform-origin: center center
+
+  &__next, &__prev
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    background-color: $color-red
+    border-radius: $radius-lg
+    display: flex
+    align-items: center
+    justify-content: center
+    height: rem(35px)
+    width: rem(35px)
+    cursor: pointer
+    svg
+      width: rem(8.75px)
+      height: rem(8.75px)
+
+  &__prev
+  &__next
+    svg
+      transform: rotate(180deg)
+
+
++max-screen($breakpoint-md)
+  .productImageSlider
+    margin: rem(40px) 0
+    &__list
+    .slick-slide
+      opacity: 1
+
+      img
+        aspect-ratio: 3/2
+        transform-origin: center center
+        transform: scale(1)
+
+    .slick-list
+    .slick-center + .slick-slide img
+      transform-origin: center center
+
+    .slick-center
+
+    &__next, &__prev
+      height: rem(25px)
+      width: rem(25px)
+      svg
+        width: rem(8.75px)
+        height: rem(8.75px)

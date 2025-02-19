@@ -117,6 +117,12 @@
 	& ::scrollbar-track-piece
 		@content
 
+=hide-scrollbar
+	scrollbar-width: none // Firefox
+	-ms-overflow-style: none // IE/Edge
+	&::-webkit-scrollbar
+		display: none // Chrome, Safari
+
 =arr($width, $height, $bg, $direction)
 	width: 0px
 	height: 0px
