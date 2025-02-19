@@ -4539,7 +4539,8 @@ body #app-wrapper {
 	padding: 1.0625rem 0;
 }
 
-.productHero__list a {
+.productHero__list a,
+.productHero__list span {
 	font-family: "Bricolage Grotesque", sans-serif;
 	font-size: 1.0625rem;
 }
@@ -4591,6 +4592,88 @@ body #app-wrapper {
 	width: 0.4375rem;
 	height: 0.4375rem;
 	background-color: #e61f26;
+}
+
+.productImageSlider {
+	margin: 3.75rem 0 4.5rem;
+	overflow: hidden;
+}
+
+.productImageSlider .slick-slide {
+	position: relative;
+	-webkit-transition: opacity 0.3s ease-in-out;
+	transition: opacity 0.3s ease-in-out;
+	margin: 0 12px;
+	opacity: 0.2;
+}
+
+.productImageSlider .slick-slide img {
+	aspect-ratio: 1117/528;
+	width: 100%;
+	-webkit-transition: -webkit-transform 0.5s ease-in-out;
+	transition: -webkit-transform 0.5s ease-in-out;
+	transition: transform 0.5s ease-in-out;
+	transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+	-webkit-transform: scale(0.68);
+	transform: scale(0.68);
+	border-radius: 20px;
+	overflow: hidden;
+	-webkit-transform-origin: right center;
+	transform-origin: right center;
+}
+
+.productImageSlider .slick-list {
+	margin: 0 -12px;
+	position: relative;
+}
+
+.productImageSlider .slick-center + .slick-slide img {
+	-webkit-transform-origin: left center;
+	transform-origin: left center;
+}
+
+.productImageSlider .slick-center {
+	opacity: 1;
+}
+
+.productImageSlider .slick-center img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transform-origin: center center;
+	transform-origin: center center;
+}
+
+.productImageSlider__next,
+.productImageSlider__prev {
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	background-color: #e61f26;
+	border-radius: 100px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	height: 2.1875rem;
+	width: 2.1875rem;
+	cursor: pointer;
+}
+
+.productImageSlider__next svg,
+.productImageSlider__prev svg {
+	width: 0.546875rem;
+	height: 0.546875rem;
+}
+
+.productImageSlider__next svg {
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
 }
 
 @media (hover: hover) {
@@ -9565,6 +9648,39 @@ h4,
 
 .productHero__list .separator {
 	margin-inline: 0.25rem;
+}
+
+.productImageSlider {
+	margin: 2.5rem 0;
+}
+
+.productImageSlider .slick-slide {
+	opacity: 1;
+}
+
+.productImageSlider .slick-slide img {
+	aspect-ratio: 3/2;
+	-webkit-transform-origin: center center;
+	transform-origin: center center;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+.productImageSlider .slick-center + .slick-slide img {
+	-webkit-transform-origin: center center;
+	transform-origin: center center;
+}
+
+.productImageSlider__next,
+.productImageSlider__prev {
+	height: 1.5625rem;
+	width: 1.5625rem;
+}
+
+.productImageSlider__next svg,
+.productImageSlider__prev svg {
+	width: 0.546875rem;
+	height: 0.546875rem;
 }
 
 }
