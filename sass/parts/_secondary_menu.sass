@@ -1,0 +1,21 @@
+.secondaryMenu
+  background-color: $color-secondary-gray
+  &__list
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: rem(17px) 0
+  &__listItem
+    font-size: rem(15px)
+    font-weight: 500
+
++max-screen($breakpoint-md)
+  .secondaryMenu
+    &__list
+      padding: rem(17px) 0
+      column-gap: rem(16px)
+      overflow-y: scroll
+      +hide-scrollbar
+    &__listItem
+      font-size: rem(14px)
+      flex-shrink: 0
