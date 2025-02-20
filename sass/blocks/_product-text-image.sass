@@ -1,0 +1,90 @@
+.productTextImage
+  &--small
+    margin: rem(72px) 0 rem(60px)
+    .productTextImage__content
+      row-gap: rem(26px)
+
+  &--big
+    margin: rem(70px) 0 rem(175px)
+    .productTextImage__content
+      row-gap: rem(46px)
+
+  &__content
+    display: flex
+    flex-direction: column
+  &__block
+    display: flex
+    border-radius: $radius-md
+    overflow: hidden
+    &--0
+    &--1
+      flex-direction: row-reverse
+  &__image
+    flex-shrink: 0
+    &.image-half
+      flex-basis: 46.2%
+
+    &.image-third
+      flex-basis: 36%
+
+    img
+      height: 100%
+      object-fit: cover
+  &__textWrapper
+    background-color: $color-secondary-gray
+    padding: rem(49px) rem(43px) rem(50px) rem(51px)
+
+  &__text
+    margin-top: rem(26px)
+    line-height: 1.29
+
+    p
+    ul
+      li
+        position: relative
+        padding-left: rem(14px)
+        font-size: rem(17px)
+        &:before
+          content: ''
+          background-color: $color-dark-black
+          height: rem(4px)
+          width: rem(4px)
+          border-radius: $radius-lg
+          position: absolute
+          top: 50%
+          left: 0
+          transform: translateY(-50%)
+
++max-screen($breakpoint-md)
+  .productTextImage
+    &--small
+      margin: rem(42px) 0 rem(38px)
+      .productTextImage__content
+        row-gap: rem(30px)
+    &--big
+      margin: rem(42px) 0 rem(38px)
+      .productTextImage__content
+        row-gap: rem(30px)
+    &__block
+      flex-direction: column-reverse
+    &__image
+      height: rem(250px)
+      img
+        width: 100%
+      &.image-half
+        flex-basis: unset
+      &.image-third
+        flex-basis: unset
+    &__textWrapper
+
++max-screen($breakpoint-sm)
+  .productTextImage
+    &__textWrapper
+      padding: rem(20px)
+    &__text
+      margin-top: rem(14px)
+      p
+        font-size: rem(14px)
+      ul
+        li
+          font-size: rem(14px)

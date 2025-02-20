@@ -349,6 +349,30 @@
                                     "delay": 0
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_67b703ad51d5d",
+                            "label": "Spacing",
+                            "name": "text__image_spacing",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "small": "small",
+                                "big": "big"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "small",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
                         }
                     ],
                     "min": "",
@@ -628,5 +652,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1739546268
+    "modified": 1740047361
 }
