@@ -1,0 +1,60 @@
+.productTable
+  margin: rem(74px) 0 rem(48px)
+
+  .productTable__wrapper
+    width: 100%
+    overflow-x: auto
+    -webkit-overflow-scrolling: touch
+
+  &__content
+    width: 100%
+    border-collapse: collapse
+    border-radius: rem(5px)
+    background: $color-secondary-gray
+    min-width: rem(600px)
+
+  &__row
+    border-radius: rem(5px)
+
+    &:nth-child(odd)
+      background: $color-border-gray
+
+    &:nth-child(even)
+      background: $color-secondary-gray
+
+    &:first-child
+      background-color: $color-red
+      color: $color-white
+
+      .productTable__column
+        color: $color-white
+
+  &__column
+    padding: 13px 16px
+    text-align: center
+    font-size: rem(17px)
+    color: $color-black
+    font-weight: 400
+
+    &:first-child
+      border-top-left-radius: rem(5px)
+      border-bottom-left-radius: rem(5px)
+      text-align: left
+
+    &:last-child
+      border-top-right-radius: rem(5px)
+      border-bottom-right-radius: rem(5px)
+
++max-screen($breakpoint-sm)
+  .productTable
+    margin: rem(42px) 0 rem(38px)
+
+    .productTable__wrapper
+      overflow-x: auto
+
+    &__content
+      min-width: rem(600px)
+
+    &__column
+      padding: 13px 6px
+      font-size: rem(14px)
