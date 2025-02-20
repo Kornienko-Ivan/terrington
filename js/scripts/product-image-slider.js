@@ -21,7 +21,7 @@
                 $('.productImageSlider--js').slick({
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    infinite: true,
+                    infinite: false,
                     accessibility: false,
                     autoplay: false,
                     autoplaySpeed: 3000,

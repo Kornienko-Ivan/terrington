@@ -4655,6 +4655,7 @@ body #app-wrapper {
 	transform: scale(1);
 	-webkit-transform-origin: center center;
 	transform-origin: center center;
+	will-change: transform, transform-origin;
 }
 
 .productImageSlider__next,
