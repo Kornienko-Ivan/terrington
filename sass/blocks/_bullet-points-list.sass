@@ -2,9 +2,9 @@
   margin: rem(60px) 0
   &__content
     display: flex
-    justify-content: space-between
-    column-gap: rem(20px)
+    column-gap: rem(22px)
   &__column
+    max-width: 48%
     ul
       display: flex
       flex-direction: column
@@ -13,6 +13,7 @@
         font-size: rem(17px)
         position: relative
         padding-left: rem(25px)
+        line-height: 1.2
         &:before
           content: ''
           position: absolute
@@ -27,6 +28,8 @@
 +max-screen($breakpoint-sm)
   .bulletPointsList
     margin: rem(40px) 0
+    &__column
+      max-width: 100%
     &__content
       flex-direction: column
       row-gap: rem(20px)

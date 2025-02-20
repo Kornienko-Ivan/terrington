@@ -735,9 +735,10 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .productHero__list a,.productHero__list span{font-family:"Bricolage Grotesque",sans-serif;font-size:1.0625rem}
 .productHero__list .separator{margin-inline:.3125rem}
 .bulletPointsList{margin:3.75rem 0}
-.bulletPointsList__content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-column-gap:1.25rem;-moz-column-gap:1.25rem;column-gap:1.25rem}
+.bulletPointsList__content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-column-gap:1.375rem;-moz-column-gap:1.375rem;column-gap:1.375rem}
+.bulletPointsList__column{max-width:48%}
 .bulletPointsList__column ul{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;row-gap:1.875rem}
-.bulletPointsList__column ul li{font-size:1.0625rem;position:relative;padding-left:1.5625rem}
+.bulletPointsList__column ul li{font-size:1.0625rem;position:relative;padding-left:1.5625rem;line-height:1.2}
 .bulletPointsList__column ul li:before{content:'';position:absolute;left:0;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);width:.4375rem;height:.4375rem;background-color:#e61f26}
 .productImageSlider{margin:3.75rem 0 4.5rem;overflow:hidden}
 .productImageSlider .slick-slide{position:relative;-webkit-transition:opacity .3s ease-in-out;transition:opacity .3s ease-in-out;margin:0 12px;opacity:.2}
@@ -1715,6 +1716,7 @@ h4,.h4{font-size:1.5625rem}
 .productTextImage__image.image-half{-ms-flex-preferred-size:unset;flex-basis:unset}
 .productTextImage__image.image-third{-ms-flex-preferred-size:unset;flex-basis:unset}
 .productText{margin:2.625rem 0 2.375rem}
+.productText__content p{font-size:.875rem}
 }@media only screen and (max-width:576px){#main{padding-top:5rem}
 h1,.h1{font-size:1.5rem}
 h2,.h2{font-size:1.375rem}
@@ -1795,6 +1797,7 @@ h5,.h5{font-size:1.0625rem}
 .single .latestNews .news-slider--js .slick-dots{margin-top:2.625rem}
 .single .latestNews__wrapper{padding:2.3125rem 0 1.8125rem}
 .bulletPointsList{margin:2.5rem 0}
+.bulletPointsList__column{max-width:100%}
 .bulletPointsList__content{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;row-gap:1.25rem}
 .bulletPointsList__column ul{row-gap:1.25rem}
 .bulletPointsList__column ul li{font-size:.875rem}

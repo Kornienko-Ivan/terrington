@@ -4569,12 +4569,13 @@ body #app-wrapper {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-	-webkit-column-gap: 1.25rem;
-	-moz-column-gap: 1.25rem;
-	column-gap: 1.25rem;
+	-webkit-column-gap: 1.375rem;
+	-moz-column-gap: 1.375rem;
+	column-gap: 1.375rem;
+}
+
+.bulletPointsList__column {
+	max-width: 48%;
 }
 
 .bulletPointsList__column ul {
@@ -4592,6 +4593,7 @@ body #app-wrapper {
 	font-size: 1.0625rem;
 	position: relative;
 	padding-left: 1.5625rem;
+	line-height: 1.2;
 }
 
 .bulletPointsList__column ul li:before {
@@ -9897,6 +9899,10 @@ h4,
 	margin: 2.625rem 0 2.375rem;
 }
 
+.productText__content p {
+	font-size: 0.875rem;
+}
+
 }
 
 @media only screen and (max-width: 576px) {
@@ -10279,6 +10285,10 @@ h5,
 
 .bulletPointsList {
 	margin: 2.5rem 0;
+}
+
+.bulletPointsList__column {
+	max-width: 100%;
 }
 
 .bulletPointsList__content {
