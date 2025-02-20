@@ -4903,6 +4903,45 @@ body #app-wrapper {
 	width: 1.375rem;
 }
 
+.productBrochures {
+	margin: 4.375rem 0 5.8125rem;
+}
+
+.productBrochures__list {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-column-gap: 0.6875rem;
+	-moz-column-gap: 0.6875rem;
+	column-gap: 0.6875rem;
+	row-gap: 1rem;
+}
+
+.productBrochures__listItem {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	border-radius: 100px;
+	background-color: #666666;
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+	-webkit-column-gap: 1rem;
+	-moz-column-gap: 1rem;
+	column-gap: 1rem;
+	padding: 1.0625rem 2rem 1.0625rem 1.6875rem;
+}
+
+.productBrochures__listItem__name {
+	color: #ffffff;
+	font-size: 0.9375rem;
+	line-height: 1.33;
+}
+
 @media (hover: hover) {
 
 .header__right.header__right--desktop .menu .menu-item a:hover {
@@ -4943,6 +4982,10 @@ body #app-wrapper {
 
 .productVideos__play:hover {
 	background-color: #000000;
+}
+
+.productBrochures__listItem:hover {
+	background-color: #050505;
 }
 
 }
@@ -10411,6 +10454,31 @@ h5,
 
 .productVideos__listItem {
 	aspect-ratio: 3/2;
+}
+
+.productBrochures {
+	margin: 2.625rem 0 2.375rem;
+}
+
+.productBrochures__list {
+	-webkit-column-gap: 0.625rem;
+	-moz-column-gap: 0.625rem;
+	column-gap: 0.625rem;
+	row-gap: 0.625rem;
+}
+
+.productBrochures__listItem {
+	-webkit-column-gap: 0.625rem;
+	-moz-column-gap: 0.625rem;
+	column-gap: 0.625rem;
+	padding: 1.0625rem 1.375rem 1.0625rem 1.0625rem;
+	-ms-flex-negative: 1;
+	flex-shrink: 1;
+}
+
+.productBrochures__listItem__name {
+	font-size: 0.875rem;
+	line-height: 1.2;
 }
 
 }

@@ -1,0 +1,38 @@
+.productBrochures
+  margin: rem(70px) 0 rem(93px)
+  &__list
+    display: flex
+    flex-wrap: wrap
+    column-gap: rem(11px)
+    row-gap: rem(16px)
+  &__listItem
+    display: flex
+    align-items: center
+    border-radius: $radius-lg
+    background-color: $color-gray
+    flex-shrink: 0
+    column-gap: rem(16px)
+    padding: rem(17px) rem(32px) rem(17px) rem(27px)
+    +can-hover
+      &:hover
+        background-color: $color-dark-black
+    &__icon
+    &__name
+      color: $color-white
+      font-size: rem(15px)
+      line-height: 1.33
+
++max-screen($breakpoint-sm)
+  .productBrochures
+    margin: rem(42px) 0 rem(38px)
+    &__list
+      column-gap: rem(10px)
+      row-gap: rem(10px)
+    &__listItem
+      column-gap: rem(10px)
+      padding: rem(17px) rem(22px) rem(17px) rem(17px)
+      flex-shrink: 1
+      &__icon
+      &__name
+        font-size: rem(14px)
+        line-height: 1.2
