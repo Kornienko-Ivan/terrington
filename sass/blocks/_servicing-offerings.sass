@@ -1,0 +1,88 @@
+.servicingOfferings
+  margin: 0 0 rem(58px)
+  .container
+    &--wide
+      padding: rem(106px) 0 rem(58px)
+      background-color: $color-secondary-gray
+      border-radius: $radius-md
+    &--narrrow
+  &__content
+  h2
+    text-align: center
+  &__brandsList
+    display: flex
+    column-gap: rem(14.8px)
+    margin-top: rem(88px)
+    &__item
+      display: flex
+      align-items: center
+      justify-content: center
+      aspect-ratio: 146/62
+      min-width: rem(100px)
+      max-width: rem(146px)
+      width: 100%
+      background-color: $color-white
+      border-radius: $radius-md
+      +can-hover
+        &:hover
+          background-color: $color-red
+    &__itemImg
+      width: 80%
+  &__categoriesList
+    display: flex
+    column-gap: rem(21px)
+    flex-wrap: wrap
+    margin-top: rem(46.84px)
+    &__item
+      max-width: rem(266px)
+      background-color: $color-white
+      border-radius: $radius-md
+      padding: rem(42px) rem(52px) rem(60px)
+    &__itemName
+      font-family: $font-family-title
+      font-size: rem(18px)
+      font-weight: 600
+      line-height: 1.2px
+      margin-bottom: rem(51px)
+    &__itemBrochures
+      display: flex
+      flex-direction: column
+      row-gap: rem(30px)
+      a
+        font-size: rem(17px)
+
++max-screen($breakpoint-md)
+  .servicingOfferings
+    margin: 0 0 rem(38px)
+    .container
+      &--wide
+        padding: rem(42px) 0 rem(38px)
+      &--narrrows
+    &__content
+    &__brandsList
+      margin-top: rem(42px)
+      overflow-y: scroll
+      +hide-scrollbar
+
+    &__categoriesList
+      row-gap: rem(21px)
+      &__item
+        max-width: 100%
+        background-color: $color-white
+        border-radius: $radius-md
+        padding: rem(24px)
+      &__itemName
+        font-size: rem(16px)
+        margin-bottom: rem(38px)
+      &__itemBrochures
+        a
+          font-size: rem(14px)
+
++max-screen($breakpoint-sm)
+  .servicingOfferings
+    &__categoriesList
+
+      &__item
+        max-width: 100%
+        width: 100%
+

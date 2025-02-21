@@ -4943,6 +4943,94 @@ body #app-wrapper {
 	line-height: 1.33;
 }
 
+.servicingOfferings {
+	margin: 0 0 3.625rem;
+}
+
+.servicingOfferings .container--wide {
+	padding: 6.625rem 0 3.625rem;
+	background-color: #f5f6f7;
+	border-radius: 20px;
+}
+
+.servicingOfferings h2 {
+	text-align: center;
+}
+
+.servicingOfferings__brandsList {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-column-gap: 0.925rem;
+	-moz-column-gap: 0.925rem;
+	column-gap: 0.925rem;
+	margin-top: 5.5rem;
+}
+
+.servicingOfferings__brandsList__item {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	aspect-ratio: 146/62;
+	min-width: 6.25rem;
+	max-width: 9.125rem;
+	width: 100%;
+	background-color: #ffffff;
+	border-radius: 20px;
+}
+
+.servicingOfferings__brandsList__itemImg {
+	width: 80%;
+}
+
+.servicingOfferings__categoriesList {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-column-gap: 1.3125rem;
+	-moz-column-gap: 1.3125rem;
+	column-gap: 1.3125rem;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-top: 2.9275rem;
+}
+
+.servicingOfferings__categoriesList__item {
+	max-width: 16.625rem;
+	background-color: #ffffff;
+	border-radius: 20px;
+	padding: 2.625rem 3.25rem 3.75rem;
+}
+
+.servicingOfferings__categoriesList__itemName {
+	font-family: "Bricolage Grotesque", sans-serif;
+	font-size: 1.125rem;
+	font-weight: 600;
+	line-height: 1.2px;
+	margin-bottom: 3.1875rem;
+}
+
+.servicingOfferings__categoriesList__itemBrochures {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	row-gap: 1.875rem;
+}
+
+.servicingOfferings__categoriesList__itemBrochures a {
+	font-size: 1.0625rem;
+}
+
 @media (hover: hover) {
 
 .header__right.header__right--desktop .menu .menu-item a:hover {
@@ -4987,6 +5075,10 @@ body #app-wrapper {
 
 .productBrochures__listItem:hover {
 	background-color: #050505;
+}
+
+.servicingOfferings__brandsList__item:hover {
+	background-color: #e61f26;
 }
 
 }
@@ -10007,6 +10099,45 @@ h4,
 	font-size: 0.875rem;
 }
 
+.servicingOfferings {
+	margin: 0 0 2.375rem;
+}
+
+.servicingOfferings .container--wide {
+	padding: 2.625rem 0 2.375rem;
+}
+
+.servicingOfferings__brandsList {
+	margin-top: 2.625rem;
+	overflow-y: scroll;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.servicingOfferings__brandsList::-webkit-scrollbar {
+	display: none;
+}
+
+.servicingOfferings__categoriesList {
+	row-gap: 1.3125rem;
+}
+
+.servicingOfferings__categoriesList__item {
+	max-width: 100%;
+	background-color: #ffffff;
+	border-radius: 20px;
+	padding: 1.5rem;
+}
+
+.servicingOfferings__categoriesList__itemName {
+	font-size: 1rem;
+	margin-bottom: 2.375rem;
+}
+
+.servicingOfferings__categoriesList__itemBrochures a {
+	font-size: 0.875rem;
+}
+
 }
 
 @media only screen and (max-width: 576px) {
@@ -10480,6 +10611,11 @@ h5,
 .productBrochures__listItem__name {
 	font-size: 0.875rem;
 	line-height: 1.2;
+}
+
+.servicingOfferings__categoriesList__item {
+	max-width: 100%;
+	width: 100%;
 }
 
 }
