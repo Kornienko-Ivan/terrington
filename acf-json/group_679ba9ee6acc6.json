@@ -265,6 +265,72 @@
             "return_format": "array"
         },
         {
+            "key": "field_67b8475cec229",
+            "label": "First Brand",
+            "name": "first_brand",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "products-brand",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_67b84845170d5",
+            "label": "Second Brand",
+            "name": "second_brand",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "products-brand",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_67b84854170d6",
+            "label": "Third Brand",
+            "name": "third_brand",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "products-brand",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
             "key": "field_679ea9efcd46a",
             "label": "Hero Advertising",
             "name": "",
@@ -384,5 +450,5 @@
     "hide_on_screen": "",
     "active": false,
     "description": "",
-    "modified": 1738590703
+    "modified": 1740130410
 }
