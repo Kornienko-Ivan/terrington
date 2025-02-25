@@ -10,7 +10,9 @@ $bg_image = get_sub_field('background_image');
             <h1 class="hero__title"><?php echo $title; ?></h1>
         <?php endif; ?>
         <?php if($bg_image): ?>
-            <div class="hero__image"><img src="<?php echo $bg_image['url']; ?>" alt="<?php echo $bg_image['title']; ?>"></div>
+            <div class="hero__image">
+                <img src="<?php echo esc_url(get_custom_image($bg_image, 'custom_1650x500')); ?>" alt="<?php echo $bg_image['title']; ?>">
+            </div>
         <?php endif; ?>
     </div>
 </div>

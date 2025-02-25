@@ -755,7 +755,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .productTextImage__image{-ms-flex-negative:0;flex-shrink:0}
 .productTextImage__image.image-half{-ms-flex-preferred-size:46.2%;flex-basis:46.2%}
 .productTextImage__image.image-third{-ms-flex-preferred-size:36%;flex-basis:36%}
-.productTextImage__image img{height:100%;-o-object-fit:cover;object-fit:cover}
+.productTextImage__image img{height:100%;width:100%;-o-object-fit:cover;object-fit:cover}
 .productTextImage__textWrapper{background-color:#f5f6f7;padding:3.0625rem 2.6875rem 3.125rem 3.1875rem}
 .productTextImage__text{margin-top:1.625rem;line-height:1.29}
 .productTextImage__text ul li{position:relative;padding-left:.875rem;font-size:1.0625rem}

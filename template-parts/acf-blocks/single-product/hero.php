@@ -8,7 +8,7 @@ if($image || $title):
     <div class="container container--wide">
         <div class="productHero__wrapper">
             <?php if($image): ?>
-                <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['title']; ?>">
+                <img src="<?php echo esc_url(get_custom_image($image, 'custom_1650x500')); ?>" alt="<?php echo esc_attr($image['title']); ?>">
             <?php endif; ?>
             <?php if($title): ?>
                 <div class="productHero__title"<?php if($id): ?> id="<?php echo $id; ?>"<?php endif; ?>>

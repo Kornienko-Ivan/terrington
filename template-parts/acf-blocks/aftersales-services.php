@@ -13,18 +13,24 @@ $the_query = new WP_Query($args);
                 <?php if($title): ?>
                     <h2><?php echo esc_html($title); ?></h2>
                 <?php endif; ?>
-                <?php if($the_query->have_posts()): ?>
+                <?php if ($the_query->have_posts()): ?>
                     <div class="services__list">
-                        <?php while($the_query->have_posts()): $the_query->the_post();
-                            $image = get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/assets/images/placeholder-image.webp';
+                        <?php while ($the_query->have_posts()): $the_query->the_post();
+                            $image_id = get_post_thumbnail_id();
+                            $placeholder = get_template_directory_uri() . '/assets/images/placeholder-image.webp';
+
+                            $image_data = $image_id ? wp_get_attachment_image_src($image_id, 'custom_500x500') : null;
+                            $image_url = $image_data ? $image_data[0] : $placeholder;
                             ?>
                             <a href="<?php the_permalink(); ?>" class="services__listItem">
                                 <h4><?php the_title(); ?></h4>
-                                <img src="<?php echo esc_url($image); ?>" alt="<?php the_title_attribute(); ?>">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title_attribute(); ?>">
                             </a>
-                        <?php endwhile; wp_reset_postdata(); ?>
+                        <?php endwhile;
+                        wp_reset_postdata(); ?>
                     </div>
                 <?php endif; ?>
+
             </div>
         </div>
     </div>

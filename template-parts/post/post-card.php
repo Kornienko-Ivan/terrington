@@ -1,5 +1,7 @@
 <?php
-$image = get_the_post_thumbnail_url(get_the_ID(), 'custom_500x500') ?: get_template_directory_uri() . '/assets/images/elementor-placeholder-image.webp';
+$image_id = get_post_thumbnail_id(get_the_ID());
+$image = $image_id ? wp_get_attachment_image_src($image_id, 'custom_500x500')[0] : get_template_directory_uri() . '/assets/images/elementor-placeholder-image.webp';
+
 ?>
 <a href="<?php the_permalink(); ?>" class="post-card">
     <div class="post-card__image">

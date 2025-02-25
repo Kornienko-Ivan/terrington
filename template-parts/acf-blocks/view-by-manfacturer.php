@@ -20,7 +20,7 @@ $the_query = new WP_Query($args);
                         $logo = get_the_post_thumbnail_url();
                         ?>
                         <a href="<?php the_permalink(); ?>" class="manfacturers__listItem">
-                            <img src="<?php echo $bg['url']; ?>" class="manfacturers__listItem__bg" alt="<?php echo $bg['title']; ?>">
+                            <img src="<?php echo esc_url(get_custom_image($bg, 'custom_450x250')); ?>" class="manfacturers__listItem__bg" alt="<?php echo $bg['title']; ?>">
                             <?php if($logo): ?>
                                <img src="<?php echo $logo; ?>" class="manfacturers__listItem__logo" alt="<?php echo $logo; ?>">
                             <?php endif; ?>

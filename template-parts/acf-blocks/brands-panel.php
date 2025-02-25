@@ -23,13 +23,14 @@ if (!empty($terms) && !is_wp_error($terms)): ?>
 
                     ?>
                     <a href="<?php echo esc_url($term_link); ?>" class="manfacturers__listItem">
-                        <?php if (!empty($bg['url'])): ?>
+                        <?php if (!empty($bg['id'])): ?>
                             <img
-                                    src="<?php echo esc_url($bg['url']); ?>"
+                                    src="<?php echo esc_url(get_custom_image($bg, 'custom_450x250')); ?>"
                                     class="manfacturers__listItem__bg"
                                     alt="<?php echo esc_attr($bg['title'] ?? $term->name); ?>"
                             />
                         <?php endif; ?>
+
 
                         <?php if (!empty($logo['url'])): ?>
                             <img
