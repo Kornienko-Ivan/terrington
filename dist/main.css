@@ -3806,6 +3806,10 @@ body #app-wrapper {
 	margin-top: 2.75rem;
 }
 
+.infoSection__text p:not(:last-child) {
+	margin-bottom: 0.9375rem;
+}
+
 .infoSection__button {
 	margin-top: 2.625rem;
 }

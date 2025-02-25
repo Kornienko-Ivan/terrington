@@ -618,6 +618,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .infoSection__col--content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;max-width:26.125rem}
 .infoSection__col--img{width:41%;position:relative;aspect-ratio:459/428}
 .infoSection__text{margin-top:2.75rem}
+.infoSection__text p:not(:last-child){margin-bottom:.9375rem}
 .infoSection__button{margin-top:2.625rem}
 .infoSection__button .button{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}
 .infoSection__imageWrapper{aspect-ratio:459/428;mask:url("../assets/icons/info-mask-1.svg") no-repeat top/contain;-webkit-mask:url("../assets/icons/info-mask-1.svg") no-repeat top/contain;-o-object-position:-44px;object-position:-44px}
