@@ -82,19 +82,13 @@ p,.p{font-size:17px}
 .font--weight--medium{font-weight:600}
 .font--weight--bold{font-weight:800}
 .font--weight--black{font-weight:900}
-.content-block{font-size:17px;line-height:1.75rem}
 .content-block p{margin-bottom:20px}
 .content-block p:nth-child(1){padding-top:0}
 .content-block p:nth-last-child(1){padding-bottom:0}
-.content-block h1,.content-block h2,.content-block h3,.content-block h4,.content-block h5,.content-block h6{margin-bottom:15px;line-height:1.2em}
-.content-block h1{font-size:32px;margin-bottom:20px}
-.content-block h2{font-size:28px}
-.content-block h3{font-size:24px}
-.content-block h4{font-size:22px}
-.content-block h5{font-size:20px}
-.content-block h6{font-size:18px}
+.content-block h1,.content-block h2,.content-block h3,.content-block h4,.content-block h5,.content-block h6{margin-bottom:.9375rem;line-height:1.2em}
+.content-block h1{margin-bottom:1.25rem}
 .content-block p,.content-block ul,.content-block ol{font-size:1rem;line-height:1.75rem}
-.content-block a{overflow-wrap:break-word;word-wrap:break-word;-webkit-transition:.3s;transition:.3s;color:#000}
+.content-block a{overflow-wrap:break-word;word-wrap:break-word;-webkit-transition:.3s;transition:.3s;color:#e61f26}
 .content-block a:hover{opacity:.8;text-decoration:underline}
 .content-block ul{margin:.9375rem 0;margin-left:1.875rem}
 .content-block ul li{display:block;margin-bottom:10px;line-height:2.125rem}
@@ -800,6 +794,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .servicingOfferings__categoriesList__itemName{font-family:"Bricolage Grotesque",sans-serif;font-size:1.125rem;font-weight:600;line-height:1.2px;margin-bottom:3.1875rem}
 .servicingOfferings__categoriesList__itemBrochures{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;row-gap:1.875rem}
 .servicingOfferings__categoriesList__itemBrochures a{font-size:1.0625rem}
+.textBlock{margin:3.75rem 0}
 @media(hover:hover){.header__right.header__right--desktop .menu .menu-item a:hover{color:#e61f26}
 .header__right.header__right--desktop .menu .menu-item-has-children .sub-menu a:hover{font-weight:700;padding-left:.875rem;color:#000}
 .header__right.header__right--desktop .menu .menu-item-has-children .sub-menu a:hover:before{opacity:1}

@@ -200,7 +200,8 @@ p,.p
 
 	&--underline
 			text-decoration: underline
-	
+
+
 .font
 	&--italic
 		font-style: italic
@@ -218,11 +219,8 @@ p,.p
 		&--black
 			font-weight: 900
 
-.title
 
 .content-block
-	font-size: $text-font-size
-	line-height: rem(28px)
 	p
 		margin-bottom: 20px
 		&:nth-child(1)
@@ -230,21 +228,11 @@ p,.p
 		&:nth-last-child(1)
 			padding-bottom: 0
 	h1,h2,h3,h4,h5,h6
-		margin-bottom: 15px
+		margin-bottom: rem(15px)
 		line-height: 1.2em
 	h1
-		font-size: 32px
-		margin-bottom: 20px
-	h2
-		font-size: 28px
-	h3
-		font-size: 24px
-	h4
-		font-size: 22px
-	h5
-		font-size: 20px
-	h6
-		font-size: 18px
+		margin-bottom: rem(20px)
+
 	p,ul,ol
 		font-size: rem(16px)
 		line-height: rem(28px)
@@ -252,7 +240,7 @@ p,.p
 		overflow-wrap: break-word
 		word-wrap: break-word
 		transition: 0.3s
-		color: $color-black
+		color: $color-red
 		&:hover
 			opacity: 0.8
 			text-decoration: underline
