@@ -59,34 +59,34 @@ $bottom_text = get_field('footer_bottom_text', 'options');
                         ?>
                         <?php if($twitter || $instagram || $linkedin || $facebook): ?>
                             <ul class="footer__socials">
-<!--                                --><?php //if(!$twitter): ?>
-<!--                                    <li class="footer__socials-item">-->
-<!--                                        <a href="--><?php //echo $twitter; ?><!--" class="footer__socials-link">-->
-<!--                                            <img src="" alt="Twitter">-->
-<!--                                        </a>-->
-<!--                                    </li>-->
-<!--                                --><?php //endif; ?>
+                                <?php if($twitter): ?>
+                                    <li class="footer__socials-item">
+                                        <a href="<?php echo $twitter; ?>" class="footer__socials-link" target="_blank">
+                                            <?php echo get_inline_svg('x') ?>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
                                 <?php if($instagram): ?>
                                     <li class="footer__socials-item">
-                                        <a href="<?php echo $instagram; ?>" class="footer__socials-link">
+                                        <a href="<?php echo $instagram; ?>" class="footer__socials-link" target="_blank">
                                             <?php echo get_inline_svg('instagram') ?>
                                         </a>
                                     </li>
                                 <?php endif; ?>
-<!--                                --><?php //if($linkedin): ?>
-<!--                                    <li class="footer__socials-item">-->
-<!--                                        <a href="--><?php //echo $linkedin; ?><!--" class="footer__socials-link">-->
-<!--                                            <img src="" alt="LinkedIn">-->
-<!--                                        </a>-->
-<!--                                    </li>-->
-<!--                                --><?php //endif; ?>
-<!--                                --><?php //if($facebook): ?>
-<!--                                    <li class="footer__socials-item">-->
-<!--                                        <a href="--><?php //echo $facebook; ?><!--" class="footer__socials-link">-->
-<!--                                            <img src="" alt="Facebook">-->
-<!--                                        </a>-->
-<!--                                    </li>-->
-<!--                                --><?php //endif; ?>
+                                <?php if($linkedin): ?>
+                                    <li class="footer__socials-item">
+                                        <a href="<?php echo $linkedin; ?>" class="footer__socials-link" target="_blank">
+                                            <?php echo get_inline_svg('linkedin') ?>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                                <?php if($facebook): ?>
+                                    <li class="footer__socials-item">
+                                        <a href="<?php echo $facebook; ?>" class="footer__socials-link" target="_blank">
+                                            <?php echo get_inline_svg('facebook') ?>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
                             </ul>
                         <?php endif; ?>
                     </div>
