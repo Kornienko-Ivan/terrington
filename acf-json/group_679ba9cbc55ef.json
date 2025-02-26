@@ -444,6 +444,13 @@
                 "operator": "==",
                 "value": "page"
             }
+        ],
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "products-brand"
+            }
         ]
     ],
     "menu_order": 0,
@@ -454,5 +461,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1739838477
+    "modified": 1740565795
 }
