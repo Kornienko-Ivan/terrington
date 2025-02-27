@@ -1,31 +1,33 @@
-<?php 
+<?php
 $title = get_sub_field('title');
 $args = array(
-    'post_type' => 'brand',
-    'posts_per_page' => -1,
+    'taxonomy' => 'products-brand',
+    'orderby' => 'name',
+    'order'   => 'ASC',
+    'hide_empty' => false
 );
-$the_query = new WP_Query($args);
+$brands = get_terms($args);
 ?>
 <div class="manfacturers">
     <div class="container container--narrow">
-        <?php if($title || $the_query->have_posts()): ?>
+        <?php if($title || !empty($brands)): ?>
             <?php if($title): ?>
                 <h5><?php echo $title; ?></h5>
             <?php endif; ?>
-            <?php if($the_query->have_posts()): ?>
+            <?php if(!empty($brands)): ?>
                 <div class="manfacturers__list">
-                    <?php while($the_query->have_posts()): $the_query->the_post(); ?>
+                    <?php foreach($brands as $brand): ?>
                         <?php
-                        $bg = get_field('brand__image') ? get_field('brand__image') : get_template_directory_uri() . '/assets/images/placeholder-image.webp';
-                        $logo = get_the_post_thumbnail_url();
+                        $bg_image = get_field('brand_bg_image', 'products-brand_' . $brand->term_id) ?: get_template_directory_uri() . '/assets/images/placeholder-image.webp';
+                        $logo = get_field('brand_logo', 'products-brand_' . $brand->term_id);
                         ?>
-                        <a href="<?php the_permalink(); ?>" class="manfacturers__listItem">
-                            <img src="<?php echo esc_url(get_custom_image($bg, 'custom_450x250')); ?>" class="manfacturers__listItem__bg" alt="<?php echo $bg['title']; ?>">
+                    <div class="manfacturers__listItem" data-slug="<?php echo esc_attr($brand->slug); ?>" onclick="window.location.href='<?php echo esc_url(home_url('/products-overview/')) . '?brand=' . esc_attr($brand->slug); ?>';">
+                            <img src="<?php echo esc_url(get_custom_image($bg_image, 'custom_450x250')); ?>" class="manfacturers__listItem__bg" alt="<?php echo esc_attr($brand->name); ?>">
                             <?php if($logo): ?>
-                               <img src="<?php echo $logo; ?>" class="manfacturers__listItem__logo" alt="<?php echo $logo; ?>">
+                                <img src="<?php echo esc_url($logo['url']); ?>" class="manfacturers__listItem__logo" alt="<?php echo esc_attr($brand->name); ?>">
                             <?php endif; ?>
-                        </a>
-                    <?php endwhile; wp_reset_postdata(); ?>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             <?php endif; ?>
         <?php endif; ?>

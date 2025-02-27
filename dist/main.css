@@ -4197,6 +4197,7 @@ body #app-wrapper {
 	position: relative;
 	border-radius: 20px;
 	overflow: hidden;
+	cursor: pointer;
 }
 
 .manfacturers__listItem:before {
@@ -4263,6 +4264,7 @@ body #app-wrapper {
 	justify-content: center;
 	-webkit-transition: background-color 0.3s ease;
 	transition: background-color 0.3s ease;
+	cursor: pointer;
 }
 
 .categories__listItem__name {
@@ -5029,6 +5031,10 @@ body #app-wrapper {
 
 .textBlock {
 	margin: 3.75rem 0;
+}
+
+.filter {
+	margin: 5.9375rem 0 5.125rem;
 }
 
 @media (hover: hover) {

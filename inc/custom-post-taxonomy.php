@@ -76,3 +76,40 @@ $args = [
     "show_in_graphql" => false,
 ];
 register_taxonomy( "products-brand", [ "products" ], $args );
+
+$labels = [
+    "name" => __( "Type" ),
+    "singular_name" => __( "Type" ),
+    "add_new_item" => __("Add new Type"),
+    "search_items" => __("Search Type"),
+    "back_to_items" => __("Back to Type"),
+    "add_or_remove_items" => __("Add or Remove Type"),
+    "popular_items" => __("Popular Types"),
+    "new_item_name" => __("New Type name"),
+    "update_item" => __("Update Type"),
+    "view_item" => __("View Type"),
+    "edit_item" => __("Edit Type"),
+    "all_items" => __("All Types"),
+    "separate_items_with_commas" => __("Separate brands with commas"),
+];
+$args = [
+    "label" => __( "Type" ),
+    "labels" => $labels,
+    "public" => true,
+    "publicly_queryable" => true,
+    "hierarchical" => true,
+    "show_ui" => true,
+    "show_in_menu" => true,
+    "show_in_nav_menus" => true,
+    "query_var" => true,
+    "rewrite" => [ 'slug' => 'products-type', 'with_front' => false, ],
+    "show_admin_column" => true,
+    "show_in_rest" => true,
+    "show_tagcloud" => false,
+    "rest_base" => "products-type",
+    "rest_controller_class" => "WP_REST_Terms_Controller",
+    "show_in_quick_edit" => false,
+    "sort" => false,
+    "show_in_graphql" => false,
+];
+register_taxonomy( "products-type", [ "products" ], $args );

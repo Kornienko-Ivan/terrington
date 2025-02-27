@@ -87,7 +87,7 @@ function cptui_register_my_cpts_brand() {
     register_post_type( "brand", $args );
 }
 
-add_action( 'init', 'cptui_register_my_cpts_brand' );
+//add_action( 'init', 'cptui_register_my_cpts_brand' );
 
 
 function cptui_register_my_cpts_products() {

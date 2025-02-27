@@ -104,3 +104,62 @@ function loadBrandsList(){
 
 add_action('wp_ajax_loadBrandsList', 'loadBrandsList');
 add_action('wp_ajax_nopriv_loadBrandsList', 'loadBrandsList');
+
+function filter_products_ajax() {
+    $brands = isset($_POST['brand']) ? array_map('sanitize_text_field', $_POST['brand']) : [];
+    $categories = isset($_POST['category']) ? array_map('sanitize_text_field', $_POST['category']) : [];
+    $types = isset($_POST['type']) ? array_map('sanitize_text_field', $_POST['type']) : [];
+
+    $args = [
+        'post_type'      => 'products',
+        'posts_per_page' => -1,
+        'tax_query'      => ['relation' => 'AND']
+    ];
+
+    if (!empty($brands)) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'products-brand',
+            'field'    => 'slug',
+            'terms'    => $brands,
+            'operator' => 'IN'
+        ];
+    }
+
+    if (!empty($categories)) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'products-category',
+            'field'    => 'slug',
+            'terms'    => $categories,
+            'operator' => 'IN'
+        ];
+    }
+
+    if (!empty($types)) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'products-type',
+            'field'    => 'slug',
+            'terms'    => $types,
+            'operator' => 'IN'
+        ];
+    }
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            echo '<div class="product-item">';
+            echo '<h3>' . get_the_title() . '</h3>';
+            echo '</div>';
+        }
+    } else {
+        echo '<p>No products found.</p>';
+    }
+
+    wp_die();
+}
+
+add_action('wp_ajax_filter_products', 'filter_products_ajax');
+add_action('wp_ajax_nopriv_filter_products', 'filter_products_ajax');
+
+

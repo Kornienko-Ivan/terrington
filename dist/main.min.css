@@ -673,14 +673,14 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .manfacturers{padding:6.75rem 0 1.8125rem}
 .manfacturers h5{padding:.6875rem 0 .625rem;text-align:center;line-height:1.2;border-radius:20px;background-color:#f5f6f7}
 .manfacturers__list{display:grid;grid-template-columns:repeat(4,minmax(6.25rem,17rem));gap:.8125rem .625rem;margin-top:0}
-.manfacturers__listItem{aspect-ratio:272/182;width:100%;position:relative;border-radius:20px;overflow:hidden}
+.manfacturers__listItem{aspect-ratio:272/182;width:100%;position:relative;border-radius:20px;overflow:hidden;cursor:pointer}
 .manfacturers__listItem:before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);pointer-events:none}
 .manfacturers__listItem__bg{width:100%;height:100%;-o-object-fit:cover;object-fit:cover}
 .manfacturers__listItem__logo{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);width:60%;aspect-ratio:163/41}
 .categories{padding:1.8125rem 0 6.8125rem}
 .categories h5{padding:.6875rem 0 .625rem;text-align:center;line-height:1.2;border-radius:20px;background-color:#f5f6f7}
 .categories__list{display:grid;grid-template-columns:repeat(5,minmax(6.25rem,13.3125rem));gap:.8125rem;margin-top:1.6875rem}
-.categories__listItem{aspect-ratio:213/83;width:100%;background-color:#666;color:white;border-radius:20px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-transition:background-color .3s ease;transition:background-color .3s ease}
+.categories__listItem{aspect-ratio:213/83;width:100%;background-color:#666;color:white;border-radius:20px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-transition:background-color .3s ease;transition:background-color .3s ease;cursor:pointer}
 .categories__listItem__name{font-family:"Bricolage Grotesque",sans-serif;font-size:.9375rem;font-weight:500}
 .serviceOfferings{padding:0 0 4.5rem}
 .serviceOfferings__wrapper{background-color:#f5f6f7;border-radius:20px;padding:4.75rem 0 2.875rem}
@@ -798,6 +798,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .servicingOfferings__categoriesList__itemBrochures{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;row-gap:1.875rem}
 .servicingOfferings__categoriesList__itemBrochures a{font-size:1.0625rem}
 .textBlock{margin:3.75rem 0}
+.filter{margin:5.9375rem 0 5.125rem}
 @media(hover:hover){.header__right.header__right--desktop .menu .menu-item a:hover{color:#e61f26}
 .header__right.header__right--desktop .menu .menu-item-has-children .sub-menu a:hover{font-weight:700;padding-left:.875rem;color:#000}
 .header__right.header__right--desktop .menu .menu-item-has-children .sub-menu a:hover:before{opacity:1}
