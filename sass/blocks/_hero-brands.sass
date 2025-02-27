@@ -3,14 +3,21 @@
   &__wrapper
     position: relative
   &__slider
-    margin: 0 rem(-12px)
+    max-width: 100%
+    .slick-list
+      margin: 0 -12.5px
+
     .slick-slide
-      aspect-ratio: 398/178
+      aspect-ratio: 400/178
+      width: 100%
+      margin: 0 12.5px
+
   &__sliderItem__wrapper
-    margin: 0 rem(12px)
+    //margin: 0 rem(14px)
     border-radius: $radius-md
     overflow: hidden
-    aspect-ratio: 398/178
+    aspect-ratio: 400/178
+    width: 100%
     perspective: 1000px
   &__sliderItem
     width: 100%
@@ -20,7 +27,7 @@
     position: relative
     border-radius: $radius-md
   &__sliderItem__link
-    margin: 0 rem(10px)
+    //margin: 0 rem(10px)
 
     &:hover .heroBrands__sliderItem
       transform: rotateY(180deg)
@@ -71,6 +78,12 @@
       right: rem(26.25px)
       font-size: rem(15px)
       font-weight: 500
+      +can-hover
+        &:hover
+          color: $color-dark-black
+          svg
+            path
+              fill: $color-dark-black
       svg
         margin-left: rem(16px)
   &__bg
@@ -86,12 +99,13 @@
     align-items: center
     justify-content: center
     background-color: $color-white
-    border-radius: $radius-md
+    border-radius: $radius-1
     aspect-ratio: 172/59
     width: 43%
     min-height: rem(40px)
     img
       max-width: 76%
+      max-height: 70%
   &__description
     padding: rem(20px)
     text-align: center
@@ -112,8 +126,8 @@
     z-index: 1
     transition: background-color 0.3s ease
     svg
-      height: rem(8.75px)
-      width: rem(8.75px)
+      height: rem(9.9px)
+      width: rem(9.9px)
 
   &__slider__prev
     left: rem(-20px)

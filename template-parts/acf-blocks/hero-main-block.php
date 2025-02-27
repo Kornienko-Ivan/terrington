@@ -38,11 +38,6 @@ $title            = get_sub_field('title');
 $background_image = get_sub_field('background_image');
 $logo             = get_sub_field('logo');
 $advertising_link = get_sub_field('link');
-
-$brands = new WP_Query([
-    'post_type'      => 'brand',
-    'posts_per_page' => -1,
-]);
 ?>
 <div class="heroMain">
     <div class="container container--wide">
@@ -65,7 +60,8 @@ $brands = new WP_Query([
                                     <div class="heroMain__leftPart__col"></div>
                                     <?php if ($left_bg): ?>
                                         <?php
-                                        $image_medium = wp_get_attachment_image_src($left_bg['ID'], 'large');
+//                                        $image_medium = wp_get_attachment_image_src($left_bg['ID'], 'full');
+                                        $image_medium = wp_get_attachment_image_src($left_bg['ID'], 'custom_900x900');
                                         if ($image_medium):
                                             ?>
                                             <img class="heroMain__leftPart__bg"
@@ -222,35 +218,43 @@ $brands = new WP_Query([
 
 <div class="heroMain--mobile">
     <div class="container">
-        <?php if ($brands->have_posts()) : ?>
-            <div class="heroMain__slider">
-                <div class="heroMain__slider__wrapper heroMain__slider--js">
-                    <?php while ($brands->have_posts()) : $brands->the_post(); ?>
-                        <?php
-                        $brand_image = get_field('brand__image');
-                        if ($brand_image) :
-                            ?>
-                            <div class="heroMain__slider__slide brand">
-                                <div class="brand__bg">
-                                    <img src="<?php echo esc_url(get_custom_image($brand_image, 'large')); ?>"
-                                         alt="<?php echo esc_attr(get_the_title()); ?>">
+        <?php
+        $brands = get_terms(array(
+            'taxonomy'   => 'products-brand',
+            'hide_empty' => false,
+        ));
+
+        if (!empty($brands) && !is_wp_error($brands)) : ?>
+                <div class="heroMain__slider">
+                    <div class="heroMain__slider__wrapper heroMain__slider--js">
+                        <?php foreach ($brands as $brand) :
+                            $brand_bg_image = get_field('brand_bg_image', 'products-brand_' . $brand->term_id);
+                            $brand_logo = get_field('brand_logo', 'products-brand_' . $brand->term_id);
+
+                            if ($brand_bg_image) : ?>
+                                <div class="heroMain__slider__slide brand">
+                                    <div class="brand__bg">
+                                        <img src="<?php echo esc_url(get_custom_image($brand_bg_image, 'custom_900x900')); ?>"
+                                             alt="<?php echo esc_attr($brand->name); ?>">
+                                    </div>
+                                    <?php if ($brand_logo) : ?>
+                                        <div class="brand__logo">
+                                            <img src="<?php echo esc_url(get_custom_image($brand_logo, 'medium')); ?>"
+                                                 alt="<?php echo esc_attr($brand->name); ?>">
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
-                                <div class="brand__logo">
-                                    <?php the_post_thumbnail('medium'); ?>
-                                </div>
-                            </div>
-                        <?php endif; ?>
-                    <?php endwhile; ?>
+                            <?php endif;
+                        endforeach; ?>
+                    </div>
+                    <div class="heroMain__slider__prev">
+                        <?php echo get_inline_svg('slider-arrow'); ?>
+                    </div>
+                    <div class="heroMain__slider__next">
+                        <?php echo get_inline_svg('slider-arrow'); ?>
+                    </div>
                 </div>
-                <div class="heroMain__slider__prev">
-                    <?php echo get_inline_svg('slider-arrow'); ?>
-                </div>
-                <div class="heroMain__slider__next">
-                    <?php echo get_inline_svg('slider-arrow'); ?>
-                </div>
-            </div>
-            <?php wp_reset_postdata(); ?>
-        <?php endif; ?>
+                <?php endif; ?>
 
         <?php if($title || $logo || $background_image): ?>
             <a href="<?php echo esc_url($advertising_link); ?>" class="heroAdvertising__wrapper heroAdvertising__wrapper--mobile">

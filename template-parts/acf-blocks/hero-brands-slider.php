@@ -40,9 +40,10 @@ $brands_terms = get_sub_field('brands_terms');
                                         <div class="heroBrands__backend">
                                             <?php if ($description): ?>
                                                 <div class="heroBrands__description">
-                                                    <?php echo esc_html($description); ?>
+                                                    <?php echo esc_html(truncate_text($description, 150)); ?>
                                                 </div>
                                             <?php endif; ?>
+
                                             <div class="heroBrands__btn h6">
                                                 <?php echo 'Find out more' ?>
                                                 <?php echo get_inline_svg('white-arrow'); ?>

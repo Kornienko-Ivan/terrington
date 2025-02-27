@@ -1,6 +1,8 @@
 .heroMain
-  margin-bottom: rem(42px)
+  margin-bottom: 0
   margin-top: rem(9px)
+  .container
+    max-width: rem(1669px) !important
   &__wrapper
     display: grid
     grid-template-columns: repeat(12, 1fr)
@@ -38,8 +40,11 @@
       position: absolute
       top: 0
       left: 0
-      -webkit-backface-visibility: hidden
       backface-visibility: hidden
+      -webkit-perspective: 0
+      -webkit-backface-visibility: hidden
+      -webkit-transform: translate3d(0,0,0)
+      visibility: visible
       border-radius: $radius-md
 
     &__front
@@ -102,6 +107,12 @@
           right: rem(20px)
           bottom: 0
           font-size: rem(17px)
+          +can-hover
+            &:hover
+              color: $color-dark-black
+              svg
+                path
+                  fill: $color-dark-black
           svg
             margin-left: rem(16px)
 
@@ -126,7 +137,7 @@
       min-height: rem(50px)
 
       img
-        max-width: 55%
+        max-width: 76.4%
 
     &__description
       padding: rem(20px)
@@ -170,8 +181,11 @@
       width: 100%
       height: 100%
       position: absolute
-      -webkit-backface-visibility: hidden
       backface-visibility: hidden
+      -webkit-perspective: 0
+      -webkit-backface-visibility: hidden
+      -webkit-transform: translate3d(0,0,0)
+      visibility: visible
       border-radius: inherit
       overflow: hidden
 
@@ -203,6 +217,12 @@
         right: rem(26.25px)
         font-size: rem(15px)
         font-weight: 500
+        +can-hover
+          &:hover
+            color: $color-dark-black
+            svg
+              path
+                fill: $color-dark-black
         svg
           margin-left: rem(16px)
 
@@ -222,13 +242,13 @@
       justify-content: center
 
       background-color: $color-white
-      border-radius: $radius-md
+      border-radius: $radius-1
       aspect-ratio: 172/59
       width: 43%
       min-height: rem(40px)
 
       img
-        max-width: 76%
+        max-width: 76.4%
 
     &__description
       padding: rem(20px)
@@ -292,8 +312,6 @@
           text-align: left
           font-size: rem(15px)
 
-
-
 +max-screen($breakpoint-xl)
   .heroMain
     .card
@@ -346,7 +364,7 @@
           top: rem(11px)
           right: rem(21px)
     &__slider
-      display: block
+      display: block !important
       position: relative
       .slick-track
         display: flex !important
@@ -357,7 +375,7 @@
           border-radius: $radius-md
           overflow: hidden
           margin: 0 rem(10px)
-          height: inherit !important
+          height: 100% !important
           &__logo
             position: absolute
             right: rem(25px)
@@ -396,8 +414,8 @@
         z-index: 1
         transition: background-color 0.3s ease
         svg
-          height: rem(8.75px)
-          width: rem(8.75px)
+          height: rem(9.9px)
+          width: rem(9.9px)
 
       &__prev
         left: rem(12px)

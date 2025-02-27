@@ -5,9 +5,12 @@
     align-items: center
     justify-content: center
     column-gap: rem(27px)
+    h2
+      line-height: 1.2
     img
       height: rem(34px)
       width: rem(34px)
+      transform: translateY(2px)
 
   &__feed
     margin-top: rem(68px)
@@ -17,6 +20,7 @@
       aspect-ratio: 1/1
       border-radius: 20px
       overflow: hidden
+
 
 +max-screen($breakpoint-md)
   .followUs
@@ -37,5 +41,5 @@
         grid-template-columns: repeat(3, 1fr) !important
       .sbi_item
         aspect-ratio: 1/1
-        border-radius: 20px
+        border-radius: rem(9.9px)
         overflow: hidden

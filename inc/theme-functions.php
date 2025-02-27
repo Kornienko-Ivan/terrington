@@ -16,6 +16,14 @@ function excerpt($limit,$post_id=-1) {
 	return $excerpt;
 }
 
+function truncate_text($text, $max_length = 150) {
+    if (mb_strlen($text) > $max_length) {
+        return mb_substr($text, 0, $max_length) . '...';
+    }
+    return $text;
+}
+
+
 function get_inline_svg($name)
 {
     if ($name) :

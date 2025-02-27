@@ -25,6 +25,7 @@
       width: 41%
       position: relative
       aspect-ratio: 459/428
+      height: fit-content
   &__text
     margin-top: rem(44px)
     p:not(:last-child)
@@ -80,6 +81,12 @@
       &--content
         justify-content: center
 
+
++max-screen($breakpoint-xl)
+  .infoSection
+    &__icon
+      right: rem(10px)
+
 +max-screen($breakpoint-lg)
   .infoSection
     padding: rem(42px) 0 rem(38px)
@@ -107,6 +114,11 @@
       margin-top: rem(22px)
     &__button
       margin-top: rem(39px)
+      .button
+        max-width: 45%
+        min-width: unset
+        span
+          word-break: break-word
 
     &__imageWrapper
       aspect-ratio: 192/179
@@ -116,10 +128,14 @@
         object-fit: cover
       &--small
         aspect-ratio: 192/179
+    &__icon
+      right: rem(10px)
+
     &--no-button
       .infoSection__col
         &--img
           margin-top: rem(40px)
+
 
 +max-screen($breakpoint-sm)
   .infoSection
