@@ -33,11 +33,14 @@ if (!empty($terms) && !is_wp_error($terms)): ?>
 
 
                         <?php if (!empty($logo['url'])): ?>
-                            <img
-                                    src="<?php echo esc_url($logo['url']); ?>"
-                                    class="manfacturers__listItem__logo"
-                                    alt="<?php echo esc_attr($logo['title'] ?? $term->name); ?>"
-                            />
+                            <div class="manfacturers__listItem__wrapper">
+                                <img
+                                        src="<?php echo esc_url($logo['url']); ?>"
+                                        class="manfacturers__listItem__logo"
+                                        alt="<?php echo esc_attr($logo['title'] ?? $term->name); ?>"
+                                />
+                            </div>
+
                         <?php endif; ?>
                     </a>
                 <?php endforeach; ?>

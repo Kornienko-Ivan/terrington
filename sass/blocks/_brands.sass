@@ -3,7 +3,23 @@
 
   .manfacturers__listItem
     position: relative
-    transition: background-color 0.3s ease
+    &__wrapper
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      width: 80%
+      border-radius: $radius-md
+      background-color: $color-white
+      aspect-ratio: 172/60
+      display: flex
+      justify-content: center
+      align-items: center
+      z-index: 5
+      img
+        width: 75%
+        position: unset
+        transform: unset
 
     &:after
       position: absolute
@@ -16,7 +32,6 @@
       z-index: 2
       opacity: 0
       transform: scale(0.9)
-      transition: opacity 0.3s ease, transform 0.3s ease
 
     +can-hover
       &:hover
@@ -24,9 +39,14 @@
           opacity: 1
           transform: scale(1)
 
+
   .manfacturers__listItem__logo
     z-index: 3
 
 +max-screen($breakpoint-lg)
   .brands
     padding: rem(42px) 0 rem(29px)
+    .manfacturers__listItem
+      &__wrapper
+        border-radius: $radius-1
+        width: 60%

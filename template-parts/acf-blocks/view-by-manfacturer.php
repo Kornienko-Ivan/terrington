@@ -23,9 +23,11 @@ $brands = get_terms($args);
                         ?>
                     <div class="manfacturers__listItem" data-slug="<?php echo esc_attr($brand->slug); ?>" onclick="window.location.href='<?php echo esc_url(home_url('/products-overview/')) . '?brand=' . esc_attr($brand->slug); ?>';">
                             <img src="<?php echo esc_url(get_custom_image($bg_image, 'custom_450x250')); ?>" class="manfacturers__listItem__bg" alt="<?php echo esc_attr($brand->name); ?>">
-                            <?php if($logo): ?>
-                                <img src="<?php echo esc_url($logo['url']); ?>" class="manfacturers__listItem__logo" alt="<?php echo esc_attr($brand->name); ?>">
-                            <?php endif; ?>
+                            <div class="manfacturers__listItem__wrapper">
+                                <?php if($logo): ?>
+                                    <img src="<?php echo esc_url($logo['url']); ?>" class="manfacturers__listItem__logo" alt="<?php echo esc_attr($brand->name); ?>">
+                                <?php endif; ?>
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>

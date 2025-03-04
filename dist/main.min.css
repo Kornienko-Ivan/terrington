@@ -677,16 +677,18 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .review__text{margin-top:1.5625rem}
 .review .button{margin-top:2.5625rem;padding:.8125rem 1.8125rem}
 .manfacturers{padding:6.75rem 0 1.8125rem}
-.manfacturers h5{padding:.6875rem 0 .625rem;text-align:center;line-height:1.2;border-radius:20px;background-color:#f5f6f7}
+.manfacturers h5{padding:.6875rem 0 .625rem;text-align:center;line-height:1.2;border-radius:20px;background-color:#f5f6f7;margin-bottom:1.6875rem}
 .manfacturers__list{display:grid;grid-template-columns:repeat(4,minmax(6.25rem,17rem));gap:.8125rem .625rem;margin-top:0}
 .manfacturers__listItem{aspect-ratio:272/182;width:100%;position:relative;border-radius:20px;overflow:hidden;cursor:pointer}
-.manfacturers__listItem:before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);pointer-events:none}
+.manfacturers__listItem__wrapper{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);width:80%;border-radius:20px;background-color:#fff;aspect-ratio:172/60;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;z-index:5}
+.manfacturers__listItem__wrapper img{width:75%;position:unset;-webkit-transform:unset;transform:unset}
+.manfacturers__listItem:after{position:absolute;content:'';left:0;top:0;width:100%;height:100%;background-color:#e61f26;z-index:2;opacity:0;-webkit-transform:scale(0.9);transform:scale(0.9)}
 .manfacturers__listItem__bg{width:100%;height:100%;-o-object-fit:cover;object-fit:cover}
 .manfacturers__listItem__logo{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);width:60%;aspect-ratio:163/41}
 .categories{padding:1.8125rem 0 6.8125rem}
 .categories h5{padding:.6875rem 0 .625rem;text-align:center;line-height:1.2;border-radius:20px;background-color:#f5f6f7}
 .categories__list{display:grid;grid-template-columns:repeat(5,minmax(6.25rem,13.3125rem));gap:.8125rem;margin-top:1.6875rem}
-.categories__listItem{aspect-ratio:213/83;width:100%;background-color:#666;color:white;border-radius:20px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-transition:background-color .3s ease;transition:background-color .3s ease;cursor:pointer}
+.categories__listItem{aspect-ratio:213/83;width:100%;background-color:#666;color:white;border-radius:20px;padding:.625rem;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-transition:background-color .3s ease;transition:background-color .3s ease;cursor:pointer;text-align:center}
 .categories__listItem__name{font-family:"Bricolage Grotesque",sans-serif;font-size:.9375rem;font-weight:500}
 .serviceOfferings{padding:0 0 4.5rem}
 .serviceOfferings__wrapper{background-color:#f5f6f7;border-radius:20px;padding:4.75rem 0 2.875rem}
@@ -697,8 +699,10 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .serviceOfferings__listItem{padding:2.625rem 3.25rem 3.0625rem;background-color:#fff;border-radius:20px}
 .serviceOfferings__listItem p{margin-top:.625rem;line-height:1.25}
 .brands{padding:7.5rem 0 9.625rem}
-.brands .manfacturers__listItem{position:relative;-webkit-transition:background-color .3s ease;transition:background-color .3s ease}
-.brands .manfacturers__listItem:after{position:absolute;content:'';left:0;top:0;width:100%;height:100%;background-color:#e61f26;z-index:2;opacity:0;-webkit-transform:scale(0.9);transform:scale(0.9);-webkit-transition:opacity .3s ease,-webkit-transform .3s ease;transition:opacity .3s ease,-webkit-transform .3s ease;transition:opacity .3s ease,transform .3s ease;transition:opacity .3s ease,transform .3s ease,-webkit-transform .3s ease}
+.brands .manfacturers__listItem{position:relative}
+.brands .manfacturers__listItem__wrapper{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);width:80%;border-radius:20px;background-color:#fff;aspect-ratio:172/60;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;z-index:5}
+.brands .manfacturers__listItem__wrapper img{width:75%;position:unset;-webkit-transform:unset;transform:unset}
+.brands .manfacturers__listItem:after{position:absolute;content:'';left:0;top:0;width:100%;height:100%;background-color:#e61f26;z-index:2;opacity:0;-webkit-transform:scale(0.9);transform:scale(0.9)}
 .brands .manfacturers__listItem__logo{z-index:3}
 .news{padding:7.5rem 0 4.25rem}
 .news__list{display:grid;grid-template-columns:repeat(3,minmax(6.25rem,23.25rem));-webkit-column-gap:1.6875rem;-moz-column-gap:1.6875rem;column-gap:1.6875rem;row-gap:1.75rem}
@@ -818,6 +822,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .heroMain .card__backend .card__btn:hover svg path{fill:#050505}
 .heroBrands__backend .heroBrands__btn:hover{color:#050505}
 .heroBrands__backend .heroBrands__btn:hover svg path{fill:#050505}
+.manfacturers__listItem:hover:after{opacity:1;-webkit-transform:scale(1);transform:scale(1)}
 .categories__listItem:hover{background-color:#e61f26}
 .brands .manfacturers__listItem:hover:after{opacity:1;-webkit-transform:scale(1);transform:scale(1)}
 .single .singleVideo__content .plyr--full-ui.plyr--video .plyr__control--overlaid:hover{background-color:#050505}
@@ -1687,10 +1692,12 @@ h4,.h4{font-size:1.5625rem}
 .review__text{margin-top:1.5625rem}
 .review .button{margin-top:2.5625rem;padding:.8125rem 1.8125rem}
 .manfacturers{padding:2.625rem 0 1.8125rem}
-.manfacturers__list{grid-template-columns:repeat(3,minmax(6.25rem,23.25rem))}
+.manfacturers__listItem__wrapper{border-radius:11px;width:60%}
+.manfacturers__listItem__list{grid-template-columns:repeat(3,minmax(6.25rem,23.25rem))}
 .categories{padding:1.8125rem 0 2.625rem}
 .categories__list{grid-template-columns:repeat(4,minmax(6.25rem,13.3125rem))}
 .brands{padding:2.625rem 0 1.8125rem}
+.brands .manfacturers__listItem__wrapper{border-radius:11px;width:60%}
 .news{padding:3.75rem 0 3rem}
 .news__list{grid-template-columns:repeat(2,minmax(6.25rem,31.25rem))}
 }@media only screen and (max-width:769px){#app{min-height:0}
