@@ -53,16 +53,18 @@ $button = get_field('header_button', 'options');
                         <?php echo get_inline_svg('close'); ?>
                     </div>
                 </div>
-                <?php
-                $args = array(
-                    'theme_location' => 'main-menu',
-                    'walker'        => new Custom_Walker_Nav_Menu(),
-                );
-                wp_nav_menu( $args );
-                ?>
-                <?php if($button): ?>
-                    <a href="<?php echo $button['url']; ?>" class="button"><?php echo $button['title']; ?></a>
-                <?php endif; ?>
+                <div class="header_scroll">
+                    <?php
+                    $args = array(
+                        'theme_location' => 'main-menu',
+                        'walker'        => new Custom_Walker_Nav_Menu(),
+                    );
+                    wp_nav_menu( $args );
+                    ?>
+                    <?php if($button): ?>
+                        <a href="<?php echo $button['url']; ?>" class="button"><?php echo $button['title']; ?></a>
+                    <?php endif; ?>
+                </div>
             </div>
             <div class="header__burger">
                 <?php echo get_inline_svg('burger'); ?>

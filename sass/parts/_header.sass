@@ -23,6 +23,9 @@
 				font-size: inherit
 				color: inherit
 				line-height: rem(16px)
+				+can-hover
+					&:hover
+						text-decoration: underline
 
 	&__wrapper
 		+min-screen($breakpoint-lg)
@@ -33,6 +36,7 @@
 				transform: translateX(-50%)
 				z-index: 10
 				background-color: rgba(#ffffff, 0.5)
+				backdrop-filter: blur(2px)
 				width: 100% !important
 				max-width: 100% !important
 				.header__menu
@@ -212,8 +216,9 @@
 							align-items: center
 							transition: padding-left 0.3s ease
 							svg
-								height: rem(9.68px)
-								width: rem(9.68px)
+								path
+									height: rem(9.68px)
+									width: rem(9.68px)
 
 			.button
 				width: fit-content
@@ -231,16 +236,31 @@
 			z-index: 2
 			display: flex
 			justify-content: center
-			align-items: center
+			//align-items: center
 			padding: rem(20px)
 			border-bottom-left-radius: $radius-md
 			border-bottom-right-radius: $radius-md
 			border: 1px solid #DFE0E2
+
+			&-wrapper
+				width: 100%
+				align-items: center
+				height: fit-content
+				position: relative
+				margin-top: rem(138px)
+				max-height: 55vh
+				overflow-y: scroll
+				+hide-scrollbar
 			.sub-menu
-				padding: rem(158px) 0
 				display: flex
 				flex-direction: column
+				align-items: center
 				row-gap: rem(25px)
+				margin-bottom: rem(60px)
+				li
+					width: fit-content
+					max-width: 50%
+					text-align: center
 
 		.submenu-back
 			position: absolute
@@ -252,5 +272,33 @@
 			cursor: pointer
 			svg
 				transform: rotate(180deg)
-				height: rem(9.68px)
-				width: rem(9.68px)
+				path
+					height: rem(9.68px)
+					width: rem(9.68px)
+		.header_offset
+			display: none
+		&_scroll
+			height: 55vh
+			overflow-y: scroll
+			+hide-scrollbar
+
+
++max-screen($breakpoint-sm)
+	.header
+		&__menu
+			margin: 0 rem(21px)
+			width: auto !important
+			.menu-item
+				a
+					line-height: rem(29px)
+		&__banner
+			justify-content: center
+		&__right
+			&--mobile
+				.button
+					font-size: rem(15px)
+		&__linksList
+			overflow-x: scroll
+			+hide-scrollbar
+			&__item
+				flex-shrink: 0

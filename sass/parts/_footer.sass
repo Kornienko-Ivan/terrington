@@ -38,7 +38,10 @@
   &__logo
 
   &__form
-    input
+    .mc4wp-form-fields
+      position: relative
+
+    input[type=email]
       width: 100%
       max-width: 100%
       background: transparent
@@ -47,6 +50,8 @@
       padding: rem(12px) 0 rem(11px) rem(15px)
       border-radius: $radius-md
       color: $color-white
+      caret-color: $color-white
+      position: relative
       &:focus
         border: 1px solid $color-red
 
@@ -58,6 +63,19 @@
       &::-ms-input-placeholder /* Edge 12 -18 */
         color: $color-white
 
+    input[type=submit]
+      position: absolute
+      top: 0
+      right: 0
+      height: 100%
+      min-width: unset
+      padding: 0 rem(10px)
+
+    .mc4wp-response
+      margin-top: rem(10px)
+      p
+        font-size: rem(14px)
+        color: $color-red
     &-title
     &-text
       font-size: rem(12px)
@@ -155,6 +173,7 @@
         margin-right: 0
       &--menu
         margin-right: 0
+        max-width: 50%
 
 +max-screen($breakpoint-md)
   .footer

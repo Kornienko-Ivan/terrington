@@ -9,7 +9,7 @@
     left: rem(-146px)
     width: 22%
     height: 84%
-    z-index: -1
+    z-index: 0
     background: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-126 0 376.37 647"><g clip-path="url(%23clip0_1_66)"><path d="M-126 88.6997V159.035C-126 170.903 -119.668 181.871 -109.389 187.805L62.1223 286.827V197.312L-126 88.6997Z" fill="%23F5F6F7"></path><path d="M-0.339111 447.761L-0.585175 447.679V610.796L62.1222 647V375.316L-120.3 269.995V338.107C-120.3 349.795 -114.025 360.583 -103.867 366.363L-0.930046 424.93" fill="%23F5F6F7"></path><path d="M250.367 178.264V248.599C250.367 260.468 244.035 271.435 233.756 277.37L62.2445 376.392V286.877L250.367 178.264Z" fill="%23F5F6F7"></path><path d="M250.367 334.123V404.458C250.367 416.326 244.035 427.294 233.756 433.228L62.2445 532.25V442.735L250.367 334.123Z" fill="%23F5F6F7"></path><path d="M74.8938 146.632C115.385 146.632 148.21 113.807 148.21 73.316C148.21 32.8246 115.385 -6.10352e-05 74.8938 -6.10352e-05C34.4025 -6.10352e-05 1.57776 32.8246 1.57776 73.316C1.57776 113.807 34.4025 146.632 74.8938 146.632Z" fill="%23F5F6F7"></path></g><defs><clipPath id="clip0_1_66"><rect width="376.367" height="647" fill="white" transform="translate(-126)"></rect></clipPath></defs></svg>') center / contain no-repeat
 
   &__row
@@ -20,6 +20,8 @@
       display: flex
       flex-direction: column
       max-width: rem(418px)
+      position: relative
+      z-index: 1
 
     &--img
       width: 41%

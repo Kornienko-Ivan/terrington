@@ -22,7 +22,9 @@ $bottom_text = get_field('footer_bottom_text', 'options');
                     <?php if($logo): ?>
                         <div class="footer__col footer__col--logo">
                             <div class="footer__logo">
-                                <img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['title']; ?>">
+                                <a href="<?php echo home_url(); ?>">
+                                    <img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['title']; ?>">
+                                </a>
                             </div>
                         </div>
                     <?php endif; ?>
