@@ -20,7 +20,7 @@ if (is_tax('products-brand')) {
 
             <?php if($bg_image): ?>
                 <div class="hero__image">
-                    <img src="<?php echo esc_url(get_custom_image($bg_image, 'custom_1650x500')); ?>" alt="<?php echo esc_attr($bg_image['title']); ?>">
+                    <img src="<?php echo esc_url(get_custom_image($bg_image, 'custom_1700x600')); ?>" alt="<?php echo esc_attr($bg_image['title']); ?>">
                 </div>
             <?php endif; ?>
         </div>

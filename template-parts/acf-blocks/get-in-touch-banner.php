@@ -8,7 +8,7 @@ $bg = get_field('get_in_touch_background_image', 'options');
 <?php if($title || $button || $logo || $bg): ?>
 
     <?php if($bg):
-        $bg_large = wp_get_attachment_image_url($bg['ID'], 'custom_1650x500'); ?>
+        $bg_large = wp_get_attachment_image_url($bg['ID'], 'custom_1700x600'); ?>
         <style>
             .gitBanner {
                 --git-bg: url('<?php echo esc_url($bg_large); ?>');

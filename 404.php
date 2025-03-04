@@ -9,7 +9,7 @@ $error_image = get_field('error__image', 'option');
             <div class="container container--wide">
                 <section class="section-404">
                     <?php if ($error_image): ?>
-                        <img  src="<?php echo esc_url(get_custom_image($error_image, 'custom_1650x500')); ?>" alt="Error Image">
+                        <img  src="<?php echo esc_url(get_custom_image($error_image, 'custom_1700x600')); ?>" alt="Error Image">
                     <?php endif; ?>
                     <div class="section-404__content">
                         <h3><?php _e('ERROR 404.','terrington'); ?></h3>
