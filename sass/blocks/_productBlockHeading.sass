@@ -3,8 +3,16 @@
   &__wrapper
     background-color: $color-red
     border-radius: $radius-md
-    padding: rem(17px) 0
+    padding: rem(17px)
 
   h3
     color: $color-white
     text-align: center
+
++max-screen($breakpoint-sm)
+  .productBlockHeading
+    &__wrapper
+      padding: rem(14px)
+
+    h3
+      font-size: rem(16px)

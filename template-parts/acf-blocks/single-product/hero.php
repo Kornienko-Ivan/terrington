@@ -33,6 +33,14 @@ if($image || $title):
                 <span class="separator">/</span>
             <?php }
 
+            $products_overview_url = get_permalink(get_page_by_path('products-overview'));
+
+            if ($products_overview_url) { ?>
+                <a href="<?php echo esc_url($products_overview_url); ?>">Products</a>
+                <span class="separator">/</span>
+            <?php }
+
+
             $categories = get_the_terms($post->ID, 'products-category');
             if (!empty($categories) && !is_wp_error($categories)) {
                 $deepest_category = null;
@@ -62,7 +70,10 @@ if($image || $title):
                 <a href="<?php echo get_term_link($deepest_category); ?>"><?php echo $deepest_category->name; ?></a>
                 <span class="separator">/</span>
             <?php } ?>
-            <span class="current"><?php echo get_the_title(); ?></span>
+            <?php
+                $title = get_field('product_breadcrumb_title') ? get_field('product_breadcrumb_title') : get_the_title();
+            ?>
+            <span class="current"><?php echo $title  ?></span>
         </div>
 
     </div>

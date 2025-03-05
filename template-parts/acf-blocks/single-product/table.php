@@ -1,5 +1,5 @@
 <?php if(have_rows('table_rows')): ?>
-    <section class="productTable">
+    <section class="productTable" id="technical-data">
         <div class="container container--narrow">
             <div class="productTable__wrapper">
                 <table class="productTable__content">

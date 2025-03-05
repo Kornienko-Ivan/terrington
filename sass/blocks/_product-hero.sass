@@ -32,6 +32,10 @@
     a, span
       font-family: $font-family-title
       font-size: rem(17px)
+    a
+      +can-hover
+        &:hover
+          color: $color-red
     .separator
       margin-inline: rem(5px)
 
@@ -50,11 +54,11 @@
 
     &__list
       display: flex
+      flex-wrap: wrap
       justify-content: center
       align-items: center
       padding: rem(17px) 0
-      overflow-y: scroll
-      +hide-scrollbar
+
       a
         font-family: $font-family-title
         font-size: rem(14px)

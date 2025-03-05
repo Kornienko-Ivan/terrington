@@ -3,6 +3,8 @@
   &__content
     p
       line-height: 1.2
+      &:not(:only-child):not(:last-child)
+        margin-bottom: rem(30px)
 
 +max-screen($breakpoint-md)
   .productText

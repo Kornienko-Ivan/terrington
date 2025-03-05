@@ -1,7 +1,7 @@
 <?php 
 if(have_rows('bullet_points_columns')):
 ?>
-<section class="bulletPointsList">
+<section class="bulletPointsList product-content-block">
     <div class="container container--narrow">
         <div class="bulletPointsList__content">
             <?php while(have_rows('bullet_points_columns')): the_row(); 

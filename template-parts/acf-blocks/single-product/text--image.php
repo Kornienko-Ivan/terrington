@@ -3,7 +3,7 @@ $spacing = get_sub_field('text__image_spacing') == 'small' ? 'productTextImage--
 
 if(have_rows('text__image_list')):
     ?>
-    <section class="productTextImage <?php echo $spacing ?>">
+    <section class="productTextImage product-content-block <?php echo $spacing ?>">
         <div class="container container--narrow">
             <div class="productTextImage__content">
                 <?php
