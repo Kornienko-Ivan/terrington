@@ -5175,6 +5175,42 @@ body #app-wrapper {
 	margin: 5.9375rem 0 5.125rem;
 }
 
+.filter-results__categories .categories-row {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.filter-results__categories .category-item {
+	width: 25%;
+}
+
+.filter-results__categories .subcategories-row .subcategories {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.filter-results__categories .subcategories-row .subcategories-item {
+	width: 25%;
+}
+
+.filter-results__posts {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.filter-results__posts .post-item {
+	width: 25%;
+}
+
 @media (hover: hover) {
 
 .product-content-block a:hover {

@@ -71,3 +71,5 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
                 </svg>';
     }
 }
+
+

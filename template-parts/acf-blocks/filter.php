@@ -35,6 +35,15 @@ if (!empty($selected_category)) {
 }
 
 $query = new WP_Query($args);
+
+function get_category_image_url($term_id) {
+    $image_id = get_term_meta($term_id, 'category_product_image', true);
+    if ($image_id) {
+        return wp_get_attachment_url($image_id);
+    }
+
+    return 'default_image_url.jpg';
+}
 ?>
 
 <div class="filter">
@@ -43,6 +52,10 @@ $query = new WP_Query($args);
             <div class="dropdown" data-name="brand">
                 <div class="dropdown-selected">Brand</div>
                 <div class="dropdown-menu">
+                    <label class="dropdown-item">
+                        <input type="checkbox" class="see-all-brands">
+                        See All Brands
+                    </label>
                     <?php foreach ($brands as $brand): ?>
                         <label class="dropdown-item">
                             <input type="checkbox" name="brand[]" value="<?php echo esc_attr($brand->slug); ?>"
@@ -52,6 +65,7 @@ $query = new WP_Query($args);
                     <?php endforeach; ?>
                 </div>
             </div>
+
 
             <div class="dropdown" data-name="category">
                 <div class="dropdown-selected">Category</div>
@@ -85,20 +99,117 @@ $query = new WP_Query($args);
 
 <div class="filter-results">
     <div class="container container--wide">
-        <div id="filtered-content">
-            <?php
-            if ($query->have_posts()) {
-                while ($query->have_posts()) {
-                    $query->the_post();
-                    echo '<div class="product-item">';
-                    echo '<h3>' . get_the_title() . '</h3>';
-                    echo '</div>';
-                }
-            } else {
-                echo '<p>No products found.</p>';
-            }
-            wp_reset_postdata();
-            ?>
+        <div id="filtered-content" class="filter-results__wrapper">
+            <div class="filter-results__categories">
+                <div class="categories-row">
+                    <?php
+                    $categories = get_terms([
+                        'taxonomy' => 'products-category',
+                        'hide_empty' => false,
+                        'parent' => 0,
+                    ]);
+
+                    if (!empty($categories)) :
+                        foreach ($categories as $index => $category) :
+                            $subcategories = get_terms([
+                                'taxonomy' => 'products-category',
+                                'hide_empty' => false,
+                                'parent' => $category->term_id,
+                            ]);
+                            ?>
+                            <div class="category-item" data-category-id="<?= esc_attr($category->term_id) ?>">
+                                <h3><?= esc_html($category->name) ?></h3>
+                                <img src="<?= esc_url(get_category_image_url($category->term_id)) ?>" alt="" class="category-image">
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+                <div class="subcategories-row">
+                    <?php
+                    if (!empty($categories)) :
+                        foreach ($categories as $index => $category) :
+                            $subcategories = get_terms([
+                                'taxonomy' => 'products-category',
+                                'hide_empty' => false,
+                                'parent' => $category->term_id,
+                            ]);
+                            if (!empty($subcategories)) : ?>
+                                <div class="subcategories" data-category-id="<?= esc_attr($category->term_id) ?>">
+                                    <?php foreach ($subcategories as $sub_index => $subcategory) : ?>
+                                        <div class="subcategory-item" data-category-id="<?= esc_attr($category->term_id) ?>"
+                                             style="<?= $index === 0 ? '' : 'display: none;' ?>">
+                                            <h4><?= esc_html($subcategory->name) ?></h4>
+                                            <img src="<?= esc_url(get_category_image_url($subcategory->term_id)) ?>" alt="" class="subcategory-image">
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
+
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            <div class="filter-results__posts">
+                <?php
+                if (!empty($categories)) :
+                    $first_category = $categories[0];
+                    $first_subcategories = get_terms([
+                        'taxonomy' => 'products-category',
+                        'hide_empty' => false,
+                        'parent' => $first_category->term_id,
+                    ]);
+
+                    $brand = isset($_GET['brand']) ? sanitize_text_field($_GET['brand']) : '';
+
+                    if (!empty($first_subcategories)) :
+                        $first_subcategory = $first_subcategories[0];
+
+                        $tax_query = [
+                            [
+                                'taxonomy' => 'products-category',
+                                'field' => 'term_id',
+                                'terms' => $first_subcategory->term_id,
+                                'operator' => 'IN'
+                            ]
+                        ];
+
+                        if ($brand) {
+                            $tax_query[] = [
+                                'taxonomy' => 'products-brand',
+                                'field' => 'slug',
+                                'terms' => $brand,
+                                'operator' => 'IN',
+                            ];
+                        }
+
+                        $posts = get_posts([
+                            'post_type' => 'products',
+                            'tax_query' => $tax_query,
+                        ]);
+
+
+                        if ($posts) :
+                            foreach ($posts as $post) :
+                                setup_postdata($post);
+                                ?>
+                                <div class="post-item">
+                                    <h4><?= get_the_title() ?></h4>
+                                    <p><?= get_the_excerpt() ?></p>
+                                </div>
+                            <?php
+                            endforeach;
+                            wp_reset_postdata();
+                        else :
+                            echo "No posts";
+                        endif;
+                    endif;
+                endif;
+                ?>
+            </div>
+
         </div>
     </div>
 </div>
+
+
