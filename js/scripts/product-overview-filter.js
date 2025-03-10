@@ -42,63 +42,11 @@
             },
             beforeSend: function () {
                 // Clear previous content
-                $("#filtered-content .filter-results__categories").html("Loading categories...");
-                $("#filtered-content .filter-results__posts").html('');
-                $("#filtered-content .filter-results__posts").addClass( "hide" );
-
+                $("#filtered-content .filter-results__list").html("Loading...");
             },
             success: function (response) {
-                $("#filtered-content .filter-results__categories").html(response);
-                $(".subcategories").hide();
-                $(".subcategories[data-category-id='" + $(".category-item:first-child").data("category-id") + "']").show();
+                $("#filtered-content .filter-results__list").html(response);
             }
-        });
-    }
-
-    // Handle category click events
-    function handleCategoryClick() {
-        $(document).on("click", ".category-item", function () {
-            const categoryId = $(this).closest(".category-item").data("category-id");
-            console.log('handleCategoryClick');
-            $("#filtered-content .subcategories-row").removeClass( "hide" );
-
-            // Скрыть все подкатегории
-            $(".subcategories").css("display", "none");
-            console.log( $(".subcategories[data-category-id='" + categoryId + "']"));
-            // Показать подкатегории для выбранной категории
-            $(".subcategories[data-category-id='" + categoryId + "']").css("display", "flex");
-            $(".subcategory-item[data-category-id='" + categoryId + "']").css("display", "block");
-        });
-
-    }
-
-    // Handle subcategory click events
-    function handleSubcategoryClick() {
-        $(document).on("click", ".subcategory-item", function () {
-            const subcategoryName = $(this).text();
-            const categoryId = $(this).data("category-id");
-            const filters = getFilterValues();
-
-            $("#filtered-content .filter-results__posts").removeClass( "hide" );
-
-            $.ajax({
-                url: codelibry.ajax_url,
-                type: "POST",
-                data: {
-                    action: "filter_posts_by_subcategory",
-                    subcategory: subcategoryName,
-                    category_id: categoryId,
-                    brand: filters.brand,
-                    type: filters.type,
-                },
-                beforeSend: function () {
-                    $("#filtered-content .filter-results__posts").html("Loading posts...");
-                },
-                success: function (response) {
-                    $("#filtered-content .filter-results__posts").html(response);
-                    console.log(response);
-                }
-            });
         });
     }
 
@@ -131,8 +79,6 @@
             clearUrlParams();
             filterProducts();
         });
-        handleCategoryClick();
-        handleSubcategoryClick();
         toggleDropdown();
     });
 

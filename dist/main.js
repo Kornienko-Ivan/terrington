@@ -432,59 +432,11 @@
       },
       beforeSend: function beforeSend() {
         // Clear previous content
-        $("#filtered-content .filter-results__categories").html("Loading categories...");
-        $("#filtered-content .filter-results__posts").html('');
-        $("#filtered-content .filter-results__posts").addClass("hide");
+        $("#filtered-content .filter-results__list").html("Loading...");
       },
       success: function success(response) {
-        $("#filtered-content .filter-results__categories").html(response);
-        $(".subcategories").hide();
-        $(".subcategories[data-category-id='" + $(".category-item:first-child").data("category-id") + "']").show();
+        $("#filtered-content .filter-results__list").html(response);
       }
-    });
-  }
-
-  // Handle category click events
-  function handleCategoryClick() {
-    $(document).on("click", ".category-item", function () {
-      var categoryId = $(this).closest(".category-item").data("category-id");
-      console.log('handleCategoryClick');
-      $("#filtered-content .subcategories-row").removeClass("hide");
-
-      // Скрыть все подкатегории
-      $(".subcategories").css("display", "none");
-      console.log($(".subcategories[data-category-id='" + categoryId + "']"));
-      // Показать подкатегории для выбранной категории
-      $(".subcategories[data-category-id='" + categoryId + "']").css("display", "flex");
-      $(".subcategory-item[data-category-id='" + categoryId + "']").css("display", "block");
-    });
-  }
-
-  // Handle subcategory click events
-  function handleSubcategoryClick() {
-    $(document).on("click", ".subcategory-item", function () {
-      var subcategoryName = $(this).text();
-      var categoryId = $(this).data("category-id");
-      var filters = getFilterValues();
-      $("#filtered-content .filter-results__posts").removeClass("hide");
-      $.ajax({
-        url: codelibry.ajax_url,
-        type: "POST",
-        data: {
-          action: "filter_posts_by_subcategory",
-          subcategory: subcategoryName,
-          category_id: categoryId,
-          brand: filters.brand,
-          type: filters.type
-        },
-        beforeSend: function beforeSend() {
-          $("#filtered-content .filter-results__posts").html("Loading posts...");
-        },
-        success: function success(response) {
-          $("#filtered-content .filter-results__posts").html(response);
-          console.log(response);
-        }
-      });
     });
   }
   function clearUrlParams() {
@@ -497,30 +449,20 @@
       e.stopPropagation();
       var dropdown = $(this).closest(".dropdown");
       var menu = dropdown.find(".dropdown-menu");
-
-      // Закрываем все открытые меню, кроме текущего
       $(".dropdown-menu").not(menu).slideUp(200);
-
-      // Тоггл текущего меню
       menu.slideToggle(200);
     });
-
-    // Закрытие при клике вне dropdown
     $(document).on("click", function (e) {
       if (!$(e.target).closest(".dropdown").length) {
         $(".dropdown-menu").slideUp(200);
       }
     });
   }
-
-  // Инициализация обработчиков
   $(document).ready(function () {
     $(".filter-submit").on("click", function (event) {
       clearUrlParams();
       filterProducts();
     });
-    handleCategoryClick();
-    handleSubcategoryClick();
     toggleDropdown();
   });
 })(jQuery);

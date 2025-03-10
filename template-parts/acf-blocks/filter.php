@@ -35,15 +35,6 @@ if (!empty($selected_category)) {
 }
 
 $query = new WP_Query($args);
-
-function get_category_image_url($term_id) {
-    $image_id = get_term_meta($term_id, 'category_product_image', true);
-    if ($image_id) {
-        return wp_get_attachment_url($image_id);
-    }
-
-    return 'default_image_url.jpg';
-}
 ?>
 
 <div class="filter">
@@ -115,119 +106,21 @@ function get_category_image_url($term_id) {
 <div class="filter-results">
     <div class="container container--narrow">
         <div id="filtered-content" class="filter-results__wrapper">
-            <div class="filter-results__categories">
-                <div class="categories-row filter-row">
-                    <?php
-                    $categories = get_terms([
-                        'taxonomy' => 'products-category',
-                        'hide_empty' => false,
-                        'parent' => 0,
-                    ]);
-
-                    if (!empty($categories)) :
-                        foreach ($categories as $index => $category) :
-                            $subcategories = get_terms([
-                                'taxonomy' => 'products-category',
-                                'hide_empty' => false,
-                                'parent' => $category->term_id,
-                            ]);
-                            ?>
-                            <div class="category-item filter-card" data-category-id="<?= esc_attr($category->term_id) ?>">
-                                <h6><?= esc_html($category->name) ?></h6>
-                                <img src="<?= esc_url(get_category_image_url($category->term_id)) ?>" alt="" class="category-image">
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </div>
-                <div class="subcategories-row">
-                    <?php
-                    if (!empty($categories)) :
-                        foreach ($categories as $index => $category) :
-                            $subcategories = get_terms([
-                                'taxonomy' => 'products-category',
-                                'hide_empty' => false,
-                                'parent' => $category->term_id,
-                            ]);
-                            if (!empty($subcategories)) : ?>
-                                <div class="subcategories filter-row" data-category-id="<?= esc_attr($category->term_id) ?>">
-                                    <?php foreach ($subcategories as $sub_index => $subcategory) : ?>
-                                        <div class="subcategory-item filter-card" data-category-id="<?= esc_attr($category->term_id) ?>"
-                                             style="<?= $index === 0 ? '' : 'display: none;' ?>">
-                                            <h6><?= esc_html($subcategory->name) ?></h6>
-                                            <img src="<?= esc_url(get_category_image_url($subcategory->term_id)) ?>" alt="" class="subcategory-image">
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
+            <div class="filter-results__list filter-row">
+                <?php if ($query->have_posts()): ?>
+                    <?php while ($query->have_posts()): $query->the_post(); ?>
+                        <a class="post-item filter-card" href="<?php the_permalink(); ?>">
+                            <h6><?php the_title(); ?></h6>
+                            <?php if (has_post_thumbnail()): ?>
+                                <?php the_post_thumbnail('medium'); ?>
                             <?php endif; ?>
-
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </div>
+                        </a>
+                    <?php endwhile; ?>
+                    <?php wp_reset_postdata(); ?>
+                <?php else: ?>
+                    <p>No products found.</p>
+                <?php endif; ?>
             </div>
-
-            <div class="filter-results__posts filter-row">
-                <?php
-                if (!empty($categories)) :
-                    $first_category = $categories[0];
-                    $first_subcategories = get_terms([
-                        'taxonomy' => 'products-category',
-                        'hide_empty' => false,
-                        'parent' => $first_category->term_id,
-                    ]);
-
-                    $brand = isset($_GET['brand']) ? sanitize_text_field($_GET['brand']) : '';
-
-                    if (!empty($first_subcategories)) :
-                        $first_subcategory = $first_subcategories[0];
-
-                        $tax_query = [
-                            [
-                                'taxonomy' => 'products-category',
-                                'field' => 'term_id',
-                                'terms' => $first_subcategory->term_id,
-                                'operator' => 'IN'
-                            ]
-                        ];
-
-                        if ($brand) {
-                            $tax_query[] = [
-                                'taxonomy' => 'products-brand',
-                                'field' => 'slug',
-                                'terms' => $brand,
-                                'operator' => 'IN',
-                            ];
-                        }
-
-                        $posts = get_posts([
-                            'post_type' => 'products',
-                            'tax_query' => $tax_query,
-                        ]);
-
-
-                        if ($posts) :
-                            foreach ($posts as $post) :
-                                setup_postdata($post);
-                                ?>
-                                <div class="post-item filter-card">
-                                    <h6><?= get_the_title() ?></h6>
-                                    <?php if (has_post_thumbnail()): ?>
-                                        <img src="<?= get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>"
-                                             alt="<?= esc_attr(get_the_title()); ?>"
-                                             class="post-thumbnail" />
-                                    <?php endif; ?>
-                                </div>
-
-                            <?php
-                            endforeach;
-                            wp_reset_postdata();
-                        else :
-                            echo "No posts";
-                        endif;
-                    endif;
-                endif;
-                ?>
-            </div>
-
         </div>
     </div>
 </div>
