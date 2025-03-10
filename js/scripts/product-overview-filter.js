@@ -44,6 +44,8 @@
                 // Clear previous content
                 $("#filtered-content .filter-results__categories").html("Loading categories...");
                 $("#filtered-content .filter-results__posts").html('');
+                $("#filtered-content .filter-results__posts").addClass( "hide" );
+
             },
             success: function (response) {
                 $("#filtered-content .filter-results__categories").html(response);
@@ -55,9 +57,10 @@
 
     // Handle category click events
     function handleCategoryClick() {
-        $(document).on("click", ".category-item h3", function () {
+        $(document).on("click", ".category-item", function () {
             const categoryId = $(this).closest(".category-item").data("category-id");
             console.log('handleCategoryClick');
+            $("#filtered-content .subcategories-row").removeClass( "hide" );
 
             // Скрыть все подкатегории
             $(".subcategories").css("display", "none");
@@ -76,6 +79,8 @@
             const categoryId = $(this).data("category-id");
             const filters = getFilterValues();
 
+            $("#filtered-content .filter-results__posts").removeClass( "hide" );
+
             $.ajax({
                 url: codelibry.ajax_url,
                 type: "POST",
@@ -91,6 +96,7 @@
                 },
                 success: function (response) {
                     $("#filtered-content .filter-results__posts").html(response);
+                    console.log(response);
                 }
             });
         });
@@ -102,7 +108,24 @@
         window.history.pushState({}, '', url);
     }
 
-    // Initialize event handlers
+    function toggleDropdown() {
+        $(document).on("click", ".dropdown-selected", function (e) {
+            e.stopPropagation();
+            let dropdown = $(this).closest(".dropdown");
+            let menu = dropdown.find(".dropdown-menu");
+
+            $(".dropdown-menu").not(menu).slideUp(200);
+
+            menu.slideToggle(200);
+        });
+
+        $(document).on("click", function (e) {
+            if (!$(e.target).closest(".dropdown").length) {
+                $(".dropdown-menu").slideUp(200);
+            }
+        });
+    }
+
     $(document).ready(function () {
         $(".filter-submit").on("click", function(event) {
             clearUrlParams();
@@ -110,5 +133,7 @@
         });
         handleCategoryClick();
         handleSubcategoryClick();
+        toggleDropdown();
     });
+
 })(jQuery);

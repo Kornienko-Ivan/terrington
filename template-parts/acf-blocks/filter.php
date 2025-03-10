@@ -47,61 +47,76 @@ function get_category_image_url($term_id) {
 ?>
 
 <div class="filter">
-    <div class="container container--wide">
+    <div class="container container--narrow">
         <div class="filter-bar">
             <div class="dropdown" data-name="brand">
-                <div class="dropdown-selected">Brand</div>
+                <div class="dropdown-selected">
+                    <span>Brand</span>
+                    <?php echo get_inline_svg('filter-arrow') ?>
+                </div>
                 <div class="dropdown-menu">
-                    <label class="dropdown-item">
-                        <input type="checkbox" class="see-all-brands">
-                        See All Brands
-                    </label>
-                    <?php foreach ($brands as $brand): ?>
+                    <div class="dropdown-list">
                         <label class="dropdown-item">
-                            <input type="checkbox" name="brand[]" value="<?php echo esc_attr($brand->slug); ?>"
-                                <?php echo in_array($brand->slug, (array) ($_GET['brand'] ?? [])) ? 'checked' : ''; ?>>
-                            <?php echo esc_html($brand->name); ?>
+                            <input type="checkbox" class="see-all-brands">
+                            See All Brands
                         </label>
-                    <?php endforeach; ?>
+                        <?php foreach ($brands as $brand): ?>
+                            <label class="dropdown-item">
+                                <input type="checkbox" name="brand[]" value="<?php echo esc_attr($brand->slug); ?>"
+                                    <?php echo in_array($brand->slug, (array) ($_GET['brand'] ?? [])) ? 'checked' : ''; ?>>
+                                <?php echo esc_html($brand->name); ?>
+                            </label>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
 
 
             <div class="dropdown" data-name="category">
-                <div class="dropdown-selected">Category</div>
+                <div class="dropdown-selected">
+                    <span> Category </span>
+                    <?php echo get_inline_svg('filter-arrow') ?>
+                </div>
                 <div class="dropdown-menu">
-                    <?php foreach ($categories as $category): ?>
-                        <label class="dropdown-item">
-                            <input type="checkbox" name="category[]" value="<?php echo esc_attr($category->slug); ?>"
-                                <?php echo in_array($category->slug, (array) ($_GET['category'] ?? [])) ? 'checked' : ''; ?>>
-                            <?php echo esc_html($category->name); ?>
-                        </label>
-                    <?php endforeach; ?>
+                    <div class="dropdown-list">
+                        <?php foreach ($categories as $category): ?>
+                            <label class="dropdown-item">
+                                <input type="checkbox" name="category[]" value="<?php echo esc_attr($category->slug); ?>"
+                                    <?php echo in_array($category->slug, (array) ($_GET['category'] ?? [])) ? 'checked' : ''; ?>>
+                                <?php echo esc_html($category->name); ?>
+                            </label>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
 
             <div class="dropdown" data-name="type">
-                <div class="dropdown-selected">Type</div>
+                <div class="dropdown-selected">
+                    <span>Type</span>
+                    <?php echo get_inline_svg('filter-arrow') ?>
+                </div>
                 <div class="dropdown-menu">
-                    <?php foreach ($types as $type): ?>
-                        <label class="dropdown-item">
-                            <input type="checkbox" name="type[]" value="<?php echo esc_attr($type->slug); ?>">
-                            <?php echo esc_html($type->name); ?>
-                        </label>
-                    <?php endforeach; ?>
+                    <div class="dropdown-list">
+                        <?php foreach ($types as $type): ?>
+                            <label class="dropdown-item">
+                                <input type="checkbox" name="type[]" value="<?php echo esc_attr($type->slug); ?>">
+                                <?php echo esc_html($type->name); ?>
+                            </label>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
 
-            <button class="filter-submit">Submit</button>
+            <button class="filter-submit button">Submit</button>
         </div>
     </div>
 </div>
 
 <div class="filter-results">
-    <div class="container container--wide">
+    <div class="container container--narrow">
         <div id="filtered-content" class="filter-results__wrapper">
             <div class="filter-results__categories">
-                <div class="categories-row">
+                <div class="categories-row filter-row">
                     <?php
                     $categories = get_terms([
                         'taxonomy' => 'products-category',
@@ -117,8 +132,8 @@ function get_category_image_url($term_id) {
                                 'parent' => $category->term_id,
                             ]);
                             ?>
-                            <div class="category-item" data-category-id="<?= esc_attr($category->term_id) ?>">
-                                <h3><?= esc_html($category->name) ?></h3>
+                            <div class="category-item filter-card" data-category-id="<?= esc_attr($category->term_id) ?>">
+                                <h6><?= esc_html($category->name) ?></h6>
                                 <img src="<?= esc_url(get_category_image_url($category->term_id)) ?>" alt="" class="category-image">
                             </div>
                         <?php endforeach; ?>
@@ -134,11 +149,11 @@ function get_category_image_url($term_id) {
                                 'parent' => $category->term_id,
                             ]);
                             if (!empty($subcategories)) : ?>
-                                <div class="subcategories" data-category-id="<?= esc_attr($category->term_id) ?>">
+                                <div class="subcategories filter-row" data-category-id="<?= esc_attr($category->term_id) ?>">
                                     <?php foreach ($subcategories as $sub_index => $subcategory) : ?>
-                                        <div class="subcategory-item" data-category-id="<?= esc_attr($category->term_id) ?>"
+                                        <div class="subcategory-item filter-card" data-category-id="<?= esc_attr($category->term_id) ?>"
                                              style="<?= $index === 0 ? '' : 'display: none;' ?>">
-                                            <h4><?= esc_html($subcategory->name) ?></h4>
+                                            <h6><?= esc_html($subcategory->name) ?></h6>
                                             <img src="<?= esc_url(get_category_image_url($subcategory->term_id)) ?>" alt="" class="subcategory-image">
                                         </div>
                                     <?php endforeach; ?>
@@ -150,7 +165,7 @@ function get_category_image_url($term_id) {
                 </div>
             </div>
 
-            <div class="filter-results__posts">
+            <div class="filter-results__posts filter-row">
                 <?php
                 if (!empty($categories)) :
                     $first_category = $categories[0];
@@ -193,10 +208,15 @@ function get_category_image_url($term_id) {
                             foreach ($posts as $post) :
                                 setup_postdata($post);
                                 ?>
-                                <div class="post-item">
-                                    <h4><?= get_the_title() ?></h4>
-                                    <p><?= get_the_excerpt() ?></p>
+                                <div class="post-item filter-card">
+                                    <h6><?= get_the_title() ?></h6>
+                                    <?php if (has_post_thumbnail()): ?>
+                                        <img src="<?= get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>"
+                                             alt="<?= esc_attr(get_the_title()); ?>"
+                                             class="post-thumbnail" />
+                                    <?php endif; ?>
                                 </div>
+
                             <?php
                             endforeach;
                             wp_reset_postdata();

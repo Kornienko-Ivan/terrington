@@ -434,6 +434,7 @@
         // Clear previous content
         $("#filtered-content .filter-results__categories").html("Loading categories...");
         $("#filtered-content .filter-results__posts").html('');
+        $("#filtered-content .filter-results__posts").addClass("hide");
       },
       success: function success(response) {
         $("#filtered-content .filter-results__categories").html(response);
@@ -445,9 +446,10 @@
 
   // Handle category click events
   function handleCategoryClick() {
-    $(document).on("click", ".category-item h3", function () {
+    $(document).on("click", ".category-item", function () {
       var categoryId = $(this).closest(".category-item").data("category-id");
       console.log('handleCategoryClick');
+      $("#filtered-content .subcategories-row").removeClass("hide");
 
       // Скрыть все подкатегории
       $(".subcategories").css("display", "none");
@@ -464,6 +466,7 @@
       var subcategoryName = $(this).text();
       var categoryId = $(this).data("category-id");
       var filters = getFilterValues();
+      $("#filtered-content .filter-results__posts").removeClass("hide");
       $.ajax({
         url: codelibry.ajax_url,
         type: "POST",
@@ -479,6 +482,7 @@
         },
         success: function success(response) {
           $("#filtered-content .filter-results__posts").html(response);
+          console.log(response);
         }
       });
     });
@@ -488,8 +492,28 @@
     url.search = '';
     window.history.pushState({}, '', url);
   }
+  function toggleDropdown() {
+    $(document).on("click", ".dropdown-selected", function (e) {
+      e.stopPropagation();
+      var dropdown = $(this).closest(".dropdown");
+      var menu = dropdown.find(".dropdown-menu");
 
-  // Initialize event handlers
+      // Закрываем все открытые меню, кроме текущего
+      $(".dropdown-menu").not(menu).slideUp(200);
+
+      // Тоггл текущего меню
+      menu.slideToggle(200);
+    });
+
+    // Закрытие при клике вне dropdown
+    $(document).on("click", function (e) {
+      if (!$(e.target).closest(".dropdown").length) {
+        $(".dropdown-menu").slideUp(200);
+      }
+    });
+  }
+
+  // Инициализация обработчиков
   $(document).ready(function () {
     $(".filter-submit").on("click", function (event) {
       clearUrlParams();
@@ -497,6 +521,7 @@
     });
     handleCategoryClick();
     handleSubcategoryClick();
+    toggleDropdown();
   });
 })(jQuery);
 "use strict";
