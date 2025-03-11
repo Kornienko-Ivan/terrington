@@ -805,12 +805,14 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .servicingOfferings{margin:0 0 3.625rem}
 .servicingOfferings .container--wide{padding:6.625rem 0 3.625rem;background-color:#f5f6f7;border-radius:20px}
 .servicingOfferings h2{text-align:center}
-.servicingOfferings__brandsList{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-column-gap:.925rem;-moz-column-gap:.925rem;column-gap:.925rem;margin-top:5.5rem}
-.servicingOfferings__brandsList__item{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;aspect-ratio:146/62;min-width:6.25rem;max-width:9.125rem;width:100%;background-color:#fff;border-radius:20px}
+.servicingOfferings__brandsList{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-column-gap:.925rem;-moz-column-gap:.925rem;column-gap:.925rem;margin-top:5.5rem;overflow-x:scroll;scrollbar-width:none;-ms-overflow-style:none}
+.servicingOfferings__brandsList::-webkit-scrollbar{display:none}
+.servicingOfferings__brandsList__item{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;aspect-ratio:146/62;min-width:6.25rem;max-width:9.125rem;width:100%;background-color:#fff;border-radius:20px;cursor:pointer}
 .servicingOfferings__brandsList__itemImg{width:80%}
-.servicingOfferings__categoriesList{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-column-gap:1.3125rem;-moz-column-gap:1.3125rem;column-gap:1.3125rem;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-top:2.9275rem}
-.servicingOfferings__categoriesList__item{max-width:16.625rem;background-color:#fff;border-radius:20px;padding:2.625rem 3.25rem 3.75rem}
-.servicingOfferings__categoriesList__itemName{font-family:"Bricolage Grotesque",sans-serif;font-size:1.125rem;font-weight:600;line-height:1.2px;margin-bottom:3.1875rem}
+.servicingOfferings__categoriesList{display:grid;grid-template-columns:repeat(4,minmax(12.875rem,16.625rem));gap:1.3125rem;margin-top:2.9275rem;position:relative}
+.servicingOfferings__categoriesList .loading-wrapper{margin:0 auto;position:absolute;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}
+.servicingOfferings__categoriesList__item{background-color:#fff;border-radius:20px;padding:2.625rem 3.25rem 3.75rem}
+.servicingOfferings__categoriesList__itemName{font-family:"Bricolage Grotesque",sans-serif;font-size:1.125rem;font-weight:600;margin-bottom:3.1875rem}
 .servicingOfferings__categoriesList__itemBrochures{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;row-gap:1.875rem}
 .servicingOfferings__categoriesList__itemBrochures a{font-size:1.0625rem}
 .textBlock{margin:3.75rem 0}
@@ -826,6 +828,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .filter-bar .dropdown-item{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-column-gap:.625rem;-moz-column-gap:.625rem;column-gap:.625rem;font-size:.9375rem}
 .filter-bar .dropdown-item input[type="checkbox"]{appearance:none;-webkit-appearance:none;-moz-appearance:none;width:.625rem;height:.625rem;border:.0625rem solid #000;border-radius:50%;position:relative;cursor:pointer;-ms-flex-negative:0;flex-shrink:0}
 .filter-bar .dropdown-item input[type="checkbox"]:checked{background-color:#e61f26;border:1px solid #e61f26}
+.filter-bar .dropdown-item.child-category{margin-left:.625rem}
 .filter-bar .button{padding:.875rem 2.0625rem;min-width:unset}
 .filter-results{margin-bottom:5.154375rem}
 .filter-results .filter-row{display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));gap:1.125rem}
@@ -1729,6 +1732,8 @@ h4,.h4{font-size:1.5625rem}
 .brands .manfacturers__listItem__wrapper{border-radius:11px;width:60%}
 .news{padding:3.75rem 0 3rem}
 .news__list{grid-template-columns:repeat(2,minmax(6.25rem,31.25rem))}
+.servicingOfferings__categoriesList{grid-template-columns:repeat(3,minmax(12.875rem,1fr))}
+.servicingOfferings__categoriesList__item{padding:2.5rem}
 .filter-results .filter-card h6{left:.625rem;font-size:1.125rem;padding:0 .625rem}
 }@media only screen and (max-width:769px){#app{min-height:0}
 .text--size--10,.text--size--10 *{font-size:.625rem}
@@ -1809,7 +1814,7 @@ h4,.h4{font-size:1.5625rem}
 .servicingOfferings .container--wide{padding:2.625rem 0 2.375rem}
 .servicingOfferings__brandsList{margin-top:2.625rem;overflow-y:scroll;scrollbar-width:none;-ms-overflow-style:none}
 .servicingOfferings__brandsList::-webkit-scrollbar{display:none}
-.servicingOfferings__categoriesList{row-gap:1.3125rem}
+.servicingOfferings__categoriesList{gap:1.3125rem;grid-template-columns:repeat(2,minmax(12.875rem,1fr))}
 .servicingOfferings__categoriesList__item{max-width:100%;background-color:#fff;border-radius:20px;padding:1.5rem}
 .servicingOfferings__categoriesList__itemName{font-size:1rem;margin-bottom:2.375rem}
 .servicingOfferings__categoriesList__itemBrochures a{font-size:.875rem}
@@ -1929,6 +1934,7 @@ h5,.h5{font-size:1.0625rem}
 .productBrochures__list{-webkit-column-gap:.625rem;-moz-column-gap:.625rem;column-gap:.625rem;row-gap:.625rem}
 .productBrochures__listItem{-webkit-column-gap:.625rem;-moz-column-gap:.625rem;column-gap:.625rem;padding:1.0625rem 1.375rem 1.0625rem 1.0625rem;-ms-flex-negative:1;flex-shrink:1}
 .productBrochures__listItem__name{font-size:.875rem;line-height:1.2}
+.servicingOfferings__categoriesList{grid-template-columns:repeat(1,minmax(12.875rem,1fr))}
 .servicingOfferings__categoriesList__item{max-width:100%;width:100%}
 .filter-results .filter-row{grid-template-columns:repeat(1,minmax(140px,1fr))}
 .filter-results .filter-card{aspect-ratio:3/2}

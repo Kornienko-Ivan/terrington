@@ -112,6 +112,9 @@ $brands = get_terms(array(
     jQuery(document).ready(function($) {
         $('.servicingOfferings__brandsList__item').click(function(){
             const brand = $(this).attr('data-brand-slug');
+            const categoriesList = $('.servicingOfferings__categoriesList');
+
+            categoriesList.html('<div class="loading-wrapper">Loading...</div>');
 
             $.ajax({
                 type: 'post',
@@ -121,9 +124,10 @@ $brands = get_terms(array(
                     brand: brand
                 },
                 success : function(result){
-                    $('.servicingOfferings__categoriesList').html(result);
+                    categoriesList.html(result);
                 }
             })
         })
     })
 </script>
+

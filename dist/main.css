@@ -5106,6 +5106,13 @@ body #app-wrapper {
 	-moz-column-gap: 0.925rem;
 	column-gap: 0.925rem;
 	margin-top: 5.5rem;
+	overflow-x: scroll;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.servicingOfferings__brandsList::-webkit-scrollbar {
+	display: none;
 }
 
 .servicingOfferings__brandsList__item {
@@ -5124,6 +5131,7 @@ body #app-wrapper {
 	width: 100%;
 	background-color: #ffffff;
 	border-radius: 20px;
+	cursor: pointer;
 }
 
 .servicingOfferings__brandsList__itemImg {
@@ -5131,19 +5139,22 @@ body #app-wrapper {
 }
 
 .servicingOfferings__categoriesList {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-column-gap: 1.3125rem;
-	-moz-column-gap: 1.3125rem;
-	column-gap: 1.3125rem;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(4, minmax(12.875rem, 16.625rem));
+	gap: 1.3125rem;
 	margin-top: 2.9275rem;
+	position: relative;
+}
+
+.servicingOfferings__categoriesList .loading-wrapper {
+	margin: 0 auto;
+	position: absolute;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
 }
 
 .servicingOfferings__categoriesList__item {
-	max-width: 16.625rem;
 	background-color: #ffffff;
 	border-radius: 20px;
 	padding: 2.625rem 3.25rem 3.75rem;
@@ -5153,7 +5164,6 @@ body #app-wrapper {
 	font-family: "Bricolage Grotesque", sans-serif;
 	font-size: 1.125rem;
 	font-weight: 600;
-	line-height: 1.2px;
 	margin-bottom: 3.1875rem;
 }
 
@@ -5286,6 +5296,10 @@ body #app-wrapper {
 .filter-bar .dropdown-item input[type="checkbox"]:checked {
 	background-color: #e61f26;
 	border: 1px solid #e61f26;
+}
+
+.filter-bar .dropdown-item.child-category {
+	margin-left: 0.625rem;
 }
 
 .filter-bar .button {
@@ -10134,6 +10148,14 @@ h4,
 	grid-template-columns: repeat(2, minmax(6.25rem, 31.25rem));
 }
 
+.servicingOfferings__categoriesList {
+	grid-template-columns: repeat(3, minmax(12.875rem, 1fr));
+}
+
+.servicingOfferings__categoriesList__item {
+	padding: 2.5rem;
+}
+
 .filter-results .filter-card h6 {
 	left: 0.625rem;
 	font-size: 1.125rem;
@@ -10579,7 +10601,8 @@ h4,
 }
 
 .servicingOfferings__categoriesList {
-	row-gap: 1.3125rem;
+	gap: 1.3125rem;
+	grid-template-columns: repeat(2, minmax(12.875rem, 1fr));
 }
 
 .servicingOfferings__categoriesList__item {
@@ -11147,6 +11170,10 @@ h5,
 .productBrochures__listItem__name {
 	font-size: 0.875rem;
 	line-height: 1.2;
+}
+
+.servicingOfferings__categoriesList {
+	grid-template-columns: repeat(1, minmax(12.875rem, 1fr));
 }
 
 .servicingOfferings__categoriesList__item {

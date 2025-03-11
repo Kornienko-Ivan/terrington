@@ -13,6 +13,8 @@
     display: flex
     column-gap: rem(14.8px)
     margin-top: rem(88px)
+    overflow-x: scroll
+    +hide-scrollbar
     &__item
       display: flex
       align-items: center
@@ -23,18 +25,25 @@
       width: 100%
       background-color: $color-white
       border-radius: $radius-md
+      cursor: pointer
+
       +can-hover
         &:hover
           background-color: $color-red
     &__itemImg
       width: 80%
   &__categoriesList
-    display: flex
-    column-gap: rem(21px)
-    flex-wrap: wrap
+    display: grid
+    grid-template-columns: repeat(4, minmax(rem(206px), rem(266px)))
+    gap: rem(21px)
     margin-top: rem(46.84px)
+    position: relative
+    .loading-wrapper
+      margin: 0 auto
+      position: absolute
+      left: 50%
+      transform: translateX(-50%)
     &__item
-      max-width: rem(266px)
       background-color: $color-white
       border-radius: $radius-md
       padding: rem(42px) rem(52px) rem(60px)
@@ -42,7 +51,6 @@
       font-family: $font-family-title
       font-size: rem(18px)
       font-weight: 600
-      line-height: 1.2px
       margin-bottom: rem(51px)
     &__itemBrochures
       display: flex
@@ -50,6 +58,14 @@
       row-gap: rem(30px)
       a
         font-size: rem(17px)
+
+
++max-screen($breakpoint-lg)
+  .servicingOfferings
+    &__categoriesList
+      grid-template-columns: repeat(3, minmax(rem(206px), 1fr))
+      &__item
+        padding: rem(40px)
 
 +max-screen($breakpoint-md)
   .servicingOfferings
@@ -65,7 +81,9 @@
       +hide-scrollbar
 
     &__categoriesList
-      row-gap: rem(21px)
+      gap: rem(21px)
+      grid-template-columns: repeat(2, minmax(rem(206px), 1fr))
+
       &__item
         max-width: 100%
         background-color: $color-white
@@ -81,6 +99,7 @@
 +max-screen($breakpoint-sm)
   .servicingOfferings
     &__categoriesList
+      grid-template-columns: repeat(1, minmax(rem(206px), 1fr))
 
       &__item
         max-width: 100%
