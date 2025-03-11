@@ -1878,7 +1878,7 @@ h5,.h5{font-size:1.0625rem}
 .review__image{width:51%;margin-top:-1.925rem}
 .review__text{margin-top:1.375rem}
 .review__text p{font-size:.6875rem}
-.review .button{margin-top:2.4375rem;padding:.625rem 1.375rem;font-size:.5625rem}
+.review .button{margin-top:2.4375rem;padding:.5625rem .875rem;font-size:.5625rem}
 .manfacturers__list{grid-template-columns:repeat(1,minmax(6.25rem,40.625rem))}
 .manfacturers__listItem{aspect-ratio:3/2}
 .categories__list{grid-template-columns:repeat(2,minmax(6.25rem,19.5625rem))}
