@@ -5225,11 +5225,19 @@ body #app-wrapper {
 	top: 120%;
 	left: 0;
 	width: 100%;
+	max-height: 31.25rem;
 	border: 1px solid #000000;
 	border-radius: 20px;
 	background-color: #ffffff;
 	padding: 0.875rem 1.3125rem 0.875rem 1.4375rem;
-	z-index: 1;
+	z-index: 3;
+	overflow-y: scroll;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.filter-bar .dropdown-menu::-webkit-scrollbar {
+	display: none;
 }
 
 .filter-bar .dropdown-menu .dropdown-list {

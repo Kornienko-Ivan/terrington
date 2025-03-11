@@ -819,7 +819,8 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .filter-bar .dropdown-selected{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;border:1px solid #000;border-radius:100px;padding:.875rem 1.3125rem .875rem 1.4375rem;cursor:pointer}
 .filter-bar .dropdown-selected span{font-family:"Bricolage Grotesque",sans-serif;font-size:.9375rem;font-weight:500}
 .filter-bar .dropdown-selected svg{width:.57125rem;height:.57125rem}
-.filter-bar .dropdown-menu{display:none;position:absolute;top:120%;left:0;width:100%;border:1px solid #000;border-radius:20px;background-color:#fff;padding:.875rem 1.3125rem .875rem 1.4375rem;z-index:1}
+.filter-bar .dropdown-menu{display:none;position:absolute;top:120%;left:0;width:100%;max-height:31.25rem;border:1px solid #000;border-radius:20px;background-color:#fff;padding:.875rem 1.3125rem .875rem 1.4375rem;z-index:3;overflow-y:scroll;scrollbar-width:none;-ms-overflow-style:none}
+.filter-bar .dropdown-menu::-webkit-scrollbar{display:none}
 .filter-bar .dropdown-menu .dropdown-list{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;row-gap:.625rem}
 .filter-bar .dropdown-item{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-column-gap:.625rem;-moz-column-gap:.625rem;column-gap:.625rem;font-size:.9375rem}
 .filter-bar .dropdown-item input[type="checkbox"]{appearance:none;-webkit-appearance:none;-moz-appearance:none;width:.625rem;height:.625rem;border:.0625rem solid #000;border-radius:50%;position:relative;cursor:pointer;-ms-flex-negative:0;flex-shrink:0}

@@ -30,11 +30,14 @@
     top: 120%
     left: 0
     width: 100%
+    max-height: rem(500px)
     border: 1px solid $color-black
     border-radius: $radius-md
     background-color: $color-white
     padding: rem(14px) rem(21px) rem(14px) rem(23px)
-    z-index: 1
+    z-index: 3
+    overflow-y: scroll
+    +hide-scrollbar
 
     .dropdown-list
       display: flex
