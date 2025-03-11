@@ -1,5 +1,7 @@
 .review
-  padding: rem(208px) 0 rem(197px)
+  margin: rem(208px) 0 rem(197px)
+  .infoSection + &
+    margin-top: 0
   &__row
     display: flex
     justify-content: space-between
@@ -27,9 +29,10 @@
     margin-top: rem(41px)
     padding: rem(13px) rem(29px)
 
+
 +max-screen($breakpoint-lg)
   .review
-    padding: rem(42px) 0 rem(38px)
+    margin: rem(42px) 0 rem(38px)
     &__row
       flex-direction: column-reverse
     &__col
@@ -49,6 +52,10 @@
     .button
       margin-top: rem(41px)
       padding: rem(13px) rem(29px)
+      max-width: 45%
+      min-width: unset
+      word-break: break-word
+
 
 +max-screen($breakpoint-sm)
   .review
@@ -65,4 +72,3 @@
       margin-top: rem(39px)
       padding: rem(10px) rem(22px)
       font-size: rem(9px)
-      min-width: max-content

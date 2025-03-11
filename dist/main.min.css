@@ -618,7 +618,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .heroBrands__slider__prev{left:-1.25rem}
 .heroBrands__slider__next{right:-1.25rem}
 .heroBrands__slider__next svg{-webkit-transform:rotate(180deg);transform:rotate(180deg)}
-.infoSection{padding:9.5rem 0 11.6875rem;position:relative}
+.infoSection{padding:9.5rem 0 11.6875rem;position:relative;overflow:hidden}
 .infoSection:before{content:'';position:absolute;top:2.1875rem;left:-9.125rem;width:22%;height:84%;z-index:0;background:url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="-126 0 376.37 647"><g clip-path="url(%23clip0_1_66)"><path d="M-126 88.6997V159.035C-126 170.903 -119.668 181.871 -109.389 187.805L62.1223 286.827V197.312L-126 88.6997Z" fill="%23F5F6F7"></path><path d="M-0.339111 447.761L-0.585175 447.679V610.796L62.1222 647V375.316L-120.3 269.995V338.107C-120.3 349.795 -114.025 360.583 -103.867 366.363L-0.930046 424.93" fill="%23F5F6F7"></path><path d="M250.367 178.264V248.599C250.367 260.468 244.035 271.435 233.756 277.37L62.2445 376.392V286.877L250.367 178.264Z" fill="%23F5F6F7"></path><path d="M250.367 334.123V404.458C250.367 416.326 244.035 427.294 233.756 433.228L62.2445 532.25V442.735L250.367 334.123Z" fill="%23F5F6F7"></path><path d="M74.8938 146.632C115.385 146.632 148.21 113.807 148.21 73.316C148.21 32.8246 115.385 -6.10352e-05 74.8938 -6.10352e-05C34.4025 -6.10352e-05 1.57776 32.8246 1.57776 73.316C1.57776 113.807 34.4025 146.632 74.8938 146.632Z" fill="%23F5F6F7"></path></g><defs><clipPath id="clip0_1_66"><rect width="376.367" height="647" fill="white" transform="translate(-126)"></rect></clipPath></defs></svg>') center/contain no-repeat}
 .infoSection__row{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
 .infoSection__col--content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;max-width:26.125rem;position:relative;z-index:1}
@@ -669,7 +669,8 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .services__listItem{position:relative;aspect-ratio:357/360;width:100%;border-radius:20px;overflow:hidden}
 .services h4{position:absolute;left:2.3125rem;bottom:1.75rem;color:#fff}
 .services img{width:100%;height:100%;-o-object-fit:cover;object-fit:cover}
-.review{padding:13rem 0 12.3125rem}
+.review{margin:13rem 0 12.3125rem}
+.infoSection+.review{margin-top:0}
 .review__row{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
 .review__col--image{width:41%}
 .review__col--content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:28.4375rem}
@@ -1712,13 +1713,13 @@ h4,.h4{font-size:1.5625rem}
 .services__wrapper{padding-block:6.125rem;padding-inline:1.875rem}
 .services h4{left:.625rem;font-size:1.1875rem}
 .services__list{margin-top:2.5rem}
-.review{padding:2.625rem 0 2.375rem}
+.review{margin:2.625rem 0 2.375rem}
 .review__row{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}
 .review__col--image{width:100%}
 .review__col--content{max-width:90%}
 .review__image{margin-left:auto;width:41%;margin-top:-2.75rem}
 .review__text{margin-top:1.5625rem}
-.review .button{margin-top:2.5625rem;padding:.8125rem 1.8125rem}
+.review .button{margin-top:2.5625rem;padding:.8125rem 1.8125rem;max-width:45%;min-width:unset;word-break:break-word}
 .manfacturers{padding:2.625rem 0 1.8125rem}
 .manfacturers__listItem__wrapper{border-radius:11px;width:60%}
 .manfacturers__listItem__list{grid-template-columns:repeat(3,minmax(6.25rem,23.25rem))}
@@ -1877,7 +1878,7 @@ h5,.h5{font-size:1.0625rem}
 .review__image{width:51%;margin-top:-1.925rem}
 .review__text{margin-top:1.375rem}
 .review__text p{font-size:.6875rem}
-.review .button{margin-top:2.4375rem;padding:.625rem 1.375rem;font-size:.5625rem;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content}
+.review .button{margin-top:2.4375rem;padding:.625rem 1.375rem;font-size:.5625rem}
 .manfacturers__list{grid-template-columns:repeat(1,minmax(6.25rem,40.625rem))}
 .manfacturers__listItem{aspect-ratio:3/2}
 .categories__list{grid-template-columns:repeat(2,minmax(6.25rem,19.5625rem))}

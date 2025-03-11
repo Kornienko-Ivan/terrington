@@ -3807,6 +3807,7 @@ body #app-wrapper {
 .infoSection {
 	padding: 9.5rem 0 11.6875rem;
 	position: relative;
+	overflow: hidden;
 }
 
 .infoSection:before {
@@ -4179,7 +4180,11 @@ body #app-wrapper {
 }
 
 .review {
-	padding: 13rem 0 12.3125rem;
+	margin: 13rem 0 12.3125rem;
+}
+
+.infoSection + .review {
+	margin-top: 0;
 }
 
 .review__row {
@@ -10055,7 +10060,7 @@ h4,
 }
 
 .review {
-	padding: 2.625rem 0 2.375rem;
+	margin: 2.625rem 0 2.375rem;
 }
 
 .review__row {
@@ -10086,6 +10091,9 @@ h4,
 .review .button {
 	margin-top: 2.5625rem;
 	padding: 0.8125rem 1.8125rem;
+	max-width: 45%;
+	min-width: unset;
+	word-break: break-word;
 }
 
 .manfacturers {
@@ -10910,9 +10918,6 @@ h5,
 	margin-top: 2.4375rem;
 	padding: 0.625rem 1.375rem;
 	font-size: 0.5625rem;
-	min-width: -webkit-max-content;
-	min-width: -moz-max-content;
-	min-width: max-content;
 }
 
 .manfacturers__list {
