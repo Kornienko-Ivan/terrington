@@ -5325,11 +5325,6 @@ body #app-wrapper {
 }
 
 .filter-results__categories .subcategories-row .subcategories {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
 	position: relative;
 	z-index: 1;
 }
@@ -5364,7 +5359,7 @@ body #app-wrapper {
 
 .filter-results .filter-row {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(220px, 254px));
+	grid-template-columns: repeat(4, minmax(200px, 254px));
 	gap: 1.125rem;
 	width: 100%;
 }
@@ -5437,8 +5432,10 @@ body #app-wrapper {
 	position: absolute;
 	left: 1.425rem;
 	bottom: 1.3625rem;
+	word-break: break-word;
 	color: white;
 	z-index: 3;
+	padding-right: 0.625rem;
 }
 
 .filter-results .message {

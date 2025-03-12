@@ -155,7 +155,7 @@
             // console.log("Subcategories found:", $(".subcategories[data-category-id='" + categoryId + "']"));
 
             // Показываем нужную подкатегорию
-            $(".subcategories[data-category-id='" + categoryId + "']").css("display", "flex");
+            $(".subcategories[data-category-id='" + categoryId + "']").css("display", "grid");
 
             $(".subcategory-item").hide();
             $(".subcategory-item").each(function () {
@@ -305,6 +305,10 @@
         handleCategoryClick();
         handleSubcategoryClick();
         toggleDropdown();
+    });
+
+    $(window).on("resize", function () {
+        handleCategoryClick();
     });
 
 })(jQuery);

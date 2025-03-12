@@ -319,7 +319,7 @@ function get_category_image_url($term_id) {
 
                     foreach ($parent_categories as $i => $cat) {
                         // If it's the first category, display the subcategories, else hide them
-                        $hide = ($i == 0) ? "display: flex" : "display: none";
+                        $hide = ($i == 0) ? "display: grid" : "display: none";
 
                         echo '<div class="subcategories filter-row" data-category-id="' . esc_attr($cat->term_id) . '" style="' . esc_attr($hide) . '">';
 
