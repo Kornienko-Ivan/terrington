@@ -153,7 +153,6 @@ function get_category_image_url($term_id) {
                 <?php
 
                 function show_products() {
-                    // Получаем фильтры из запроса
                     $categories = isset($_GET['category'])
                         ? (is_array($_GET['category']) ? array_map('sanitize_text_field', $_GET['category']) : array(sanitize_text_field($_GET['category'])))
                         : [];
@@ -164,15 +163,14 @@ function get_category_image_url($term_id) {
 
                     $type = isset($_GET['type']) ? sanitize_text_field($_GET['type'][0]) : '';
 
-                    error_log('Received type: ' . print_r($type, true));
+                    error_log('Received type1: ' . print_r($type, true));
 
                     $args = [
                         'post_type'      => 'products',
                         'posts_per_page' => -1,
-                        'tax_query'      => ['relation' => 'AND'],  // Мы хотим фильтровать по всем выбранным параметрам
+                        'tax_query'      => ['relation' => 'AND'],  // filter by all params
                     ];
 
-                    // Фильтрация по брендам, если они заданы
                     if (!empty($brands)) {
                         $args['tax_query'][] = [
                             'taxonomy' => 'products-brand',
@@ -182,17 +180,15 @@ function get_category_image_url($term_id) {
                         ];
                     }
 
-                    // Фильтрация по категориям, если они заданы
                     if (!empty($categories)) {
                         $args['tax_query'][] = [
                             'taxonomy' => 'products-category',
-                            'field'    => 'slug',  // Используем slug
+                            'field'    => 'slug',
                             'terms'    => $categories,
                             'operator' => 'IN',
                         ];
                     }
 
-                    // Фильтрация по типам, если они заданы
                     if (!empty($type)) {
                         $args['tax_query'][] = [
                             'taxonomy' => 'products-type',
@@ -202,34 +198,26 @@ function get_category_image_url($term_id) {
                         ];
                     }
 
-                    // Выполняем запрос
                     $query = new WP_Query($args);
 
                     if ($query->have_posts()) {
-                        // Массив для хранения всех категорий
                         $categories_with_posts = [];
 
-                        // Массив для логирования заголовков постов
                         $post_titles = [];
 
-                        // Получаем все посты и извлекаем из них категории
                         foreach ($query->posts as $post) {
-                            // Логируем заголовок поста
                             $post_titles[] = get_the_title($post->ID);
 
                             $post_categories = wp_get_post_terms($post->ID, 'products-category');
                             foreach ($post_categories as $category) {
-                                // Добавляем категории в массив, если их ещё нет
                                 if (!isset($categories_with_posts[$category->term_id])) {
                                     $categories_with_posts[$category->term_id] = $category;
                                 }
                             }
                         }
 
-                        // Логируем заголовки всех подходящих постов
                         error_log('Post Titles: ' . print_r($post_titles, true));
 
-                        // Теперь получаем все родительские категории
                         $parent_categories = [];
                         foreach ($categories_with_posts as $category) {
                             if ($category->parent == 0) {
@@ -237,7 +225,6 @@ function get_category_image_url($term_id) {
                             }
                         }
 
-                        // Фильтрация по категории, если задана
                         if (!empty($categories)) {
                             error_log('Categories: ' . print_r($categories[0], true)); // Получаем, например, crop-care - слаг категории
 
@@ -306,7 +293,7 @@ function get_category_image_url($term_id) {
 
                 function output_categories_and_subcategories_initially($parent_categories, $subcategories) {
                     echo '<div class="categories-row filter-row">';
-                    foreach ($parent_categories as $cat) {
+                    foreach ($parent_categories as $i => $cat) {
                         $category_image = get_field('category_product_image', 'products-category_' . $cat->term_id);
 
                         if ($category_image) {
@@ -314,11 +301,16 @@ function get_category_image_url($term_id) {
                             $image_alt = $category_image['alt'];
                         }
 
-                        echo '<div class="category-item filter-card" data-category-id="' . esc_attr($cat->term_id) . '">';
+                        // Add 'active card' class to the first category
+                        $category_class = ($i == 0) ? 'active-card' : '';
+
+                        echo '<div class="category-item filter-card ' . esc_attr($category_class) . '" data-category-id="' . esc_attr($cat->term_id) . '">';
+                        echo '<div class="filter-card__wrapper">';
                         echo '<h6>' . esc_html($cat->name) . '</h6>';
                         if ($image_url) {
                             echo '<img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="category-image" />';
                         }
+                        echo '</div>';
                         echo '</div>';
                     }
                     echo '</div>';
@@ -326,14 +318,15 @@ function get_category_image_url($term_id) {
                     echo '<div class="subcategories-row">';
 
                     foreach ($parent_categories as $i => $cat) {
-                        // Если это первая категория, то подкатегория отображается, иначе скрыта
+                        // If it's the first category, display the subcategories, else hide them
                         $hide = ($i == 0) ? "display: flex" : "display: none";
 
                         echo '<div class="subcategories filter-row" data-category-id="' . esc_attr($cat->term_id) . '" style="' . esc_attr($hide) . '">';
-                        // Если это первая подкатегория этой категории, показываем её
+
+                        // Track the first subcategory for each parent category
                         $is_first_subcategory = true;
 
-                        // Проверяем, есть ли подкатегории для данной родительской категории
+                        // Check if there are subcategories for this parent category
                         if (isset($subcategories[$cat->term_id]) && !empty($subcategories[$cat->term_id])) {
                             foreach ($subcategories[$cat->term_id] as $sub) {
                                 $subcategory_image = get_field('category_product_image', 'products-category_' . $sub->term_id);
@@ -343,17 +336,14 @@ function get_category_image_url($term_id) {
                                     $sub_image_alt = $subcategory_image['alt'];
                                 }
 
-                                // Если это первая подкатегория, выводим без display:none
-                                echo '<div class="subcategory-item filter-card" 
+                                // Add 'active card' class to the first subcategory
+                                $subcategory_class = ($is_first_subcategory) ? 'active-card' : '';
+
+                                echo '<div class="subcategory-item filter-card ' . esc_attr($subcategory_class) . '" 
                     data-category-id="' . esc_attr($cat->term_id) . '" 
-                    data-subcategory-id="' . esc_attr($sub->term_id) . '"';
+                    data-subcategory-id="' . esc_attr($sub->term_id) . '">';
 
-                                if (!$is_first_subcategory) {
-//                                    echo ' style="display: none;"'; // Остальные подкатегории скрыты
-                                }
-
-                                echo '>';
-
+                                echo '<div class="filter-card__wrapper">';
                                 echo '<h6>' . esc_html($sub->name) . '</h6>';
 
                                 if ($sub_image_url) {
@@ -361,8 +351,9 @@ function get_category_image_url($term_id) {
                                 }
 
                                 echo '</div>';
+                                echo '</div>';
 
-                                $is_first_subcategory = false; // После первой подкатегории меняем флаг
+                                $is_first_subcategory = false; // After the first subcategory, change the flag
                             }
                         } else {
                             echo '<p>No subcategories for this category.</p>';
@@ -376,115 +367,6 @@ function get_category_image_url($term_id) {
                 show_products();
                 ?>
 
-<!--                <div class="categories-row filter-row">-->
-<!--                    --><?php
-//                    $categories = get_terms([
-//                        'taxonomy' => 'products-category',
-//                        'hide_empty' => true,
-//                        'parent' => 0,
-//                    ]);
-//
-//                    if (!empty($categories)) :
-//                        foreach ($categories as $index => $category) :
-//                            $subcategories = get_terms([
-//                                'taxonomy' => 'products-category',
-//                                'hide_empty' => true,
-//                                'parent' => $category->term_id,
-//                            ]);
-//                            ?>
-<!--                            <div class="category-item filter-card" data-category-id="--><?php //= esc_attr($category->term_id) ?><!--">-->
-<!--                                <h6>--><?php //= esc_html($category->name) ?><!--</h6>-->
-<!--                                <img src="--><?php //= esc_url(get_category_image_url($category->term_id)) ?><!--" alt="" class="category-image">-->
-<!--                            </div>-->
-<!--                        --><?php //endforeach; ?>
-<!--                    --><?php //endif; ?>
-<!--                </div>-->
-<!--                <div class="subcategories-row">-->
-<!--                    --><?php
-//                    if (!empty($categories)) :
-//                        foreach ($categories as $index => $category) :
-//                            $subcategories = get_terms([
-//                                'taxonomy' => 'products-category',
-//                                'hide_empty' => true,
-//                                'parent' => $category->term_id,
-//                            ]);
-//                            if (!empty($subcategories)) : ?>
-<!--                                <div class="subcategories filter-row" data-category-id="--><?php //= esc_attr($category->term_id) ?><!--">-->
-<!--                                    --><?php //foreach ($subcategories as $sub_index => $subcategory) : ?>
-<!--                                        <div class="subcategory-item filter-card" data-category-id="--><?php //= esc_attr($category->term_id) ?><!-- "  data-subcategory-id="--><?php //= esc_attr($subcategory->term_id) ?><!--"-->
-<!--                                             style="--><?php //= $index === 0 ? '' : 'display: none;' ?><!--">-->
-<!--                                            <h6>--><?php //= esc_html($subcategory->name) ?><!--</h6>-->
-<!--                                            <img src="--><?php //= esc_url(get_category_image_url($subcategory->term_id)) ?><!--" alt="" class="subcategory-image">-->
-<!--                                        </div>-->
-<!--                                    --><?php //endforeach; ?>
-<!--                                </div>-->
-<!--                            --><?php //endif; ?>
-<!---->
-<!--                        --><?php //endforeach; ?>
-<!--                    --><?php //endif; ?>
-<!--                </div>-->
-<!--                <div class="filter-results__posts filter-row">-->
-<!--                    --><?php
-//                    if (!empty($categories)) :
-//                        $first_category = $categories[0];
-//                        $first_subcategories = get_terms([
-//                            'taxonomy' => 'products-category',
-//                            'hide_empty' => true,
-//                            'parent' => $first_category->term_id,
-//                        ]);
-//
-//                        $brand = isset($_GET['brand']) ? sanitize_text_field($_GET['brand']) : '';
-//
-//                        if (!empty($first_subcategories)) :
-//                            $first_subcategory = $first_subcategories[0];
-//
-//                            $tax_query = [
-//                                [
-//                                    'taxonomy' => 'products-category',
-//                                    'field' => 'term_id',
-//                                    'terms' => $first_subcategory->term_id,
-//                                    'operator' => 'IN'
-//                                ]
-//                            ];
-//
-//                            if ($brand) {
-//                                $tax_query[] = [
-//                                    'taxonomy' => 'products-brand',
-//                                    'field' => 'slug',
-//                                    'terms' => $brand,
-//                                    'operator' => 'IN',
-//                                ];
-//                            }
-//
-//                            $posts = get_posts([
-//                                'post_type' => 'products',
-//                                'tax_query' => $tax_query,
-//                            ]);
-//
-//
-//                            if ($posts) :
-//                                foreach ($posts as $post) :
-//                                    setup_postdata($post);
-//                                    ?>
-<!--                                    <div class="post-item filter-card">-->
-<!--                                        <h6>--><?php //= get_the_title() ?><!--</h6>-->
-<!--                                        --><?php //if (has_post_thumbnail()): ?>
-<!--                                            <img src="--><?php //= get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?><!--"-->
-<!--                                                 alt="--><?php //= esc_attr(get_the_title()); ?><!--"-->
-<!--                                                 class="post-thumbnail" />-->
-<!--                                        --><?php //endif; ?>
-<!--                                    </div>-->
-<!---->
-<!--                                --><?php
-//                                endforeach;
-//                                wp_reset_postdata();
-//                            else :
-//                                echo "No posts";
-//                            endif;
-//                        endif;
-//                    endif;
-//                    ?>
-<!--                </div>-->
             </div>
         </div>
     </div>

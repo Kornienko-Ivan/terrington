@@ -36,7 +36,7 @@
       border-radius: $radius-md
       background-color: $color-white
       padding: rem(14px) rem(21px) rem(14px) rem(23px)
-      z-index: 1
+      z-index: 5
 
       .dropdown-list
         display: flex
@@ -87,17 +87,6 @@
         padding: rem(27px) rem(23px)
         border-radius: $radius-sm
         width: 100%
-        &:before
-          content: ""
-          display: block
-          width: 66px
-          height: 66px
-          position: absolute
-          top: rem(-20px)
-          left: rem(113px)
-          background-image: url("data:image/svg+xml,%3Csvg width='66' height='66' viewBox='0 0 66 66' fill='none' xmlns='http%3A//www.w3.org/2000/svg'%3E%3Crect x='-4' y='33' width='51.6569' height='52.3259' rx='10' transform='rotate(-45 -4 33)' fill='%23F6F7F8'/%3E%3C/svg%3E")
-          background-size: contain
-          background-repeat: no-repeat
 
       .subcategories
         display: flex
@@ -115,7 +104,7 @@
       border-radius: $radius-sm
       //width: fit-content
       &:before
-        content: ""
+        //content: ""
         display: block
         width: 66px
         height: 66px
@@ -143,10 +132,54 @@
 
   .filter-card
     aspect-ratio: 254/249
-    border-radius: $radius-md
-    overflow: hidden
     position: relative
     cursor: pointer
+    z-index: 1
+    &__wrapper
+      display: block
+      width: 100%
+      height: 100%
+      border-radius: $radius-md
+      overflow: hidden
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      background-color: $color-red
+      border-radius: $radius-md
+      height: 100%
+      width: 100%
+      z-index: 2
+      display: none
+      pointer-events: none
+
+    &.active-card
+      &:after
+        display: block
+      &:before
+        content: ""
+        display: block
+        width: 66px
+        height: 66px
+        position: absolute
+        //top: rem(-20px)
+        //bottom: -82px
+        bottom: var(--before-bottom, -82px)
+        left: 50%
+        transform: translateX(-50%)
+        background-image: url("data:image/svg+xml,%3Csvg width='66' height='66' viewBox='0 0 66 66' fill='none' xmlns='http%3A//www.w3.org/2000/svg'%3E%3Crect x='-4' y='33' width='51.6569' height='52.3259' rx='10' transform='rotate(-45 -4 33)' fill='%23F6F7F8'/%3E%3C/svg%3E")
+        background-size: contain
+        background-repeat: no-repeat
+      &.subcategory-item
+        &:before
+          bottom: var(--before-bottom, -109px)
+
+    +can-hover
+      &:hover
+        &:after
+          display: block
+
     img
       width: 100%
       height: 100%
@@ -157,6 +190,8 @@
       left: rem(22.8px)
       bottom: rem(21.8px)
       color: white
+      z-index: 3
+
   .message
     //margin: 0 auto
     position: absolute

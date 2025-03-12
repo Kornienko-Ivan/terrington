@@ -69,6 +69,43 @@
     });
   });
 })(jQuery);
+// (function ($) {
+//     $(document).ready(function () {
+//         function updateActiveCardPosition() {
+//             let rowSize = 4; // Количество карточек в ряду на десктопе
+//             let cardHeight = $('.filter-card').outerHeight(true); // Высота карточки с margin
+//             let activeCard = $('.filter-card.active-card');
+//
+//             activeCard.each(function () {
+//                 let index = $(this).index(); // Позиция карточки в списке
+//                 let rowIndex = Math.floor(index / rowSize); // В каком ряду карточка
+//
+//                 // Если карточка в первом ряду, стандартный bottom (-82px)
+//                 // Если ниже, увеличиваем отступ вниз
+//                 let newBottom = -82 + (rowIndex * cardHeight);
+//                 $(this).css('--before-bottom', `${newBottom}px`);
+//             });
+//         }
+//
+//         updateActiveCardPosition();
+//         $(window).resize(updateActiveCardPosition); // Обновляем при изменении экрана
+//
+//         // Отслеживание добавления/удаления класса active-card
+//         const observer = new MutationObserver(function (mutationsList) {
+//             mutationsList.forEach((mutation) => {
+//                 if (mutation.attributeName === "class") {
+//                     updateActiveCardPosition();
+//                 }
+//             });
+//         });
+//
+//         // Подключаем наблюдатель ко всем карточкам
+//         $('.filter-card').each(function () {
+//             observer.observe(this, { attributes: true });
+//         });
+//     });
+// })(jQuery);
+"use strict";
 "use strict";
 
 (function ($) {
@@ -493,27 +530,32 @@
   function handleCategoryClick() {
     $(document).on("click", ".category-item", function () {
       var categoryId = $(this).closest(".category-item").data("category-id");
-      console.log('handleCategoryClick');
-      console.log("Clicked category ID:", categoryId);
+      $(".categories-row .filter-card").removeClass('active-card');
+      $(this).addClass('active-card');
+
+      // updateActiveCardPosition();
+      updateActiveCardPosition('category');
       $("#filtered-content .subcategories-row").removeClass("hide");
       $("#filtered-content .filter-results__posts").addClass("hide");
       $("#filtered-content .filter-results__posts").html('');
 
       // Скрываем все подкатегории
       $(".subcategories").hide();
-      console.log("Subcategories found:", $(".subcategories[data-category-id='" + categoryId + "']"));
+
+      // console.log("Subcategories found:", $(".subcategories[data-category-id='" + categoryId + "']"));
 
       // Показываем нужную подкатегорию
       $(".subcategories[data-category-id='" + categoryId + "']").css("display", "flex");
       $(".subcategory-item").hide();
       $(".subcategory-item").each(function () {
         var itemCategoryId = $(this).data("category-id");
-        console.log("Checking subcategory item ID:", itemCategoryId);
+        // console.log("Checking subcategory item ID:", itemCategoryId);
         if (parseInt(itemCategoryId) === parseInt(categoryId)) {
           $(this).show();
         }
       });
-      console.log("Visible subcategories:", $(".subcategory-item:visible"));
+
+      // console.log("Visible subcategories:", $(".subcategory-item:visible"));
     });
   }
 
@@ -523,8 +565,9 @@
       var subcategoryId = $(this).data("subcategory-id"); // Получаем ID, а не текст
       var categoryId = $(this).data("category-id");
       var filters = getFilterValues();
-      console.log("Selected subcategory ID:", subcategoryId);
-      console.log("Selected category ID:", categoryId);
+      $(".subcategories-row .filter-card").removeClass('active-card');
+      $(this).addClass('active-card');
+      updateActiveCardPosition('subcategory', this);
       $("#filtered-content .filter-results__posts").removeClass("hide");
       $.ajax({
         url: codelibry.ajax_url,
@@ -542,7 +585,7 @@
         },
         success: function success(response) {
           $("#filtered-content .filter-results__posts").html(response);
-          console.log("AJAX Response:", response);
+          // console.log("AJAX Response:", response);
         }
       });
     });
@@ -566,6 +609,68 @@
       }
     });
   }
+  function updateActiveCardPosition(type) {
+    var clickedCard = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    var rowSelector;
+    if (type === 'subcategory' && clickedCard) {
+      var categoryId = $(clickedCard).data('category-id'); // Получаем data-category-id
+      console.log('Выбранная категория ID:', categoryId);
+
+      // Ищем только те subcategories, у которых совпадает data-category-id
+      rowSelector = ".subcategories-row .subcategories[data-category-id=\"".concat(categoryId, "\"]  .filter-card");
+    } else {
+      rowSelector = type === 'category' ? '.categories-row .filter-card' : '.subcategories .filter-card';
+    }
+    console.log('Обработка типа:', type);
+    console.log('Используемый селектор:', rowSelector);
+    var rowSize = 4; // Количество карточек в ряду на десктопе
+    var cards = $(rowSelector); // Все карточки, соответствующие селектору
+    var totalCards = cards.length; // Общее количество карточек
+    var totalRows = Math.ceil(totalCards / rowSize); // Количество рядов
+
+    console.log('Всего карточек:', totalCards);
+    console.log('Всего рядов:', totalRows);
+    var cardHeight = $(rowSelector).outerHeight(true); // Высота карточки с margin
+    var activeCard = $("".concat(rowSelector, ".active-card"));
+    console.log('activeCard: ', activeCard);
+    activeCard.each(function () {
+      var index = $(this).index() + 1; // Позиция карточки в списке
+      var rowIndex = Math.ceil(index / rowSize); // В каком ряду карточка
+      console.log('index: ', index);
+      console.log('row: ', rowIndex);
+      if (rowIndex < totalRows) {
+        // Если карточка в первом ряду, стандартный bottom (-82px). 18 - row gap
+        // Если ниже, увеличиваем отступ вниз
+        var rowOffset = type === 'subcategory' ? 109 : 82;
+        var newBottom = -rowOffset - 18 - rowIndex * cardHeight;
+        $(this).css('--before-bottom', "".concat(newBottom, "px"));
+      }
+    });
+    return {
+      totalCards: totalCards,
+      totalRows: totalRows
+    };
+  }
+
+  // Вызов функции при загрузке страницы
+  $(document).ready(function () {
+    console.log('Страница загружена, инициализируем выравнивание...');
+
+    // 1. Находим первую категорию
+    var firstCategory = $('.categories-row .filter-card').first();
+    if (firstCategory.length) {
+      console.log('Первая категория найдена:', firstCategory);
+      updateActiveCardPosition('category');
+
+      // 2. Находим первую подкатегорию с таким же data-category-id
+      var categoryId = firstCategory.data('category-id');
+      var firstSubcategory = $(".subcategories-row .subcategories[data-category-id=\"".concat(categoryId, "\"] .filter-card")).first();
+      if (firstSubcategory.length) {
+        console.log('Первая подкатегория найдена:', firstSubcategory);
+        updateActiveCardPosition('subcategory', firstCategory);
+      }
+    }
+  });
   $(document).ready(function () {
     $(".filter-submit").on("click", function (event) {
       clearUrlParams();

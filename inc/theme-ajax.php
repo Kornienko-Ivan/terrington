@@ -143,7 +143,7 @@ function get_categories_and_subcategories($result_categories) {
 
 function output_categories_and_subcategories($parent_categories, $subcategories) {
     echo '<div class="categories-row filter-row">';
-    foreach ($parent_categories as $cat) {
+    foreach ($parent_categories as $i => $cat) {
         $category_image = get_field('category_product_image', 'products-category_' . $cat->term_id);
 
         if ($category_image) {
@@ -151,20 +151,28 @@ function output_categories_and_subcategories($parent_categories, $subcategories)
             $image_alt = $category_image['alt'];
         }
 
-        echo '<div class="category-item filter-card" data-category-id="' . esc_attr($cat->term_id) . '">';
+        // Add 'active card' class to the first category
+        $category_class = ($i == 0) ? 'active-card' : '';
+
+        echo '<div class="category-item filter-card ' . esc_attr($category_class) . '" data-category-id="' . esc_attr($cat->term_id) . '">';
+        echo '<div class="filter-card__wrapper">';
         echo '<h6>' . esc_html($cat->name) . '</h6>';
         if ($image_url) {
             echo '<img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="category-image" />';
         }
         echo '</div>';
+        echo '</div>';
     }
     echo '</div>';
 
     echo '<div class="subcategories-row">';
-    foreach ($parent_categories as $cat) {
+    foreach ($parent_categories as $i => $cat) {
         echo '<div class="subcategories filter-row" data-category-id="' . esc_attr($cat->term_id) . '" style="display: none;">';
 
-        // Проверяем, есть ли подкатегории для данной родительской категории
+        // Track the first subcategory for each parent category
+        $is_first_subcategory = true;
+
+        // Check if there are subcategories for this parent category
         if (isset($subcategories[$cat->term_id]) && !empty($subcategories[$cat->term_id])) {
             foreach ($subcategories[$cat->term_id] as $sub) {
                 $subcategory_image = get_field('category_product_image', 'products-category_' . $sub->term_id);
@@ -174,10 +182,14 @@ function output_categories_and_subcategories($parent_categories, $subcategories)
                     $sub_image_alt = $subcategory_image['alt'];
                 }
 
-                echo '<div class="subcategory-item filter-card" 
+                // Add 'active card' class to the first subcategory
+                $subcategory_class = ($is_first_subcategory) ? 'active-card' : '';
+
+                echo '<div class="subcategory-item filter-card ' . esc_attr($subcategory_class) . '" 
                     data-category-id="' . esc_attr($cat->term_id) . '" 
                     data-subcategory-id="' . esc_attr($sub->term_id) . '">';
 
+                echo '<div class="filter-card__wrapper">';
                 echo '<h6>' . esc_html($sub->name) . '</h6>';
 
                 if ($sub_image_url) {
@@ -185,6 +197,9 @@ function output_categories_and_subcategories($parent_categories, $subcategories)
                 }
 
                 echo '</div>';
+                echo '</div>';
+
+                $is_first_subcategory = false; // After the first subcategory, change the flag
             }
         } else {
             echo '<p>No subcategories for this category.</p>';
@@ -195,22 +210,36 @@ function output_categories_and_subcategories($parent_categories, $subcategories)
     echo '</div>';
 }
 
+// Function to filter WP_Query posts by post titles
+function filter_posts_by_titles( $query, $titles ) {
+    // Create an array to store only posts with titles found in the provided titles array
+    $filtered_posts = array();
+    foreach ( $query->posts as $post ) {
+        if ( in_array( get_the_title( $post->ID ), $titles, true ) ) {
+            $filtered_posts[] = $post;
+        }
+    }
+    // Replace the original posts with the filtered posts
+    $query->posts = $filtered_posts;
+    return $query;
+}
+
 function filter_products_ajax() {
-    // Получаем фильтры из запроса
+    // Get filters from the request
     $categories = isset($_POST['category']) ? array_map('sanitize_text_field', $_POST['category']) : [];
     $brands = isset($_POST['brand']) ? array_map('sanitize_text_field', $_POST['brand']) : [];
     $type = isset($_POST['type']) ? sanitize_text_field($_POST['type'][0]) : '';
 
-    error_log('Received type: ' . print_r($type, true));
+    error_log('Received brand: ' . print_r($brands, true));
 
     $args = [
         'post_type'      => 'products',
         'posts_per_page' => -1,
-        'tax_query'      => ['relation' => 'AND'],  // Мы хотим фильтровать по всем выбранным параметрам
+        'tax_query'      => ['relation' => 'AND'],  // We want to filter by all selected parameters
     ];
 
-    // Фильтрация по брендам, если они заданы
-    if (!empty($brands)) {
+    // Filter by brands if provided
+    if ( ! empty( $brands ) ) {
         $args['tax_query'][] = [
             'taxonomy' => 'products-brand',
             'field'    => 'slug',
@@ -219,18 +248,18 @@ function filter_products_ajax() {
         ];
     }
 
-    // Фильтрация по категориям, если они заданы
-    if (!empty($categories)) {
+    // Filter by categories if provided
+    if ( ! empty( $categories ) ) {
         $args['tax_query'][] = [
             'taxonomy' => 'products-category',
-            'field'    => 'slug',  // Используем slug
+            'field'    => 'slug',  // Using slug
             'terms'    => $categories,
             'operator' => 'IN',
         ];
     }
 
-    // Фильтрация по типам, если они заданы
-    if (!empty($type)) {
+    // Filter by types if provided
+    if ( ! empty( $type ) ) {
         $args['tax_query'][] = [
             'taxonomy' => 'products-type',
             'field'    => 'slug',
@@ -239,113 +268,115 @@ function filter_products_ajax() {
         ];
     }
 
-    // Выполняем запрос
+    // Execute the query
     $query = new WP_Query($args);
 
-    if ($query->have_posts()) {
-        // Массив для хранения всех категорий
+    if ( $query->have_posts() ) {
+        // Array to store all categories
         $categories_with_posts = [];
 
-        // Массив для логирования заголовков постов
+        // Array to log the titles of posts
         $post_titles = [];
 
-        // Получаем все посты и извлекаем из них категории
-        foreach ($query->posts as $post) {
-            // Логируем заголовок поста
-            $post_titles[] = get_the_title($post->ID);
+        // Loop through posts and extract categories and post titles
+        foreach ( $query->posts as $post ) {
+            // Log the post title
+            $post_titles[] = get_the_title( $post->ID );
 
-            $post_categories = wp_get_post_terms($post->ID, 'products-category');
-            foreach ($post_categories as $category) {
-                // Добавляем категории в массив, если их ещё нет
-                if (!isset($categories_with_posts[$category->term_id])) {
-                    $categories_with_posts[$category->term_id] = $category;
+            $post_categories = wp_get_post_terms( $post->ID, 'products-category' );
+            foreach ( $post_categories as $category ) {
+                // Add the category to the array if not already added
+                if ( ! isset( $categories_with_posts[ $category->term_id ] ) ) {
+                    $categories_with_posts[ $category->term_id ] = $category;
                 }
             }
         }
 
-        // Логируем заголовки всех подходящих постов
+        // Log all matching post titles
         error_log('Post Titles: ' . print_r($post_titles, true));
 
-        // Теперь получаем все родительские категории
+        // Now get all parent categories
         $parent_categories = [];
-        foreach ($categories_with_posts as $category) {
-            if ($category->parent == 0) {
+        foreach ( $categories_with_posts as $category ) {
+            if ( $category->parent == 0 ) {
                 $parent_categories[] = $category;
             }
         }
 
-// Если пользователь в фильтре указал категорию, то показываем только ее
-        if (!empty($categories)) {
-            error_log('Categories: ' . print_r($categories[0], true)); // Получаем, например, crop-care - слаг категории
+        // If the user specified a category filter, only show that one
+        if ( ! empty( $categories ) ) {
+            error_log('Categories: ' . print_r($categories[0], true)); // Example: crop-care (category slug)
 
-            // Фильтруем родительские категории, оставляя только указанную в фильтре
-            $filtered_parent_categories = array_filter($parent_categories, function ($parent_category) use ($categories) {
-                return in_array($parent_category->slug, $categories, true);
-            });
+            // Filter parent categories, leaving only the one specified in the filter
+            $filtered_parent_categories = array_filter( $parent_categories, function ( $parent_category ) use ( $categories ) {
+                return in_array( $parent_category->slug, $categories, true );
+            } );
 
-            // Если найдено соответствие, заменяем $parent_categories на отфильтрованный массив
-            if (!empty($filtered_parent_categories)) {
-                $parent_categories = array_values($filtered_parent_categories);
+            // If a match is found, replace $parent_categories with the filtered array
+            if ( ! empty( $filtered_parent_categories ) ) {
+                $parent_categories = array_values( $filtered_parent_categories );
             } else {
-                // Если нет совпадений, очищаем массив категорий
+                // If no match, clear the categories array
                 $parent_categories = [];
             }
         }
 
-        // Получаем подкатегории для родительских категорий
+        // Get subcategories for parent categories
         $subcategories = [];
-        foreach ($parent_categories as $parent_category) {
-            // Получаем подкатегории для родительской категории
-            $child_terms = get_terms([
+        foreach ( $parent_categories as $parent_category ) {
+            // Get subcategories for the parent category
+            $child_terms = get_terms( [
                 'taxonomy'   => 'products-category',
                 'hide_empty' => true,
                 'parent'     => $parent_category->term_id,
-            ]);
+            ] );
 
-            foreach ($child_terms as $child_term) {
-                if (isset($categories_with_posts[$child_term->term_id])) {
-                    $subcategories[$parent_category->term_id][] = $child_term; // Группируем по родительским категориям
+            foreach ( $child_terms as $child_term ) {
+                if ( isset( $categories_with_posts[ $child_term->term_id ] ) ) {
+                    $subcategories[ $parent_category->term_id ][] = $child_term; // Group by parent categories
                 }
             }
         }
 
-        // Логируем результаты для parent_categories и subcategories
+        // Log the results for parent_categories and subcategories
         error_log('Parent Categories: ' . print_r($parent_categories, true));
         error_log('Subcategories: ' . print_r($subcategories, true));
 
-        // Выводим категории и подкатегории
-        output_categories_and_subcategories($parent_categories, $subcategories);
+        // Output categories and subcategories
+        output_categories_and_subcategories( $parent_categories, $subcategories );
 
-        // давай еще рисовать все посты
-//        echo '<div class="filter-results__posts filter-row">' . output_posts($query) . '</div>';
+        // Now display all posts
+        // echo '<div class="filter-results__posts filter-row">' . output_posts($query) . '</div>';
 
-        if (!empty($subcategories)) {
-            // Берем первую подкатегорию из массива
-            $first_subcategory = reset($subcategories); // Получаем первый элемент массива подкатегорий
+        if ( ! empty( $subcategories ) ) {
+            // Get the first subcategory from the array
+            $first_subcategory = reset( $subcategories ); // Get the first element of the subcategories array
 
-            // Если подкатегория не пустая, фильтруем посты по этой подкатегории
-            if (!empty($first_subcategory)) {
-                $first_subcategory_slug = $first_subcategory[0]->slug; // Слаг первой подкатегории
+            // If the subcategory is not empty, filter posts by this subcategory
+            if ( ! empty( $first_subcategory ) ) {
+                $first_subcategory_slug = $first_subcategory[0]->slug; // Slug of the first subcategory
 
-                // Новый запрос для постов только этой подкатегории
+                // New query for posts in only this subcategory
                 $filtered_args = [
-                    'post_type' => 'products',
+                    'post_type'      => 'products',
                     'posts_per_page' => -1,
-                    'tax_query' => [
+                    'tax_query'      => [
                         'relation' => 'AND',
                         [
                             'taxonomy' => 'products-category',
-                            'field' => 'slug',
-                            'terms' => $first_subcategory_slug,
+                            'field'    => 'slug',
+                            'terms'    => $first_subcategory_slug,
                             'operator' => 'IN',
                         ]
                     ],
                 ];
 
-                $filtered_query = new WP_Query($filtered_args);
+                $filtered_query = new WP_Query( $filtered_args );
+                // Filter posts in $filtered_query to include only those whose titles are in $post_titles
+                $filtered_query = filter_posts_by_titles( $filtered_query, $post_titles );
 
-                // Выводим посты, соответствующие первой подкатегории
-                echo '<div class="filter-results__posts filter-row">' . output_posts($filtered_query) . '</div>';
+                // Output posts that match the first subcategory
+                echo '<div class="filter-results__posts filter-row">' . output_posts( $filtered_query ) . '</div>';
             }
         }
 
@@ -355,7 +386,6 @@ function filter_products_ajax() {
 
     wp_die();
 }
-
 
 add_action('wp_ajax_filter_products', 'filter_products_ajax');
 add_action('wp_ajax_nopriv_filter_products', 'filter_products_ajax');
@@ -414,18 +444,24 @@ function output_posts($query) {
         while ($query->have_posts()) {
             $query->the_post();
             $output .= '<div class="post-item filter-card">';
+            $output .= '<a href="' . get_permalink() . '" class="filter-card__wrapper">'; // Wrap the entire card with a link
+
+            // Add the post title
             $output .= '<h6>' . get_the_title() . '</h6>';
 
+            // Add the post thumbnail if it exists
             if (has_post_thumbnail()) {
                 $output .= get_the_post_thumbnail(get_the_ID(), 'medium');
             }
 
+            $output .= '</a>'; // Close the link around the card
             $output .= '</div>';
         }
         wp_reset_postdata();
     } else {
         $output .= '<p class="filter-message">No posts found.</p>';
     }
+
 
     return $output; // Возвращаем сгенерированный HTML
 }

@@ -117,8 +117,12 @@
     function handleCategoryClick() {
         $(document).on("click", ".category-item", function () {
             const categoryId = $(this).closest(".category-item").data("category-id");
-            console.log('handleCategoryClick');
-            console.log("Clicked category ID:", categoryId);
+
+            $(".categories-row .filter-card").removeClass('active-card');
+            $(this).addClass('active-card');
+
+            // updateActiveCardPosition();
+            updateActiveCardPosition('category');
 
             $("#filtered-content .subcategories-row").removeClass("hide");
             $("#filtered-content .filter-results__posts").addClass("hide");
@@ -127,7 +131,7 @@
             // Скрываем все подкатегории
             $(".subcategories").hide();
 
-            console.log("Subcategories found:", $(".subcategories[data-category-id='" + categoryId + "']"));
+            // console.log("Subcategories found:", $(".subcategories[data-category-id='" + categoryId + "']"));
 
             // Показываем нужную подкатегорию
             $(".subcategories[data-category-id='" + categoryId + "']").css("display", "flex");
@@ -135,13 +139,13 @@
             $(".subcategory-item").hide();
             $(".subcategory-item").each(function () {
                 let itemCategoryId = $(this).data("category-id");
-                console.log("Checking subcategory item ID:", itemCategoryId);
+                // console.log("Checking subcategory item ID:", itemCategoryId);
                 if (parseInt(itemCategoryId) === parseInt(categoryId)) {
                     $(this).show();
                 }
             });
 
-            console.log("Visible subcategories:", $(".subcategory-item:visible"));
+            // console.log("Visible subcategories:", $(".subcategory-item:visible"));
         });
     }
 
@@ -152,8 +156,11 @@
             const categoryId = $(this).data("category-id");
             const filters = getFilterValues();
 
-            console.log("Selected subcategory ID:", subcategoryId);
-            console.log("Selected category ID:", categoryId);
+
+            $(".subcategories-row .filter-card").removeClass('active-card');
+            $(this).addClass('active-card');
+
+            updateActiveCardPosition('subcategory', this);
 
             $("#filtered-content .filter-results__posts").removeClass("hide");
 
@@ -172,7 +179,7 @@
                 },
                 success: function (response) {
                     $("#filtered-content .filter-results__posts").html(response);
-                    console.log("AJAX Response:", response);
+                    // console.log("AJAX Response:", response);
                 }
             });
         });
@@ -202,6 +209,73 @@
             }
         });
     }
+
+    function updateActiveCardPosition(type, clickedCard = null) {
+        let rowSelector;
+
+        if (type === 'subcategory' && clickedCard) {
+            let categoryId = $(clickedCard).data('category-id'); // Получаем data-category-id
+            console.log('Выбранная категория ID:', categoryId);
+
+            // Ищем только те subcategories, у которых совпадает data-category-id
+            rowSelector = `.subcategories-row .subcategories[data-category-id="${categoryId}"]  .filter-card`;
+        } else {
+            rowSelector = type === 'category' ? '.categories-row .filter-card' : '.subcategories .filter-card';
+        }
+
+        console.log('Обработка типа:', type);
+        console.log('Используемый селектор:', rowSelector);
+
+        let rowSize = 4; // Количество карточек в ряду на десктопе
+        let cards = $(rowSelector); // Все карточки, соответствующие селектору
+        let totalCards = cards.length; // Общее количество карточек
+        let totalRows = Math.ceil(totalCards / rowSize); // Количество рядов
+
+        console.log('Всего карточек:', totalCards);
+        console.log('Всего рядов:', totalRows);
+
+        let cardHeight = $(rowSelector).outerHeight(true); // Высота карточки с margin
+        let activeCard = $(`${rowSelector}.active-card`);
+        console.log('activeCard: ', activeCard);
+
+        activeCard.each(function () {
+            let index = $(this).index() + 1; // Позиция карточки в списке
+            let rowIndex = Math.ceil(index / rowSize); // В каком ряду карточка
+            console.log('index: ', index);
+            console.log('row: ', rowIndex);
+
+            if (rowIndex < totalRows) {
+                // Если карточка в первом ряду, стандартный bottom (-82px). 18 - row gap
+                // Если ниже, увеличиваем отступ вниз
+                let rowOffset = type === 'subcategory' ? 109 : 82;
+                let newBottom = -rowOffset - 18 - (rowIndex * cardHeight);
+                $(this).css('--before-bottom', `${newBottom}px`);
+            }
+        });
+
+        return { totalCards, totalRows };
+    }
+
+// Вызов функции при загрузке страницы
+    $(document).ready(function () {
+        console.log('Страница загружена, инициализируем выравнивание...');
+
+        // 1. Находим первую категорию
+        let firstCategory = $('.categories-row .filter-card').first();
+        if (firstCategory.length) {
+            console.log('Первая категория найдена:', firstCategory);
+            updateActiveCardPosition('category');
+
+            // 2. Находим первую подкатегорию с таким же data-category-id
+            let categoryId = firstCategory.data('category-id');
+            let firstSubcategory = $(`.subcategories-row .subcategories[data-category-id="${categoryId}"] .filter-card`).first();
+
+            if (firstSubcategory.length) {
+                console.log('Первая подкатегория найдена:', firstSubcategory);
+                updateActiveCardPosition('subcategory', firstCategory);
+            }
+        }
+    });
 
     $(document).ready(function () {
         $(".filter-submit").on("click", function(event) {

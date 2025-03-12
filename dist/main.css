@@ -5248,7 +5248,7 @@ body #app-wrapper {
 	border-radius: 20px;
 	background-color: #ffffff;
 	padding: 0.875rem 1.3125rem 0.875rem 1.4375rem;
-	z-index: 1;
+	z-index: 5;
 }
 
 .filter .filter-bar .dropdown-menu .dropdown-list {
@@ -5324,19 +5324,6 @@ body #app-wrapper {
 	width: 100%;
 }
 
-.filter-results__categories .subcategories-row:not(.hide):before {
-	content: "";
-	display: block;
-	width: 66px;
-	height: 66px;
-	position: absolute;
-	top: -1.25rem;
-	left: 7.0625rem;
-	background-image: url("data:image/svg+xml,%3Csvg width='66' height='66' viewBox='0 0 66 66' fill='none' xmlns='http%3A//www.w3.org/2000/svg'%3E%3Crect x='-4' y='33' width='51.6569' height='52.3259' rx='10' transform='rotate(-45 -4 33)' fill='%23F6F7F8'/%3E%3C/svg%3E");
-	background-size: contain;
-	background-repeat: no-repeat;
-}
-
 .filter-results__categories .subcategories-row .subcategories {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -5359,7 +5346,6 @@ body #app-wrapper {
 }
 
 .filter-results__posts:not(.hide):before {
-	content: "";
 	display: block;
 	width: 66px;
 	height: 66px;
@@ -5390,10 +5376,54 @@ body #app-wrapper {
 
 .filter-results .filter-card {
 	aspect-ratio: 254/249;
-	border-radius: 20px;
-	overflow: hidden;
 	position: relative;
 	cursor: pointer;
+	z-index: 1;
+}
+
+.filter-results .filter-card__wrapper {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+.filter-results .filter-card:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #e61f26;
+	border-radius: 20px;
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+	display: none;
+	pointer-events: none;
+}
+
+.filter-results .filter-card.active-card:after {
+	display: block;
+}
+
+.filter-results .filter-card.active-card:before {
+	content: "";
+	display: block;
+	width: 66px;
+	height: 66px;
+	position: absolute;
+	bottom: var(--before-bottom, -82px);
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	background-image: url("data:image/svg+xml,%3Csvg width='66' height='66' viewBox='0 0 66 66' fill='none' xmlns='http%3A//www.w3.org/2000/svg'%3E%3Crect x='-4' y='33' width='51.6569' height='52.3259' rx='10' transform='rotate(-45 -4 33)' fill='%23F6F7F8'/%3E%3C/svg%3E");
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.filter-results .filter-card.active-card.subcategory-item:before {
+	bottom: var(--before-bottom, -109px);
 }
 
 .filter-results .filter-card img {
@@ -5408,6 +5438,7 @@ body #app-wrapper {
 	left: 1.425rem;
 	bottom: 1.3625rem;
 	color: white;
+	z-index: 3;
 }
 
 .filter-results .message {
@@ -5516,6 +5547,10 @@ body #app-wrapper {
 
 .servicingOfferings__brandsList__item:hover {
 	background-color: #e61f26;
+}
+
+.filter-results .filter-card:hover:after {
+	display: block;
 }
 
 }
