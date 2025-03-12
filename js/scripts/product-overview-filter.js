@@ -108,8 +108,29 @@
             success: function (response) {
                 $("#filtered-content .filter-results__categories").html(response);
                 $(".subcategories").hide();
-                $(".subcategories[data-category-id='" + $(".category-item:first-child").data("category-id") + "']").show();
+
+                // Найти первую категорию и показать ее подкатегории
+                let firstCategory = $(".category-item:first-child");
+                if (firstCategory.length) {
+                    let categoryId = firstCategory.data("category-id");
+                    $(".subcategories[data-category-id='" + categoryId + "']").show();
+
+                    console.log("Первая категория обновлена:", firstCategory);
+
+                    // Вызываем updateActiveCardPosition для первой категории
+                    updateActiveCardPosition("category");
+
+                    // Найти первую подкатегорию этой категории
+                    let firstSubcategory = $(".subcategories[data-category-id='" + categoryId + "'] .filter-card:first-child");
+                    if (firstSubcategory.length) {
+                        console.log("Первая подкатегория обновлена:", firstSubcategory);
+
+                        // Вызываем updateActiveCardPosition для первой подкатегории
+                        updateActiveCardPosition("subcategory", firstCategory);
+                    }
+                }
             }
+
         });
     }
 
@@ -184,7 +205,6 @@
             });
         });
     }
-
 
     function clearUrlParams() {
         const url = new URL(window.location.href);

@@ -69,43 +69,6 @@
     });
   });
 })(jQuery);
-// (function ($) {
-//     $(document).ready(function () {
-//         function updateActiveCardPosition() {
-//             let rowSize = 4; // Количество карточек в ряду на десктопе
-//             let cardHeight = $('.filter-card').outerHeight(true); // Высота карточки с margin
-//             let activeCard = $('.filter-card.active-card');
-//
-//             activeCard.each(function () {
-//                 let index = $(this).index(); // Позиция карточки в списке
-//                 let rowIndex = Math.floor(index / rowSize); // В каком ряду карточка
-//
-//                 // Если карточка в первом ряду, стандартный bottom (-82px)
-//                 // Если ниже, увеличиваем отступ вниз
-//                 let newBottom = -82 + (rowIndex * cardHeight);
-//                 $(this).css('--before-bottom', `${newBottom}px`);
-//             });
-//         }
-//
-//         updateActiveCardPosition();
-//         $(window).resize(updateActiveCardPosition); // Обновляем при изменении экрана
-//
-//         // Отслеживание добавления/удаления класса active-card
-//         const observer = new MutationObserver(function (mutationsList) {
-//             mutationsList.forEach((mutation) => {
-//                 if (mutation.attributeName === "class") {
-//                     updateActiveCardPosition();
-//                 }
-//             });
-//         });
-//
-//         // Подключаем наблюдатель ко всем карточкам
-//         $('.filter-card').each(function () {
-//             observer.observe(this, { attributes: true });
-//         });
-//     });
-// })(jQuery);
-"use strict";
 "use strict";
 
 (function ($) {
@@ -521,7 +484,26 @@
       success: function success(response) {
         $("#filtered-content .filter-results__categories").html(response);
         $(".subcategories").hide();
-        $(".subcategories[data-category-id='" + $(".category-item:first-child").data("category-id") + "']").show();
+
+        // Найти первую категорию и показать ее подкатегории
+        var firstCategory = $(".category-item:first-child");
+        if (firstCategory.length) {
+          var categoryId = firstCategory.data("category-id");
+          $(".subcategories[data-category-id='" + categoryId + "']").show();
+          console.log("Первая категория обновлена:", firstCategory);
+
+          // Вызываем updateActiveCardPosition для первой категории
+          updateActiveCardPosition("category");
+
+          // Найти первую подкатегорию этой категории
+          var firstSubcategory = $(".subcategories[data-category-id='" + categoryId + "'] .filter-card:first-child");
+          if (firstSubcategory.length) {
+            console.log("Первая подкатегория обновлена:", firstSubcategory);
+
+            // Вызываем updateActiveCardPosition для первой подкатегории
+            updateActiveCardPosition("subcategory", firstCategory);
+          }
+        }
       }
     });
   }
