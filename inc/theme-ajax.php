@@ -169,6 +169,8 @@ function output_categories_and_subcategories($parent_categories, $subcategories)
     foreach ($parent_categories as $i => $cat) {
         echo '<div class="subcategories filter-row" data-category-id="' . esc_attr($cat->term_id) . '" style="display: none;">';
 
+        echo '<p class="category-name">' . esc_html($cat->name) . ' Options' . '</p>';
+
         // Track the first subcategory for each parent category
         $is_first_subcategory = true;
 
@@ -218,11 +220,9 @@ function filter_posts_by_titles( $query, $titles ) {
             $filtered_posts[] = $post;
         }
     }
-    // Обновляем posts и соответствующие счетчики
     $query->posts      = $filtered_posts;
     $query->post_count = count( $filtered_posts );
     $query->found_posts = count( $filtered_posts );
-    // Если пагинация не нужна, можно задать max_num_pages в 1
     $query->max_num_pages = 1;
 
     return $query;
@@ -360,6 +360,7 @@ function filter_products_ajax() {
             // If the subcategory is not empty, filter posts by this subcategory
             if ( ! empty( $first_subcategory ) ) {
                 $first_subcategory_slug = $first_subcategory[0]->slug; // Slug of the first subcategory
+                $first_subcategory_name = $first_subcategory[0]->name; // Slug of the first subcategory
 
                 // New query for posts in only this subcategory
                 $filtered_args = [
@@ -382,7 +383,7 @@ function filter_products_ajax() {
                 error_log( 'Filtered Query: ' . print_r( $filtered_query, true ) );
 
                 // Output posts that match the first subcategory
-                echo '<div class="filter-results__posts filter-row">' . output_posts( $filtered_query ) . '</div>';
+                echo '<div class="filter-results__posts filter-row">' . output_posts( $filtered_query, $first_subcategory_name ) . '</div>';
             }
         }
 
@@ -395,17 +396,6 @@ function filter_products_ajax() {
 
 add_action('wp_ajax_filter_products', 'filter_products_ajax');
 add_action('wp_ajax_nopriv_filter_products', 'filter_products_ajax');
-
-
-/*Filter handler: Subcategory and posts level*/
-function get_subcategory_term($subcategory, $category_id) {
-    $term = get_term_by('name', $subcategory, 'products-category');
-
-    if ($term && $term->parent == $category_id) {
-        return $term;
-    }
-    return null;
-}
 
 function get_posts_for_subcategory($term, $brands, $type) {
     $tax_query = [
@@ -443,24 +433,25 @@ function get_posts_for_subcategory($term, $brands, $type) {
     return new WP_Query($args);
 }
 
-function output_posts($query) {
-    $output = ''; // Инициализируем строку для захвата HTML
+function output_posts($query, $first_subcategory) {
+    $output = '';
 
     if ($query->have_posts()) {
+        if ($first_subcategory) {
+            $output .= '<p class="category-name">' . esc_html($first_subcategory) . ' Options' . '</p>';
+        }
+
         while ($query->have_posts()) {
             $query->the_post();
             $output .= '<div class="post-item filter-card">';
-            $output .= '<a href="' . get_permalink() . '" class="filter-card__wrapper">'; // Wrap the entire card with a link
-
-            // Add the post title
+            $output .= '<a href="' . get_permalink() . '" class="filter-card__wrapper">';
             $output .= '<h6>' . get_the_title() . '</h6>';
 
-            // Add the post thumbnail if it exists
             if (has_post_thumbnail()) {
                 $output .= get_the_post_thumbnail(get_the_ID(), 'medium');
             }
 
-            $output .= '</a>'; // Close the link around the card
+            $output .= '</a>';
             $output .= '</div>';
         }
         wp_reset_postdata();
@@ -468,8 +459,7 @@ function output_posts($query) {
         $output .= '<p class="filter-message">No posts found.</p>';
     }
 
-
-    return $output; // Возвращаем сгенерированный HTML
+    return $output;
 }
 
 function filter_posts_by_subcategory_ajax() {
@@ -478,12 +468,14 @@ function filter_posts_by_subcategory_ajax() {
     $brand = $_POST['brand'] ?? [];
     $type = $_POST['type'] ?? [];
 
+    $subcategory_name = get_term($subcategory_id)->name;
+
     error_log('Received Data: ' . print_r($_POST, true));
 
     if ($subcategory_id && $category_id) {
         error_log("Looking for subcategory ID: {$subcategory_id} in category ID: {$category_id}");
 
-        $term = get_term($subcategory_id, 'products-category'); // Получаем термин по ID
+        $term = get_term($subcategory_id, 'products-category');
 
         if ($term && !is_wp_error($term)) {
             error_log('Subcategory term found: ' . print_r($term, true));
@@ -492,7 +484,7 @@ function filter_posts_by_subcategory_ajax() {
 
             error_log('Query result: ' . print_r($query, true));
 
-            echo output_posts($query);
+            echo output_posts($query, $subcategory_name);
         } else {
             error_log('No matching subcategory found.');
         }
@@ -503,7 +495,6 @@ function filter_posts_by_subcategory_ajax() {
 
     wp_die();
 }
-
 
 add_action('wp_ajax_filter_posts_by_subcategory', 'filter_posts_by_subcategory_ajax');
 add_action('wp_ajax_nopriv_filter_posts_by_subcategory', 'filter_posts_by_subcategory_ajax');

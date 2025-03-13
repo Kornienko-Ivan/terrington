@@ -32,8 +32,6 @@
     }
 
     function handleTypeCheckboxChange() {
-        // Разрешаем выбрать только один тип (new / used)
-        // $('[name="type[]"]').not(this).prop("checked", false);
         $('[name="type"]').not(this).prop("checked", false);
     }
 
@@ -41,7 +39,6 @@
         $(document).on("change", ".see-all-brands", handleSeeAllBrandsChange);
         $(document).on("change", '[data-name="brand"] input[type="checkbox"]:not(.see-all-brands)', handleBrandCheckboxChange);
         $(document).on("change", '[data-name="category"] input[type="checkbox"]', handleCategoryCheckboxChange);
-        // Обработчик для выбора типа товара: изменён селектор на [name="type"]
         $(document).on("change", '[name="type"]', handleTypeCheckboxChange);
         $(document).on("change", ".dropdown input[type='checkbox']", function () {
             updateDropdownSelected();

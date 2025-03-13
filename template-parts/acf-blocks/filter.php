@@ -263,6 +263,16 @@ function get_category_image_url($term_id) {
                         error_log('Parent Categories: ' . print_r($parent_categories, true));
                         error_log('Subcategories: ' . print_r($subcategories, true));
 
+                        if (!empty($subcategories)) {
+                            // Получаем первый элемент массива $subcategories (это массив терминов для первого родителя)
+                            $first_subcat_array = reset($subcategories);
+                            // Из этого массива получаем первый термин
+                            $first_subcategory = reset($first_subcat_array);
+                            // Получаем имя подкатегории
+                            $first_subcategory_name = $first_subcategory->name;
+                            error_log('First Subcategory Name: ' . $first_subcategory_name);
+                        }
+
                         // Выводим категории и подкатегории
                         output_categories_and_subcategories_initially($parent_categories, $subcategories);
 
@@ -270,6 +280,7 @@ function get_category_image_url($term_id) {
                         if (empty($categories) && empty($brands) && empty($type) && !empty($parent_categories)) {
                             $first_parent_category = $parent_categories[0];
                             $first_subcategory = $subcategories[$first_parent_category->term_id][0]->slug;  // Первая подкатегория первой родительской категории
+                            $first_subcategory_name = $subcategories[$first_parent_category->term_id][0]->name;
 
                             $args['tax_query'][] = [
                                 'taxonomy' => 'products-category',
@@ -283,7 +294,7 @@ function get_category_image_url($term_id) {
                         }
 
                         // Выводим посты
-                        echo '<div class="filter-results__posts filter-row">' . output_posts($query) . '</div>';
+                        echo '<div class="filter-results__posts filter-row">' . output_posts($query, $first_subcategory_name) . '</div>';
 
                     } else {
                         echo '<p class="message">No posts matching the specified filters</p>';
@@ -322,6 +333,8 @@ function get_category_image_url($term_id) {
                         $hide = ($i == 0) ? "display: grid" : "display: none";
 
                         echo '<div class="subcategories filter-row" data-category-id="' . esc_attr($cat->term_id) . '" style="' . esc_attr($hide) . '">';
+
+                        echo '<p class="category-name">' . esc_html($cat->name) . ' Options' . '</p>';
 
                         // Track the first subcategory for each parent category
                         $is_first_subcategory = true;
