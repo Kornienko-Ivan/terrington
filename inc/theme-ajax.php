@@ -212,17 +212,22 @@ function output_categories_and_subcategories($parent_categories, $subcategories)
 
 // Function to filter WP_Query posts by post titles
 function filter_posts_by_titles( $query, $titles ) {
-    // Create an array to store only posts with titles found in the provided titles array
     $filtered_posts = array();
     foreach ( $query->posts as $post ) {
         if ( in_array( get_the_title( $post->ID ), $titles, true ) ) {
             $filtered_posts[] = $post;
         }
     }
-    // Replace the original posts with the filtered posts
-    $query->posts = $filtered_posts;
+    // Обновляем posts и соответствующие счетчики
+    $query->posts      = $filtered_posts;
+    $query->post_count = count( $filtered_posts );
+    $query->found_posts = count( $filtered_posts );
+    // Если пагинация не нужна, можно задать max_num_pages в 1
+    $query->max_num_pages = 1;
+
     return $query;
 }
+
 
 function filter_products_ajax() {
     // Get filters from the request
@@ -374,6 +379,7 @@ function filter_products_ajax() {
                 $filtered_query = new WP_Query( $filtered_args );
                 // Filter posts in $filtered_query to include only those whose titles are in $post_titles
                 $filtered_query = filter_posts_by_titles( $filtered_query, $post_titles );
+                error_log( 'Filtered Query: ' . print_r( $filtered_query, true ) );
 
                 // Output posts that match the first subcategory
                 echo '<div class="filter-results__posts filter-row">' . output_posts( $filtered_query ) . '</div>';

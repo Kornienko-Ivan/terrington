@@ -417,13 +417,15 @@
   }
   function handleTypeCheckboxChange() {
     // Разрешаем выбрать только один тип (new / used)
-    $('[name="type[]"]').not(this).prop("checked", false);
+    // $('[name="type[]"]').not(this).prop("checked", false);
+    $('[name="type"]').not(this).prop("checked", false);
   }
   function initFilterHandlers() {
     $(document).on("change", ".see-all-brands", handleSeeAllBrandsChange);
     $(document).on("change", '[data-name="brand"] input[type="checkbox"]:not(.see-all-brands)', handleBrandCheckboxChange);
     $(document).on("change", '[data-name="category"] input[type="checkbox"]', handleCategoryCheckboxChange);
-    $(document).on("change", '[name="type[]"]', handleTypeCheckboxChange); // Обработчик для выбора типа товара
+    // Обработчик для выбора типа товара: изменён селектор на [name="type"]
+    $(document).on("change", '[name="type"]', handleTypeCheckboxChange);
     $(document).on("change", ".dropdown input[type='checkbox']", function () {
       updateDropdownSelected();
     });
@@ -514,39 +516,32 @@
       var categoryId = $(this).closest(".category-item").data("category-id");
       $(".categories-row .filter-card").removeClass('active-card');
       $(this).addClass('active-card');
-
-      // updateActiveCardPosition();
       updateActiveCardPosition('category');
       $("#filtered-content .subcategories-row").removeClass("hide");
       $("#filtered-content .filter-results__posts").addClass("hide");
       $("#filtered-content .filter-results__posts").html('');
-
-      // Скрываем все подкатегории
       $(".subcategories").hide();
 
-      // console.log("Subcategories found:", $(".subcategories[data-category-id='" + categoryId + "']"));
-
-      // Показываем нужную подкатегорию
+      // show current subcategory
       $(".subcategories[data-category-id='" + categoryId + "']").css("display", "grid");
       $(".subcategory-item").hide();
       $(".subcategory-item").each(function () {
         var itemCategoryId = $(this).data("category-id");
-        // console.log("Checking subcategory item ID:", itemCategoryId);
         if (parseInt(itemCategoryId) === parseInt(categoryId)) {
           $(this).show();
+          $(this).addClass('hide-separator');
         }
       });
-
-      // console.log("Visible subcategories:", $(".subcategory-item:visible"));
     });
   }
 
   // Handle subcategory click events
   function handleSubcategoryClick() {
     $(document).on("click", ".subcategory-item", function () {
-      var subcategoryId = $(this).data("subcategory-id"); // Получаем ID, а не текст
+      var subcategoryId = $(this).data("subcategory-id");
       var categoryId = $(this).data("category-id");
       var filters = getFilterValues();
+      $(".subcategories-row .filter-card").removeClass('hide-separator');
       $(".subcategories-row .filter-card").removeClass('active-card');
       $(this).addClass('active-card');
       updateActiveCardPosition('subcategory', this);
@@ -557,7 +552,6 @@
         data: {
           action: "filter_posts_by_subcategory",
           subcategory_id: subcategoryId,
-          // Передаём ID вместо имени
           category_id: categoryId,
           brand: filters.brand,
           type: filters.type
@@ -567,7 +561,6 @@
         },
         success: function success(response) {
           $("#filtered-content .filter-results__posts").html(response);
-          // console.log("AJAX Response:", response);
         }
       });
     });
@@ -593,19 +586,38 @@
   }
   function updateActiveCardPosition(type) {
     var clickedCard = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    // Массив с настройками: для экранов меньше 769 – 2 колонки, для экранов до 992 – 3 колонки
+    var layoutSettings = [{
+      columns: 2,
+      maxWidth: 769
+    }, {
+      columns: 3,
+      maxWidth: 992
+    }];
+
+    // По умолчанию (для больших экранов) используем 4 колонки
+    var rowSize = 4;
+    var windowWidth = $(window).width();
+
+    // Проходим по массиву настроек и, если ширина экрана меньше или равна указанной, задаем нужное количество колонок
+    for (var _i = 0, _layoutSettings = layoutSettings; _i < _layoutSettings.length; _i++) {
+      var setting = _layoutSettings[_i];
+      if (windowWidth <= setting.maxWidth) {
+        rowSize = setting.columns;
+        break;
+      }
+    }
     var rowSelector;
     if (type === 'subcategory' && clickedCard) {
       var categoryId = $(clickedCard).data('category-id'); // Получаем data-category-id
       console.log('Выбранная категория ID:', categoryId);
-
       // Ищем только те subcategories, у которых совпадает data-category-id
-      rowSelector = ".subcategories-row .subcategories[data-category-id=\"".concat(categoryId, "\"]  .filter-card");
+      rowSelector = ".subcategories-row .subcategories[data-category-id=\"".concat(categoryId, "\"] .filter-card");
     } else {
       rowSelector = type === 'category' ? '.categories-row .filter-card' : '.subcategories .filter-card';
     }
     console.log('Обработка типа:', type);
     console.log('Используемый селектор:', rowSelector);
-    var rowSize = 4; // Количество карточек в ряду на десктопе
     var cards = $(rowSelector); // Все карточки, соответствующие селектору
     var totalCards = cards.length; // Общее количество карточек
     var totalRows = Math.ceil(totalCards / rowSize); // Количество рядов
@@ -614,17 +626,20 @@
     console.log('Всего рядов:', totalRows);
     var cardHeight = $(rowSelector).outerHeight(true); // Высота карточки с margin
     var activeCard = $("".concat(rowSelector, ".active-card"));
-    console.log('activeCard: ', activeCard);
+    console.log('activeCard:', activeCard);
     activeCard.each(function () {
       var index = $(this).index() + 1; // Позиция карточки в списке
-      var rowIndex = Math.ceil(index / rowSize); // В каком ряду карточка
-      console.log('index: ', index);
-      console.log('row: ', rowIndex);
+      var rowIndex = Math.ceil(index / rowSize); // В каком ряду находится карточка
+      console.log('index:', index);
+      console.log('row:', rowIndex);
       if (rowIndex < totalRows) {
-        // Если карточка в первом ряду, стандартный bottom (-82px). 18 - row gap
-        // Если ниже, увеличиваем отступ вниз
-        var rowOffset = type === 'subcategory' ? 109 : 82;
-        var newBottom = -rowOffset - 18 - rowIndex * cardHeight;
+        // Если карточка не в последнем ряду, задаем смещение
+        // Если ширина экрана меньше 769px, rowOffset всегда равен 99, иначе зависит от типа
+        // let rowOffset = windowWidth < 769 ? 99 : (type === 'subcategory' ? 109 : 82);
+        var rowOffset = windowWidth < 769 ? type === 'subcategory' ? 99 : 89 : type === 'subcategory' ? 109 : 82;
+        var rowGap = windowWidth < 569 ? -12 : -18;
+        var newBottom = rowGap * (totalRows - rowIndex) - (totalRows - rowIndex) * cardHeight - rowOffset;
+        console.log('newBottom:', newBottom);
         $(this).css('--before-bottom', "".concat(newBottom, "px"));
       }
     });

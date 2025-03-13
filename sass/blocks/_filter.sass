@@ -176,6 +176,9 @@
         &:before
           bottom: var(--before-bottom, -109px)
 
+    &.hide-separator
+      &:before
+        display: none
     +can-hover
       &:hover
         &:after
@@ -196,8 +199,190 @@
       padding-right: rem(10px)
 
   .message
-    //margin: 0 auto
     position: absolute
     left: 50%
     transform: translateX(-50%)
     top: rem(16px)
+    z-index: 1
+
+
++max-screen($breakpoint-lg)
+  .filter-results
+    &__categories
+      .subcategories-row
+        margin-top: rem(42px)
+        position: relative
+        &:not(.hide)
+          background-color: $color-secondary-gray
+          padding: rem(27px) rem(23px)
+          border-radius: $radius-sm
+          width: 100%
+
+    &__posts
+      margin-top: rem(42px)
+      position: relative
+      &:not(.hide)
+        background-color: $color-secondary-gray
+        padding: rem(27px) rem(23px)
+        border-radius: $radius-sm
+
+    .filter-row
+      grid-template-columns: repeat(3, minmax(150px, 1fr))
+      gap: rem(18px)
+      width: 100%
+      &.categories-row
+        width: 95.6%
+        margin: 0 auto
+
+    .filter-card
+      aspect-ratio: 254/249
+
+      &.active-card
+        &:after
+          display: block
+        &:before
+          width: 66px
+          height: 66px
+          bottom: var(--before-bottom, -82px)
+        &.subcategory-item
+          &:before
+            bottom: var(--before-bottom, -109px)
+
+      h6
+        left: rem(22.8px)
+        bottom: rem(21.8px)
+        padding-right: rem(10px)
+
+
++max-screen($breakpoint-md)
+  .filter
+    margin: rem(21px) 0 rem(13px)
+    .filter-bar
+      flex-direction: column
+      row-gap: rem(7px)
+      align-items: flex-start
+      .button
+        //padding: rem(14px) rem(33px)
+        min-width: unset
+        margin-top: rem(6px)
+      .dropdown
+        width: 100%
+      .dropdown-menu
+        top: 114%
+
+  .filter-results
+    &__categories
+      .subcategories-row
+        margin-top: rem(42px)
+        position: relative
+        &:not(.hide)
+          background-color: $color-secondary-gray
+          padding: 0
+          border-radius: $radius-sm
+          width: 100%
+
+    &__posts
+      margin-top: rem(42px)
+      position: relative
+      &:not(.hide)
+        background-color: $color-secondary-gray
+        padding: rem(27px) rem(23px)
+        border-radius: $radius-sm
+
+    .filter-row
+      grid-template-columns: repeat(2, minmax(100px, 1fr))
+      gap: rem(18px)
+      width: 100%
+      padding: rem(10px) rem(10px)
+      min-height: rem(50px)
+      &.categories-row
+        width: 100%
+        margin: 0
+        padding: 0
+
+    .filter-card
+      aspect-ratio: 254/249
+
+      &.active-card
+        &:after
+          display: block
+        &:before
+          width: 66px
+          height: 66px
+          bottom: var(--before-bottom, -89px)
+        &.subcategory-item
+          &:before
+            bottom: var(--before-bottom, -99px)
+
+      h6
+        left: rem(22.8px)
+        bottom: rem(21.8px)
+        padding-right: rem(10px)
+
+
++max-screen($breakpoint-sm)
+  .filter
+    margin: rem(21px) 0 rem(13px)
+    .filter-bar
+      flex-direction: column
+      row-gap: rem(7px)
+      align-items: flex-start
+      .button
+        //padding: rem(14px) rem(33px)
+        min-width: unset
+        margin-top: rem(6px)
+      .dropdown
+        width: 100%
+      .dropdown-menu
+        top: 114%
+
+  .filter-results
+    &__categories
+      .subcategories-row
+        margin-top: rem(42px)
+        position: relative
+        &:not(.hide)
+          background-color: $color-secondary-gray
+          padding: 0
+          border-radius: $radius-sm
+          width: 100%
+
+    &__posts
+      margin-top: rem(42px)
+      position: relative
+      &:not(.hide)
+        background-color: $color-secondary-gray
+        padding: rem(27px) rem(23px)
+        border-radius: $radius-sm
+
+    .filter-row
+      grid-template-columns: repeat(2, minmax(100px, 1fr))
+      gap: rem(12px)
+      width: 100%
+      padding: rem(10px) rem(10px)
+      min-height: rem(50px)
+      &.categories-row
+        width: 100%
+        margin: 0
+        padding: 0
+
+    .filter-card
+      aspect-ratio: 254/249
+
+      &.active-card
+        &:after
+          display: block
+        &:before
+          width: 66px
+          height: 66px
+          bottom: var(--before-bottom, -89px)
+        &.subcategory-item
+          &:before
+            bottom: var(--before-bottom, -99px)
+
+      h6
+        left: rem(15px)
+        bottom: rem(15px)
+        padding-right: rem(10px)
+        font-size: rem(12px)
+
