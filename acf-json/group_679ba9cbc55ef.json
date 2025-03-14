@@ -431,14 +431,14 @@
                     "min": "",
                     "max": ""
                 },
-                "layout_67c6f173b57d5": {
-                    "key": "layout_67c6f173b57d5",
-                    "name": "machinery-button",
-                    "label": "Machinery Button",
+                "layout_67bf1b3e62e5c": {
+                    "key": "layout_67bf1b3e62e5c",
+                    "name": "filter",
+                    "label": "Filter",
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_67c6f177b57d6",
+                            "key": "field_67bf1b4762e5d",
                             "label": "",
                             "name": "",
                             "type": "clone",
@@ -451,7 +451,7 @@
                                 "id": ""
                             },
                             "clone": [
-                                "group_67c6f0f3414f4"
+                                "group_67bf19b1b3317"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -482,6 +482,13 @@
                 "operator": "==",
                 "value": "products-brand"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "services"
+            }
         ]
     ],
     "menu_order": 0,
@@ -492,5 +499,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1741101429
+    "modified": 1741952415
 }
