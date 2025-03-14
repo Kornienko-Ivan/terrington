@@ -12,7 +12,7 @@ $error_image = get_field('error__image', 'option');
                         <img  src="<?php echo esc_url(get_custom_image($error_image, 'custom_1700x600')); ?>" alt="Error Image">
                     <?php endif; ?>
                     <div class="section-404__content">
-                        <h3><?php _e('ERROR 404.','terrington'); ?></h3>
+                        <h3><?php _e('ERROR 404','terrington'); ?></h3>
                         <h1><?php echo esc_html($error_text); ?></h1>
                         <a href="<?php echo esc_url(home_url('/')); ?>" class="button"><?php _e('Back to homepage','terrington'); ?></a>
                     </div>
