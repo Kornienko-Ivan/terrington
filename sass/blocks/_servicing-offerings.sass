@@ -26,12 +26,24 @@
       background-color: $color-white
       border-radius: $radius-md
       cursor: pointer
+      position: relative
+      &:after
+        content: ''
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        background-color: white
+        border-radius: $radius-sm
+        width: 85%
+        height: 70%
 
       +can-hover
         &:hover
           background-color: $color-red
     &__itemImg
       width: 80%
+      z-index: 2
   &__categoriesList
     display: grid
     grid-template-columns: repeat(4, minmax(rem(206px), rem(266px)))

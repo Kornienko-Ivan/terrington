@@ -5168,10 +5168,25 @@ body #app-wrapper {
 	background-color: #ffffff;
 	border-radius: 20px;
 	cursor: pointer;
+	position: relative;
+}
+
+.servicingOfferings__brandsList__item:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	background-color: white;
+	border-radius: 10px;
+	width: 85%;
+	height: 70%;
 }
 
 .servicingOfferings__brandsList__itemImg {
 	width: 80%;
+	z-index: 2;
 }
 
 .servicingOfferings__categoriesList {
