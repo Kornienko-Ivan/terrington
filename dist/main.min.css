@@ -698,8 +698,9 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .serviceOfferings__wrapper .container{max-width:88.125rem !important}
 .serviceOfferings h2{text-align:center}
 .serviceOfferings__list{margin:4.5rem -0.71875rem 0}
-.serviceOfferings__list .slick-slide{margin:0 .71875rem}
-.serviceOfferings__listItem{padding:2.625rem 3.25rem 3.0625rem;background-color:#fff;border-radius:20px}
+.serviceOfferings__list .slick-slide{margin:0 .71875rem;height:auto;-webkit-box-flex:1;-ms-flex:1;flex:1}
+.serviceOfferings__list .slick-track{display:-webkit-box;display:-ms-flexbox;display:flex}
+.serviceOfferings__listItem{padding:2.625rem 3.25rem 3.0625rem;background-color:#fff;border-radius:20px;height:100%}
 .serviceOfferings__listItem p{margin-top:.625rem;line-height:1.25}
 .brands{padding:7.5rem 0 9.625rem}
 .brands .manfacturers__listItem{position:relative}
