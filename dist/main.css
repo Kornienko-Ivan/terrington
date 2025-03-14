@@ -4301,6 +4301,17 @@ body #app-wrapper {
 	transform: scale(0.9);
 }
 
+.manfacturers__listItem::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	pointer-events: none;
+}
+
 .manfacturers__listItem__bg {
 	width: 100%;
 	height: 100%;
@@ -4333,6 +4344,9 @@ body #app-wrapper {
 .categories__list {
 	display: grid;
 	grid-template-columns: repeat(5, minmax(6.25rem, 13.3125rem));
+	-webkit-box-align: stretch;
+	-ms-flex-align: stretch;
+	align-items: stretch;
 	gap: 0.8125rem;
 	margin-top: 1.6875rem;
 }
@@ -4363,6 +4377,7 @@ body #app-wrapper {
 	font-family: "Bricolage Grotesque", sans-serif;
 	font-size: 0.9375rem;
 	font-weight: 500;
+	word-break: break-word;
 }
 
 .serviceOfferings {

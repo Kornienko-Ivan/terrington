@@ -685,13 +685,14 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .manfacturers__listItem__wrapper{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);width:80%;border-radius:20px;background-color:#fff;aspect-ratio:172/60;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;z-index:5}
 .manfacturers__listItem__wrapper img{width:75%;position:unset;-webkit-transform:unset;transform:unset}
 .manfacturers__listItem:after{position:absolute;content:'';left:0;top:0;width:100%;height:100%;background-color:#e61f26;z-index:2;opacity:0;-webkit-transform:scale(0.9);transform:scale(0.9)}
+.manfacturers__listItem::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);pointer-events:none}
 .manfacturers__listItem__bg{width:100%;height:100%;-o-object-fit:cover;object-fit:cover}
 .manfacturers__listItem__logo{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);width:60%;aspect-ratio:163/41}
 .categories{padding:1.8125rem 0 6.8125rem}
 .categories h5{padding:.6875rem 0 .625rem;text-align:center;line-height:1.2;border-radius:20px;background-color:#f5f6f7}
-.categories__list{display:grid;grid-template-columns:repeat(5,minmax(6.25rem,13.3125rem));gap:.8125rem;margin-top:1.6875rem}
+.categories__list{display:grid;grid-template-columns:repeat(5,minmax(6.25rem,13.3125rem));-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;gap:.8125rem;margin-top:1.6875rem}
 .categories__listItem{aspect-ratio:213/83;width:100%;background-color:#666;color:white;border-radius:20px;padding:.625rem;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-transition:background-color .3s ease;transition:background-color .3s ease;cursor:pointer;text-align:center}
-.categories__listItem__name{font-family:"Bricolage Grotesque",sans-serif;font-size:.9375rem;font-weight:500}
+.categories__listItem__name{font-family:"Bricolage Grotesque",sans-serif;font-size:.9375rem;font-weight:500;word-break:break-word}
 .serviceOfferings{padding:0 0 4.5rem}
 .serviceOfferings__wrapper{background-color:#f5f6f7;border-radius:20px;padding:4.75rem 0 2.875rem}
 .serviceOfferings__wrapper .container{max-width:88.125rem !important}
