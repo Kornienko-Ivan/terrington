@@ -665,7 +665,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .services{padding-bottom:4.25rem}
 .services__wrapper{background-color:#f5f6f7;border-radius:20px;padding:8.3125rem 0 8.3125rem}
 .services h2{text-align:center}
-.services__list{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-column-gap:1.25rem;-moz-column-gap:1.25rem;column-gap:1.25rem;margin-top:6rem}
+.services__list{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:6rem}
 .services__listItem{position:relative;aspect-ratio:357/360;width:100%;border-radius:20px;overflow:hidden}
 .services h4{position:absolute;left:2.3125rem;bottom:1.75rem;color:#fff}
 .services img{width:100%;height:100%;-o-object-fit:cover;object-fit:cover}
@@ -1810,7 +1810,7 @@ h4,.h4{font-size:1.5625rem}
 .hero__logo{max-width:50%}
 .services__wrapper{padding-block:6.125rem;padding-inline:3.125rem}
 .services h4{left:1.0625rem;font-size:1.875rem}
-.services__list{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;row-gap:2.5rem;margin-top:3.75rem}
+.services__list{row-gap:2.5rem;margin-top:3.75rem;display:grid;grid-template-columns:repeat(2,1fr)}
 .manfacturers__list{grid-template-columns:repeat(2,minmax(6.25rem,23.25rem))}
 .categories__list{grid-template-columns:repeat(3,minmax(6.25rem,19.5625rem))}
 .productHero__wrapper img{aspect-ratio:3/2}
@@ -1916,7 +1916,7 @@ h5,.h5{font-size:1.0625rem}
 .latestNews .button{display:none}
 .latestNews .button--mobile{display:block;margin:1.8125rem auto 0;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}
 .services__wrapper{padding-block:3rem;padding-inline:.625rem}
-.services__list{margin-top:2.5rem}
+.services__list{margin-top:2.5rem;grid-template-columns:repeat(1,1fr)}
 .services__listItem{aspect-ratio:3/2}
 .services h4{font-size:1.375rem}
 .review__image{width:51%;margin-top:-1.925rem}

@@ -4148,12 +4148,9 @@ body #app-wrapper {
 }
 
 .services__list {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-column-gap: 1.25rem;
-	-moz-column-gap: 1.25rem;
-	column-gap: 1.25rem;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1.25rem;
 	margin-top: 6rem;
 }
 
@@ -10620,12 +10617,10 @@ h4,
 }
 
 .services__list {
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: column;
-	flex-direction: column;
 	row-gap: 2.5rem;
 	margin-top: 3.75rem;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 }
 
 .manfacturers__list {
@@ -11174,6 +11169,7 @@ h5,
 
 .services__list {
 	margin-top: 2.5rem;
+	grid-template-columns: repeat(1, 1fr);
 }
 
 .services__listItem {

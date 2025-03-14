@@ -9,8 +9,9 @@
     text-align: center
 
   &__list
-    display: flex
-    column-gap: rem(20px)
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    gap: rem(20px)
     margin-top: rem(96px)
 
   &__listItem
@@ -42,6 +43,7 @@
       left: rem(17px)
       font-size: rem(24px)
 
+
 +max-screen($breakpoint-lg)
   .services
     &__wrapper
@@ -67,9 +69,10 @@
       font-size: rem(30px)
 
     &__list
-      flex-direction: column
       row-gap: rem(40px)
       margin-top: rem(60px)
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
 
 
 +max-screen($breakpoint-sm)
@@ -79,6 +82,7 @@
       padding-inline: rem(10px)
     &__list
       margin-top: rem(40px)
+      grid-template-columns: repeat(1, 1fr)
 
     &__listItem
       aspect-ratio: 3/2
