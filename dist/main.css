@@ -5166,7 +5166,7 @@ body #app-wrapper {
 	max-width: 9.125rem;
 	width: 100%;
 	background-color: #ffffff;
-	border-radius: 20px;
+	border-radius: 0.875rem;
 	cursor: pointer;
 	position: relative;
 }
@@ -5604,6 +5604,10 @@ body #app-wrapper {
 
 .servicingOfferings__brandsList__item:hover {
 	background-color: #e61f26;
+}
+
+.servicingOfferings__categoriesList__itemBrochures a:hover {
+	color: #e61f26;
 }
 
 .filter-results .filter-card:hover:after {

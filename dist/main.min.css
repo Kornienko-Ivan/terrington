@@ -811,7 +811,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .servicingOfferings h2{text-align:center}
 .servicingOfferings__brandsList{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-column-gap:.925rem;-moz-column-gap:.925rem;column-gap:.925rem;margin-top:5.5rem;overflow-x:scroll;scrollbar-width:none;-ms-overflow-style:none}
 .servicingOfferings__brandsList::-webkit-scrollbar{display:none}
-.servicingOfferings__brandsList__item{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;aspect-ratio:146/62;min-width:6.25rem;max-width:9.125rem;width:100%;background-color:#fff;border-radius:20px;cursor:pointer;position:relative}
+.servicingOfferings__brandsList__item{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;aspect-ratio:146/62;min-width:6.25rem;max-width:9.125rem;width:100%;background-color:#fff;border-radius:.875rem;cursor:pointer;position:relative}
 .servicingOfferings__brandsList__item:after{content:'';position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);background-color:white;border-radius:10px;width:85%;height:70%}
 .servicingOfferings__brandsList__itemImg{width:80%;z-index:2}
 .servicingOfferings__categoriesList{display:grid;grid-template-columns:repeat(4,minmax(12.875rem,16.625rem));gap:1.3125rem;margin-top:2.9275rem;position:relative}
@@ -879,6 +879,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .productVideos__play:hover{background-color:#000}
 .productBrochures__listItem:hover{background-color:#050505}
 .servicingOfferings__brandsList__item:hover{background-color:#e61f26}
+.servicingOfferings__categoriesList__itemBrochures a:hover{color:#e61f26}
 .filter-results .filter-card:hover:after{display:block}
 }@media(min-width:576px){.container{max-width:540px}
 .container,.container-sm{max-width:540px}

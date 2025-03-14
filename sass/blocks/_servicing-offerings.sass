@@ -24,7 +24,7 @@
       max-width: rem(146px)
       width: 100%
       background-color: $color-white
-      border-radius: $radius-md
+      border-radius: rem(14px)
       cursor: pointer
       position: relative
       &:after
@@ -70,6 +70,9 @@
       row-gap: rem(30px)
       a
         font-size: rem(17px)
+        +can-hover
+          &:hover
+            color: $color-red
 
 
 +max-screen($breakpoint-lg)
