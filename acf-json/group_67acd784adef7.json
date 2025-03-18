@@ -633,6 +633,25 @@
             "button_label": "Add Row",
             "min": "",
             "max": ""
+        },
+        {
+            "key": "field_67c83edc0ae95",
+            "label": "Breadcrumb title",
+            "name": "product_breadcrumb_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -652,5 +671,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1740047361
+    "modified": 1741176576
 }

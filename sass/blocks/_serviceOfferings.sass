@@ -15,17 +15,21 @@
 
     .slick-slide
       margin: 0 rem(11.5px)
+      height: auto
+      flex: 1
+    .slick-track
+      display: flex
 
   &__listItem
     padding: rem(42px) rem(52px) rem(49px)
     background-color: $color-white
     border-radius: $radius-md
-
-    h5
-
+    height: 100%
     p
       margin-top: rem(10px)
       line-height: 1.25
+
+
 
 +max-screen($breakpoint-sm)
   .serviceOfferings

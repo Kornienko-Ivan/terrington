@@ -19,7 +19,7 @@ $title = get_sub_field('title');
                     if($title || $text):
                     ?>
                     <div class="serviceOfferings___listItem__wrapper">
-                        <div class="serviceOfferings__listItem">
+                        <div class="serviceOfferings__listItem content-block">
                             <?php if($title): ?>
                             <h5><?php echo $title; ?></h5>
                                 <?php endif; ?>

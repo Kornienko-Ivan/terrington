@@ -6,7 +6,7 @@ if($title || have_rows('videos_list')):
         <div class="container container--narrow">
             <div class="productVideos__content">
                 <?php if($title): ?>
-                    <h3><?php echo $title; ?></h3>
+                    <h4><?php echo $title; ?></h4>
                 <?php endif; ?>
                 <?php if(have_rows('videos_list')): ?>
                     <div class="productVideos__list">

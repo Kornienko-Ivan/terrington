@@ -17,10 +17,29 @@ $video_placeholder = get_sub_field('video_placeholder');
 </section>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        console.log('player changed');
-        const player = new Plyr('#player', {
-            resetOnEnd: true,
-        });
+    document.addEventListener("DOMContentLoaded", function () {
+        console.log("player changed");
+
+        const video = document.querySelector("#player");
+
+        if (video) {
+            const player = new Plyr(video, {
+                resetOnEnd: true,
+            });
+
+            video.addEventListener("touchstart", function (event) {
+                event.preventDefault();
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+
+            console.log("Plyr initialized:", player);
+        } else {
+            console.error("Video element not found!");
+        }
     });
+
 </script>

@@ -2,10 +2,10 @@
   position: relative
   border-radius: $radius-md
   overflow: hidden
-  margin: rem(21px) 0 rem(24px)
+  margin: rem(0px) 0 rem(24px)
   height: calc(100vh - 150px)
   min-height: rem(400px)
-  max-height: rem(700px)
+  max-height: 80vh
   display: flex
   flex-direction: column
   justify-content: center
@@ -32,6 +32,11 @@
     height: 100%
     object-fit: cover
 
+
+@media (min-width: 1920px) and (min-height: 1080px)
+  .section-404
+    height: calc(100vh - 190px)
+    max-height: 100%
 +max-screen($breakpoint-xxl)
   .section-404
     &__content

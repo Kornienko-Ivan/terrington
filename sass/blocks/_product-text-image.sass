@@ -34,13 +34,18 @@
   &__textWrapper
     background-color: $color-secondary-gray
     padding: rem(49px) rem(43px) rem(50px) rem(51px)
+    height: fit-content
 
   &__text
     margin-top: rem(26px)
     line-height: 1.29
 
     p
+      &:not(:only-child):not(:last-child)
+        margin-bottom: rem(30px)
+
     ul
+      padding-left: rem(10px)
       li
         position: relative
         padding-left: rem(14px)
@@ -52,9 +57,8 @@
           width: rem(4px)
           border-radius: $radius-lg
           position: absolute
-          top: 50%
+          top: rem(8px)
           left: 0
-          transform: translateY(-50%)
 
 +max-screen($breakpoint-md)
   .productTextImage

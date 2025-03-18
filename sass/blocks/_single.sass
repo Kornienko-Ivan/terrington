@@ -21,6 +21,7 @@
     &__listItem
       border-radius: $radius-md
       overflow: hidden
+      +mixin-backface-hidden
       &.width-half
         grid-column: span 1
         aspect-ratio: 533/452
@@ -41,9 +42,24 @@
       border-radius: $radius-md
       overflow: hidden
       aspect-ratio: 1117 / 452
+      +mixin-backface-hidden
+
+      .plyr--stopped
+        .plyr__controls
+          visibility: hidden
+          opacity: 0
+      .plyr--playing
+        .plyr__poster
+          display: none
       .plyr__poster
         background-size: cover
         z-index: 4
+        display: block
+
+      .plyr__controls
+        visibility: visible
+        opacity: 1
+        z-index: 5
     &__content
       height: 100%
       width: 100%
@@ -93,6 +109,7 @@
       &__listItem
         border-radius: $radius-md
         overflow: hidden
+        +mixin-backface-hidden
         &.width-half
           grid-column: span 1
           aspect-ratio: 533/452

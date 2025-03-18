@@ -46,3 +46,4 @@ require get_template_directory() . '/inc/theme-ajax.php';
 
 // Include filters functions.
 require get_template_directory() . '/inc/theme-filters.php';
+

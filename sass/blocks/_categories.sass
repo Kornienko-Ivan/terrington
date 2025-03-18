@@ -10,6 +10,7 @@
   &__list
     display: grid
     grid-template-columns: repeat(5, minmax(rem(100px), rem(213px)))
+    align-items: stretch
     gap: rem(13px)
     margin-top: rem(27px)
 
@@ -33,6 +34,7 @@
       font-family: $font-family-title
       font-size: rem(15px)
       font-weight: 500
+      word-break: break-word
 
 +max-screen($breakpoint-lg)
   .categories

@@ -297,3 +297,10 @@ $maxWidthContainer: 1669
 	@else
 		// All the time
 		#{$property}: calc(#{$minSize + px} + #{$addSize} * ( (100vw - 320px) /  #{$maxWidth - 320}))
+
+
+=mixin-backface-hidden
+	-webkit-backface-visibility: hidden
+	-moz-backface-visibility: hidden
+	-webkit-transform: translate3d(0, 0, 0)
+	-moz-transform: translate3d(0, 0, 0)
