@@ -461,6 +461,37 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_67cb344b3dac7": {
+                    "key": "layout_67cb344b3dac7",
+                    "name": "dealer-map",
+                    "label": "Dealer Map",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_67cb344f3dac8",
+                            "label": "",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_67cb32e2245f0"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Row",
@@ -492,5 +523,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1741101429
+    "modified": 1741370471
 }
