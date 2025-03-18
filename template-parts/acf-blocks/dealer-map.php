@@ -64,8 +64,7 @@ if(have_rows('points_list')): ?>
       zoom: <?php echo $zoom; ?>,
       zoomControl: false
     });
-
-    L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+    L.tileLayer('https://{s}.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}', {
       maxZoom: 20,
       subdomains:['mt0','mt1','mt2','mt3'],
       attribution: 'Map data ©2021 Google'

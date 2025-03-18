@@ -1,0 +1,142 @@
+<?php 
+$form_title = get_sub_field('form_title');
+$form = get_sub_field('form');
+$map_lat = get_sub_field('map_lat') ? get_sub_field('map_lat') : 0;
+$map_lon = get_sub_field('map_lon') ? get_sub_field('map_lon') : 0;
+$map_zoom = get_sub_field('map_zoom') ? get_sub_field('map_zoom') : 12;
+if($form_title || $form || have_rows('map_points')):
+?>
+<section class="contactUs">
+    <div class="contactUs__content">
+        <?php if($form || $form_title): ?>
+            <div class="contactUs__formWrapper">
+                <?php if($form_title): ?>
+                    <div class="contactUs__formTitle"><?php echo $form_title; ?></div>
+                <?php endif; ?>
+                <?php if($form): ?>
+                    <div class="contactUs__form"><?php echo do_shortcode( $form ); ?></div>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+        <div class="contactUs__map"><div id="map" style="width: 100%; height: 100%;"></div></div>
+    </div>
+</section>
+<?php endif; ?>
+<style>
+    .contactUs__content {
+        display: flex;
+        min-height: 800px;
+    }
+    .contactUs__map {
+        width: 50%;
+        width: 845px;
+        height: 782px;
+    }
+
+  .marker-circle {
+    width: 52px;
+    height: 52px;
+    background-image: url('<?php echo get_template_directory_uri(); ?>/assets/icons/location-pin.svg');
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+  #map .leaflet-shadow-pane img {
+    display: none;
+  }
+  #map .leaflet-marker-pane > img {
+    display: none;
+  }
+  #map .leaflet-bottom.leaflet-right {
+    display: none;
+  }
+</style>
+<?php if(have_rows('map_points')): ?>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof L === "undefined") {
+      console.error("Leaflet hasn't been loaded!");
+      return;
+    }
+
+    var map = L.map('map', {
+      center: [<?php echo $map_lat; ?>, <?php echo $map_lon; ?>], 
+      zoom: <?php echo $map_zoom; ?>,
+      zoomControl: false
+    });
+
+    L.tileLayer('https://{s}.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}', {
+      maxZoom: 20,
+      subdomains:['mt0','mt1','mt2','mt3'],
+      attribution: 'Map data ©2021 Google'
+    }).addTo(map);
+
+    var locations = [
+      <?php while(have_rows('map_points')): the_row(); 
+        $lat = get_sub_field('lat');
+        $lon = get_sub_field('lon');
+        $image = get_sub_field('image');
+        $button = get_sub_field('button');
+        $description = get_sub_field('description');
+        $data = '';
+        if(have_rows('contact_data')): 
+          while(have_rows('contact_data')): the_row();
+            $label = get_sub_field('contact_data_text');
+            $link = get_sub_field('contact_data_link');
+            $data .= $label . "<a href='" . $link['url'] . "'>" . $link['title'] . "</a>";
+          endwhile;
+        endif;
+        if($lat && $lon):
+      ?>
+      { lat: <?php echo $lat; ?>, lon: <?php echo $lon; ?>, title: ""<?php if($image || $description || $data): ?>, info: "<div class='dealerBlock__pointPopup'><?php if($image): ?><div class='dealerBlock__pointPopup__image'><img src='<?php echo $image['url']; ?>' alt='<?php echo $image['title']; ?>'></div><?php endif; ?><?php if($description): ?><div class='dealerBlock__pointPopup__description'><?php echo $description; ?></div><?php endif; ?><?php if($data): ?><div class='dealerBlock__pointPopup__data'><?php echo $data; ?></div><?php endif; ?><?php if($button): ?><a href='<?php echo $button['url']; ?>' class='button'><?php echo $button['title']; ?></a><?php endif; ?></div>" <?php endif; ?>},
+      <?php endif; endwhile; ?>
+    ];
+
+    var markers = [];
+
+    var redIcon = L.divIcon({
+      className: 'custom-marker',
+      html: '<div class="marker-circle"></div>',
+      iconSize: [25, 25],
+      iconAnchor: [12, 12]
+    });
+
+    locations.forEach(loc => {
+      var marker = L.marker([loc.lat, loc.lon], { icon: redIcon })
+        .addTo(map)
+        .bindPopup(`<b>${loc.title}</b><br>${loc.info}`);
+
+      markers.push(marker);
+    });
+
+    function focusOnLocation(lat, lon) {
+      var marker = markers.find(m => m.getLatLng().lat === lat && m.getLatLng().lng === lon);
+      if (marker) {
+        map.setView([lat, lon], 10);
+        marker.openPopup();
+      }
+    }
+
+    jQuery('.dealerBlock__locationsList .dealerBlock__locationsList__itemLink').click(function(){
+      const lat = parseFloat(jQuery(this).parent().attr('data-lat')),
+            lon = parseFloat(jQuery(this).parent().attr('data-lon'));
+      focusOnLocation(lat, lon);
+    })
+
+    fetch('<?php echo get_template_directory_uri() ?>/assets/geo/uk-border.geojson')
+      .then(response => response.json())
+      .then(data => {
+        L.geoJSON(data, {
+          style: {
+            color: "red",
+            weight: 1,
+            dashArray: "3, 3",
+            fillOpacity: 0
+          }
+        }).addTo(map);
+      })
+      .catch(error => console.error("Error in loading GeoJSON:", error));
+  });
+</script>
+<?php endif; ?>

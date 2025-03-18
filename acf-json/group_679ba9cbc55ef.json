@@ -431,14 +431,14 @@
                     "min": "",
                     "max": ""
                 },
-                "layout_67bf1b3e62e5c": {
-                    "key": "layout_67bf1b3e62e5c",
-                    "name": "filter",
-                    "label": "Filter",
+                "layout_67c6f173b57d5": {
+                    "key": "layout_67c6f173b57d5",
+                    "name": "machinery-button",
+                    "label": "Machinery Button",
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_67bf1b4762e5d",
+                            "key": "field_67c6f177b57d6",
                             "label": "",
                             "name": "",
                             "type": "clone",
@@ -451,7 +451,7 @@
                                 "id": ""
                             },
                             "clone": [
-                                "group_67bf19b1b3317"
+                                "group_67c6f0f3414f4"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -492,6 +492,37 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_67d978c4943e0": {
+                    "key": "layout_67d978c4943e0",
+                    "name": "contact-us",
+                    "label": "Contact Us",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_67d978cd943e1",
+                            "label": "",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_67d96e8027f02"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Row",
@@ -513,13 +544,6 @@
                 "operator": "==",
                 "value": "products-brand"
             }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "services"
-            }
         ]
     ],
     "menu_order": 0,
@@ -530,5 +554,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1741952415
+    "modified": 1742305498
 }
