@@ -47,3 +47,19 @@ require get_template_directory() . '/inc/theme-ajax.php';
 // Include filters functions.
 require get_template_directory() . '/inc/theme-filters.php';
 
+
+
+add_filter('wpcf7_validate', 'custom_email_confirmation_validation', 20, 2);
+
+function custom_email_confirmation_validation($result, $tag) {
+    if ($tag->name === 'confirm-email') {
+        $email = isset($_POST['your-email']) ? sanitize_email($_POST['your-email']) : '';
+        $confirm_email = isset($_POST['confirm-email']) ? sanitize_email($_POST['confirm-email']) : '';
+
+        if ($email !== $confirm_email) {
+            // Додаємо помилку для поля "confirm-email"
+            $result->invalidate($tag, "Email-адреси не співпадають!");
+        }
+    }
+    return $result;
+}

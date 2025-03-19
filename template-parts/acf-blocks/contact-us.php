@@ -11,7 +11,7 @@ if($form_title || $form || have_rows('map_points')):
         <?php if($form || $form_title): ?>
             <div class="contactUs__formWrapper">
                 <?php if($form_title): ?>
-                    <div class="contactUs__formTitle"><?php echo $form_title; ?></div>
+                    <h2 class="contactUs__formTitle"><?php echo $form_title; ?></h2>
                 <?php endif; ?>
                 <?php if($form): ?>
                     <div class="contactUs__form"><?php echo do_shortcode( $form ); ?></div>
@@ -22,6 +22,28 @@ if($form_title || $form || have_rows('map_points')):
     </div>
 </section>
 <?php endif; ?>
+<script>
+jQuery(document).ready(function($){
+    $('.contactUs__form .wpcf7-form').each(function(){
+        const email1 = $(this).find('input[name="your-email"]'),
+              email2 = $(this).find('input[name="confirm-email"]');
+        if(email1.length > 0 && email2.length > 0) {
+            $(this).find('input[type="submit"]').click(function(e){
+                if(email1.val() !== email2.val()){
+                    e.preventDefault();
+
+                    email2.parent().find('.confirmation-error').remove();
+                    $("<div class='confirmation-error'>Email doesn't mach</div>").appendTo(email2.parent());
+
+                    email2.on('keyup', function(){
+                        email2.parent().find('.confirmation-error').remove();
+                    })
+                }
+            })
+        }
+    })
+})
+</script>
 <style>
     .contactUs__content {
         display: flex;
