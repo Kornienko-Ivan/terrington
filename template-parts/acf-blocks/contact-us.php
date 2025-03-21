@@ -7,18 +7,20 @@ $map_zoom = get_sub_field('map_zoom') ? get_sub_field('map_zoom') : 12;
 if($form_title || $form || have_rows('map_points')):
 ?>
 <section class="contactUs">
-    <div class="contactUs__content">
-        <?php if($form || $form_title): ?>
-            <div class="contactUs__formWrapper">
-                <?php if($form_title): ?>
-                    <h2 class="contactUs__formTitle"><?php echo $form_title; ?></h2>
-                <?php endif; ?>
-                <?php if($form): ?>
-                    <div class="contactUs__form"><?php echo do_shortcode( $form ); ?></div>
-                <?php endif; ?>
-            </div>
-        <?php endif; ?>
-        <div class="contactUs__map"><div id="map" style="width: 100%; height: 100%;"></div></div>
+    <div class="container--lg">
+        <div class="contactUs__content">
+            <?php if($form || $form_title): ?>
+                <div class="contactUs__formWrapper">
+                    <?php if($form_title): ?>
+                        <h2 class="contactUs__formTitle"><?php echo $form_title; ?></h2>
+                    <?php endif; ?>
+                    <?php if($form): ?>
+                        <div class="contactUs__form"><?php echo do_shortcode( $form ); ?></div>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+            <div class="contactUs__map"><div id="map" style="width: 100%; height: 100%;"></div></div>
+        </div>
     </div>
 </section>
 <?php endif; ?>
@@ -42,38 +44,26 @@ jQuery(document).ready(function($){
             })
         }
     })
+    $('.file-btn').click(function(e){
+        e.preventDefault();
+
+        $(this).parent().find('input[type="file"]').click();
+    })
+    $('input[type="file"]').on('change', function () {
+        const label = $(this).closest('p').find('label'),
+              button = $(this).closest('p').find('.file-btn');
+        var files = this.files;
+        if (!files.length) {
+            label.text(button.data('default'));
+            return;
+        }
+        label.empty();
+        for (var i = 0, l = files.length; i < l; i++) {
+            label.append(files[i].name + '\n');
+        }
+    });
 })
 </script>
-<style>
-    .contactUs__content {
-        display: flex;
-        min-height: 800px;
-    }
-    .contactUs__map {
-        width: 50%;
-        width: 845px;
-        height: 782px;
-    }
-
-  .marker-circle {
-    width: 52px;
-    height: 52px;
-    background-image: url('<?php echo get_template_directory_uri(); ?>/assets/icons/location-pin.svg');
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-  }
-  #map .leaflet-shadow-pane img {
-    display: none;
-  }
-  #map .leaflet-marker-pane > img {
-    display: none;
-  }
-  #map .leaflet-bottom.leaflet-right {
-    display: none;
-  }
-</style>
 <?php if(have_rows('map_points')): ?>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -106,7 +96,7 @@ jQuery(document).ready(function($){
           while(have_rows('contact_data')): the_row();
             $label = get_sub_field('contact_data_text');
             $link = get_sub_field('contact_data_link');
-            $data .= $label . "<a href='" . $link['url'] . "'>" . $link['title'] . "</a>";
+            $data .= "<div class='dealerBlock__pointPopup__dataItem'>" . $label . "<a href='" . $link['url'] . "'>" . $link['title'] . "</a></div>";
           endwhile;
         endif;
         if($lat && $lon):

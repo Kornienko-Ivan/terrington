@@ -4,14 +4,15 @@ $default_lon = get_sub_field('map_default_lon') ? get_sub_field('map_default_lon
 $zoom = get_sub_field('map_zoom_level') ? get_sub_field('map_zoom_level') : 6;
 if(have_rows('points_list')): ?>
 <div class="dealerBlock">
-    <div class="container">
+    <div class="container--lg">
         <div class="dealerBlock__content">
-            <div id="sidebar">
-                <h3>Dealer Map</h3>
-                <input type="text" id="locationSearch" placeholder="Search for a Dealer..." />
-
+            <div id="sidebar" class="dealerBlock__sidebar">
+                <h4 class="dealerBlock__title">Dealer Map</h4>
+                <div class="dealerBlock__search">
+                  <input type="text" id="locationSearch" placeholder="Search for a Dealer..." />
+                </div>
                 <div class="dealerBlock__locationsList">
-                <?php while(have_rows('points_list')): the_row(); 
+                  <?php while(have_rows('points_list')): the_row(); 
                     $lat = get_sub_field('point_lat');
                     $lon = get_sub_field('point_lon');
                     $name = get_sub_field('name');
@@ -29,29 +30,11 @@ if(have_rows('points_list')): ?>
                   <?php endwhile; ?>
                 </div>
             </div>
-            <div id="map" style="width: 100%; height: 600px;"></div>
+            <div id="map" class="dealerBlock__map"></div>
         </div>
     </div>
 </div>
 
-
-<style>
-  .marker-circle {
-    width: 52px;
-    height: 52px;
-    background-image: url('<?php echo get_template_directory_uri(); ?>/assets/icons/location-pin.svg');
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-  }
-  #map .leaflet-shadow-pane img {
-    display: none;
-  }
-  #map .leaflet-marker-pane > img {
-    display: none;
-  }
-</style>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     if (typeof L === "undefined") {
@@ -82,7 +65,7 @@ if(have_rows('points_list')): ?>
           while(have_rows('contact_data')): the_row();
             $label = get_sub_field('contact_data_text');
             $link = get_sub_field('contact_data_link');
-            $data .= $label . "<a href='" . $link['url'] . "'>" . $link['title'] . "</a>";
+            $data .= "<div class='dealerBlock__pointPopup__dataItem'>" . $label . "<a href='" . $link['url'] . "'>" . $link['title'] . "</a></div>";
           endwhile;
         endif;
         if($lat && $lon && $name):
@@ -136,22 +119,5 @@ if(have_rows('points_list')): ?>
       })
       .catch(error => console.error("Error in loading GeoJSON:", error));
   });
-</script>
-<script>
-    jQuery(document).ready(function ($) {
-        $('#locationSearch').on('keyup', function () {
-            const searchText = $(this).val().toLowerCase();
-
-            $('.dealerBlock__locationsList__item').each(function () {
-                const locationName = $(this).find('.dealerBlock__locationsList__itemName').text().toLowerCase();
-
-                if (locationName.includes(searchText)) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
-            });
-        });
-    });
 </script>
 <?php endif; ?>

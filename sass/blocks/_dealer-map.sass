@@ -1,0 +1,226 @@
+.dealerBlock
+    padding-bottom: 66px
+    +max-screen($breakpoint-lg)
+        padding-bottom: 42px
+    +max-screen($breakpoint-md)
+        padding-bottom: 32px
+    .container--lg
+        max-width: 1728px 
+        width: 100%
+        padding-left: 20px
+        padding-right: 38px
+        margin: auto 
+        +max-screen(1680px)
+            padding-left: 15px
+            padding-right: 15px
+    &__content 
+        position: relative
+    &__sidebar 
+        position: absolute
+        width: 33.65%
+        top: 18px
+        bottom: 18px
+        left: 24px
+        z-index: 101
+        background: #fff
+        padding: 64px 35px 49px 31px
+        border-radius: 20px
+        z-index: 2
+        display: flex
+        flex-direction: column
+        +max-screen(1200px)
+            width: 36% 
+            top: 8px 
+            bottom: 8px 
+            left: 10px
+            padding: 42px 28px 36px 24px 
+        +max-screen($breakpoint-lg)
+            position: static
+            width: 100%
+            margin-bottom: 32px
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2)
+        +max-screen($breakpoint-md)
+            padding: 28px 20px 24px 20px
+            margin-bottom: 24px
+        h4 
+            +max-screen($breakpoint-lg)
+                font-size: 28px
+            +max-screen($breakpoint-md)
+                font-size: 24px
+    &__map
+        height: 782px
+        width: 100%
+        border-radius: 20px
+        z-index: 1
+        +max-screen(1200px)
+            height: 550px
+        +max-screen($breakpoint-lg)
+            height: 420px
+    &__title 
+        margin-bottom: 29px
+        text-align: center
+        +max-screen(1200px)
+            margin-bottom: 18px
+        +max-screen($breakpoint-md)
+            margin-bottom: 14px
+    &__search 
+        position: relative
+        margin-bottom: 46px
+        +max-screen(1200px)
+            margin-bottom: 28px
+        +max-screen($breakpoint-md)
+            margin-bottom: 18px
+        &::before 
+            content: ""
+            width: 35px
+            height: 35px 
+            background-image: url('../assets/icons/terrington-serach-icon.svg')
+            background-size: contain
+            background-repeat: no-repeat
+            background-position: center center 
+            position: absolute
+            top: 50%
+            right: 16px
+            transform: translateY(-50%)
+            +max-screen(1200px)
+                width: 28px 
+                height: 28px 
+                right: 12px
+        input 
+            border: 1px solid #000
+            border-radius: 100px
+            padding: 22px 28px 
+            color: #000 
+            font-size: 17px
+            line-height: 1.294
+            width: 100%
+            +max-screen(1200px)
+                padding: 14px 18px
+                font-size: 15px
+            +max-screen($breakpoint-md)
+                font-size: 14px
+                padding: 10px 14px
+            &::placeholder 
+                color: #000 
+    &__locationsList 
+        flex: 1
+        overflow-y: scroll
+        padding-right: 4px
+        margin-right: -4px
+        &::-webkit-scrollbar-track
+            // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.15)
+            background-color: #fff
+            border-radius: 10px
+        &::-webkit-scrollbar
+            width: 6px
+            background-color: #F5F5F5
+            border-radius: 10px
+        &::-webkit-scrollbar-thumb
+            background-color: #E62526
+            border-radius: 10px
+        &__item 
+            margin-bottom: 13px
+            padding-bottom: 14px
+            border-bottom: 1px solid #EEEEEE
+            +max-screen(1200px) 
+                margin-bottom: 8px
+                padding-bottom: 8px
+            &:last-child
+                padding-bottom: 0
+                border-bottom: 0
+            &Name 
+                font-weight: 700
+                margin-bottom: 14px
+                font-size: 18px
+                line-height: 1.2778
+                +max-screen(1200px)
+                    margin-bottom: 8px
+                    font-size: 16px
+            &Description
+                margin-bottom: 14px
+                line-height: 1.3125
+                +max-screen(1200px)
+                    margin-bottom: 8px
+                    font-size: 14px
+            &Link 
+                color: $color-dark-red 
+                line-height: 1.3125
+                cursor: pointer
+                +max-screen(1200px)
+                    font-size: 14px
+    .review + & 
+        margin-top: -45px
+        +max-screen($breakpoint-lg)
+            margin-top: 0
+#map 
+    .leaflet-shadow-pane img,
+    .leaflet-marker-pane > img
+        display: none
+    .marker-circle
+        width: 52px
+        height: 52px
+        background-image: url('../assets/icons/location-pin.svg')
+        background-size: contain
+        background-repeat: no-repeat
+        background-position: center
+        position: absolute
+        left: 50%
+        bottom: 0
+        transform: translateX(-50%)
+        +max-screen(1200px)
+            width: 42px 
+            height: 42px 
+    .leaflet-bottom.leaflet-right
+        display: none
+    .leaflet-popup-pane 
+        .leaflet-popup
+            left: 24px !important
+            bottom: 4px !important
+            +max-screen(1200px)
+                left: 20px !important
+                bottom: -4px !important
+        .leaflet-popup-content > b,
+        .leaflet-popup-content > br,
+        .leaflet-popup-tip,
+        .leaflet-popup-close-button
+            display: none 
+        .leaflet-popup-content
+            margin: 0
+            padding: 6px 6px 12px 8px
+        .dealerBlock__pointPopup__description 
+            padding-left: 2px
+            font-size: 8.65px
+            line-height: 1.27
+        .dealerBlock__pointPopup__data
+            padding-left: 2px
+            padding-top: 11px
+            font-size: 8.65px
+            line-height: 1.27
+            a 
+                color: $default-text-color
+    .leaflet-popup 
+        width: 158px
+    .dealerBlock__pointPopup__image
+        position: relative
+        margin-bottom: 10px
+        &::before 
+            content: ""
+            display: block 
+            padding-bottom: 64%
+        img 
+            position: absolute
+            top: 0
+            left: 0
+            width: 100% 
+            height: 100%
+            object-fit: cover
+            object-position: center 
+            border-radius: 7px 
+    .dealerBlock__pointPopup 
+        .button
+            margin-top: 11px
+            font-size: 9px
+            padding: 7.8px 25px 
+            border-radius: 60px 
+            color: #fff
+            min-width: auto 

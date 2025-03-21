@@ -1,0 +1,202 @@
+.contactUs 
+    padding-top: 35px
+    +max-screen($breakpoint-lg)
+        padding-top: 24px
+    +max-screen($breakpoint-md)
+        padding-top: 12px
+    .container--lg 
+        max-width: 1728px
+        padding-left: 24px
+        padding-right: 24px
+        margin: auto 
+        +max-screen($breakpoint-md)
+            padding-left: 15px 
+            padding-right: 15px
+    &__content 
+        border-radius: 20px
+        background-color: #F5F6F7
+        position: relative
+        display: flex
+        +max-screen($breakpoint-lg)
+            flex-direction: column
+        &:before 
+            content: ""
+            position: absolute
+            height: 82.7%
+            top: 50%
+            transform: translateY(-45%)
+            width: 25%
+            background-image: url('../assets/images/contact-us-bg.png')
+            background-size: contain
+            background-repeat: no-repeat
+            background-position: left center
+    &__form
+        &Title 
+            margin-bottom: 50px
+            +max-screen($breakpoint-lg)
+                margin-bottom: 28px
+            +max-screen($breakpoint-md)
+                margin-bottom: 12px 
+        &Wrapper 
+            max-width: 547px
+            margin: auto 
+            padding-right: 40px
+            z-index: 1
+            padding-top: 96px
+            padding-bottom: 84px
+            +max-screen(1240px)
+                padding-left: 32px
+            +max-screen($breakpoint-lg)
+                padding-right: 0
+                padding-top: 64px
+                padding-bottom: 52px
+            +max-screen($breakpoint-md)
+                max-width: 100%
+                padding: 0 15px 
+                padding-top: 42px 
+                padding-bottom: 36px
+        form 
+            display: flex 
+            flex-wrap: wrap 
+            margin-left: -7.5px
+            margin-right: -7.5px
+            +max-screen($breakpoint-md)
+                margin-left: -3px 
+                margin-right: -3px
+            h6 
+                +max-screen($breakpoint-md)
+                    font-size: 16px
+            & > p
+                +max-screen($breakpoint-md)
+                    font-size: 14px
+            h6,
+            & > p 
+                width: calc( 100% - 15px )
+                margin-bottom: 12px
+                +max-screen($breakpoint-md)
+                    width: calc( 100% - 6px )
+                    margin-bottom: 6px
+                    margin-top: 6px
+            h6 + p 
+                +max-screen($breakpoint-md)
+                    margin-top: 0
+            .half 
+                width: calc( 50% - 15px )
+                +max-screen($breakpoint-md)
+                    width: calc( 50% - 6px )
+            .full 
+                width: calc( 100% - 15px )
+                +max-screen($breakpoint-md)
+                    width: calc( 100% - 6px )
+            .full,
+            .half,
+            h6,
+            & > p 
+                margin-left: 7.5px
+                margin-right: 7.5px
+                +max-screen($breakpoint-md)
+                    margin-left: 3px 
+                    margin-right: 3px
+            .form-field input[type="submit"]
+                border: 0
+                width: auto
+                margin-left: auto
+                display: block
+                padding: 12px 43px
+                margin-bottom: 0
+                background-color: #E61E26
+            a 
+                text-decoration: underline
+            .select .wpcf7-form-control-wrap 
+                position: relative
+                &::before
+                    content: ""
+
+            .wpcf7-not-valid-tip
+                font-size: 12px
+                margin-top: 4px
+                padding-left: 20px
+            .wpcf7-acceptance 
+                display: flex 
+                .wpcf7-list-item
+                    margin-left: 0
+            .mc4wp-checkbox
+                margin-bottom: 19px
+                +max-screen($breakpoint-lg)
+                    margin-bottom: 14px
+                +max-screen($breakpoint-md)
+                    margin-bottom: 8px
+            .wpcf7-acceptance .wpcf7-list-item,
+            .mc4wp-checkbox
+                display: block
+                & > label 
+                    display: flex 
+                input[type="checkbox"]
+                    opacity: 0
+                    visibility: hidden
+                    margin: 0
+                    width: 0
+                    height: 0
+                    & + span 
+                        position: relative
+                        display: block 
+                        padding-left: 24px 
+                        +max-screen($breakpoint-lg)
+                            font-size: 14px
+                            padding-left: 22px
+                        +max-screen($breakpoint-md)
+                            font-size: 12px
+                            padding-left: 16px
+                        &::before 
+                            content: ""
+                            position: absolute
+                            left: 0
+                            top: 3px 
+                            width: 16px 
+                            height: 16px 
+                            border: 1px solid #000 
+                            background-color: transparent 
+                            border-radius: 5px 
+                            +max-screen($breakpoint-lg)
+                                width: 14px 
+                                height: 14px
+                                top: 2px
+                            +max-screen($breakpoint-md)
+                                top: 0
+                                width: 12px 
+                                height: 12px 
+                                border-radius: 3px 
+                        &::after 
+                            content: ""
+                            width: 12px
+                            height: 12px 
+                            background-image: url('../assets/icons/check.png')
+                            background-size: contain
+                            background-repeat: no-repeat
+                            background-position: center 
+                            position: absolute
+                            top: 5px 
+                            left: 2px 
+                            opacity: 0
+                            transition: .3s 
+                            +max-screen($breakpoint-lg)
+                                left: 1px 
+                                top: 3px 
+                            +max-screen($breakpoint-md)
+                                width: 10px 
+                                height: 10px 
+                                top: 1px 
+                                left: 1px 
+                    &:checked + span 
+                        &::after 
+                            opacity: 1
+
+    &__map 
+        border-radius: 20px
+        overflow: hidden
+        width: 50%
+        +max-screen($breakpoint-lg)
+            width: 100%
+            aspect-ratio: 1 / 0.75
+        #map 
+            z-index: 1

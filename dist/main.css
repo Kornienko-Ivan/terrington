@@ -73,8 +73,8 @@ body {
 	cursor: default;
 }
 
-html,
-body {
+body,
+html {
 	font: normal 16px/1.4 "DM Sans", sans-serif;
 	color: #000;
 	background: #FFF;
@@ -2749,6 +2749,141 @@ input[type="submit"]:hover {
 
 .form input {
 	max-width: 100%;
+}
+
+form.wpcf7-form input:not(input[type="file"]),
+form.wpcf7-form select,
+form.wpcf7-form textarea {
+	padding: 14px 20px 13px;
+	border: 1px solid #000;
+	border-radius: 100px;
+	font-size: 15px;
+	line-height: 1.33333;
+	width: 100%;
+}
+
+form.wpcf7-form input:not(input[type="file"])::-webkit-input-placeholder,
+form.wpcf7-form select::-webkit-input-placeholder,
+form.wpcf7-form textarea::-webkit-input-placeholder {
+	color: #000;
+}
+
+form.wpcf7-form input:not(input[type="file"])::-moz-placeholder,
+form.wpcf7-form select::-moz-placeholder,
+form.wpcf7-form textarea::-moz-placeholder {
+	color: #000;
+}
+
+form.wpcf7-form input:not(input[type="file"]):-ms-input-placeholder,
+form.wpcf7-form select:-ms-input-placeholder,
+form.wpcf7-form textarea:-ms-input-placeholder {
+	color: #000;
+}
+
+form.wpcf7-form input:not(input[type="file"])::-ms-input-placeholder,
+form.wpcf7-form select::-ms-input-placeholder,
+form.wpcf7-form textarea::-ms-input-placeholder {
+	color: #000;
+}
+
+form.wpcf7-form input:not(input[type="file"])::placeholder,
+form.wpcf7-form select::placeholder,
+form.wpcf7-form textarea::placeholder {
+	color: #000;
+}
+
+form.wpcf7-form select {
+	padding-top: 14.49px;
+	padding-bottom: 13.49px;
+	-o-appearance: none;
+	-ms-appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	padding-right: 28px;
+}
+
+form.wpcf7-form textarea {
+	padding: 20px;
+	border-radius: 20px;
+	height: 130px;
+}
+
+form.wpcf7-form .file-btn {
+	background: transparent;
+	padding: 8px 12px;
+	border-radius: 20px;
+	margin-right: 12px;
+	margin-bottom: 12px;
+}
+
+form.wpcf7-form .file-btn#btn_file-3 {
+	margin-bottom: 19px;
+}
+
+form.wpcf7-form .file-btn-label {
+	font-size: 12px;
+}
+
+form.wpcf7-form .file-btn-label + span {
+	opacity: 0;
+	width: 0;
+	height: 0;
+	display: block;
+	visibility: hidden;
+	margin: 0;
+}
+
+form.wpcf7-form .wpcf7-form-control-wrap {
+	margin-bottom: 19px;
+	display: block;
+}
+
+form.wpcf7-form .form-field:nth-last-child(2) > p {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: reverse;
+	-ms-flex-direction: row-reverse;
+	flex-direction: row-reverse;
+	-webkit-box-pack: start;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+form.wpcf7-form .form-field:nth-last-child(2) > p input {
+	margin: 0;
+}
+
+form.wpcf7-form .confirmation-error {
+	font-size: 12px;
+	margin-top: 4px;
+	padding-left: 20px;
+	color: #dc3232;
+	display: block;
+}
+
+form.wpcf7-form .select .wpcf7-form-control-wrap {
+	position: relative;
+}
+
+form.wpcf7-form .select .wpcf7-form-control-wrap::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	width: 10px;
+	height: 12px;
+	right: 12px;
+	-webkit-transform: rotate(90deg) translateX(-60%);
+	transform: rotate(90deg) translateX(-60%);
+	background-image: url("../assets/icons/right-arrow.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .img-block {
@@ -5515,6 +5650,450 @@ body #app-wrapper {
 
 .filter-results .category-name {
 	display: none;
+}
+
+.dealerBlock {
+	padding-bottom: 66px;
+}
+
+.dealerBlock .container--lg {
+	max-width: 1728px;
+	width: 100%;
+	padding-left: 20px;
+	padding-right: 38px;
+	margin: auto;
+}
+
+.dealerBlock__content {
+	position: relative;
+}
+
+.dealerBlock__sidebar {
+	position: absolute;
+	width: 33.65%;
+	top: 18px;
+	bottom: 18px;
+	left: 24px;
+	z-index: 101;
+	background: #fff;
+	padding: 64px 35px 49px 31px;
+	border-radius: 20px;
+	z-index: 2;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+
+.dealerBlock__map {
+	height: 782px;
+	width: 100%;
+	border-radius: 20px;
+	z-index: 1;
+}
+
+.dealerBlock__title {
+	margin-bottom: 29px;
+	text-align: center;
+}
+
+.dealerBlock__search {
+	position: relative;
+	margin-bottom: 46px;
+}
+
+.dealerBlock__search::before {
+	content: "";
+	width: 35px;
+	height: 35px;
+	background-image: url("../assets/icons/terrington-serach-icon.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	position: absolute;
+	top: 50%;
+	right: 16px;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.dealerBlock__search input {
+	border: 1px solid #000;
+	border-radius: 100px;
+	padding: 22px 28px;
+	color: #000;
+	font-size: 17px;
+	line-height: 1.294;
+	width: 100%;
+}
+
+.dealerBlock__search input::-webkit-input-placeholder {
+	color: #000;
+}
+
+.dealerBlock__search input::-moz-placeholder {
+	color: #000;
+}
+
+.dealerBlock__search input:-ms-input-placeholder {
+	color: #000;
+}
+
+.dealerBlock__search input::-ms-input-placeholder {
+	color: #000;
+}
+
+.dealerBlock__search input::placeholder {
+	color: #000;
+}
+
+.dealerBlock__locationsList {
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	overflow-y: scroll;
+	padding-right: 4px;
+	margin-right: -4px;
+}
+
+.dealerBlock__locationsList::-webkit-scrollbar-track {
+	background-color: #fff;
+	border-radius: 10px;
+}
+
+.dealerBlock__locationsList::-webkit-scrollbar {
+	width: 6px;
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+.dealerBlock__locationsList::-webkit-scrollbar-thumb {
+	background-color: #E62526;
+	border-radius: 10px;
+}
+
+.dealerBlock__locationsList__item {
+	margin-bottom: 13px;
+	padding-bottom: 14px;
+	border-bottom: 1px solid #EEEEEE;
+}
+
+.dealerBlock__locationsList__item:last-child {
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+
+.dealerBlock__locationsList__itemName {
+	font-weight: 700;
+	margin-bottom: 14px;
+	font-size: 18px;
+	line-height: 1.2778;
+}
+
+.dealerBlock__locationsList__itemDescription {
+	margin-bottom: 14px;
+	line-height: 1.3125;
+}
+
+.dealerBlock__locationsList__itemLink {
+	color: #e0242e;
+	line-height: 1.3125;
+	cursor: pointer;
+}
+
+.review + .dealerBlock {
+	margin-top: -45px;
+}
+
+#map .leaflet-shadow-pane img,
+#map .leaflet-marker-pane > img {
+	display: none;
+}
+
+#map .marker-circle {
+	width: 52px;
+	height: 52px;
+	background-image: url("../assets/icons/location-pin.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+#map .leaflet-bottom.leaflet-right {
+	display: none;
+}
+
+#map .leaflet-popup-pane .leaflet-popup {
+	left: 24px !important;
+	bottom: 4px !important;
+}
+
+#map .leaflet-popup-pane .leaflet-popup-content > b,
+#map .leaflet-popup-pane .leaflet-popup-content > br,
+#map .leaflet-popup-pane .leaflet-popup-tip,
+#map .leaflet-popup-pane .leaflet-popup-close-button {
+	display: none;
+}
+
+#map .leaflet-popup-pane .leaflet-popup-content {
+	margin: 0;
+	padding: 6px 6px 12px 8px;
+}
+
+#map .leaflet-popup-pane .dealerBlock__pointPopup__description {
+	padding-left: 2px;
+	font-size: 8.65px;
+	line-height: 1.27;
+}
+
+#map .leaflet-popup-pane .dealerBlock__pointPopup__data {
+	padding-left: 2px;
+	padding-top: 11px;
+	font-size: 8.65px;
+	line-height: 1.27;
+}
+
+#map .leaflet-popup-pane .dealerBlock__pointPopup__data a {
+	color: #000;
+}
+
+#map .leaflet-popup {
+	width: 158px;
+}
+
+#map .dealerBlock__pointPopup__image {
+	position: relative;
+	margin-bottom: 10px;
+}
+
+#map .dealerBlock__pointPopup__image::before {
+	content: "";
+	display: block;
+	padding-bottom: 64%;
+}
+
+#map .dealerBlock__pointPopup__image img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-o-object-fit: cover;
+	object-fit: cover;
+	-o-object-position: center;
+	object-position: center;
+	border-radius: 7px;
+}
+
+#map .dealerBlock__pointPopup .button {
+	margin-top: 11px;
+	font-size: 9px;
+	padding: 7.8px 25px;
+	border-radius: 60px;
+	color: #fff;
+	min-width: auto;
+}
+
+.contactUs {
+	padding-top: 35px;
+}
+
+.contactUs .container--lg {
+	max-width: 1728px;
+	padding-left: 24px;
+	padding-right: 24px;
+	margin: auto;
+}
+
+.contactUs__content {
+	border-radius: 20px;
+	background-color: #F5F6F7;
+	position: relative;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.contactUs__content:before {
+	content: "";
+	position: absolute;
+	height: 82.7%;
+	top: 50%;
+	-webkit-transform: translateY(-45%);
+	transform: translateY(-45%);
+	width: 25%;
+	background-image: url("../assets/images/contact-us-bg.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+.contactUs__formTitle {
+	margin-bottom: 50px;
+}
+
+.contactUs__formWrapper {
+	max-width: 547px;
+	margin: auto;
+	padding-right: 40px;
+	z-index: 1;
+	padding-top: 96px;
+	padding-bottom: 84px;
+}
+
+.contactUs__form form {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-left: -7.5px;
+	margin-right: -7.5px;
+}
+
+.contactUs__form form h6,
+.contactUs__form form > p {
+	width: calc( 100% - 15px);
+	margin-bottom: 12px;
+}
+
+.contactUs__form form .half {
+	width: calc( 50% - 15px);
+}
+
+.contactUs__form form .full {
+	width: calc( 100% - 15px);
+}
+
+.contactUs__form form .full,
+.contactUs__form form .half,
+.contactUs__form form h6,
+.contactUs__form form > p {
+	margin-left: 7.5px;
+	margin-right: 7.5px;
+}
+
+.contactUs__form form .form-field input[type="submit"] {
+	border: 0;
+	width: auto;
+	margin-left: auto;
+	display: block;
+	padding: 12px 43px;
+	margin-bottom: 0;
+	background-color: #E61E26;
+}
+
+.contactUs__form form a {
+	text-decoration: underline;
+}
+
+.contactUs__form form .select .wpcf7-form-control-wrap {
+	position: relative;
+}
+
+.contactUs__form form .select .wpcf7-form-control-wrap::before {
+	content: "";
+}
+
+.contactUs__form form .wpcf7-not-valid-tip {
+	font-size: 12px;
+	margin-top: 4px;
+	padding-left: 20px;
+}
+
+.contactUs__form form .wpcf7-acceptance {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item {
+	margin-left: 0;
+}
+
+.contactUs__form form .mc4wp-checkbox {
+	margin-bottom: 19px;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item,
+.contactUs__form form .mc4wp-checkbox {
+	display: block;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item > label,
+.contactUs__form form .mc4wp-checkbox > label {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"],
+.contactUs__form form .mc4wp-checkbox input[type="checkbox"] {
+	opacity: 0;
+	visibility: hidden;
+	margin: 0;
+	width: 0;
+	height: 0;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"] + span,
+.contactUs__form form .mc4wp-checkbox input[type="checkbox"] + span {
+	position: relative;
+	display: block;
+	padding-left: 24px;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"] + span::before,
+.contactUs__form form .mc4wp-checkbox input[type="checkbox"] + span::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 3px;
+	width: 16px;
+	height: 16px;
+	border: 1px solid #000;
+	background-color: transparent;
+	border-radius: 5px;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"] + span::after,
+.contactUs__form form .mc4wp-checkbox input[type="checkbox"] + span::after {
+	content: "";
+	width: 12px;
+	height: 12px;
+	background-image: url("../assets/icons/check.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: absolute;
+	top: 5px;
+	left: 2px;
+	opacity: 0;
+	-webkit-transition: .3s;
+	transition: .3s;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"]:checked + span::after,
+.contactUs__form form .mc4wp-checkbox input[type="checkbox"]:checked + span::after {
+	opacity: 1;
+}
+
+.contactUs__map {
+	border-radius: 20px;
+	overflow: hidden;
+	width: 50%;
+}
+
+.contactUs__map #map {
+	z-index: 1;
 }
 
 @media (hover: hover) {
@@ -9541,6 +10120,15 @@ body #app-wrapper {
 
 }
 
+@media only screen and (max-width: 1680px) {
+
+.dealerBlock .container--lg {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+}
+
 @media (max-width: 1669px) {
 
 .heroMain .card__backend .card__logo {
@@ -9651,6 +10239,14 @@ body #app-wrapper {
 
 }
 
+@media only screen and (max-width: 1240px) {
+
+.contactUs__formWrapper {
+	padding-left: 32px;
+}
+
+}
+
 @media only screen and (max-width: 1200px) {
 
 .heroMain .card__backend .card__logo {
@@ -9678,6 +10274,66 @@ body #app-wrapper {
 
 .infoSection__icon {
 	right: 0.625rem;
+}
+
+.dealerBlock__sidebar {
+	width: 36%;
+	top: 8px;
+	bottom: 8px;
+	left: 10px;
+	padding: 42px 28px 36px 24px;
+}
+
+.dealerBlock__map {
+	height: 550px;
+}
+
+.dealerBlock__title {
+	margin-bottom: 18px;
+}
+
+.dealerBlock__search {
+	margin-bottom: 28px;
+}
+
+.dealerBlock__search::before {
+	width: 28px;
+	height: 28px;
+	right: 12px;
+}
+
+.dealerBlock__search input {
+	padding: 14px 18px;
+	font-size: 15px;
+}
+
+.dealerBlock__locationsList__item {
+	margin-bottom: 8px;
+	padding-bottom: 8px;
+}
+
+.dealerBlock__locationsList__itemName {
+	margin-bottom: 8px;
+	font-size: 16px;
+}
+
+.dealerBlock__locationsList__itemDescription {
+	margin-bottom: 8px;
+	font-size: 14px;
+}
+
+.dealerBlock__locationsList__itemLink {
+	font-size: 14px;
+}
+
+#map .marker-circle {
+	width: 42px;
+	height: 42px;
+}
+
+#map .leaflet-popup-pane .leaflet-popup {
+	left: 20px !important;
+	bottom: -4px !important;
 }
 
 }
@@ -9983,6 +10639,21 @@ h4,
 .footer__col--menu {
 	margin-right: 0;
 	max-width: 50%;
+}
+
+form.wpcf7-form input:not(input[type="file"]),
+form.wpcf7-form select,
+form.wpcf7-form textarea {
+	padding: 10px 16px 10px;
+	font-size: 14px;
+}
+
+form.wpcf7-form .file-btn#btn_file-3 {
+	margin-bottom: 14px;
+}
+
+form.wpcf7-form .wpcf7-form-control-wrap {
+	margin-bottom: 14px;
 }
 
 .post-card__body {
@@ -10388,6 +11059,79 @@ h4,
 	padding-right: 0.625rem;
 }
 
+.dealerBlock {
+	padding-bottom: 42px;
+}
+
+.dealerBlock__sidebar {
+	position: static;
+	width: 100%;
+	margin-bottom: 32px;
+	-webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dealerBlock__sidebar h4 {
+	font-size: 28px;
+}
+
+.dealerBlock__map {
+	height: 420px;
+}
+
+.review + .dealerBlock {
+	margin-top: 0;
+}
+
+.contactUs {
+	padding-top: 24px;
+}
+
+.contactUs__content {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+
+.contactUs__formTitle {
+	margin-bottom: 28px;
+}
+
+.contactUs__formWrapper {
+	padding-right: 0;
+	padding-top: 64px;
+	padding-bottom: 52px;
+}
+
+.contactUs__form form .mc4wp-checkbox {
+	margin-bottom: 14px;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"] + span,
+.contactUs__form form .mc4wp-checkbox input[type="checkbox"] + span {
+	font-size: 14px;
+	padding-left: 22px;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"] + span::before,
+.contactUs__form form .mc4wp-checkbox input[type="checkbox"] + span::before {
+	width: 14px;
+	height: 14px;
+	top: 2px;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"] + span::after,
+.contactUs__form form .mc4wp-checkbox input[type="checkbox"] + span::after {
+	left: 1px;
+	top: 3px;
+}
+
+.contactUs__map {
+	width: 100%;
+	aspect-ratio: 1 / 0.75;
+}
+
 }
 
 @media only screen and (max-width: 769px) {
@@ -10539,6 +11283,41 @@ h4,
 	-webkit-column-gap: 0.625rem;
 	-moz-column-gap: 0.625rem;
 	column-gap: 0.625rem;
+}
+
+form.wpcf7-form input:not(input[type="file"]),
+form.wpcf7-form select,
+form.wpcf7-form textarea {
+	padding: 8px 13px 7px;
+	font-size: 12px;
+}
+
+form.wpcf7-form select {
+	padding-top: 8.49px;
+	padding-bottom: 7.49px;
+	padding-right: 18px;
+}
+
+form.wpcf7-form .file-btn {
+	padding: 6px 9px;
+	margin-right: 8px;
+	font-size: 12px;
+}
+
+form.wpcf7-form .file-btn#btn_file-3 {
+	margin-bottom: 8px;
+}
+
+form.wpcf7-form .wpcf7-form-control-wrap {
+	margin-bottom: 8px;
+}
+
+form.wpcf7-form .select .wpcf7-form-control-wrap::before {
+	width: 7px;
+	height: 9px;
+	right: 10px;
+	-webkit-transform: rotate(90deg) translateX(-70%);
+	transform: rotate(90deg) translateX(-70%);
 }
 
 .archive {
@@ -10952,6 +11731,118 @@ h4,
 	left: 1.425rem;
 	bottom: 1.3625rem;
 	padding-right: 0.625rem;
+}
+
+.dealerBlock {
+	padding-bottom: 32px;
+}
+
+.dealerBlock__sidebar {
+	padding: 28px 20px 24px 20px;
+	margin-bottom: 24px;
+}
+
+.dealerBlock__sidebar h4 {
+	font-size: 24px;
+}
+
+.dealerBlock__title {
+	margin-bottom: 14px;
+}
+
+.dealerBlock__search {
+	margin-bottom: 18px;
+}
+
+.dealerBlock__search input {
+	font-size: 14px;
+	padding: 10px 14px;
+}
+
+.contactUs {
+	padding-top: 12px;
+}
+
+.contactUs .container--lg {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.contactUs__formTitle {
+	margin-bottom: 12px;
+}
+
+.contactUs__formWrapper {
+	max-width: 100%;
+	padding: 0 15px;
+	padding-top: 42px;
+	padding-bottom: 36px;
+}
+
+.contactUs__form form {
+	margin-left: -3px;
+	margin-right: -3px;
+}
+
+.contactUs__form form h6 {
+	font-size: 16px;
+}
+
+.contactUs__form form > p {
+	font-size: 14px;
+}
+
+.contactUs__form form h6,
+.contactUs__form form > p {
+	width: calc( 100% - 6px);
+	margin-bottom: 6px;
+	margin-top: 6px;
+}
+
+.contactUs__form form h6 + p {
+	margin-top: 0;
+}
+
+.contactUs__form form .half {
+	width: calc( 50% - 6px);
+}
+
+.contactUs__form form .full {
+	width: calc( 100% - 6px);
+}
+
+.contactUs__form form .full,
+.contactUs__form form .half,
+.contactUs__form form h6,
+.contactUs__form form > p {
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.contactUs__form form .mc4wp-checkbox {
+	margin-bottom: 8px;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"] + span,
+.contactUs__form form .mc4wp-checkbox input[type="checkbox"] + span {
+	font-size: 12px;
+	padding-left: 16px;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"] + span::before,
+.contactUs__form form .mc4wp-checkbox input[type="checkbox"] + span::before {
+	top: 0;
+	width: 12px;
+	height: 12px;
+	border-radius: 3px;
+}
+
+.contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"] + span::after,
+.contactUs__form form .mc4wp-checkbox input[type="checkbox"] + span::after {
+	width: 10px;
+	height: 10px;
+	top: 1px;
+	left: 1px;
 }
 
 }

@@ -72,6 +72,23 @@
 "use strict";
 
 (function ($) {
+  jQuery(document).ready(function ($) {
+    $('#locationSearch').on('keyup', function () {
+      var searchText = $(this).val().toLowerCase();
+      $('.dealerBlock__locationsList__item').each(function () {
+        var locationName = $(this).find('.dealerBlock__locationsList__itemName').text().toLowerCase();
+        if (locationName.includes(searchText)) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    });
+  });
+})(jQuery);
+"use strict";
+
+(function ($) {
   $(document).ready(function () {
     var breakpoint = 992;
     var isDesktop = window.innerWidth > breakpoint;
