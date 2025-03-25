@@ -2807,6 +2807,7 @@ form.wpcf7-form textarea {
 	padding: 20px;
 	border-radius: 20px;
 	height: 130px;
+	resize: none;
 }
 
 form.wpcf7-form .file-btn {

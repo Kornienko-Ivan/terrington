@@ -485,7 +485,7 @@ form.wpcf7-form input:not(input[type="file"]):-ms-input-placeholder,form.wpcf7-f
 form.wpcf7-form input:not(input[type="file"])::-ms-input-placeholder,form.wpcf7-form select::-ms-input-placeholder,form.wpcf7-form textarea::-ms-input-placeholder{color:#000}
 form.wpcf7-form input:not(input[type="file"])::placeholder,form.wpcf7-form select::placeholder,form.wpcf7-form textarea::placeholder{color:#000}
 form.wpcf7-form select{padding-top:14.49px;padding-bottom:13.49px;-o-appearance:none;-ms-appearance:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;padding-right:28px}
-form.wpcf7-form textarea{padding:20px;border-radius:20px;height:130px}
+form.wpcf7-form textarea{padding:20px;border-radius:20px;height:130px;resize:none}
 form.wpcf7-form .file-btn{background:transparent;padding:8px 12px;border-radius:20px;margin-right:12px;margin-bottom:12px}
 form.wpcf7-form .file-btn#btn_file-3{margin-bottom:19px}
 form.wpcf7-form .file-btn-label{font-size:12px}
