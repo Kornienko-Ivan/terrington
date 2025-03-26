@@ -30,9 +30,21 @@
             background-size: contain
             background-repeat: no-repeat
             background-position: left center
+        #map 
+            .leaflet-popup
+                width: 222px
+            .leaflet-popup-content
+                padding: 9px 8px 12px 11px 
+            .leaflet-popup-pane 
+                .dealerBlock__pointPopup__description,
+                .dealerBlock__pointPopup__data
+                    font-size: 12px
+                    color: #000
+                    font-family: $font-family-base
     &__form
         &Title 
             margin-bottom: 50px
+            line-height: 1.2
             +max-screen($breakpoint-lg)
                 margin-bottom: 28px
             +max-screen($breakpoint-md)
@@ -105,8 +117,12 @@
                 padding: 12px 43px
                 margin-bottom: 0
                 background-color: #E61E26
+                &:hover 
+                    background-color: #000
             a 
                 text-decoration: underline
+                &:hover 
+                    color: $color-red
             .select .wpcf7-form-control-wrap 
                 position: relative
                 &::before
@@ -126,6 +142,7 @@
                     margin-bottom: 14px
                 +max-screen($breakpoint-md)
                     margin-bottom: 8px
+                    margin-top: 6px
             .wpcf7-acceptance .wpcf7-list-item,
             .mc4wp-checkbox
                 display: block
@@ -198,5 +215,6 @@
         +max-screen($breakpoint-lg)
             width: 100%
             aspect-ratio: 1 / 0.75
+            max-height: 60vh
         #map 
             z-index: 1

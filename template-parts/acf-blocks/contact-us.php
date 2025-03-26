@@ -75,7 +75,8 @@ jQuery(document).ready(function($){
     var map = L.map('map', {
       center: [<?php echo $map_lat; ?>, <?php echo $map_lon; ?>], 
       zoom: <?php echo $map_zoom; ?>,
-      zoomControl: false
+      zoomControl: false,
+      scrollWheelZoom: false
     });
 
     L.tileLayer('https://{s}.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}', {
@@ -83,6 +84,15 @@ jQuery(document).ready(function($){
       subdomains:['mt0','mt1','mt2','mt3'],
       attribution: 'Map data ©2021 Google'
     }).addTo(map);
+
+
+    map.getContainer().addEventListener("wheel", function (event) {
+        if (event.ctrlKey) {
+            map.scrollWheelZoom.enable(); 
+        } else {
+            map.scrollWheelZoom.disable(); 
+        }
+    });
 
     var locations = [
       <?php while(have_rows('map_points')): the_row(); 
@@ -150,5 +160,6 @@ jQuery(document).ready(function($){
       })
       .catch(error => console.error("Error in loading GeoJSON:", error));
   });
+
 </script>
 <?php endif; ?>

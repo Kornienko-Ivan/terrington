@@ -2760,6 +2760,7 @@ form.wpcf7-form textarea {
 	font-size: 15px;
 	line-height: 1.33333;
 	width: 100%;
+	font-family: "DM Sans", sans-serif;
 }
 
 form.wpcf7-form input:not(input[type="file"])::-webkit-input-placeholder,
@@ -2792,9 +2793,14 @@ form.wpcf7-form textarea::placeholder {
 	color: #000;
 }
 
+form.wpcf7-form input:not(input[type="file"]):focus,
+form.wpcf7-form select:focus,
+form.wpcf7-form textarea:focus {
+	border: 2px solid #000;
+	padding: 13px 19px 12px;
+}
+
 form.wpcf7-form select {
-	padding-top: 14.49px;
-	padding-bottom: 13.49px;
 	-o-appearance: none;
 	-ms-appearance: none;
 	-webkit-appearance: none;
@@ -2807,7 +2813,7 @@ form.wpcf7-form textarea {
 	padding: 20px;
 	border-radius: 20px;
 	height: 130px;
-	resize: none;
+	resize: vertical;
 }
 
 form.wpcf7-form .file-btn {
@@ -2837,7 +2843,9 @@ form.wpcf7-form .file-btn-label + span {
 
 form.wpcf7-form .wpcf7-form-control-wrap {
 	margin-bottom: 19px;
-	display: block;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
 }
 
 form.wpcf7-form .form-field:nth-last-child(2) > p {
@@ -2875,7 +2883,7 @@ form.wpcf7-form .select .wpcf7-form-control-wrap {
 form.wpcf7-form .select .wpcf7-form-control-wrap::before {
 	content: "";
 	position: absolute;
-	top: 50%;
+	top: 25px;
 	width: 10px;
 	height: 12px;
 	right: 12px;
@@ -4358,6 +4366,14 @@ body #app-wrapper {
 
 .review__text {
 	margin-top: 1.5625rem;
+}
+
+.review__text p {
+	margin-bottom: 22px;
+}
+
+.review__text p:last-child {
+	margin-bottom: 0;
 }
 
 .review .button {
@@ -5866,6 +5882,10 @@ body #app-wrapper {
 	color: #000;
 }
 
+#map .leaflet-popup-pane .dealerBlock__pointPopup__data a:hover {
+	color: #e61f26;
+}
+
 #map .leaflet-popup {
 	width: 158px;
 }
@@ -5937,8 +5957,24 @@ body #app-wrapper {
 	background-position: left center;
 }
 
+.contactUs__content #map .leaflet-popup {
+	width: 222px;
+}
+
+.contactUs__content #map .leaflet-popup-content {
+	padding: 9px 8px 12px 11px;
+}
+
+.contactUs__content #map .leaflet-popup-pane .dealerBlock__pointPopup__description,
+.contactUs__content #map .leaflet-popup-pane .dealerBlock__pointPopup__data {
+	font-size: 12px;
+	color: #000;
+	font-family: "DM Sans", sans-serif;
+}
+
 .contactUs__formTitle {
 	margin-bottom: 50px;
+	line-height: 1.2;
 }
 
 .contactUs__formWrapper {
@@ -5992,8 +6028,16 @@ body #app-wrapper {
 	background-color: #E61E26;
 }
 
+.contactUs__form form .form-field input[type="submit"]:hover {
+	background-color: #000;
+}
+
 .contactUs__form form a {
 	text-decoration: underline;
+}
+
+.contactUs__form form a:hover {
+	color: #e61f26;
 }
 
 .contactUs__form form .select .wpcf7-form-control-wrap {
@@ -10649,12 +10693,28 @@ form.wpcf7-form textarea {
 	font-size: 14px;
 }
 
+form.wpcf7-form input:not(input[type="file"]):focus,
+form.wpcf7-form select:focus,
+form.wpcf7-form textarea:focus {
+	padding: 9px 15px 9px;
+	font-size: 14px;
+}
+
+form.wpcf7-form select {
+	padding-right: 28px;
+}
+
 form.wpcf7-form .file-btn#btn_file-3 {
 	margin-bottom: 14px;
 }
 
 form.wpcf7-form .wpcf7-form-control-wrap {
 	margin-bottom: 14px;
+}
+
+form.wpcf7-form .select .wpcf7-form-control-wrap::before {
+	right: 16px;
+	top: 21px;
 }
 
 .post-card__body {
@@ -11131,6 +11191,7 @@ form.wpcf7-form .wpcf7-form-control-wrap {
 .contactUs__map {
 	width: 100%;
 	aspect-ratio: 1 / 0.75;
+	max-height: 60vh;
 }
 
 }
@@ -11293,9 +11354,14 @@ form.wpcf7-form textarea {
 	font-size: 12px;
 }
 
+form.wpcf7-form input:not(input[type="file"]):focus,
+form.wpcf7-form select:focus,
+form.wpcf7-form textarea:focus {
+	padding: 7px 12px 6px;
+	font-size: 12px;
+}
+
 form.wpcf7-form select {
-	padding-top: 8.49px;
-	padding-bottom: 7.49px;
 	padding-right: 18px;
 }
 
@@ -11319,6 +11385,7 @@ form.wpcf7-form .select .wpcf7-form-control-wrap::before {
 	right: 10px;
 	-webkit-transform: rotate(90deg) translateX(-70%);
 	transform: rotate(90deg) translateX(-70%);
+	top: 17px;
 }
 
 .archive {
@@ -11446,6 +11513,10 @@ form.wpcf7-form .select .wpcf7-form-control-wrap::before {
 	margin-top: 3.75rem;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
+}
+
+.review__text p {
+	margin-bottom: 14px;
 }
 
 .manfacturers__list {
@@ -11822,6 +11893,7 @@ form.wpcf7-form .select .wpcf7-form-control-wrap::before {
 
 .contactUs__form form .mc4wp-checkbox {
 	margin-bottom: 8px;
+	margin-top: 6px;
 }
 
 .contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"] + span,

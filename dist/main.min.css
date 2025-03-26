@@ -478,24 +478,25 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .buttonsBlock--right .buttonsBlock__inner{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}
 .buttonsBlock .button{margin:5px}
 .form input{max-width:100%}
-form.wpcf7-form input:not(input[type="file"]),form.wpcf7-form select,form.wpcf7-form textarea{padding:14px 20px 13px;border:1px solid #000;border-radius:100px;font-size:15px;line-height:1.33333;width:100%}
+form.wpcf7-form input:not(input[type="file"]),form.wpcf7-form select,form.wpcf7-form textarea{padding:14px 20px 13px;border:1px solid #000;border-radius:100px;font-size:15px;line-height:1.33333;width:100%;font-family:"DM Sans",sans-serif}
 form.wpcf7-form input:not(input[type="file"])::-webkit-input-placeholder,form.wpcf7-form select::-webkit-input-placeholder,form.wpcf7-form textarea::-webkit-input-placeholder{color:#000}
 form.wpcf7-form input:not(input[type="file"])::-moz-placeholder,form.wpcf7-form select::-moz-placeholder,form.wpcf7-form textarea::-moz-placeholder{color:#000}
 form.wpcf7-form input:not(input[type="file"]):-ms-input-placeholder,form.wpcf7-form select:-ms-input-placeholder,form.wpcf7-form textarea:-ms-input-placeholder{color:#000}
 form.wpcf7-form input:not(input[type="file"])::-ms-input-placeholder,form.wpcf7-form select::-ms-input-placeholder,form.wpcf7-form textarea::-ms-input-placeholder{color:#000}
 form.wpcf7-form input:not(input[type="file"])::placeholder,form.wpcf7-form select::placeholder,form.wpcf7-form textarea::placeholder{color:#000}
-form.wpcf7-form select{padding-top:14.49px;padding-bottom:13.49px;-o-appearance:none;-ms-appearance:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;padding-right:28px}
-form.wpcf7-form textarea{padding:20px;border-radius:20px;height:130px;resize:none}
+form.wpcf7-form input:not(input[type="file"]):focus,form.wpcf7-form select:focus,form.wpcf7-form textarea:focus{border:2px solid #000;padding:13px 19px 12px}
+form.wpcf7-form select{-o-appearance:none;-ms-appearance:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;padding-right:28px}
+form.wpcf7-form textarea{padding:20px;border-radius:20px;height:130px;resize:vertical}
 form.wpcf7-form .file-btn{background:transparent;padding:8px 12px;border-radius:20px;margin-right:12px;margin-bottom:12px}
 form.wpcf7-form .file-btn#btn_file-3{margin-bottom:19px}
 form.wpcf7-form .file-btn-label{font-size:12px}
 form.wpcf7-form .file-btn-label+span{opacity:0;width:0;height:0;display:block;visibility:hidden;margin:0}
-form.wpcf7-form .wpcf7-form-control-wrap{margin-bottom:19px;display:block}
+form.wpcf7-form .wpcf7-form-control-wrap{margin-bottom:19px;display:-webkit-box;display:-ms-flexbox;display:flex}
 form.wpcf7-form .form-field:nth-last-child(2)>p{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 form.wpcf7-form .form-field:nth-last-child(2)>p input{margin:0}
 form.wpcf7-form .confirmation-error{font-size:12px;margin-top:4px;padding-left:20px;color:#dc3232;display:block}
 form.wpcf7-form .select .wpcf7-form-control-wrap{position:relative}
-form.wpcf7-form .select .wpcf7-form-control-wrap::before{content:"";position:absolute;top:50%;width:10px;height:12px;right:12px;-webkit-transform:rotate(90deg) translateX(-60%);transform:rotate(90deg) translateX(-60%);background-image:url("../assets/icons/right-arrow.png");background-size:contain;background-repeat:no-repeat;background-position:center}
+form.wpcf7-form .select .wpcf7-form-control-wrap::before{content:"";position:absolute;top:25px;width:10px;height:12px;right:12px;-webkit-transform:rotate(90deg) translateX(-60%);transform:rotate(90deg) translateX(-60%);background-image:url("../assets/icons/right-arrow.png");background-size:contain;background-repeat:no-repeat;background-position:center}
 .img-block{display:block;position:relative;overflow:hidden;padding-bottom:60%;-webkit-box-sizing:border-box;box-sizing:border-box}
 .img-block img{position:absolute;top:0;left:0;-o-object-fit:cover;object-fit:cover;width:100%;height:100%}
 .lazy-pulse{position:relative}
@@ -695,6 +696,8 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .review__image{aspect-ratio:461/428;border-radius:20px;overflow:hidden}
 .review__image img{width:100%;height:100%;-o-object-fit:cover;object-fit:cover}
 .review__text{margin-top:1.5625rem}
+.review__text p{margin-bottom:22px}
+.review__text p:last-child{margin-bottom:0}
 .review .button{margin-top:2.5625rem;padding:.8125rem 1.8125rem}
 .manfacturers{padding:6.75rem 0 1.8125rem}
 .manfacturers h5{padding:.6875rem 0 .625rem;text-align:center;line-height:1.2;border-radius:20px;background-color:#f5f6f7;margin-bottom:1.6875rem}
@@ -908,6 +911,7 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 #map .leaflet-popup-pane .dealerBlock__pointPopup__description{padding-left:2px;font-size:8.65px;line-height:1.27}
 #map .leaflet-popup-pane .dealerBlock__pointPopup__data{padding-left:2px;padding-top:11px;font-size:8.65px;line-height:1.27}
 #map .leaflet-popup-pane .dealerBlock__pointPopup__data a{color:#000}
+#map .leaflet-popup-pane .dealerBlock__pointPopup__data a:hover{color:#e61f26}
 #map .leaflet-popup{width:158px}
 #map .dealerBlock__pointPopup__image{position:relative;margin-bottom:10px}
 #map .dealerBlock__pointPopup__image::before{content:"";display:block;padding-bottom:64%}
@@ -917,7 +921,10 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .contactUs .container--lg{max-width:1728px;padding-left:24px;padding-right:24px;margin:auto}
 .contactUs__content{border-radius:20px;background-color:#f5f6f7;position:relative;display:-webkit-box;display:-ms-flexbox;display:flex}
 .contactUs__content:before{content:"";position:absolute;height:82.7%;top:50%;-webkit-transform:translateY(-45%);transform:translateY(-45%);width:25%;background-image:url("../assets/images/contact-us-bg.png");background-size:contain;background-repeat:no-repeat;background-position:left center}
-.contactUs__formTitle{margin-bottom:50px}
+.contactUs__content #map .leaflet-popup{width:222px}
+.contactUs__content #map .leaflet-popup-content{padding:9px 8px 12px 11px}
+.contactUs__content #map .leaflet-popup-pane .dealerBlock__pointPopup__description,.contactUs__content #map .leaflet-popup-pane .dealerBlock__pointPopup__data{font-size:12px;color:#000;font-family:"DM Sans",sans-serif}
+.contactUs__formTitle{margin-bottom:50px;line-height:1.2}
 .contactUs__formWrapper{max-width:547px;margin:auto;padding-right:40px;z-index:1;padding-top:96px;padding-bottom:84px}
 .contactUs__form form{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-left:-7.5px;margin-right:-7.5px}
 .contactUs__form form h6,.contactUs__form form>p{width:calc(100% - 15px);margin-bottom:12px}
@@ -925,7 +932,9 @@ body #app-wrapper{opacity:1;-webkit-transition:.5s;transition:.5s}
 .contactUs__form form .full{width:calc(100% - 15px)}
 .contactUs__form form .full,.contactUs__form form .half,.contactUs__form form h6,.contactUs__form form>p{margin-left:7.5px;margin-right:7.5px}
 .contactUs__form form .form-field input[type="submit"]{border:0;width:auto;margin-left:auto;display:block;padding:12px 43px;margin-bottom:0;background-color:#e61e26}
+.contactUs__form form .form-field input[type="submit"]:hover{background-color:#000}
 .contactUs__form form a{text-decoration:underline}
+.contactUs__form form a:hover{color:#e61f26}
 .contactUs__form form .select .wpcf7-form-control-wrap{position:relative}
 .contactUs__form form .select .wpcf7-form-control-wrap::before{content:""}
 .contactUs__form form .wpcf7-not-valid-tip{font-size:12px;margin-top:4px;padding-left:20px}
@@ -1793,8 +1802,11 @@ h4,.h4{font-size:1.5625rem}
 .footer__col--form{margin-right:0}
 .footer__col--menu{margin-right:0;max-width:50%}
 form.wpcf7-form input:not(input[type="file"]),form.wpcf7-form select,form.wpcf7-form textarea{padding:10px 16px 10px;font-size:14px}
+form.wpcf7-form input:not(input[type="file"]):focus,form.wpcf7-form select:focus,form.wpcf7-form textarea:focus{padding:9px 15px 9px;font-size:14px}
+form.wpcf7-form select{padding-right:28px}
 form.wpcf7-form .file-btn#btn_file-3{margin-bottom:14px}
 form.wpcf7-form .wpcf7-form-control-wrap{margin-bottom:14px}
+form.wpcf7-form .select .wpcf7-form-control-wrap::before{right:16px;top:21px}
 .post-card__body{padding:1.8125rem 1.9375rem 2.4375rem 1.75rem}
 .post-card__image{max-height:20rem}
 .section-404__content h1{font-size:2.5rem}
@@ -1881,7 +1893,7 @@ form.wpcf7-form .wpcf7-form-control-wrap{margin-bottom:14px}
 .contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"]+span,.contactUs__form form .mc4wp-checkbox input[type="checkbox"]+span{font-size:14px;padding-left:22px}
 .contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"]+span::before,.contactUs__form form .mc4wp-checkbox input[type="checkbox"]+span::before{width:14px;height:14px;top:2px}
 .contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"]+span::after,.contactUs__form form .mc4wp-checkbox input[type="checkbox"]+span::after{left:1px;top:3px}
-.contactUs__map{width:100%;aspect-ratio:1 / .75}
+.contactUs__map{width:100%;aspect-ratio:1 / .75;max-height:60vh}
 }@media only screen and (max-width:769px){#app{min-height:0}
 .text--size--10,.text--size--10 *{font-size:.625rem}
 .text--size--12,.text--size--12 *{font-size:.75rem}
@@ -1910,11 +1922,12 @@ form.wpcf7-form .wpcf7-form-control-wrap{margin-bottom:14px}
 .footer__bottom{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;row-gap:1.0625rem;padding:1.0625rem 0 1.4375rem}
 .footer__bottom-links{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-column-gap:.625rem;-moz-column-gap:.625rem;column-gap:.625rem}
 form.wpcf7-form input:not(input[type="file"]),form.wpcf7-form select,form.wpcf7-form textarea{padding:8px 13px 7px;font-size:12px}
-form.wpcf7-form select{padding-top:8.49px;padding-bottom:7.49px;padding-right:18px}
+form.wpcf7-form input:not(input[type="file"]):focus,form.wpcf7-form select:focus,form.wpcf7-form textarea:focus{padding:7px 12px 6px;font-size:12px}
+form.wpcf7-form select{padding-right:18px}
 form.wpcf7-form .file-btn{padding:6px 9px;margin-right:8px;font-size:12px}
 form.wpcf7-form .file-btn#btn_file-3{margin-bottom:8px}
 form.wpcf7-form .wpcf7-form-control-wrap{margin-bottom:8px}
-form.wpcf7-form .select .wpcf7-form-control-wrap::before{width:7px;height:9px;right:10px;-webkit-transform:rotate(90deg) translateX(-70%);transform:rotate(90deg) translateX(-70%)}
+form.wpcf7-form .select .wpcf7-form-control-wrap::before{width:7px;height:9px;right:10px;-webkit-transform:rotate(90deg) translateX(-70%);transform:rotate(90deg) translateX(-70%);top:17px}
 .archive{padding-top:3.125rem;padding-bottom:3.125rem}
 .archive__heading{padding-top:3.125rem}
 .secondaryMenu__list{padding:1.0625rem 0;-webkit-column-gap:1rem;-moz-column-gap:1rem;column-gap:1rem;overflow-y:scroll;scrollbar-width:none;-ms-overflow-style:none}
@@ -1936,6 +1949,7 @@ form.wpcf7-form .select .wpcf7-form-control-wrap::before{width:7px;height:9px;ri
 .services__wrapper{padding-block:6.125rem;padding-inline:3.125rem}
 .services h4{left:1.0625rem;font-size:1.875rem}
 .services__list{row-gap:2.5rem;margin-top:3.75rem;display:grid;grid-template-columns:repeat(2,1fr)}
+.review__text p{margin-bottom:14px}
 .manfacturers__list{grid-template-columns:repeat(2,minmax(6.25rem,23.25rem))}
 .categories__list{grid-template-columns:repeat(3,minmax(6.25rem,19.5625rem))}
 .productHero__wrapper img{aspect-ratio:3/2}
@@ -2007,7 +2021,7 @@ form.wpcf7-form .select .wpcf7-form-control-wrap::before{width:7px;height:9px;ri
 .contactUs__form form .half{width:calc(50% - 6px)}
 .contactUs__form form .full{width:calc(100% - 6px)}
 .contactUs__form form .full,.contactUs__form form .half,.contactUs__form form h6,.contactUs__form form>p{margin-left:3px;margin-right:3px}
-.contactUs__form form .mc4wp-checkbox{margin-bottom:8px}
+.contactUs__form form .mc4wp-checkbox{margin-bottom:8px;margin-top:6px}
 .contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"]+span,.contactUs__form form .mc4wp-checkbox input[type="checkbox"]+span{font-size:12px;padding-left:16px}
 .contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"]+span::before,.contactUs__form form .mc4wp-checkbox input[type="checkbox"]+span::before{top:0;width:12px;height:12px;border-radius:3px}
 .contactUs__form form .wpcf7-acceptance .wpcf7-list-item input[type="checkbox"]+span::after,.contactUs__form form .mc4wp-checkbox input[type="checkbox"]+span::after{width:10px;height:10px;top:1px;left:1px}

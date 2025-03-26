@@ -24,7 +24,12 @@
 
   &__text
     margin-top: rem(25px)
-
+    p 
+      margin-bottom: 22px
+      +max-screen($breakpoint-md)
+        margin-bottom: 14px
+      &:last-child
+        margin-bottom: 0
   .button
     margin-top: rem(41px)
     padding: rem(13px) rem(29px)
