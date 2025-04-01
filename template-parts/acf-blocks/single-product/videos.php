@@ -12,11 +12,16 @@ if($title || have_rows('videos_list')):
                     <div class="productVideos__list">
                         <?php while(have_rows('videos_list')): the_row();
                             $video = get_sub_field('video_link');
-                            $image = explode('watch?v=', $video);
-                            if (!empty($image[1])):
+                            if(!empty(explode('watch?v=', $video)[1])){
+                                $placeholder = explode('watch?v=', $video)[1];
+                            } else {
+                                $placeholder = explode('?list=', explode('youtu.be/', $video)[1])[0];
+                            }
+                            $image = get_sub_field('video_preview') ? get_sub_field('video_preview')['url'] : 'https://img.youtube.com/vi/' . $placeholder . '/maxresdefault.jpg';
+                            if (!empty($image)):
                                 ?>
                                 <a href="<?php echo esc_url($video); ?>" class="productVideos__listItem" target="_blank" rel="noopener noreferrer">
-                                    <img src="https://img.youtube.com/vi/<?php echo esc_attr($image[1]); ?>/maxresdefault.jpg" alt="">
+                                    <img src="<?php echo esc_attr($image); ?>" alt="">
                                     <div class="productVideos__play">
                                         <?php echo get_inline_svg('play') ?>
                                     </div>

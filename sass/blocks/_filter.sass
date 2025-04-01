@@ -16,15 +16,28 @@
       border-radius: $radius-lg
       padding: rem(14px) rem(21px) rem(14px) rem(23px)
       cursor: pointer
+      +max-screen($breakpoint-md)
+        line-height: 1.1818
+        padding: rem(11px) rem(18px) rem(10px) rem(22px)
+      &:hover 
+        border: 2px solid $color-black 
+        padding: rem(13px) rem(20px) rem(13px) rem(22px)
+        +max-screen($breakpoint-md)
+          padding: rem(10px) rem(17px) rem(9px) rem(21px)
       span
         font-family: "Bricolage Grotesque", sans-serif
         font-size: rem(15px)
         font-weight: 500
+        +max-screen($breakpoint-md)
+          font-size: 11px
         &.choosed
           color: $color-red
       svg
-        width: rem(9.14px)
-        height: rem(9.14px)
+        width: rem(12px)
+        height: rem(12px)
+        +max-screen($breakpoint-md)
+          width: 9px 
+          height: 9px 
 
     .dropdown-menu
       display: none
@@ -42,13 +55,19 @@
         display: flex
         flex-direction: column
         row-gap: rem(10px)
+        +max-screen($breakpoint-md)
+          row-gap: rem(4px)
 
 
     .dropdown-item
       display: flex
-      align-items: center
+      align-items: flex-start 
+      word-break: break-word
       column-gap: rem(10px)
       font-size: rem(15px)
+      +max-screen($breakpoint-md)
+        column-gap: rem(4px)
+        font-size: rem(11px)
       input[type="checkbox"]
         appearance: none
         -webkit-appearance: none
@@ -60,6 +79,11 @@
         position: relative
         cursor: pointer
         flex-shrink: 0
+        margin-top: 4px
+        +max-screen($breakpoint-md)
+          width: rem(6px)
+          height: rem(6px)
+          margin-top: rem(6px)
         &:checked
           background-color: $color-red
           border: 1px solid $color-red
@@ -142,6 +166,8 @@
       height: 100%
       border-radius: $radius-md
       overflow: hidden
+      +max-screen($breakpoint-md)
+        border-radius: 13.3px
     &:after
       content: ''
       position: absolute
@@ -154,6 +180,8 @@
       z-index: 2
       display: none
       pointer-events: none
+      +max-screen($breakpoint-md)
+        border-radius: 13.3px
 
     &.active-card
       &:after
@@ -199,10 +227,11 @@
       padding-right: rem(10px)
 
   .message
-    position: absolute
-    left: 50%
-    transform: translateX(-50%)
-    top: rem(16px)
+    // position: absolute
+    // left: 50%
+    // transform: translateX(-50%)
+    // top: rem(16px)
+    margin: auto
     z-index: 1
   .category-name
     display: none
@@ -267,10 +296,13 @@
         //padding: rem(14px) rem(33px)
         min-width: unset
         margin-top: rem(6px)
+        padding: rem(10.41px) rem(21.25px)
+        font-size: rem(11px)
       .dropdown
         width: 100%
       .dropdown-menu
         top: 114%
+        padding: rem(11px) rem(18px) rem(10px) rem(22px)
 
   .filter-results
     &__categories
@@ -289,7 +321,7 @@
       position: relative
       &:not(.hide)
         background-color: $color-secondary-gray
-        padding: rem(49px) rem(23px) rem(27px) !important
+        padding: rem(49px) rem(10px) rem(10px) !important
         border-radius: $radius-sm
         //padding-top: rem(49px)
         .category-name
@@ -328,12 +360,17 @@
         &:after
           display: block
         &:before
-          width: 66px
-          height: 66px
-          bottom: var(--before-bottom, -89px)
+          width: 17px
+          height: 17px
+          bottom: calc(var(--before-bottom) + 38px)
+          left: 37px 
+        &.last::before 
+          bottom: -51px
         &.subcategory-item
           &:before
             bottom: var(--before-bottom, -99px)
+          &.last::before 
+            bottom: -61px
 
       h6
         left: rem(22.8px)
@@ -393,13 +430,6 @@
       &.active-card
         &:after
           display: block
-        &:before
-          width: 66px
-          height: 66px
-          bottom: var(--before-bottom, -89px)
-        &.subcategory-item
-          &:before
-            bottom: var(--before-bottom, -99px)
 
       h6
         left: rem(15px)

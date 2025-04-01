@@ -11,6 +11,10 @@
     transform: translate(-50%, -50%)
     width: max-content
     color: $color-white
+    +max-screen($breakpoint-md)
+      top: auto 
+      bottom: 33px 
+      transform: translateX(-50%)
   &__logo
     position: absolute
     top: 50%

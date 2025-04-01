@@ -281,6 +281,7 @@ function get_category_image_url($term_id) {
                             $first_parent_category = $parent_categories[0];
                             $first_subcategory = $subcategories[$first_parent_category->term_id][0]->slug;  // Первая подкатегория первой родительской категории
                             $first_subcategory_name = $subcategories[$first_parent_category->term_id][0]->name;
+                            
 
                             $args['tax_query'][] = [
                                 'taxonomy' => 'products-category',
@@ -293,11 +294,22 @@ function get_category_image_url($term_id) {
                             $query = new WP_Query($args);
                         }
 
+                        if(!empty($_GET['subcategory'])){
+                            $args['tax_query'][] = [
+                                'taxonomy' => 'products-category',
+                                'field'    => 'slug',
+                                'terms'    => $_GET['subcategory'],
+                                'operator' => 'IN',
+                            ];
+                            $query = new WP_Query($args);
+
+                        }
+
                         // Выводим посты
                         echo '<div class="filter-results__posts filter-row">' . output_posts($query, $first_subcategory_name) . '</div>';
 
                     } else {
-                        echo '<p class="message">No posts matching the specified filters</p>';
+                        echo '<p class="message no-results">No posts matching the specified filters</p>';
                     }
 
                 }
@@ -305,6 +317,7 @@ function get_category_image_url($term_id) {
                 function output_categories_and_subcategories_initially($parent_categories, $subcategories) {
                     echo '<div class="categories-row filter-row">';
                     foreach ($parent_categories as $i => $cat) {
+                        
                         $category_image = get_field('category_product_image', 'products-category_' . $cat->term_id);
 
                         if ($category_image) {
@@ -314,6 +327,14 @@ function get_category_image_url($term_id) {
 
                         // Add 'active card' class to the first category
                         $category_class = ($i == 0) ? 'active-card' : '';
+                        if(count($parent_categories) % 2 == 0){
+                            $items = 'even';
+                        } else {
+                            $items = 'odd';
+                        }
+                        if($i + 1 == count($parent_categories) || ($items == 'even' && $i + 1 == count($parent_categories) - 1)){
+                            $category_class .= ' last';
+                        }
 
                         echo '<div class="category-item filter-card ' . esc_attr($category_class) . '" data-category-id="' . esc_attr($cat->term_id) . '">';
                         echo '<div class="filter-card__wrapper">';
@@ -341,7 +362,7 @@ function get_category_image_url($term_id) {
 
                         // Check if there are subcategories for this parent category
                         if (isset($subcategories[$cat->term_id]) && !empty($subcategories[$cat->term_id])) {
-                            foreach ($subcategories[$cat->term_id] as $sub) {
+                            $i = 0; foreach ($subcategories[$cat->term_id] as $sub) {
                                 $subcategory_image = get_field('category_product_image', 'products-category_' . $sub->term_id);
 
                                 if ($subcategory_image) {
@@ -350,8 +371,24 @@ function get_category_image_url($term_id) {
                                 }
 
                                 // Add 'active card' class to the first subcategory
-                                $subcategory_class = ($is_first_subcategory) ? 'active-card' : '';
-
+                                if(empty($_GET['subcategory'])){
+                                    $subcategory_class = ($is_first_subcategory) ? 'active-card' : '';
+                                } else {
+                                    $cat_id = get_term_by('slug', $_GET['subcategory'], 'products-category');
+                                    if($sub->term_id == $cat_id->term_id){
+                                        $subcategory_class = 'active-card';
+                                    } else {
+                                        $subcategory_class = '';
+                                    }
+                                }
+                                if(count($subcategories[$cat->term_id]) % 2 == 0){
+                                    $items = 'even';
+                                } else {
+                                    $items = 'odd';
+                                }
+                                if($i + 1 == count($subcategories[$cat->term_id]) || ($items == 'even' && $i + 1 == count($subcategories[$cat->term_id]) - 1)){
+                                    $subcategory_class .= ' last';
+                                }
                                 echo '<div class="subcategory-item filter-card ' . esc_attr($subcategory_class) . '" 
                     data-category-id="' . esc_attr($cat->term_id) . '" 
                     data-subcategory-id="' . esc_attr($sub->term_id) . '">';
@@ -367,6 +404,7 @@ function get_category_image_url($term_id) {
                                 echo '</div>';
 
                                 $is_first_subcategory = false; // After the first subcategory, change the flag
+                                $i++;
                             }
                         } else {
                             echo '<p>No subcategories for this category.</p>';

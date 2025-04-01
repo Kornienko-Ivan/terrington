@@ -5,12 +5,13 @@ $button = get_sub_field('button');
 $image = get_sub_field('image');
 $icon = get_sub_field('show_spikelet_icon');
 $section_diff = $button ? 'infoSection--button' : 'infoSection--no-button';
+$text_width = get_sub_field('text_width');
 ?>
 <?php if($title || $text || $image || $button): ?>
 <div class="infoSection <?php echo $section_diff ?>">
     <div class="container container--narrow">
         <div class="infoSection__row">
-            <div class="infoSection__col infoSection__col--content">
+            <div class="infoSection__col infoSection__col--content width-<?php echo $text_width; ?>">
                 <?php if($title): ?>
                     <h2 class="infoSection__title"><?php echo $title; ?></h2>
                 <?php endif; ?>

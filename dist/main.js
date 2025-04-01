@@ -73,18 +73,40 @@
 
 (function ($) {
   jQuery(document).ready(function ($) {
-    $('#locationSearch').on('keyup', function () {
-      var searchText = $(this).val().toLowerCase();
-      $('.dealerBlock__locationsList__item').each(function () {
-        var locationName = $(this).find('.dealerBlock__locationsList__itemName').text().toLowerCase();
-        if (locationName.includes(searchText)) {
-          $(this).show();
-        } else {
-          $(this).hide();
+    $('#locationSearchBtn').on('click', function () {
+      mapSearch($(this).parent().find('#locationSearch').val().toLowerCase());
+      // const searchInput = $(this).parent().find('#locationSearch'),
+      //       searchText = searchInput.val().toLowerCase();
+
+      // $('.dealerBlock__locationsList__item').each(function () {
+      //     const locationName = $(this).find('.dealerBlock__locationsList__itemName').text().toLowerCase();
+
+      //     if (locationName.includes(searchText)) {
+      //         $(this).show();
+      //     } else {
+      //         $(this).hide();
+      //     }
+      // });
+    });
+    $('#locationSearch').on('focus', function () {
+      var input = $(this);
+      $(document).on('keypress', function (e) {
+        if (e.which == 13 && input.is(':focus')) {
+          mapSearch(input.val().toLowerCase());
         }
       });
     });
   });
+  function mapSearch(searchText) {
+    $('.dealerBlock__locationsList__item').each(function () {
+      var locationName = $(this).find('.dealerBlock__locationsList__itemName').text().toLowerCase();
+      if (locationName.includes(searchText)) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  }
 })(jQuery);
 "use strict";
 
@@ -591,6 +613,11 @@
       var menu = dropdown.find(".dropdown-menu");
       $(".dropdown-menu").not(menu).slideUp(200);
       menu.slideToggle(200);
+      if ($(window).width() < 770) {
+        dropdown.find('.dropdown-item').click(function () {
+          $(this).closest(".dropdown-menu").slideUp(200);
+        });
+      }
     });
     $(document).on("click", function (e) {
       if (!$(e.target).closest(".dropdown").length) {
@@ -693,6 +720,17 @@
   });
   $(window).on("resize", function () {
     handleCategoryClick();
+    $('.category-item.active-card').each(function () {
+      updateActiveCardPosition('category', $(this));
+    });
+    $('.subcategory-item.active-card').each(function () {
+      updateActiveCardPosition('subcategory', $(this));
+    });
+  });
+  $(document).ready(function () {
+    if ($('.filter').length > 0) {
+      console.log($(window).attr('href'));
+    }
   });
 })(jQuery);
 "use strict";

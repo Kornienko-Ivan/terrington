@@ -16,9 +16,10 @@
     display: flex
     border-radius: $radius-md
     overflow: hidden
-    &--0
-    &--1
+    &:nth-child(2n)
       flex-direction: row-reverse
+      +max-screen($breakpoint-md)
+        flex-direction: column-reverse
   &__image
     flex-shrink: 0
     &.image-half
@@ -35,6 +36,9 @@
     background-color: $color-secondary-gray
     padding: rem(49px) rem(43px) rem(50px) rem(51px)
     height: fit-content
+    width: 64%
+    +max-screen($breakpoint-md)
+      width: 100%
 
   &__text
     margin-top: rem(26px)

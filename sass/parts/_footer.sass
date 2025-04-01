@@ -38,6 +38,8 @@
   &__logo
 
   &__form
+    +max-screen($breakpoint-md)
+      width: 200px 
     .mc4wp-form-fields
       position: relative
 
@@ -53,7 +55,8 @@
       caret-color: $color-white
       position: relative
       &:focus
-        border: 1px solid $color-red
+        border: 2px solid $color-white
+        padding: rem(11px) 0 rem(10px) rem(14px)
 
       &::placeholder
         color: $color-white
@@ -122,6 +125,9 @@
       &:last-child
         a
           color: $color-red
+          transition: .3s
+          &:hover 
+            color: #ff5b60
 
     &-wrapper
     &-title
@@ -204,6 +210,8 @@
     &__form
       input
         padding: rem(12px) 0 rem(11px) rem(23px)
+        &:focus
+          padding: rem(11px) 0 rem(10px) rem(22px)
 
     &__bottom
       flex-direction: column

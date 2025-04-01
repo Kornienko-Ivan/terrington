@@ -23,6 +23,13 @@
       max-width: rem(418px)
       position: relative
       z-index: 1
+    &.width-l 
+      max-width: rem(461px)
+      .infoSection
+        &__text 
+          margin-top: rem(25px)
+          +max-screen($breakpoint-lg)
+            margin-top: rem(18px)
 
     &--img
       width: 41%

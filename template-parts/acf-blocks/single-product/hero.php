@@ -56,7 +56,7 @@ if($image || $title):
                 while ($parent_id) {
                     $parent_term = get_term($parent_id, 'products-category');
                     if ($parent_term) {
-                        array_unshift($parent_cats, '<a href="' . get_term_link($parent_term) . '">' . $parent_term->name . '</a> <span class="separator">/</span> ');
+                        array_unshift($parent_cats, '<a href="' . $products_overview_url . '?category=' . $parent_term->slug . '">' . $parent_term->name . '</a> <span class="separator">/</span> ');
                         $parent_id = $parent_term->parent;
                     } else {
                         break;
@@ -67,7 +67,7 @@ if($image || $title):
                     echo implode('', $parent_cats);
                 } ?>
 
-                <a href="<?php echo get_term_link($deepest_category); ?>"><?php echo $deepest_category->name; ?></a>
+                <a href="<?php echo esc_url($products_overview_url) . '?category=' . $parent_term->slug . '&subcategory=' . $deepest_category->slug; ?>"><?php echo $deepest_category->name; ?></a>
                 <span class="separator">/</span>
             <?php } ?>
             <?php

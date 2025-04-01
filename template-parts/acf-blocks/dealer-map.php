@@ -10,6 +10,7 @@ if(have_rows('points_list')): ?>
                 <h4 class="dealerBlock__title">Dealer Map</h4>
                 <div class="dealerBlock__search">
                   <input type="text" id="locationSearch" placeholder="Search for a Dealer..." />
+                  <div class="dealerBlock__searchBtn" id="locationSearchBtn"></div>
                 </div>
                 <div class="dealerBlock__locationsList">
                   <?php while(have_rows('points_list')): the_row(); 
@@ -45,13 +46,24 @@ if(have_rows('points_list')): ?>
     var map = L.map('map', {
       center: [<?php echo $default_lat; ?>, <?php echo $default_lon; ?>], 
       zoom: <?php echo $zoom; ?>,
-      zoomControl: false
+      zoomControl: false,
+      scrollWheelZoom: false
     });
+
     L.tileLayer('https://{s}.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}', {
       maxZoom: 20,
       subdomains:['mt0','mt1','mt2','mt3'],
       attribution: 'Map data ©2021 Google'
     }).addTo(map);
+
+
+    map.getContainer().addEventListener("wheel", function (event) {
+        if (event.ctrlKey) {
+            map.scrollWheelZoom.enable(); 
+        } else {
+            map.scrollWheelZoom.disable(); 
+        }
+    });
 
     var locations = [
       <?php while(have_rows('points_list')): the_row(); 

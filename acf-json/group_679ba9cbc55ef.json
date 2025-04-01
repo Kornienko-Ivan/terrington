@@ -523,6 +523,15 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_67e6dcd6969c9": {
+                    "key": "layout_67e6dcd6969c9",
+                    "name": "filter",
+                    "label": "Filter",
+                    "display": "block",
+                    "sub_fields": [],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Row",
@@ -554,5 +563,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1742305498
+    "modified": 1743183069
 }

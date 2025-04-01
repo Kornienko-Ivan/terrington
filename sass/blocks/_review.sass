@@ -1,7 +1,13 @@
 .review
   margin: rem(208px) 0 rem(197px)
   .infoSection + &
-    margin-top: 0
+    margin-top: rem(-76px)
+    position: relative
+    z-index: 1
+    +max-screen($breakpoint-lg)
+      margin-top: rem(24px)
+    +max-screen($breakpoint-md)
+      margin-top: rem(12px)
   &__row
     display: flex
     justify-content: space-between
