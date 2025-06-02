@@ -12,15 +12,18 @@ $brands = get_terms(array(
                 <h2><?php echo esc_html($title); ?></h2>
 
                 <div class="servicingOfferings__brandsList">
-                    <?php foreach ($brands as $brand): ?>
+                    <?php foreach (array_values($brands) as $key => $brand): ?>
                         <?php
                         $logo = get_field('brand_logo', 'products-brand_' . $brand->term_id);
                         if ($logo):
+                            $active_class = $key === 0 ? 'active' : '';
                             ?>
-                            <div class="servicingOfferings__brandsList__item" data-brand-slug="<?php echo $brand->slug; ?>">
+                            <div class="servicingOfferings__brandsList__item <?php echo $active_class; ?>" data-brand-slug="<?php echo $brand->slug; ?>">
                                 <img src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($logo['title']); ?>" class="servicingOfferings__brandsList__itemImg">
                             </div>
-                        <?php endif; endforeach; ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+
                 </div>
                 <?php
 
@@ -102,8 +105,16 @@ $brands = get_terms(array(
                     }
                 } ?>
                 <div class="servicingOfferings__categoriesList">
-
-                    <?php if (!empty($category_brochures)): ?>
+                    <?php
+                    $has_brochures = false;
+                    foreach ($category_brochures as $brochures) {
+                        if (!empty($brochures)) {
+                            $has_brochures = true;
+                            break;
+                        }
+                    }
+                    ?>
+                    <?php if ($has_brochures): ?>
                         <?php foreach ($category_brochures as $cat_id => $brochures): ?>
                             <?php if (!empty($brochures)): ?>
                                 <?php $category = get_term($cat_id, 'products-category'); ?>
@@ -123,6 +134,8 @@ $brands = get_terms(array(
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
+                    <?php else : ?>
+                        <div class="loading-wrapper">No brochures available for the products of this brand.</div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -135,6 +148,9 @@ $brands = get_terms(array(
         $('.servicingOfferings__brandsList__item').click(function(){
             const brand = $(this).attr('data-brand-slug');
             const categoriesList = $('.servicingOfferings__categoriesList');
+
+            $('.servicingOfferings__brandsList__item').removeClass('active');
+            $(this).addClass('active');
 
             categoriesList.html('<div class="loading-wrapper">Loading...</div>');
 
