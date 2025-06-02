@@ -727,11 +727,6 @@
       updateActiveCardPosition('subcategory', $(this));
     });
   });
-  $(document).ready(function () {
-    if ($('.filter').length > 0) {
-      console.log($(window).attr('href'));
-    }
-  });
 })(jQuery);
 "use strict";
 

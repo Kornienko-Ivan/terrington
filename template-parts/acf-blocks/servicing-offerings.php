@@ -146,10 +146,19 @@ $brands = get_terms(array(
                     brand: brand
                 },
                 success : function(result){
-                    categoriesList.html(result);
+                    const cleaned = result.trim();
+                    if (cleaned.length === 0) {
+                        categoriesList.html('<div class="loading-wrapper">No brochures available for the products of this brand.</div>');
+                    } else {
+                        categoriesList.html(result);
+                    }
+                },
+                error: function() {
+                    categoriesList.html('<div class="loading-wrapper">No brochures available for the products of this brand.</div>');
                 }
-            })
-        })
-    })
+            });
+        });
+    });
 </script>
+
 

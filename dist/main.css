@@ -73,8 +73,8 @@ body {
 	cursor: default;
 }
 
-body,
-html {
+html,
+body {
 	font: normal 16px/1.4 "DM Sans", sans-serif;
 	color: #000;
 	background: #FFF;
