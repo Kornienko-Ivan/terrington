@@ -29,9 +29,10 @@ if($title || have_rows('videos_list')):
 
                             if (strpos($video, 'watch?v=') !== false) {
                                 $video_id = explode('watch?v=', $video)[1];
+                                $video_id = explode('&', $video_id)[0];
                             } elseif (strpos($video, 'youtu.be/') !== false) {
                                 $video_id = explode('youtu.be/', $video)[1];
-                                $video_id = explode('?list=', $video_id)[0];
+                                $video_id = explode('?', $video_id)[0];
                             }
 
                             $image = get_sub_field('video_preview')
