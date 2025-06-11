@@ -71,7 +71,8 @@ if($image || $title):
                 <span class="separator">/</span>
             <?php } ?>
             <?php
-                $title = get_field('product_breadcrumb_title') ? get_field('product_breadcrumb_title') : get_the_title();
+//                $title = get_field('product_breadcrumb_title') ? get_field('product_breadcrumb_title') : get_the_title();
+                $title = get_the_title();
             ?>
             <span class="current"><?php echo $title  ?></span>
         </div>
