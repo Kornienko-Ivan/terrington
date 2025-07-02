@@ -113,3 +113,16 @@ $args = [
     "show_in_graphql" => false,
 ];
 register_taxonomy( "products-type", [ "products" ], $args );
+
+add_action('admin_head', function () {
+    $screen = get_current_screen();
+
+    if ($screen && $screen->taxonomy === 'products-brand') {
+        echo '<style>
+            #edittag {
+                max-width: 1200px !important;
+                width: 100% !important;
+            }
+        </style>';
+    }
+});
