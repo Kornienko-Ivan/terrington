@@ -13,7 +13,7 @@ if ($brand_slug) {
 }
 ?>
 
-<?php if($image && $title): ?>
+<?php if($image): ?>
     <div class="review">
         <div class="container container--narrow">
             <div class="review__row">
