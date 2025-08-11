@@ -14,6 +14,7 @@
     flex-direction: column
   &__block
     display: flex
+    align-items: stretch
     border-radius: $radius-md
     overflow: hidden
     &:nth-child(2n)
@@ -23,22 +24,24 @@
   &__image
     flex-shrink: 0
     &.image-half
-      flex-basis: 46.2%
+      flex: 0 0 46.2%
 
     &.image-third
-      flex-basis: 36%
+      flex: 0 0 36%
 
     img
+      display: block
       height: 100%
       width: 100%
       object-fit: cover
   &__textWrapper
     background-color: $color-secondary-gray
     padding: rem(49px) rem(43px) rem(50px) rem(51px)
-    height: fit-content
-    width: 64%
+    flex: 1 1 0
+    min-width: 0
     +max-screen($breakpoint-md)
       width: 100%
+      flex: 1 1 auto
 
   &__text
     margin-top: rem(26px)
