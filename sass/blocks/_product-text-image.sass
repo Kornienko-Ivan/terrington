@@ -1,8 +1,11 @@
 .productTextImage
+  .productTextImage__content
+    display: grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+    gap: rem(26px)
+
   &--small
     margin: rem(72px) 0 rem(60px)
-    .productTextImage__content
-      row-gap: rem(26px)
 
   &--big
     margin: rem(70px) 0 rem(175px)
@@ -14,21 +17,14 @@
     flex-direction: column
   &__block
     display: flex
+    flex-direction: column
     align-items: stretch
     border-radius: $radius-md
     overflow: hidden
-    &:nth-child(2n)
-      flex-direction: row-reverse
-      +max-screen($breakpoint-md)
-        flex-direction: column-reverse
+
   &__image
     flex-shrink: 0
-    &.image-half
-      flex: 0 0 46.2%
-
-    &.image-third
-      flex: 0 0 36%
-
+    max-height: rem(400px)
     img
       display: block
       height: 100%
@@ -69,6 +65,8 @@
 
 +max-screen($breakpoint-md)
   .productTextImage
+    .productTextImage__content
+      grid-template-columns: 1fr
     &--small
       margin: rem(42px) 0 rem(38px)
       .productTextImage__content
@@ -78,16 +76,11 @@
       .productTextImage__content
         row-gap: rem(30px)
     &__block
-      flex-direction: column-reverse
+
     &__image
       height: rem(250px)
       img
         width: 100%
-      &.image-half
-        flex-basis: unset
-      &.image-third
-        flex-basis: unset
-    &__textWrapper
 
 +max-screen($breakpoint-sm)
   .productTextImage
