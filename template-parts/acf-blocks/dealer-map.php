@@ -91,7 +91,7 @@ if(have_rows('points_list')): ?>
                 endif;
                 if($lat && $lon && $name):
                 ?>
-                { lat: <?php echo $lat; ?>, lon: <?php echo $lon; ?>, title: ""<?php if($image || $description || $data): ?>, info: "<div class='dealerBlock__pointPopup'><?php if($image): ?><div class='dealerBlock__pointPopup__image'><img src='<?php echo $image['url']; ?>' alt='<?php echo $image['title']; ?>'></div><?php endif; ?><?php if($description): ?><div class='dealerBlock__pointPopup__description'><?php echo $description; ?></div><?php endif; ?><?php if($data): ?><div class='dealerBlock__pointPopup__data'><?php echo $data; ?></div><?php endif; ?></div>" <?php endif; ?>},
+                { lat: <?php echo $lat; ?>, lon: <?php echo $lon; ?>, title: ""<?php if($image || $description || $data): ?>, info: "<div class='dealerBlock__pointPopup'><?php if($image): ?><div class='dealerBlock__pointPopup__image'><img src='<?php echo $image['url']; ?>' alt='<?php echo $image['title']; ?>'></div><?php endif; ?><div class='dealerBlock__pointPopup__title'><?php echo $name; ?></div><?php if($description): ?><div class='dealerBlock__pointPopup__description'><?php echo $description; ?></div><?php endif; ?><?php if($data): ?><div class='dealerBlock__pointPopup__data'><?php echo $data; ?></div><?php endif; ?></div>" <?php endif; ?>},
                 <?php endif; endwhile; ?>
             ];
 
