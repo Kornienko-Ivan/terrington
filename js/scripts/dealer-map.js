@@ -29,8 +29,9 @@
     function mapSearch(searchText){
         $('.dealerBlock__locationsList__item').each(function () {
             const locationName = $(this).find('.dealerBlock__locationsList__itemName').text().toLowerCase();
+            const locationDesc = $(this).find('.dealerBlock__locationsList__itemDescription').text().toLowerCase();
 
-            if (locationName.includes(searchText)) {
+            if (locationName.includes(searchText) || locationDesc.includes(searchText)) {
                 $(this).show();
             } else {
                 $(this).hide();
