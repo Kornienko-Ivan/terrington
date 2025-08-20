@@ -65,11 +65,8 @@
             margin-bottom: 14px
     &__search 
         position: relative
-        margin-bottom: 46px
-        +max-screen(1200px)
-            margin-bottom: 28px
-        +max-screen($breakpoint-md)
-            margin-bottom: 18px
+        margin-bottom: 8px
+
         &Btn 
             width: 35px
             height: 35px 
@@ -114,6 +111,16 @@
                     padding: 13px 17px
                 +max-screen($breakpoint-md)
                     padding: 9px 13px
+    &__tip
+        margin-bottom: 46px
+        display: flex
+        column-gap: rem(4px)
+        font-size: rem(14px)
+        svg
+            width: rem(14px)
+            path
+                fill: $color-dark-black
+
     &__locationsList 
         flex: 1
         overflow: auto

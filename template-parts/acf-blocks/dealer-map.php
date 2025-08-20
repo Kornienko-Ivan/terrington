@@ -13,6 +13,11 @@ if(have_rows('points_list')): ?>
                         <input type="text" id="locationSearch" placeholder="Search for a Dealer..." />
                         <div class="dealerBlock__searchBtn" id="locationSearchBtn"></div>
                     </div>
+                    <div class="dealerBlock__tip">
+                        <?php echo get_inline_svg('tip') ?>
+
+                        Search by dealer name, address or postcode...
+                    </div>
                     <div class="dealerBlock__locationsList">
                         <?php while(have_rows('points_list')): the_row();
                             $row_id = get_row_index();
