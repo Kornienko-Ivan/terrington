@@ -1,38 +1,21 @@
 (function ($) {
     jQuery(document).ready(function ($) {
         $('#locationSearchBtn').on('click', function () {
-            mapSearch($(this).parent().find('#locationSearch').val().toLowerCase());
+            runSearch($(this).parent().find('#locationSearch').val().toLowerCase());
         });
 
         $('#locationSearch').on('focus', function(){
             const input = $(this);
             $(document).on('keypress',function(e) {
                 if(e.which == 13 && input.is(':focus')) {
-                    mapSearch(input.val().toLowerCase());
+                    runSearch(input.val().toLowerCase());
                 }
             });
         })
 
         $('.leaflet-marker-icon.custom-marker').on('click', (e) => showDetails(e));
 
-        function mapSearch(searchText){
-        $('.dealerBlock__locationsList__item--info').each(function () {
-            $(this).remove();
-        });
-
-        $('.dealerBlock__locationsList__item').each(function () {
-            const locationName = $(this).find('.dealerBlock__locationsList__itemName').text().toLowerCase();
-            const locationDesc = $(this).find('.dealerBlock__locationsList__itemDescription').text().toLowerCase();
-
-            if (locationName.includes(searchText) || locationDesc.includes(searchText)) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
-        });
-    }
-
-        function showDetails(e){
+       function showDetails(e){
         const el = e.target;
         const id = el.dataset.pointId;
 
@@ -46,8 +29,8 @@
         function getData(popup){
             const title = popup.querySelector('.dealerBlock__pointPopup__title').textContent;
             const description = popup.querySelector('.dealerBlock__pointPopup__description').textContent;
-            const tel = Array.from(popup.querySelectorAll('.dealerBlock__pointPopup__dataItem a'))[0].textContent;
-            const email = Array.from(popup.querySelectorAll('.dealerBlock__pointPopup__dataItem a'))[1].textContent;
+            const tel = Array.from(popup.querySelectorAll('.dealerBlock__pointPopup__dataItem a'))[0]?.textContent;
+            const email = Array.from(popup.querySelectorAll('.dealerBlock__pointPopup__dataItem a'))[1]?.textContent;
 
             const data = {
                 title,
@@ -60,6 +43,7 @@
     }
 
         function Markup(data) {
+           console.log('data: ', data);
             const { title, description, tel, email } = data || {};
             const telHref = tel ? `tel:${String(tel).replace(/\s+/g, '')}` : '';
             const emailHref = email ? `mailto:${email}` : '';
@@ -89,6 +73,86 @@
             if (!list) return;
 
             list.insertAdjacentHTML('afterbegin', markup);
+        }
+
+        const RADIUS_MI = 20;
+        const geocodeCache = new Map();
+
+        function isLikelyUKPostcode(str) {
+            return /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(String(str).trim());
+        }
+
+        async function geocodePostcodeUK(postcode) {
+            const key = String(postcode).replace(/\s+/g, '').toUpperCase();
+            if (geocodeCache.has(key)) return geocodeCache.get(key);
+
+            const res = await fetch(`https://api.postcodes.io/postcodes/${key}`);
+
+            if (!res.ok) throw new Error('Postcode not found');
+            const { result } = await res.json();
+            const point = { lat: result.latitude, lon: result.longitude };
+            geocodeCache.set(key, point);
+            return point;
+        }
+
+        function haversineMiles(a, b) {
+            const toRad = d => d * Math.PI / 180;
+            const R = 3958.7613;
+            const dLat = toRad(b.lat - a.lat);
+            const dLon = toRad(b.lon - a.lon);
+            const lat1 = toRad(a.lat), lat2 = toRad(b.lat);
+            const h = Math.sin(dLat/2)**2 + Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLon/2)**2;
+            return 2 * R * Math.asin(Math.sqrt(h));
+        }
+
+        function showDealersWithin(center, miles = RADIUS_MI) {
+            if (!center || isNaN(center.lat) || isNaN(center.lon) || !miles) return;
+
+            $('.dealerBlock__locationsList__item--info').remove();
+
+            $('.dealerBlock__locationsList__item').each(function () {
+                const $li = $(this);
+                const lat = parseFloat($li.attr('data-lat'));
+                const lon = parseFloat($li.attr('data-lon'));
+
+                if (isNaN(lat) || isNaN(lon)) {
+                    $li.hide();
+                    return;
+                }
+
+                const dist = haversineMiles(center, { lat, lon });
+                $li.toggle(dist <= miles);
+            });
+        }
+
+        async function runSearch(raw) {
+            const q = (raw || '').trim();
+
+            if (!q) {
+                $('.dealerBlock__locationsList__item').show();
+                return;
+            }
+
+            if (isLikelyUKPostcode(q)) {
+                try {
+                    const { lat, lon } = await geocodePostcodeUK(q);
+                    showDealersWithin({ lat, lon }, 20);
+                } catch (e) {
+                    console.warn('Postcode geocode failed, fallback to name search', e);
+                    mapSearchByName(q.toLowerCase());
+                }
+            } else {
+                mapSearchByName(q.toLowerCase());
+            }
+        }
+
+        function mapSearchByName(searchText){
+            $('.dealerBlock__locationsList__item--info').remove();
+            $('.dealerBlock__locationsList__item').each(function () {
+                const name = $(this).find('.dealerBlock__locationsList__itemName').text().toLowerCase();
+                const desc = $(this).find('.dealerBlock__locationsList__itemDescription').text().toLowerCase();
+                $(this).toggle(name.includes(searchText) || desc.includes(searchText));
+            });
         }
 
     });
