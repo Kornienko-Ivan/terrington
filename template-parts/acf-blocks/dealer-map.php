@@ -15,13 +15,14 @@ if(have_rows('points_list')): ?>
                     </div>
                     <div class="dealerBlock__locationsList">
                         <?php while(have_rows('points_list')): the_row();
+                            $row_id = get_row_index();
                             $lat = get_sub_field('point_lat');
                             $lon = get_sub_field('point_lon');
                             $name = get_sub_field('name');
                             $description = get_sub_field('description');
                             if($lat && $lon && $name):
                                 ?>
-                                <li data-lat="<?php echo $lat; ?>" data-lon="<?php echo $lon; ?>" class="dealerBlock__locationsList__item">
+                                <li data-point-id="<?php echo esc_attr($row_id); ?>" data-lat="<?php echo $lat; ?>" data-lon="<?php echo $lon; ?>" class="dealerBlock__locationsList__item">
                                     <div class="dealerBlock__locationsList__itemName"><?php echo $name; ?></div>
                                     <?php if($description): ?>
                                         <div class="dealerBlock__locationsList__itemDescription"><?php echo $description; ?></div>
@@ -68,6 +69,7 @@ if(have_rows('points_list')): ?>
 
             var locations = [
                 <?php while(have_rows('points_list')): the_row();
+                $row_id = get_row_index();
                 $lat = get_sub_field('point_lat');
                 $lon = get_sub_field('point_lon');
                 $image = get_sub_field('image');
@@ -91,7 +93,7 @@ if(have_rows('points_list')): ?>
                 endif;
                 if($lat && $lon && $name):
                 ?>
-                { lat: <?php echo $lat; ?>, lon: <?php echo $lon; ?>, title: ""<?php if($image || $description || $data): ?>, info: "<div class='dealerBlock__pointPopup'><?php if($image): ?><div class='dealerBlock__pointPopup__image'><img src='<?php echo $image['url']; ?>' alt='<?php echo $image['title']; ?>'></div><?php endif; ?><div class='dealerBlock__pointPopup__title'><?php echo $name; ?></div><?php if($description): ?><div class='dealerBlock__pointPopup__description'><?php echo $description; ?></div><?php endif; ?><?php if($data): ?><div class='dealerBlock__pointPopup__data'><?php echo $data; ?></div><?php endif; ?></div>" <?php endif; ?>},
+                {  id: <?php echo (int)$row_id; ?>, lat: <?php echo $lat; ?>, lon: <?php echo $lon; ?>, title: ""<?php if($image || $description || $data): ?>, info: "<div class='dealerBlock__pointPopup' data-point-id='<?php echo (int)$row_id; ?>'><?php if($image): ?><div class='dealerBlock__pointPopup__image'><img src='<?php echo $image['url']; ?>' alt='<?php echo $image['title']; ?>'></div><?php endif; ?><div class='dealerBlock__pointPopup__title'><?php echo $name; ?></div><?php if($description): ?><div class='dealerBlock__pointPopup__description'><?php echo $description; ?></div><?php endif; ?><?php if($data): ?><div class='dealerBlock__pointPopup__data'><?php echo $data; ?></div><?php endif; ?></div>" <?php endif; ?>},
                 <?php endif; endwhile; ?>
             ];
 
@@ -105,12 +107,24 @@ if(have_rows('points_list')): ?>
             });
 
             locations.forEach(loc => {
-                var marker = L.marker([loc.lat, loc.lon], { icon: redIcon })
-                    .addTo(map)
-                    .bindPopup(`<b>${loc.title}</b><br>${loc.info}`);
+                const marker = L.marker([loc.lat, loc.lon], {
+                    icon: redIcon,
+                    pointId: String(loc.id),
+                });
 
+                marker.on('add', function () {
+                    const el = this.getElement();
+                    if (el) {
+                        el.setAttribute('data-point-id', this.options.pointId);
+                        const inner = el.querySelector('.marker-circle');
+                        if (inner) inner.setAttribute('data-point-id', this.options.pointId);
+                    }
+                });
+
+                marker.addTo(map).bindPopup(loc.info || "");
                 markers.push(marker);
             });
+
 
             function focusOnLocation(lat, lon) {
                 var marker = markers.find(m => m.getLatLng().lat === lat && m.getLatLng().lng === lon);
