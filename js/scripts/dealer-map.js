@@ -110,6 +110,8 @@
 
             $('.dealerBlock__locationsList__item--info').remove();
 
+            const dealers = [];
+
             $('.dealerBlock__locationsList__item').each(function () {
                 const $li = $(this);
                 const lat = parseFloat($li.attr('data-lat'));
@@ -121,15 +123,22 @@
                 }
 
                 const dist = haversineMiles(center, { lat, lon });
+
+                if (dist <= miles) dealers.push($li[0].dataset.pointId);
+
                 $li.toggle(dist <= miles);
             });
+
+            pinHandler(dealers);
         }
 
         async function runSearch(raw) {
             const q = (raw || '').trim();
 
             if (!q) {
-                $('.dealerBlock__locationsList__item').show();
+                $('.dealerBlock__locationsList__item--info').hide();
+                $('.dealerBlock__locationsList__item:not(.dealerBlock__locationsList__item--info)').show();
+                pinHandler([]);
                 return;
             }
 
@@ -148,10 +157,32 @@
 
         function mapSearchByName(searchText){
             $('.dealerBlock__locationsList__item--info').remove();
+
+            const dealers = [];
+
             $('.dealerBlock__locationsList__item').each(function () {
                 const name = $(this).find('.dealerBlock__locationsList__itemName').text().toLowerCase();
                 const desc = $(this).find('.dealerBlock__locationsList__itemDescription').text().toLowerCase();
+
+                if (name.includes(searchText) || desc.includes(searchText)) dealers.push($(this)[0].dataset.pointId);
+
                 $(this).toggle(name.includes(searchText) || desc.includes(searchText));
+            });
+
+            pinHandler(dealers);
+        }
+
+        function pinHandler(dealers) {
+            $('.leaflet-marker-icon.custom-marker').each(function () {
+                const $pin = $(this);
+                const pinID = $pin[0].dataset.pointId;
+
+                if (dealers.length === 0) {
+                   $pin.show();
+                    return;
+                }
+
+                if (pinID) $pin.toggle(dealers.includes(pinID));
             });
         }
 
