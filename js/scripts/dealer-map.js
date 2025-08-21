@@ -135,6 +135,8 @@
         async function runSearch(raw) {
             const q = (raw || '').trim();
 
+            $('.leaflet-popup').remove();
+
             if (!q) {
                 $('.dealerBlock__locationsList__item--info').hide();
                 $('.dealerBlock__locationsList__item:not(.dealerBlock__locationsList__item--info)').show();
